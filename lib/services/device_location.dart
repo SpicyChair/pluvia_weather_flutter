@@ -5,6 +5,10 @@ class Location {
   double latitude;
   double longitude;
 
+  Future<void> requestLocationPermission() async {
+    return await requestPermission();
+  }
+
   Future<void> getCurrentLocation() async {
     try {
       Position position = await getCurrentPosition();
@@ -14,5 +18,16 @@ class Location {
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<bool> locationEnabled() async {
+    return await isLocationServiceEnabled();
+  }
+  Future<bool> locationPermissionEnabled() async {
+    LocationPermission permission = await checkPermission();
+    if ((permission == LocationPermission.deniedForever) || (permission == LocationPermission.denied)) {
+      return false;
+    }
+    return true;
   }
 }

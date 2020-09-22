@@ -14,9 +14,16 @@ class WeatherModel {
 
     //get the user's location
     Location location = Location();
+
+    if (!await location.locationEnabled() || !await location.locationPermissionEnabled()) {
+      //no location enabled
+      return 1;
+    }
     await location.getCurrentLocation();
 
     //send a request to OpenWeatherMap one call api
+
+    String fakeTestKey = "abc";
     NetworkHelper networkHelper = NetworkHelper(
       url:
       "${kOpenWeatherMapURL}lat=${location.latitude}&lon=${location.longitude}&exclude=minutely&appid=$kOpenWeatherApiKey&units=$kUnit",

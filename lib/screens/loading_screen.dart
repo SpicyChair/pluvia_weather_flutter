@@ -12,10 +12,27 @@ class LoadingScreen extends StatefulWidget {
 
 class _LoadingScreenState extends State<LoadingScreen> {
 
+  bool isGettingData;
+  String message;
+
   Future getWeatherData() async {
+    isGettingData = true;
+    message = "Getting weather data...";
+    
     var weatherData = await WeatherModel().getUserLocationWeather();
-    //send user to the saved location screen if location disabled
-    if (weatherData == null) {
+
+    //bad request / internet disabled
+    if (weatherData == 0) {
+      setState(() {
+        isGettingData = false;
+        message = "Enable WIFI or data and retry";
+      });
+      return;
+    }
+    //user denied location / gps broken
+    // show select location screen
+    if (weatherData == 1) {
+      print(weatherData);
       Navigator.pushReplacement(context, MaterialPageRoute(
         builder: (context) => SavedLocationScreen(),
       ));
@@ -39,9 +56,41 @@ class _LoadingScreenState extends State<LoadingScreen> {
       body: Container(
         color: Colors.white,
         child: Center(
-          child: SpinKitDualRing(
-            size: 100,
-            color: Colors.blueAccent,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Visibility(
+                visible: isGettingData,
+                child: SpinKitDualRing(
+                  size: 100,
+                  color: Colors.blueAccent,
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(20),
+                width: 300,
+                child: Column(
+                  children: [
+                    //show message depending on status
+                    Text(message, style: TextStyle(
+                      fontSize: 14,
+                    ),),
+                    Visibility(
+                      //show only when data is unavailable
+                      visible: !isGettingData,
+                      child: FlatButton(child: Text("RETRY"),
+                        onPressed: () {
+                          Navigator.pushReplacement(context, MaterialPageRoute(
+                            builder: (context) => LoadingScreen(),
+                          ),);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),

@@ -143,6 +143,35 @@ class _WeatherScreenState extends State<WeatherScreen> {
     weatherAnimation.state.weatherWorld.weatherType = weatherType;
   }
 
+  WeatherType getWeatherType(DateTime sunrise, DateTime sunset, DateTime currentTime, int conditionCode) {
+    WeatherType weatherType;
+    //check if its raining or snowing to show weather animation
+    if (conditionCode >= 300 && conditionCode <= 599) {
+      //rain / drizzle
+      weatherType = WeatherType.rain;
+    } else if (conditionCode >= 600 && conditionCode <= 699) {
+      //snow
+      weatherType = WeatherType.snow;
+    } else {
+      //use the time instead to show animation as weather is clear
+      int hour = currentTime.hour;
+
+      if (hour >= 6 && hour <= 13) {
+        //morning
+        weatherType = WeatherType.clearDay;
+      } else if (hour >= 14 && hour <= 18) {
+        //afternoon
+        weatherType = WeatherType.clearAfternoon;
+      } else if (hour >= 19 && hour <= 21) {
+        //evening
+        weatherType = WeatherType.clearEvening;
+      } else {
+        //night
+        weatherType = WeatherType.clearNight;
+      }
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -196,13 +225,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   children: [
                     //add a spacer
                     SizedBox(
-                      height: 350,
+                      height: 300,
                     ),
-                    createExtraInfoCard(),
-                    SizedBox(
-                      height: 5,
-                    ),
+                    createMainInfoCard(),
                     createHourlyForecastCard(),
+                    createExtraInfoCard(),
                   ],
                 ),
               ),
@@ -297,6 +324,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     temp: temp,
                     displayTime: displayTime,
                     weatherData: weatherData,
+                    isCurrent: index == 0,
                   );
                 },
                 scrollDirection: Axis.horizontal,
@@ -351,14 +379,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
     }
   }
 
-  Widget createExtraInfoCard() {
-    /*24 is for notification bar on Android*/
+  Widget createMainInfoCard() {
     final double itemHeight = 85;
     final double itemWidth = MediaQuery.of(context).size.width / 2;
 
     return PanelCard(
       cardChild: Container(
-        height: 155,
+        height: 80,
         width: double.infinity,
         margin: kPanelCardMargin,
         child: GridView.count(
@@ -375,6 +402,33 @@ class _WeatherScreenState extends State<WeatherScreen> {
               value:
                   "${windSpeed.toString()} m/s ${getWindCompassDirection(windDirection)}",
             ),
+
+          ],
+        ),
+      ),
+    );
+  }
+
+  String getWindCompassDirection(int angle) {
+    const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+    return directions[((angle / 45) % 8).floor()];
+  }
+
+  Widget createExtraInfoCard() {
+    final double itemHeight = 85;
+    final double itemWidth = MediaQuery.of(context).size.width / 2;
+
+    return PanelCard(
+      cardChild: Container(
+        height: 160,
+        width: double.infinity,
+        margin: kPanelCardMargin,
+        child: GridView.count(
+          childAspectRatio: (itemWidth / itemHeight),
+          crossAxisCount: 2,
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+
             InfoCard(
               title: "Sunrise",
               value: "${DateFormat.Hm().format(sunriseTime)}",
@@ -384,7 +438,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
               value: "${DateFormat.Hm().format(sunsetTime)}",
             ),
 
-            /*
             InfoCard(
               title: "Humidity",
               value: "${humidity.toString()}%",
@@ -394,15 +447,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
               value: "${pressure.toString()} hPa",
             ),
 
-             */
           ],
         ),
       ),
     );
-  }
-
-  String getWindCompassDirection(int angle) {
-    const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
-    return directions[((angle / 45) % 8).round()];
   }
 }

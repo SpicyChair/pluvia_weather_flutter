@@ -10,6 +10,7 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "Pluvia Weather",
       theme: ThemeData.light(),
       home: LoadingScreen(),
     );
