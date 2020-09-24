@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'file:///E:/flutter_weather/lib/constants/constants.dart';
-import 'package:flutter_weather/constants/text_style.dart';
+import 'package:flutter_weather/constants.dart';
 
 class InfoCard extends StatelessWidget {
   final String title;
@@ -15,8 +14,8 @@ class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 10),
-      margin: EdgeInsets.all(4),
+      margin: EdgeInsets.all(5),
+      padding: EdgeInsets.only(left: 15),
       decoration:
           BoxDecoration(color: Colors.white, borderRadius: kBorderRadius),
       child: Column(
@@ -25,14 +24,22 @@ class InfoCard extends StatelessWidget {
         children: [
           Text(
             title,
-            style: kInfoCardTitle
+            style: TextStyle(
+              color: Colors.black54,
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           SizedBox(
             height: 2,
           ),
           Text(
             value,
-            style: kInfoCardInfoText
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w500,
+              fontSize: 24,
+            ),
           ),
         ],
       ),

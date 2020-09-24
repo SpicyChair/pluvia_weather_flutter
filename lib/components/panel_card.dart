@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'file:///E:/flutter_weather/lib/constants/constants.dart';
+import 'package:flutter_weather/constants.dart';
 
 class PanelCard extends StatelessWidget {
 

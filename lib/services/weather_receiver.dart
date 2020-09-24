@@ -1,4 +1,3 @@
-import 'package:connectivity/connectivity.dart';
 import 'package:flutter_weather/services/api_keys.dart';
 import 'networking.dart';
 import 'device_location.dart';
@@ -15,20 +14,14 @@ class WeatherModel {
     
     await location.requestLocationPermission();
 
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.none) {
-      //return a code to show that connection failed
-      return 0;
-    }
-
     //get the user's location
     Location location = Location();
-    await location.getCurrentLocation();
+
     if (!await location.locationEnabled() || !await location.locationPermissionEnabled()) {
       //no location enabled
       return 1;
     }
-
+    await location.getCurrentLocation();
 
     //send a request to OpenWeatherMap one call api
 
@@ -46,12 +39,6 @@ class WeatherModel {
 
   //get weather by latitude and longitude
   Future<dynamic> getCoordLocationWeather(double latitude, double longitude) async {
-
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.none) {
-      //return a code to show that connection failed
-      return 0;
-    }
 
     //send a request to OpenWeatherMap one call api
     NetworkHelper networkHelper = NetworkHelper(

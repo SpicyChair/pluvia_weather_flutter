@@ -1,16 +1,18 @@
-# flutter_weather
+# Pluvia Weather ALPHA
+A weather app with beautiful animations, built with Flutter. Uses the OpenWeatherMap API and MapBox API.
 
-A weather application built with Flutter
+# Development
+The app is in early alpha and therefore will have bugs. Please create an issue if you find any bugs.\
+[Download the releases here.](https://github.com/SpicyChair/pluvia_weather_flutter/releases)
 
-## Getting Started
+# Features
+* Beautiful animations which change throughout the day
+* Location searching and saving with MapBox API
+* Hourly forecast
+* Condtion forecast (eg wind speed and direction)
 
-This project is a starting point for a Flutter application.
+* Dark theme support - Coming Soon
+* Next 7 days weather - Coming Soon
+* More detail for forecasts - Coming Soon
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Feel free to create an issue if you have any more ideas.

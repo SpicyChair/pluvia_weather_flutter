@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_weather/screens/saved_location_screen.dart';
 import 'package:flutter_weather/services/weather_receiver.dart';
-import 'current_weather_screen.dart';
-import 'package:app_settings/app_settings.dart';
+import 'weather_screen.dart';
 
 
 class LoadingScreen extends StatefulWidget {
@@ -30,12 +29,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
       });
       return;
     }
-    //user denied location or location is disabled
+    //user denied location / gps broken
     // show select location screen
     if (weatherData == 1) {
       print(weatherData);
       Navigator.pushReplacement(context, MaterialPageRoute(
-        builder: (context) => SavedLocationScreen(locationDisabledInitially: true,),
+        builder: (context) => SavedLocationScreen(),
       ));
       return;
     }

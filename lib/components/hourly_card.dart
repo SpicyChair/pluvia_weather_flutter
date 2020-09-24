@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather/constants/constants.dart';
-import 'package:flutter_weather/constants/text_style.dart';
+import 'package:flutter_weather/constants.dart';
 
 class HourlyCard extends StatelessWidget {
   //the icon to show weather condition
@@ -44,7 +43,8 @@ class HourlyCard extends StatelessWidget {
             children: [
               Text(
                 displayTime,
-                style: kHourlyCardTime,
+                style: kSubheadingTextStyle.copyWith(
+                    color: Colors.black54, fontSize: 18),
               ),
               Container(
                 height: 50,
@@ -57,13 +57,15 @@ class HourlyCard extends StatelessWidget {
                 child: Center(
                   child: Text(
                     icon,
-                    style: kHourlyCardIcon,
+                    style: TextStyle(
+                      fontSize: 27,
+                    ),
                   ),
                 ),
               ),
               Text(
                 "${temp.toString()}°",
-                style: kHourlyCardTemperature,
+                style: kSubheadingTextStyle,
               ),
             ],
           ),
