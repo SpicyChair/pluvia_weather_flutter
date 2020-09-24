@@ -12,6 +12,8 @@ class WeatherModel {
 
   //get weather by user's current location
   Future<dynamic> getUserLocationWeather() async {
+    
+    await location.requestLocationPermission();
 
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
