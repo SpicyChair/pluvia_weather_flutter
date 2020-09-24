@@ -11,7 +11,7 @@ class Location {
 
   Future<void> getCurrentLocation() async {
     try {
-      Position position = await getCurrentPosition();
+      Position position = await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       //if the position is null, set location to null island
       latitude = position.latitude ?? 0;
       longitude = position.longitude ?? 0;

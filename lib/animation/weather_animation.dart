@@ -7,7 +7,7 @@ import 'dart:ui' as ui show Image;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:spritewidget/spritewidget.dart';
-import 'package:flutter_weather/constants.dart';
+import 'file:///E:/flutter_weather/lib/constants/constants.dart';
 
 // The image map hold all of our image assets.
 ImageMap _images;
@@ -112,7 +112,7 @@ const List<Color> _kBackgroundColorsTop = const <Color>[
   const Color(0xff5ebbd5), //clear day
   const Color(0xfff9655b), //clear afternoon
   const Color(0xFFe5383b), //clear evening
-  const Color(0xFF03071f), //clear night
+  const Color(0xFF023e7d), //clear night
   const Color(0xff0b2734), //rain
   const Color(0xffcbced7) //snow
 ];

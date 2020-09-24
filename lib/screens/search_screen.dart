@@ -3,6 +3,8 @@ import 'package:flutter_weather/services/api_keys.dart';
 import 'package:mapbox_search_flutter/mapbox_search_flutter.dart';
 
 class SearchScreen extends StatefulWidget {
+
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
