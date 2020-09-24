@@ -11,8 +11,6 @@ class WeatherModel {
 
   //get weather by user's current location
   Future<dynamic> getUserLocationWeather() async {
-    
-    await location.requestLocationPermission();
 
     //get the user's location
     Location location = Location();
