@@ -11,7 +11,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="Pluvia Weather"
+        android:label="Pluvia"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name="com.spicychair.flutter_weather.MainActivity"

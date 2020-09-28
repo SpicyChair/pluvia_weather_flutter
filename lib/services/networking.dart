@@ -11,14 +11,6 @@ class NetworkHelper {
   NetworkHelper({this.url});
 
   Future getData() async {
-
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.none) {
-      //return a code to show that connection failed
-      return 0;
-    }
-
-
     try {
       http.Response response = await http.get(url).timeout(Duration(seconds: 30));
 
@@ -28,17 +20,10 @@ class NetworkHelper {
         //return decoded data
         return jsonDecode(data);
       }
-      //return a code to show that connection failed
-      return 0;
-
     } on SocketException catch (_) {
-      //return a code to show that connection failed
-      return 0;
-
     } on TimeoutException catch (_) {
-      //return a code to show that connection failed
-      return 0;
     }
+    return null;
   }
 
 

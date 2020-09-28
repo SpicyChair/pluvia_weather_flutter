@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather/constants.dart';
+import 'file:///E:/flutter_weather/lib/constants/constants.dart';
 
 class PanelCard extends StatelessWidget {
 
@@ -10,9 +10,8 @@ class PanelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
-      color: Colors.white.withOpacity(0.90),
+    return Container(
+      color: Colors.grey[50],
       child: cardChild,
     );
   }

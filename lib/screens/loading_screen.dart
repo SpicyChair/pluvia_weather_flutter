@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_weather/screens/home_screen.dart';
 import 'package:flutter_weather/screens/saved_location_screen.dart';
-import 'package:flutter_weather/services/weather_receiver.dart';
-import 'weather_screen.dart';
-
+import 'package:flutter_weather/services/weather_model.dart';
+import 'current_weather_screen.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -11,36 +11,28 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-
   bool isGettingData;
   String message;
 
   Future getWeatherData() async {
     isGettingData = true;
-    message = "Getting weather data...";
-    
-    var weatherData = await WeatherModel().getUserLocationWeather();
+    message = "Getting location...";
 
-    //bad request / internet disabled
-    if (weatherData == 0) {
+    int response = await WeatherModel.getUserLocationWeather();
+    if (response == 0) {
       setState(() {
         isGettingData = false;
-        message = "Enable WIFI or data and retry";
+        message = "Please enable WIFI or Data and retry";
       });
       return;
     }
-    //user denied location / gps broken
-    // show select location screen
-    if (weatherData == 1) {
-      print(weatherData);
-      Navigator.pushReplacement(context, MaterialPageRoute(
-        builder: (context) => SavedLocationScreen(),
-      ));
-      return;
-    }
-    Navigator.pushReplacement(context, MaterialPageRoute(
-      builder: (context) => WeatherScreen(weather: weatherData, title: "Current Location",),
-    ),);
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomeScreen(),
+      ),
+    );
   }
 
   @override
@@ -51,7 +43,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold (
+    return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
         color: Colors.white,
@@ -60,35 +52,49 @@ class _LoadingScreenState extends State<LoadingScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                "Pluvia Weather",
+                style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.normal,
+                letterSpacing: 2),
+              ),
               Visibility(
                 visible: isGettingData,
-                child: SpinKitDualRing(
-                  size: 100,
-                  color: Colors.blueAccent,
+                child: Padding(
+                  padding: const EdgeInsets.all(33.0),
+                  child: SpinKitDualRing(
+                    size: 70,
+                    color: Colors.blueAccent,
+                  ),
                 ),
               ),
-              Container(
-                padding: EdgeInsets.all(20),
-                width: 300,
-                child: Column(
-                  children: [
-                    //show message depending on status
-                    Text(message, style: TextStyle(
+              Column(
+                children: [
+                  //show message depending on status
+                  Text(
+                    message,
+                    style: TextStyle(
                       fontSize: 14,
-                    ),),
-                    Visibility(
-                      //show only when data is unavailable
-                      visible: !isGettingData,
-                      child: FlatButton(child: Text("RETRY"),
-                        onPressed: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(
-                            builder: (context) => LoadingScreen(),
-                          ),);
-                        },
-                      ),
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
-                ),
+                  ),
+                  Visibility(
+                    //show only when data is unavailable
+                    visible: !isGettingData,
+                    child: RaisedButton(
+                      child: Text("RETRY"),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoadingScreen(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

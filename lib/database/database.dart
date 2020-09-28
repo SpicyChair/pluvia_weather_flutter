@@ -38,12 +38,12 @@ class DatabaseHelper {
   Future<void> removeLocation(int id) async {
     final db = await database;
 
-    // Remove the Dog from the Database.
+    // Remove the location from the Database.
     await db.delete(
       "locations",
-      // Use a `where` clause to delete a specific dog.
+      // Use a `where` clause to delete a specific location.
       where: "id = ?",
-      // Pass the Dog's id as a whereArg to prevent SQL injection.
+      // Pass the id as a whereArg to prevent SQL injection.
       whereArgs: [id],
     );
   }

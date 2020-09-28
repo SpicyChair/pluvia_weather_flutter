@@ -1,6 +1,9 @@
+import 'package:flutter_weather/services/api_keys.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:mapbox_search/mapbox_search.dart';
 
-class Location {
+
+class LocationService {
 
   double latitude;
   double longitude;
@@ -11,7 +14,7 @@ class Location {
 
   Future<void> getCurrentLocation() async {
     try {
-      Position position = await getCurrentPosition();
+      Position position = await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       //if the position is null, set location to null island
       latitude = position.latitude ?? 0;
       longitude = position.longitude ?? 0;
@@ -29,5 +32,15 @@ class Location {
       return false;
     }
     return true;
+  }
+
+  Future<String> getNameFromCoordinates(double latitude, double longitude) async {
+    var reverseGeoCoding = ReverseGeoCoding(
+      apiKey: kMapBoxApiKey,
+      limit: 1,
+    );
+
+   List<MapBoxPlace> places = await reverseGeoCoding.getAddress(Location(lat: latitude, lng: longitude));
+   return places[0].placeName;
   }
 }
