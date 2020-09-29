@@ -1,9 +1,7 @@
 # Pluvia Weather BETA
 A weather app with beautiful animations, built with Flutter. Uses the OpenWeatherMap API and MapBox API.
 
-## Download
-Please create an issue if you find any bugs.\
-[Download the releases here.](https://github.com/SpicyChair/pluvia_weather_flutter/releases)
+## [Download the releases here.](https://github.com/SpicyChair/pluvia_weather_flutter/releases)
 
 ## Features
 * Beautiful animations which change throughout the day, and according to weather conditions
