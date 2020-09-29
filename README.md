@@ -10,8 +10,8 @@ The app is in early alpha and therefore will have bugs. Please create an issue i
 * View weather and forecasts in your geolocation, as well as locations all across the world
 * Location searching and saving with MapBox API and SQFLite Database
 * Hourly forecast
-* Forecast for the next seven days
 
+* Forecast for the next seven days - Coming Soon
 * Dark theme support - Coming Soon
 * Minutely forecast - Coming Soon
 
