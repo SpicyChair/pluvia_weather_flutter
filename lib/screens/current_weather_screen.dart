@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter_weather/animation/weather_type.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/screens/saved_location_screen.dart';
@@ -110,6 +109,15 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     weatherAnimation.state.weatherWorld.weatherType = weatherType;
   }
 
+  Future<void> refresh() async {
+    await WeatherModel.getCoordLocationWeather(
+        lat, lon, WeatherModel.locationName);
+    updateUI();
+    DateTime now = DateTime.now();
+    String refreshTime = DateFormat.Hm().format(now);
+    Scaffold.of(context).showSnackBar(SnackBar(content: Text("Refreshed at $refreshTime")));
+  }
+
   @override
   Widget build(BuildContext context) {
     if (WeatherModel.weatherData == null) {
@@ -117,28 +125,37 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
         child: Text("Choose a location to view weather."),
       );
     }
-    return SafeArea(
-      child: Stack(
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        elevation: 0,
+        title: Text(
+          WeatherModel.locationName,
+          style: TextStyle(
+            fontWeight: FontWeight.w200,
+            fontSize: 30,
+            color: Colors.white,
+          ),
+          overflow: TextOverflow.ellipsis,
+        ),
+        actions: [
+          FlatButton(
+            onPressed: refresh,
+            child: Icon(
+              Icons.refresh,
+              color: Colors.white,
+              size: 27,
+            ),
+          )
+        ],
+      ),
+      body: Stack(
         alignment: Alignment.topCenter,
         children: [
           weatherAnimation,
           temperatureWidget(),
-          Positioned(
-            top: 20,
-            left: 10,
-            child: SizedBox(
-              width: 350,
-              child: Text(
-                WeatherModel.locationName,
-                style: TextStyle(
-                  fontWeight: FontWeight.w200,
-                  fontSize: 30,
-                  color: Colors.white,
-                ),
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ),
           //infoWidget(),
           Positioned(
             bottom: 0,
@@ -148,40 +165,21 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
               child: MediaQuery.removePadding(
                 context: context,
                 removeTop: true,
-                child: RefreshIndicator(
-                  onRefresh: () async {
-                    WeatherModel.getCoordLocationWeather(lat, lon, WeatherModel.locationName);
-                    updateUI();
-                  },
-
-                  child: ListView(
-                    //physics: PageScrollPhysics(),
-                    children: [
-                      //add a spacer
-                      SizedBox(
-                        height: 400,
-                      ),
-                      /*
-                        FlatButton(
-                          onPressed: () {},
-                          child: Text(
-                            "NEXT 7 DAYS",
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,),
-                          ),
-                        ),
-
-                         */
-                      Column(
-                        children: [
-                          createHourlyForecastCard(),
-                          createMainInfoCard(),
-                          createExtraInfoCard(),
-                        ],
-                      ),
-                    ],
-                  ),
+                child: ListView(
+                  physics: BouncingScrollPhysics(),
+                  children: [
+                    //add a spacer
+                    SizedBox(
+                      height: 385,
+                    ),
+                    Column(
+                      children: [
+                        createHourlyForecastCard(),
+                        createMainInfoCard(),
+                        createExtraInfoCard(),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),

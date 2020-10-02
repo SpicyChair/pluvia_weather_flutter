@@ -4,6 +4,7 @@ import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/services/api_keys.dart';
 import 'networking.dart';
 import 'location_service.dart';
+import 'package:flutter/material.dart';
 
 const String kOpenWeatherMapURL =
     "https://api.openweathermap.org/data/2.5/onecall?";
@@ -21,8 +22,7 @@ class WeatherModel {
    */
   static Future<int> getUserLocationWeather() async {
 
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.none) {
+    if (await (Connectivity().checkConnectivity()) == ConnectivityResult.none) {
       //return a code to show that connection failed
       return 0;
     }
@@ -31,7 +31,6 @@ class WeatherModel {
     await location.getCurrentLocation();
 
     //send a request to OpenWeatherMap one call api
-    String fakeTestKey = "abc";
     NetworkHelper networkHelper = NetworkHelper(
       url:
           "${kOpenWeatherMapURL}lat=${location.latitude}&lon=${location.longitude}&appid=$kOpenWeatherApiKey&units=$kUnit",
@@ -41,7 +40,8 @@ class WeatherModel {
 
     weatherData = await networkHelper.getData(); //getData gets and decodes the json data
     locationName = "Current Location";
-    return 1; //success
+
+    return 1;
   }
 
   /*
@@ -52,7 +52,7 @@ class WeatherModel {
       double latitude, double longitude, String name) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
-      //return a code to show that connection failed
+      //return it to the loading screen
       return 0;
     }
 

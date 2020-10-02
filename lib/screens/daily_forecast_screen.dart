@@ -5,6 +5,7 @@ import 'package:flutter_weather/constants/constants.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter_weather/constants/text_style.dart';
 import 'package:flutter_weather/services/time.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter_weather/services/weather_model.dart';
 
 class DailyForecastScreen extends StatefulWidget {
@@ -38,59 +39,63 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
       return Center(child: Text("Choose a location to view weather."),);
     }
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        elevation: 0,
+        title: Text(
+          WeatherModel.locationName,
+          style: TextStyle(
+            fontWeight: FontWeight.w200,
+            fontSize: 30,
+            color: Colors.black87,
+          ),
+          overflow: TextOverflow.ellipsis,
+
+        ),
+        actions: [
+          FlatButton(
+            onPressed: refresh,
+            child: Icon(
+              Icons.refresh,
+              color: Colors.black87,
+              size: 27,
+            ),
+          )
+        ],
+      ),
       backgroundColor: Colors.grey[50],
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              alignment: Alignment.centerLeft,
-              padding: EdgeInsets.only(left: 10),
-              height: 70,
-              child: SizedBox(
-                width: 350,
-                child: Text(
-                  WeatherModel.locationName,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w200,
-                    fontSize: 30,
-                    color: Colors.black87,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ),
-            Expanded(
-              child: MediaQuery.removePadding(
-                context: context,
-                removeTop: true,
-                child: RefreshIndicator(
-
-                  onRefresh: () async {
-                    WeatherModel.getCoordLocationWeather(lat, lon, WeatherModel.locationName);
-                    updateUI();
-                  },
-                  child: ListView.separated(
-                    itemBuilder: (context, index) {
-                      return DailyCard(
-                        //adding one excludes the current day
-                        data: dailyData[index + 1],
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return SizedBox(
-                        height: 5,
-                      );
-                    },
-                    padding: EdgeInsets.symmetric(horizontal: 5),
-                    itemCount: 7,
-                  ),
-                ),
-              ),
-            ),
-          ],
+        child: MediaQuery.removePadding(
+          context: context,
+          removeTop: true,
+          child: ListView.separated(
+            physics: BouncingScrollPhysics(),
+            itemBuilder: (context, index) {
+              return DailyCard(
+                //adding one excludes the current day
+                data: dailyData[index + 1],
+              );
+            },
+            separatorBuilder: (context, index) {
+              return SizedBox(
+                height: 5,
+              );
+            },
+            padding: EdgeInsets.symmetric(horizontal: 5),
+            itemCount: 7,
+          ),
         ),
       ),
     );
+  }
+
+  Future<void> refresh() async {
+    await WeatherModel.getCoordLocationWeather(lat, lon, WeatherModel.locationName);
+    updateUI();
+    DateTime now = DateTime.now();
+    String refreshTime = DateFormat.Hm().format(now);
+    Scaffold.of(context).showSnackBar(SnackBar(content: Text("Refreshed at $refreshTime")));
   }
 }

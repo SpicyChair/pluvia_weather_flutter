@@ -18,8 +18,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
     isGettingData = true;
     message = "Getting location...";
 
-    int response = await WeatherModel.getUserLocationWeather();
-    if (response == 0) {
+
+    if (await WeatherModel.getUserLocationWeather() == 0) {
       setState(() {
         isGettingData = false;
         message = "Please enable WIFI or Data and retry";
@@ -84,6 +84,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                     visible: !isGettingData,
                     child: RaisedButton(
                       child: Text("RETRY"),
+                      color: Colors.blueAccent,
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,

@@ -1,3 +1,4 @@
+import 'package:app_settings/app_settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/screens/current_weather_screen.dart';
@@ -25,6 +26,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
+
+  void initState() {
+    super.initState();
+    if (WeatherModel.weatherData == null) {
+      Future.delayed(Duration.zero, () {
+        showLocationPrompt();
+      });
+    }
+  }
+
   int _selectedIndex = 0; //selected index of the bottom nav bar
   PageController pageController = PageController(
     initialPage: 0,
@@ -34,19 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /*
-      appBar: _selectedIndex != 2 ? AppBar(
-        backgroundColor: Colors.transparent,
-        shadowColor: Colors.transparent,
-        title: Text("Pluvia Weather", style: TextStyle(
-          color: _selectedIndex == 0 ? Colors.white : Colors.black87,
-          fontWeight: FontWeight.w400
-        ),),
-      ) : PreferredSize(preferredSize: Size(0.0, 0.0),child: Container()),
-
-
-       */
-
       extendBodyBehindAppBar: true,
       body: PageView(
         controller: pageController,
@@ -123,5 +121,41 @@ class _HomeScreenState extends State<HomeScreen> {
       _selectedIndex = index;
       pageController.jumpToPage(index);
     });
+  }
+
+  void showLocationPrompt() {
+    //if location is disabled ask the user to open settings
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Location Disabled"),
+          content: Text(
+              "For Pluvia Weather to show weather in your current location, enable location."),
+          actions: [
+            FlatButton(
+              child: Text("Retry"),
+              onPressed: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoadingScreen()));
+              },
+            ),
+            FlatButton(
+              child: Text("Open Location Settings"),
+              onPressed: () {
+                //open the settings screen for location
+                AppSettings.openLocationSettings();
+              },
+            ),
+            FlatButton(
+              child: Text("Cancel"),
+              onPressed: () {
+                //closes the dialog
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }

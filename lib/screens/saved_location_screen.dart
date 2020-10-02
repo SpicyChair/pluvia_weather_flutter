@@ -139,6 +139,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
             ),
             Expanded(
               child: ListView.builder(
+                physics: BouncingScrollPhysics(),
                 itemCount: locations.length,
                 itemBuilder: (context, index) {
                   SavedLocation data = locations[index];
@@ -178,47 +179,6 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
           ],
         ),
       ),
-    );
-  }
-
-  /*
-
-
-
-
-
-
-
-
-   */
-
-  void showLocationPrompt() {
-    //if location is disabled ask the user to open settings
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Location Disabled"),
-          content: Text(
-              "For Pluvia Weather to show weather in your current location, enable location."),
-          actions: [
-            FlatButton(
-              child: Text("Open Location Settings"),
-              onPressed: () {
-                //open the settings screen for location
-                AppSettings.openLocationSettings();
-              },
-            ),
-            FlatButton(
-              child: Text("Cancel"),
-              onPressed: () {
-                //closes the dialog
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }
