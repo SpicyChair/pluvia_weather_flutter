@@ -12,8 +12,7 @@ import 'package:flutter_weather/database/saved_location.dart';
 import 'package:app_settings/app_settings.dart';
 
 class SavedLocationScreen extends StatefulWidget {
-
- // open  the weather page when location chosen
+  // open  the weather page when location chosen
   final Function(int) onLocationSelect;
 
   SavedLocationScreen({this.onLocationSelect});
@@ -36,7 +35,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
         showLocationPrompt();
       }
     });
-    
+
      */
   }
 
@@ -51,13 +50,45 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
     if (this.mounted) {
       setState(() {});
     }
-
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        elevation: 0,
+        title: Text(
+          "Saved Locations",
+          style: TextStyle(
+            fontWeight: FontWeight.w200,
+            fontSize: 30,
+            color: Colors.black87,
+          ),
+          overflow: TextOverflow.ellipsis,
+        ),
+        actions: [
+          ButtonTheme(
+            minWidth: 0,
+            child: FlatButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            //bring the user back to the loading screen where location is checked
+                            LoadingScreen()));
+              },
+              child: Icon(
+                Icons.location_on_outlined,
+                size: 27,
+                color: Colors.black87,
+              ),
+            ),
+          ),
+        ],
+      ),
       backgroundColor: Colors.grey[50],
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {

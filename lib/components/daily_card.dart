@@ -145,7 +145,7 @@ class DailyCard extends StatelessWidget {
           InfoCard(
             title: "Wind",
             value:
-            "${windSpeed.toString()} m/s ${WeatherModel.getWindCompassDirection(windDirection)}",
+            "${windSpeed.toString()} ${WeatherModel.unit == "imperial" ? "mph" : "m/s"} ${WeatherModel.getWindCompassDirection(windDirection)}",
           ),
           InfoCard(
             title: "UV Index",

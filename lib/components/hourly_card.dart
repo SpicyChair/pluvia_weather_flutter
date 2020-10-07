@@ -29,7 +29,7 @@ class HourlyCard extends StatelessWidget {
         borderRadius: kBorderRadius,
         side: BorderSide(
           color: isCurrent ? Colors.blueAccent.withOpacity(0.7) : Colors.transparent,
-          width: 3,
+          width: 3.5,
         ),
       ),
       child: InkWell(

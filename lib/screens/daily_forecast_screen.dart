@@ -8,6 +8,8 @@ import 'package:flutter_weather/services/time.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_weather/services/weather_model.dart';
 
+import 'home_screen.dart';
+
 class DailyForecastScreen extends StatefulWidget {
   final Function onChooseLocationPressed;
   DailyForecastScreen({this.onChooseLocationPressed});
@@ -28,15 +30,19 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
   }
 
   void updateUI() {
-    dailyData = WeatherModel.weatherData["daily"];
-    lat = WeatherModel.weatherData["lat"].toDouble();
-    lon = WeatherModel.weatherData["lon"].toDouble();
+    setState(() {
+      dailyData = WeatherModel.weatherData["daily"];
+      lat = WeatherModel.weatherData["lat"].toDouble();
+      lon = WeatherModel.weatherData["lon"].toDouble();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     if (dailyData == null) {
-      return Center(child: Text("Choose a location to view weather."),);
+      return Center(
+        child: Text("Choose a location to view weather."),
+      );
     }
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -52,15 +58,17 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
             color: Colors.black87,
           ),
           overflow: TextOverflow.ellipsis,
-
         ),
         actions: [
-          FlatButton(
-            onPressed: refresh,
-            child: Icon(
-              Icons.refresh,
-              color: Colors.black87,
-              size: 27,
+          ButtonTheme(
+            minWidth: 0,
+            child: FlatButton(
+              onPressed: refresh,
+              child: Icon(
+                Icons.refresh_outlined,
+                size: 27,
+                color: Colors.black87,
+              ),
             ),
           )
         ],
@@ -92,10 +100,12 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
   }
 
   Future<void> refresh() async {
-    await WeatherModel.getCoordLocationWeather(lat, lon, WeatherModel.locationName);
+    await WeatherModel.getCoordLocationWeather(
+        lat, lon, WeatherModel.locationName);
     updateUI();
     DateTime now = DateTime.now();
     String refreshTime = DateFormat.Hm().format(now);
-    Scaffold.of(context).showSnackBar(SnackBar(content: Text("Refreshed at $refreshTime")));
+    Scaffold.of(context)
+        .showSnackBar(SnackBar(content: Text("Refreshed at $refreshTime")));
   }
 }

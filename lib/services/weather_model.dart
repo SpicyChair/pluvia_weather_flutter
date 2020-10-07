@@ -2,13 +2,13 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter_weather/animation/weather_type.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/services/api_keys.dart';
+import 'file:///E:/flutter_weather/lib/preferences/shared_prefs.dart';
 import 'networking.dart';
 import 'location_service.dart';
 import 'package:flutter/material.dart';
 
 const String kOpenWeatherMapURL =
     "https://api.openweathermap.org/data/2.5/onecall?";
-const String kUnit = "metric";
 
 class WeatherModel {
   /*
@@ -16,11 +16,19 @@ class WeatherModel {
    */
   static var weatherData;
   static String locationName;
+  static String unit;
+
+  static Future<void> getUnit() async {
+    bool useImperial = await SharedPrefs.getImperial();
+
+    unit = useImperial ? "imperial" : "metric";
+  }
 
   /*
   Gets weather from user location
    */
   static Future<int> getUserLocationWeather() async {
+    getUnit();
 
     if (await (Connectivity().checkConnectivity()) == ConnectivityResult.none) {
       //return a code to show that connection failed
@@ -33,12 +41,13 @@ class WeatherModel {
     //send a request to OpenWeatherMap one call api
     NetworkHelper networkHelper = NetworkHelper(
       url:
-          "${kOpenWeatherMapURL}lat=${location.latitude}&lon=${location.longitude}&appid=$kOpenWeatherApiKey&units=$kUnit",
+          "${kOpenWeatherMapURL}lat=${location.latitude}&lon=${location.longitude}&appid=$kOpenWeatherApiKey&units=$unit",
     );
     print(
-        "${kOpenWeatherMapURL}lat=${location.latitude}&lon=${location.longitude}&appid=$kOpenWeatherApiKey&units=$kUnit");
+        "${kOpenWeatherMapURL}lat=${location.latitude}&lon=${location.longitude}&appid=$kOpenWeatherApiKey&units=$unit");
 
-    weatherData = await networkHelper.getData(); //getData gets and decodes the json data
+    weatherData =
+        await networkHelper.getData(); //getData gets and decodes the json data
     locationName = "Current Location";
 
     return 1;
@@ -50,6 +59,8 @@ class WeatherModel {
 
   static Future<void> getCoordLocationWeather(
       double latitude, double longitude, String name) async {
+    getUnit();
+
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
       //return it to the loading screen
@@ -59,7 +70,7 @@ class WeatherModel {
     //send a request to OpenWeatherMap one call api
     NetworkHelper networkHelper = NetworkHelper(
       url:
-          "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$kOpenWeatherApiKey&units=$kUnit",
+          "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$kOpenWeatherApiKey&units=$unit",
     );
 
     var data =
@@ -69,17 +80,34 @@ class WeatherModel {
     locationName = name;
   }
 
+
+
+
+
+
+
+
+
   /*
   Methods for processing weather data
 
    */
+
+
+
+
+
+
+
+
+
+
 
   static String getIcon(int id,
       {DateTime forecastTime,
       DateTime sunset,
       DateTime sunrise,
       DateTime tomorrowSunrise}) {
-
     bool isNight;
     //check if time is between sunrise and sunset, or before sunrise
     if (forecastTime != null) {

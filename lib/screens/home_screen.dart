@@ -5,6 +5,7 @@ import 'package:flutter_weather/screens/current_weather_screen.dart';
 import 'package:flutter_weather/screens/loading_screen.dart';
 import 'package:flutter_weather/screens/saved_location_screen.dart';
 import 'package:flutter_weather/screens/daily_forecast_screen.dart';
+import 'package:flutter_weather/screens/more_screen.dart';
 import 'package:flutter_weather/services/location_service.dart';
 import 'package:flutter_weather/services/weather_model.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -54,6 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SavedLocationScreen(
             onLocationSelect: onTabChange,
           ),
+          MoreScreen(),
         ],
         onPageChanged: (index) {
           onPageChange(index);
@@ -65,10 +67,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ]),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 12),
             child: GNav(
                 curve: Curves.easeOutExpo,
-                gap: 12,
+                gap: 8,
                 activeColor: Colors.white,
                 iconSize: 26,
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -98,6 +100,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     iconColor: Colors.black,
                     textColor: Colors.blueAccent,
                     backgroundColor: Colors.blueAccent.withOpacity(.2),
+                  ),
+                  GButton(
+                    icon: Icons.more_vert_outlined,
+                    text: 'More',
+                    iconActiveColor: Colors.teal,
+                    iconColor: Colors.black,
+                    textColor: Colors.teal,
+                    backgroundColor: Colors.teal.withOpacity(.2),
                   ),
                 ],
                 selectedIndex: _selectedIndex,
@@ -158,4 +168,5 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
+
 }

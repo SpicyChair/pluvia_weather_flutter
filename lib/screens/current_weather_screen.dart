@@ -13,6 +13,7 @@ import 'package:flutter_weather/components/hourly_card.dart';
 import 'package:flutter_weather/services/weather_model.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_weather/services/extensions.dart';
+import 'home_screen.dart';
 
 class CurrentWeatherScreen extends StatefulWidget {
   //get the weather from loading screen
@@ -109,13 +110,17 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     weatherAnimation.state.weatherWorld.weatherType = weatherType;
   }
 
+
+
+  //refresh data
   Future<void> refresh() async {
     await WeatherModel.getCoordLocationWeather(
         lat, lon, WeatherModel.locationName);
     updateUI();
     DateTime now = DateTime.now();
     String refreshTime = DateFormat.Hm().format(now);
-    Scaffold.of(context).showSnackBar(SnackBar(content: Text("Refreshed at $refreshTime")));
+    Scaffold.of(context)
+        .showSnackBar(SnackBar(content: Text("Refreshed at $refreshTime")));
   }
 
   @override
@@ -126,7 +131,6 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       );
     }
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
@@ -141,16 +145,20 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
           overflow: TextOverflow.ellipsis,
         ),
         actions: [
-          FlatButton(
-            onPressed: refresh,
-            child: Icon(
-              Icons.refresh,
-              color: Colors.white,
-              size: 27,
+          ButtonTheme(
+            minWidth: 0,
+            child: FlatButton(
+              onPressed: refresh,
+              child: Icon(
+                Icons.refresh_outlined,
+                size: 27,
+                color: Colors.white,
+              ),
             ),
-          )
+          ),
         ],
       ),
+      extendBodyBehindAppBar: true,
       body: Stack(
         alignment: Alignment.topCenter,
         children: [
@@ -170,7 +178,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                   children: [
                     //add a spacer
                     SizedBox(
-                      height: 385,
+                      height: MediaQuery.of(context).size.height * 0.55,
                     ),
                     Column(
                       children: [
@@ -188,6 +196,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       ),
     );
   }
+
 
   Widget temperatureWidget() {
     return Positioned(
@@ -224,6 +233,8 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       ),
     );
   }
+
+
 
   Widget infoWidget() {
     return Positioned(
@@ -325,7 +336,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             InfoCard(
               title: "Wind",
               value:
-                  "${windSpeed.toString()} m/s ${WeatherModel.getWindCompassDirection(windDirection)}",
+                  "${windSpeed.toString()} ${WeatherModel.unit == "imperial" ? "mph" : "m/s"} ${WeatherModel.getWindCompassDirection(windDirection)}",
             ),
           ],
         ),
