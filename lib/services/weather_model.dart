@@ -36,20 +36,18 @@ class WeatherModel {
     }
     //get the user's location
     LocationService location = LocationService();
-    await location.getCurrentLocation();
+    await LocationService.getCurrentLocation();
 
     //send a request to OpenWeatherMap one call api
     NetworkHelper networkHelper = NetworkHelper(
       url:
-          "${kOpenWeatherMapURL}lat=${location.latitude}&lon=${location.longitude}&appid=$kOpenWeatherApiKey&units=$unit",
+          "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$kOpenWeatherApiKey&units=$unit",
     );
-    print(
-        "${kOpenWeatherMapURL}lat=${location.latitude}&lon=${location.longitude}&appid=$kOpenWeatherApiKey&units=$unit");
+    print("${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$kOpenWeatherApiKey&units=$unit");
 
     weatherData =
         await networkHelper.getData(); //getData gets and decodes the json data
     locationName = "Current Location";
-
     return 1;
   }
 

@@ -80,20 +80,19 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       //update all values
       temperature = weatherData["current"]["temp"].round();
 
-      feelTemp = weatherData["current"]["feels_like"].toDouble();
+      feelTemp = weatherData["current"]["feels_like"]?.toDouble();
 
-      uvIndex = weatherData["current"]["uvi"].toDouble();
+      uvIndex = weatherData["current"]["uvi"]?.toDouble();
 
-      humidity = weatherData["current"]["humidity"].round();
+      humidity = weatherData["current"]["humidity"]?.round();
 
-      pressure = weatherData["current"]["pressure"].round();
+      pressure = weatherData["current"]["pressure"]?.round();
 
-      windSpeed = weatherData["current"]["wind_speed"].round();
+      windSpeed = weatherData["current"]["wind_speed"]?.round();
 
-      windDirection = weatherData["current"]["wind_deg"].round();
+      windDirection = weatherData["current"]["wind_deg"]?.round();
 
-      conditionDescription =
-          weatherData["current"]["weather"][0]["description"];
+      conditionDescription = weatherData["current"]["weather"][0]["description"];
 
       hourlyData = weatherData["hourly"];
       dailyData = weatherData["daily"];
@@ -101,6 +100,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
 
     WeatherType weatherType = WeatherModel.getWeatherType(
         sunriseTime, sunsetTime, weatherTime, conditionCode);
+
     //if assets are not loaded yet, set the initial weather to build
     if (weatherAnimation.state == null) {
       weatherAnimation.initialWeather = weatherType;

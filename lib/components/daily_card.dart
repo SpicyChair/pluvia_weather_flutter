@@ -110,11 +110,11 @@ class DailyCard extends StatelessWidget {
   Widget buildExpanded(var data) {
     int offset = WeatherModel.getSecondsTimezoneOffset();
 
-    double uvIndex = data["uvi"].toDouble();
+    double uvIndex = data["uvi"]?.toDouble();
 
-    int humidity = data["humidity"].round();
+    int humidity = data["humidity"]?.round();
 
-    int pressure = data["pressure"].round();
+    int pressure = data["pressure"]?.round();
 
     DateTime sunriseTime =
         TimeHelper.getDateTimeSinceEpoch(data["sunrise"].toInt(), offset);
@@ -122,9 +122,9 @@ class DailyCard extends StatelessWidget {
     DateTime sunsetTime =
         TimeHelper.getDateTimeSinceEpoch(data["sunset"].toInt(), offset);
 
-    int windSpeed = data["wind_speed"].round();
+    int windSpeed = data["wind_speed"]?.round();
 
-    int windDirection = data["wind_deg"].round();
+    int windDirection = data["wind_deg"]?.round();
 
     return Container(
       height: 150,

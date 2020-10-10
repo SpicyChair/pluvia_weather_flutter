@@ -30,9 +30,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void initState() {
     super.initState();
-    if (WeatherModel.weatherData == null) {
+    if (LocationService.longitude == null || LocationService.latitude == null) {
       Future.delayed(Duration.zero, () {
         showLocationPrompt();
+      });
+    } else if (WeatherModel.weatherData == null) {
+      Future.delayed(Duration.zero, () {
+        showNetworkPrompt();
       });
     }
   }
@@ -167,6 +171,23 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       },
     );
+  }
+
+  void showNetworkPrompt() {
+    showDialog(context: context, builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text("Server Error"),
+        content: Text("Pluvia Weather could not get data. The OpenWeatherMap servers may be down."),
+        actions: [
+          FlatButton(
+            child: Text("Retry"),
+            onPressed: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoadingScreen()));
+            },
+          ),
+        ],
+      );
+    });
   }
 
 }

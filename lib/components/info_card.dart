@@ -31,7 +31,7 @@ class InfoCard extends StatelessWidget {
             height: 2,
           ),
           Text(
-            value,
+            value == "null" ? "-" : value,
             style: kInfoCardInfoText
           ),
         ],

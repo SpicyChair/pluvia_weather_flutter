@@ -75,24 +75,27 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
       ),
       backgroundColor: Colors.grey[50],
       body: SafeArea(
-        child: MediaQuery.removePadding(
-          context: context,
-          removeTop: true,
-          child: ListView.separated(
-            physics: BouncingScrollPhysics(),
-            itemBuilder: (context, index) {
-              return DailyCard(
-                //adding one excludes the current day
-                data: dailyData[index + 1],
-              );
-            },
-            separatorBuilder: (context, index) {
-              return SizedBox(
-                height: 5,
-              );
-            },
-            padding: EdgeInsets.symmetric(horizontal: 5),
-            itemCount: 7,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 5.0),
+          child: MediaQuery.removePadding(
+            context: context,
+            removeTop: true,
+            child: ListView.separated(
+              physics: BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return DailyCard(
+                  //adding one excludes the current day
+                  data: dailyData[index + 1],
+                );
+              },
+              separatorBuilder: (context, index) {
+                return SizedBox(
+                  height: 5,
+                );
+              },
+              padding: EdgeInsets.symmetric(horizontal: 5),
+              itemCount: 7,
+            ),
           ),
         ),
       ),
