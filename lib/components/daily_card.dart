@@ -5,6 +5,7 @@ import 'package:flutter_weather/components/hourly_card.dart';
 import 'package:flutter_weather/components/info_card.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/constants/text_style.dart';
+import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/services/time.dart';
 import 'package:flutter_weather/services/weather_model.dart';
 import 'package:flutter_weather/services/extensions.dart';
@@ -36,7 +37,8 @@ class DailyCard extends StatelessWidget {
         scrollOnExpand: true,
         child: Card(
           shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
-          color: Colors.white,
+          color: ThemeColors.cardColor(),
+          elevation: 1,
           child: ExpandablePanel(
             header: Container(
               padding: EdgeInsets.fromLTRB(5, 5, 0, 5),
@@ -47,6 +49,9 @@ class DailyCard extends StatelessWidget {
                   contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   title: Text(
                     description.toTitleCase(),
+                    style: TextStyle(
+                      color: ThemeColors.primaryTextColor(),
+                    ),
                   ),
                   leading: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -56,7 +61,7 @@ class DailyCard extends StatelessWidget {
                         child: Center(
                           child: Text(
                             "${weekDay.substring(0, 3).toUpperCase()}",
-                            style: kDateTextStyle,
+                            style: kDateTextStyle.copyWith(color: ThemeColors.secondaryTextColor()),
                           ),
                         ),
                       ),
@@ -77,7 +82,7 @@ class DailyCard extends StatelessWidget {
                           child: Text(
                             "${highTemp.toString()}°",
                             style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                                fontSize: 20, fontWeight: FontWeight.bold, color: ThemeColors.primaryTextColor()),
                           ),
                         ),
                       ),
@@ -89,7 +94,7 @@ class DailyCard extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black54),
+                                color: ThemeColors.secondaryTextColor()),
                           ),
                         ),
                       ),

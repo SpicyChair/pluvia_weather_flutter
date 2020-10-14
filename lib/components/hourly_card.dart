@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/constants/text_style.dart';
+import 'package:flutter_weather/preferences/theme_colors.dart';
 
 class HourlyCard extends StatelessWidget {
   //the icon to show weather condition
@@ -32,6 +33,7 @@ class HourlyCard extends StatelessWidget {
           width: 3.5,
         ),
       ),
+      color: ThemeColors.cardColor(),
       child: InkWell(
         borderRadius: kBorderRadius,
         onTap: () {},
@@ -44,7 +46,7 @@ class HourlyCard extends StatelessWidget {
             children: [
               Text(
                 displayTime,
-                style: kHourlyCardTime,
+                style: kHourlyCardTime.copyWith(color: ThemeColors.secondaryTextColor()),
               ),
               Container(
                 height: 50,
@@ -52,7 +54,7 @@ class HourlyCard extends StatelessWidget {
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
-                  color: Colors.grey[100],
+                  color: ThemeColors.backgroundColor(),
                 ),
                 child: Center(
                   child: Text(
@@ -63,7 +65,7 @@ class HourlyCard extends StatelessWidget {
               ),
               Text(
                 "${temp.toString()}°",
-                style: kHourlyCardTemperature,
+                style: kHourlyCardTemperature.copyWith(color: ThemeColors.primaryTextColor()),
               ),
             ],
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
 import 'package:flutter_weather/screens/saved_location_screen.dart';
 import 'package:flutter_weather/services/weather_model.dart';
@@ -45,45 +46,54 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Container(
-        color: Colors.white,
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
+      backgroundColor: ThemeColors.backgroundColor(),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
                 "Pluvia Weather",
                 style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.normal,
+                color: ThemeColors.primaryTextColor(),
                 letterSpacing: 2),
               ),
-              Visibility(
-                visible: isGettingData,
-                child: Padding(
-                  padding: const EdgeInsets.all(33.0),
-                  child: SpinKitDualRing(
-                    size: 70,
-                    color: Colors.blueAccent,
-                  ),
+            ),
+            Visibility(
+              visible: isGettingData,
+              child: Padding(
+                padding: const EdgeInsets.all(25.0),
+                child: SpinKitDualRing(
+                  size: 70,
+                  color: Colors.blueAccent,
                 ),
               ),
-              Column(
-                children: [
-                  //show message depending on status
-                  Text(
+            ),
+            Column(
+              children: [
+                //show message depending on status
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
                     message,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
+                      color: ThemeColors.secondaryTextColor(),
                     ),
                   ),
-                  Visibility(
-                    //show only when data is unavailable
-                    visible: !isGettingData,
+                ),
+                Visibility(
+                  //show only when data is unavailable
+                  visible: !isGettingData,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: RaisedButton(
-                      child: Text("RETRY"),
+                      child: Text("RETRY", style: TextStyle(color: ThemeColors.primaryTextColor()),),
                       color: Colors.blueAccent,
                       onPressed: () {
                         Navigator.pushReplacement(
@@ -95,10 +105,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
                       },
                     ),
                   ),
-                ],
-              ),
-            ],
-          ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

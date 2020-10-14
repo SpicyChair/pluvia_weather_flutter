@@ -1,6 +1,7 @@
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/current_weather_screen.dart';
 import 'package:flutter_weather/screens/loading_screen.dart';
 import 'package:flutter_weather/screens/saved_location_screen.dart';
@@ -33,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (LocationService.longitude == null || LocationService.latitude == null) {
       Future.delayed(Duration.zero, () {
         showLocationPrompt();
+        onTabChange(2); //go to location tab
       });
     } else if (WeatherModel.weatherData == null) {
       Future.delayed(Duration.zero, () {
@@ -66,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       ),
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(color: Colors.white, boxShadow: [
+        decoration: BoxDecoration(color: ThemeColors.cardColor(), boxShadow: [
           BoxShadow(blurRadius: 20, color: Colors.black.withOpacity(.1))
         ]),
         child: SafeArea(
@@ -85,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: LineIcons.sun_o,
                     text: 'Current',
                     iconActiveColor: Colors.amber[900],
-                    iconColor: Colors.black,
+                    iconColor: ThemeColors.primaryTextColor(),
                     textColor: Colors.amber[900],
                     backgroundColor: Colors.amber[600].withOpacity(.2),
                   ),
@@ -93,15 +95,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: LineIcons.calendar,
                     text: 'Forecast',
                     iconActiveColor: Colors.pink,
-                    iconColor: Colors.black,
+                    iconColor: ThemeColors.primaryTextColor(),
                     textColor: Colors.pink,
                     backgroundColor: Colors.pink.withOpacity(.2),
                   ),
                   GButton(
-                    icon: LineIcons.location_arrow,
+                    icon: Icons.location_on_outlined,
                     text: 'Locations',
                     iconActiveColor: Colors.blueAccent,
-                    iconColor: Colors.black,
+                    iconColor: ThemeColors.primaryTextColor(),
                     textColor: Colors.blueAccent,
                     backgroundColor: Colors.blueAccent.withOpacity(.2),
                   ),
@@ -109,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Icons.more_vert_outlined,
                     text: 'More',
                     iconActiveColor: Colors.teal,
-                    iconColor: Colors.black,
+                    iconColor: ThemeColors.primaryTextColor(),
                     textColor: Colors.teal,
                     backgroundColor: Colors.teal.withOpacity(.2),
                   ),

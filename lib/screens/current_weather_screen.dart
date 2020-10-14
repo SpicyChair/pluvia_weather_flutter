@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter_weather/animation/weather_type.dart';
 import 'package:flutter_weather/constants/constants.dart';
+import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/saved_location_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/constants/text_style.dart';
@@ -126,8 +127,11 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   @override
   Widget build(BuildContext context) {
     if (WeatherModel.weatherData == null) {
-      return Center(
-        child: Text("Choose a location to view weather."),
+      return Scaffold(
+        backgroundColor: ThemeColors.backgroundColor(),
+        body: Center(
+          child: Text("Choose a location to view weather.", style: TextStyle(color: ThemeColors.primaryTextColor(),),),
+        ),
       );
     }
     return Scaffold(
@@ -183,8 +187,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                     Column(
                       children: [
                         createHourlyForecastCard(),
-                        createMainInfoCard(),
-                        createExtraInfoCard(),
+                        createInfoCards(),
                       ],
                     ),
                   ],
@@ -251,77 +254,61 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   Widget createHourlyForecastCard() {
     return PanelCard(
       cardChild: Container(
-        height: 240,
+        height: 200,
         width: double.infinity,
         margin: kPanelCardMargin,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              margin: kSubheadingTextMargin,
-              child: Text(
-                "Hourly",
-                style: kSubheadingTextStyle,
-              ),
-            ),
-            Container(
-              height: 180,
-              width: double.infinity,
-              child: ListView.builder(
-                physics: BouncingScrollPhysics(),
-                itemBuilder: (context, index) {
-                  int temp;
-                  String icon;
-                  DateTime forecastTime;
-                  String displayTime;
-                  var weatherData;
+        child: ListView.builder(
+          physics: BouncingScrollPhysics(),
+          itemBuilder: (context, index) {
+            int temp;
+            String icon;
+            DateTime forecastTime;
+            String displayTime;
+            var weatherData;
 
-                  if (hourlyData[index] == null) {
-                    temp = 0;
-                    icon = "☀";
-                    displayTime = "00:00";
-                  } else {
-                    temp = hourlyData[index]["temp"].round();
+            if (hourlyData[index] == null) {
+              temp = 0;
+              icon = "☀";
+              displayTime = "00:00";
+            } else {
+              temp = hourlyData[index]["temp"].round();
 
-                    forecastTime = TimeHelper.getDateTimeSinceEpoch(
-                        hourlyData[index]["dt"], timeZoneOffset);
-                    displayTime = "${forecastTime.hour.toString()}:00";
+              forecastTime = TimeHelper.getDateTimeSinceEpoch(
+                  hourlyData[index]["dt"], timeZoneOffset);
+              displayTime = "${forecastTime.hour.toString()}:00";
 
-                    DateTime tomorrowSunrise = TimeHelper.getDateTimeSinceEpoch(
-                        dailyData[1]["sunrise"], timeZoneOffset);
-                    icon = WeatherModel.getIcon(
-                        hourlyData[index]["weather"][0]["id"],
-                        forecastTime: forecastTime,
-                        sunrise: sunriseTime,
-                        sunset: sunsetTime,
-                        tomorrowSunrise: tomorrowSunrise);
-                  }
+              DateTime tomorrowSunrise = TimeHelper.getDateTimeSinceEpoch(
+                  dailyData[1]["sunrise"], timeZoneOffset);
+              icon = WeatherModel.getIcon(
+                  hourlyData[index]["weather"][0]["id"],
+                  forecastTime: forecastTime,
+                  sunrise: sunriseTime,
+                  sunset: sunsetTime,
+                  tomorrowSunrise: tomorrowSunrise);
+            }
 
-                  weatherData = hourlyData[index];
+            weatherData = hourlyData[index];
 
-                  return HourlyCard(
-                    icon: icon,
-                    temp: temp,
-                    displayTime: displayTime,
-                    weatherData: weatherData,
-                    isCurrent: index == 0,
-                  );
-                },
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                itemCount: 24,
-              ),
-            )
-          ],
+            return HourlyCard(
+              icon: icon,
+              temp: temp,
+              displayTime: displayTime,
+              weatherData: weatherData,
+              isCurrent: index == 0,
+            );
+          },
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemCount: 24,
         ),
       ),
     );
   }
 
-  Widget createMainInfoCard() {
+  Widget createInfoCards() {
     return PanelCard(
       cardChild: Container(
-        height: 75,
+        height: 225,
         width: double.infinity,
         margin: kPanelCardMargin,
         child: GridView.count(
@@ -336,25 +323,8 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             InfoCard(
               title: "Wind",
               value:
-                  "${windSpeed.toString()} ${WeatherModel.unit == "imperial" ? "mph" : "m/s"} ${WeatherModel.getWindCompassDirection(windDirection)}",
+              "${windSpeed.toString()} ${WeatherModel.unit == "imperial" ? "mph" : "m/s"} ${WeatherModel.getWindCompassDirection(windDirection)}",
             ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget createExtraInfoCard() {
-    return PanelCard(
-      cardChild: Container(
-        height: 150,
-        width: double.infinity,
-        margin: kPanelCardMargin,
-        child: GridView.count(
-          childAspectRatio: 2.5,
-          crossAxisCount: 2,
-          physics: const NeverScrollableScrollPhysics(),
-          children: [
             InfoCard(
               title: "Sunrise",
               value: "${DateFormat.Hm().format(sunriseTime)}",

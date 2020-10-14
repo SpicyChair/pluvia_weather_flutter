@@ -1,7 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'file:///E:/flutter_weather/lib/constants/constants.dart';
+import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/constants/text_style.dart';
+import 'package:flutter_weather/preferences/theme_colors.dart';
 
 class InfoCard extends StatelessWidget {
   final String title;
@@ -14,27 +15,30 @@ class InfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: 10),
-      margin: EdgeInsets.all(4),
-      decoration:
-          BoxDecoration(color: Colors.white, borderRadius: kBorderRadius),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            style: kInfoCardTitle
-          ),
-          SizedBox(
-            height: 2,
-          ),
-          Text(
-            value == "null" ? "-" : value,
-            style: kInfoCardInfoText
-          ),
-        ],
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
+      elevation: 1,
+      color: ThemeColors.cardColor(),
+      child: Container(
+        padding: EdgeInsets.only(left: 10),
+        margin: EdgeInsets.all(4),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              title,
+              style: kInfoCardTitle.copyWith(color: ThemeColors.secondaryTextColor())
+            ),
+            SizedBox(
+              height: 2,
+            ),
+            Text(
+              value == "null" ? "-" : value,
+              style: kInfoCardInfoText.copyWith(color: ThemeColors.primaryTextColor())
+            ),
+          ],
+        ),
       ),
     );
   }

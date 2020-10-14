@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/constants/text_style.dart';
+import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/loading_screen.dart';
 import 'package:flutter_weather/screens/search_screen.dart';
 import 'package:flutter_weather/services/weather_model.dart';
@@ -64,7 +65,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
           style: TextStyle(
             fontWeight: FontWeight.w200,
             fontSize: 30,
-            color: Colors.black87,
+            color: ThemeColors.primaryTextColor(),
           ),
           overflow: TextOverflow.ellipsis,
         ),
@@ -83,13 +84,13 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
               child: Icon(
                 Icons.location_on_outlined,
                 size: 27,
-                color: Colors.black87,
+                color: ThemeColors.primaryTextColor(),
               ),
             ),
           ),
         ],
       ),
-      backgroundColor: Colors.grey[50],
+      backgroundColor: ThemeColors.backgroundColor(),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
           var locationData = await Navigator.push(
@@ -150,7 +151,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
                             style: kSubheadingTextStyle.copyWith(
                                 color: Colors.white)),
                         Text(
-                          "View weather forecast for your current location",
+                          "Tap to view weather for your current location",
                           style:
                               kSubtitleTextStyle.copyWith(color: Colors.white),
                         ),
@@ -164,8 +165,8 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
               padding: const EdgeInsets.all(10.0),
               child: Center(
                   child: Text(
-                "< < < Swipe Left on Location to Delete < < <",
-                style: TextStyle(color: Colors.black38),
+                "Swipe on Location to Delete",
+                style: TextStyle(color: ThemeColors.secondaryTextColor()),
               )),
             ),
             Expanded(
@@ -174,9 +175,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
                 itemCount: locations.length,
                 itemBuilder: (context, index) {
                   SavedLocation data = locations[index];
-
                   return Dismissible(
-                    direction: DismissDirection.endToStart,
                     background: Container(
                       color: Colors.red,
                     ),
@@ -186,12 +185,12 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
                           EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                       title: Text(
                         data.title,
-                        style: kSubheadingTextStyle,
+                        style: kSubheadingTextStyle.copyWith(color: ThemeColors.primaryTextColor()),
                         overflow: TextOverflow.fade,
                       ),
                       subtitle: Text(
                         data.getCoordinates(),
-                        style: kSubtitleTextStyle,
+                        style: kSubtitleTextStyle.copyWith(color: ThemeColors.secondaryTextColor()),
                       ),
                       onTap: () async {
                         await WeatherModel.getCoordLocationWeather(

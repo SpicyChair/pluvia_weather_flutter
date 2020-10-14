@@ -4,6 +4,7 @@ import 'package:flutter_weather/components/hourly_card.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter_weather/constants/text_style.dart';
+import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/services/time.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_weather/services/weather_model.dart';
@@ -40,12 +41,14 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
   @override
   Widget build(BuildContext context) {
     if (dailyData == null) {
-      return Center(
-        child: Text("Choose a location to view weather."),
+      return Scaffold(
+        backgroundColor: ThemeColors.backgroundColor(),
+        body: Center(
+          child: Text("Choose a location to view weather.", style: TextStyle(color: ThemeColors.primaryTextColor(),),),
+        ),
       );
     }
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
@@ -55,7 +58,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
           style: TextStyle(
             fontWeight: FontWeight.w200,
             fontSize: 30,
-            color: Colors.black87,
+            color: ThemeColors.primaryTextColor(),
           ),
           overflow: TextOverflow.ellipsis,
         ),
@@ -67,13 +70,14 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
               child: Icon(
                 Icons.refresh_outlined,
                 size: 27,
-                color: Colors.black87,
+                color: ThemeColors.primaryTextColor(),
               ),
             ),
           )
         ],
       ),
-      backgroundColor: Colors.grey[50],
+
+      backgroundColor: ThemeColors.backgroundColor(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 5.0),

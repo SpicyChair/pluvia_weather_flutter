@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'file:///E:/flutter_weather/lib/constants/constants.dart';
+import 'package:flutter_weather/preferences/theme_colors.dart';
 
 class PanelCard extends StatelessWidget {
 
-  Widget cardChild;
-  bool darkMode;
+  final Widget cardChild;
 
   PanelCard({this.cardChild,});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[50],
+      color: ThemeColors.backgroundColor(),
       child: cardChild,
     );
   }

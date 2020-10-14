@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_weather/constants/constants.dart';
-import 'file:///E:/flutter_weather/lib/preferences/shared_prefs.dart';
+import 'package:flutter_weather/preferences/shared_prefs.dart';
+import 'package:flutter_weather/preferences/theme_colors.dart';
+import 'package:flutter_weather/screens/home_screen.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:package_info/package_info.dart';
@@ -13,8 +16,8 @@ class MoreScreen extends StatefulWidget {
 }
 
 class _MoreScreenState extends State<MoreScreen> {
-
   String version;
+
   //the values displayed on the toggles
   bool useImperial;
   bool useDarkMode;
@@ -24,7 +27,6 @@ class _MoreScreenState extends State<MoreScreen> {
     getVersion();
     getSharedPrefs();
   }
-
 
   Future<void> getVersion() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -36,19 +38,21 @@ class _MoreScreenState extends State<MoreScreen> {
   //gets the shared prefs to display on the toggles
   Future<void> getSharedPrefs() async {
     useImperial = await SharedPrefs.getImperial();
+    useDarkMode = await SharedPrefs.getDark();
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ThemeColors.backgroundColor(),
       appBar: AppBar(
         title: Text(
           "More",
           style: TextStyle(
             fontWeight: FontWeight.w200,
             fontSize: 30,
-            color: Colors.black87,
+            color: ThemeColors.primaryTextColor(),
           ),
           overflow: TextOverflow.ellipsis,
         ),
@@ -56,7 +60,6 @@ class _MoreScreenState extends State<MoreScreen> {
         shadowColor: Colors.transparent,
         elevation: 0,
       ),
-      backgroundColor: Colors.grey[50],
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -66,7 +69,7 @@ class _MoreScreenState extends State<MoreScreen> {
               margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               decoration: BoxDecoration(
                 borderRadius: kBorderRadius,
-                color: Colors.black87,
+                color: Colors.grey[900],
               ),
               child: Stack(
                 children: [
@@ -114,43 +117,68 @@ class _MoreScreenState extends State<MoreScreen> {
                 margin: EdgeInsets.all(8.0),
                 child: ListView(
                   children: [
-                    /*
                     SizedBox(
                       height: 80,
                       child: Card(
                         child: Center(
                           child: SwitchListTile(
-                            title: Text("Dark Mode"),
-                            value: false,
-                            onChanged: (bool value) {
-                              return;
+                            title: Text(
+                              "Dark Mode",
+                              style: TextStyle(
+                                  color: ThemeColors.primaryTextColor()),
+                            ),
+                            value: useDarkMode ?? false,
+                            onChanged: (bool value) async {
+                              useDarkMode = true;
+                              ThemeColors.switchTheme(value);
+                              //restart the app to show theme changes
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) {
+                                    return HomeScreen();
+                                  },
+                                ),
+                              );
                             },
-                            secondary: Icon(Icons.lightbulb_outline),
+                            secondary: Icon(
+                              Icons.lightbulb_outline,
+                              color: ThemeColors.secondaryTextColor(),
+                            ),
                           ),
                         ),
+                        color: ThemeColors.cardColor(),
                         shape:
                             RoundedRectangleBorder(borderRadius: kBorderRadius),
                       ),
                     ),
-
-                     */
                     SizedBox(
                       height: 80,
                       child: Card(
                         child: Center(
                           child: SwitchListTile(
-                            title: Text("Use Imperial Units"),
+                            title: Text(
+                              "Use Imperial Units",
+                              style: TextStyle(
+                                color: ThemeColors.primaryTextColor(),
+                              ),
+                            ),
                             value: useImperial ?? false,
                             onChanged: (bool value) async {
                               SharedPrefs.setImperial(value);
                               useImperial = value;
-                              setState(() {
-                              });
-                              Scaffold.of(context).showSnackBar(SnackBar(content: Text("Refresh forecast to see changes")));
+                              setState(() {});
+                              Scaffold.of(context).showSnackBar(SnackBar(
+                                  content:
+                                      Text("Refresh forecast to see changes")));
                             },
-                            secondary: Icon(Icons.thermostat_outlined),
+                            secondary: Icon(
+                              Icons.thermostat_outlined,
+                              color: ThemeColors.secondaryTextColor(),
+                            ),
                           ),
                         ),
+                        color: ThemeColors.cardColor(),
                         shape:
                             RoundedRectangleBorder(borderRadius: kBorderRadius),
                       ),
@@ -179,28 +207,34 @@ class _MoreScreenState extends State<MoreScreen> {
                       child: Card(
                         child: Center(
                           child: ListTile(
-                            title: Text("About Pluvia Weather"),
+                            title: Text(
+                              "About Pluvia Weather",
+                              style: TextStyle(
+                                color: ThemeColors.primaryTextColor(),
+                              ),
+                            ),
                             onTap: () {
-                              showAboutDialog(context: context,
+                              showAboutDialog(
+                                context: context,
                                 applicationVersion: version,
-                                applicationLegalese: "Pluvia Weather is completely free and open source, and is licensed under GPLv3.",
+                                applicationLegalese:
+                                    "Pluvia Weather is completely free and open source, and is licensed under GPLv3.",
                               );
                             },
-                            leading: Icon(Icons.more_horiz_outlined),
+                            leading: Icon(
+                              Icons.more_horiz_outlined,
+                              color: ThemeColors.secondaryTextColor(),
+                            ),
                           ),
                         ),
                         shape:
                             RoundedRectangleBorder(borderRadius: kBorderRadius),
+                        color: ThemeColors.cardColor(),
                       ),
                     ),
-
-
                     SizedBox(
                       height: 12,
                     ),
-
-
-
                     Container(
                       height: 130,
                       child: Column(
@@ -208,14 +242,18 @@ class _MoreScreenState extends State<MoreScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           FlatButton(
-                              onPressed: () async {
-                                const url =
-                                    "https://github.com/SpicyChair/pluvia_weather_flutter";
-                                if (await canLaunch(url)) {
-                                  await launch(url);
-                                }
-                              },
-                              child: Image.asset("assets/GitHub-Mark-64px.png")),
+                            onPressed: () async {
+                              const url =
+                                  "https://github.com/SpicyChair/pluvia_weather_flutter";
+                              if (await canLaunch(url)) {
+                                await launch(url);
+                              }
+                            },
+                            child: ThemeColors.isDark
+                                ? Image.asset(
+                                    "assets/GitHub-Mark-Light-64px.png")
+                                : Image.asset("assets/GitHub-Mark-64px.png"),
+                          ),
                           SizedBox(
                             height: 12,
                           ),
@@ -223,9 +261,9 @@ class _MoreScreenState extends State<MoreScreen> {
                             child: Text(
                               "View Pluvia Weather on Github",
                               style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: ThemeColors.primaryTextColor()),
                             ),
                           ),
                         ],
