@@ -17,13 +17,4 @@ A weather app with beautiful animations, built with Flutter, with data from the 
 
 ## Screenshots
 <p align="center">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/b.png">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Picture1.jpg" width="256">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Picture2.jpg" width="256">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Picture3.jpg" width="256">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Picture4.jpg" width="256">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Picture5.jpg" width="256">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Picture6.jpg" width="256">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Picture7.jpg" width="256">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Picture8.jpg" width="256">
 </p>
