@@ -1,8 +1,9 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter_weather/animation/weather_type.dart';
 import 'package:flutter_weather/constants/constants.dart';
+import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/services/api_keys.dart';
-import 'file:///E:/flutter_weather/lib/preferences/shared_prefs.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'networking.dart';
 import 'location_service.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,6 @@ class WeatherModel {
       return 0;
     }
     //get the user's location
-    LocationService location = LocationService();
     await LocationService.getCurrentLocation();
 
     //send a request to OpenWeatherMap one call api

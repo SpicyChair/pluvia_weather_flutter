@@ -134,11 +134,13 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
                 child: InkWell(
                   onTap: () {
                     Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                //bring the user back to the loading screen where location is checked
-                                LoadingScreen()));
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            //bring the user back to the loading screen where location is checked
+                            LoadingScreen(),
+                      ),
+                    );
                   },
                   borderRadius: kBorderRadius,
                   child: Container(
@@ -185,12 +187,14 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
                           EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                       title: Text(
                         data.title,
-                        style: kSubheadingTextStyle.copyWith(color: ThemeColors.primaryTextColor()),
+                        style: kSubheadingTextStyle.copyWith(
+                            color: ThemeColors.primaryTextColor()),
                         overflow: TextOverflow.fade,
                       ),
                       subtitle: Text(
                         data.getCoordinates(),
-                        style: kSubtitleTextStyle.copyWith(color: ThemeColors.secondaryTextColor()),
+                        style: kSubtitleTextStyle.copyWith(
+                            color: ThemeColors.secondaryTextColor()),
                       ),
                       onTap: () async {
                         await WeatherModel.getCoordLocationWeather(

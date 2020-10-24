@@ -17,7 +17,7 @@ class InfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
-      elevation: 1,
+      elevation: 0, //ThemeColors.isDark ? 0 : 1, //only elevate if not dark mode
       color: ThemeColors.cardColor(),
       child: Container(
         padding: EdgeInsets.only(left: 10),

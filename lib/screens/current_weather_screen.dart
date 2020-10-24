@@ -115,8 +115,19 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
 
   //refresh data
   Future<void> refresh() async {
-    await WeatherModel.getCoordLocationWeather(
-        lat, lon, WeatherModel.locationName);
+
+    Scaffold.of(context)
+        .showSnackBar(SnackBar(content: Text("Refreshing...")));
+
+    //if the location displayed is current, refresh location
+    if (WeatherModel.locationName == "Current Location") {
+      await WeatherModel.getUserLocationWeather();
+    } else {
+      //else refresh normally
+      await WeatherModel.getCoordLocationWeather(
+          lat, lon, WeatherModel.locationName);
+    }
+
     updateUI();
     DateTime now = DateTime.now();
     String refreshTime = DateFormat.Hm().format(now);
@@ -285,15 +296,21 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                   sunrise: sunriseTime,
                   sunset: sunsetTime,
                   tomorrowSunrise: tomorrowSunrise);
+
             }
 
             weatherData = hourlyData[index];
 
+            int pop = (weatherData["pop"].toDouble() * 100).round(); //probability of precipitation
+
             return HourlyCard(
+              context: context,
               icon: icon,
               temp: temp,
               displayTime: displayTime,
+              forecastTime: forecastTime,
               weatherData: weatherData,
+              pop: pop,
               isCurrent: index == 0,
             );
           },

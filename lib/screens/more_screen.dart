@@ -179,16 +179,17 @@ class _MoreScreenState extends State<MoreScreen> {
                       RoundedRectangleBorder(borderRadius: kBorderRadius),
                 ),
               ),
-              /*
+
               SizedBox(
                 height: 80,
                 child: Card(
                   child: Center(
                     child: ListTile(
-                      title: Text("Donate"),
+                      title: Text("Wind Speed Unit"),
                       onTap: () {
                       },
-                      leading: Icon(LineIcons.heart_o),
+                      leading: Icon(Icons.toys_outlined, color: ThemeColors.secondaryTextColor(),),
+                      trailing: Container(width: 50, height: 50, color: Colors.blueAccent,),
                     ),
                   ),
                   shape:
@@ -196,7 +197,7 @@ class _MoreScreenState extends State<MoreScreen> {
                 ),
               ),
 
-               */
+
 
               SizedBox(
                 height: 80,

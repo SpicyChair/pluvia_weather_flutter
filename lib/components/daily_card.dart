@@ -131,40 +131,44 @@ class DailyCard extends StatelessWidget {
 
     int windDirection = data["wind_deg"]?.round();
 
+    int pop = data["pop"]?.round();
+
     return Container(
       height: 150,
       padding: EdgeInsets.symmetric(horizontal: 5),
-      child: GridView.count(
-        physics: NeverScrollableScrollPhysics(),
-        childAspectRatio: 2,
-        crossAxisCount: 3,
-        children: [
-          InfoCard(
-            title: "Sunrise",
-            value: "${DateFormat.Hm().format(sunriseTime)}",
-          ),
-          InfoCard(
-            title: "Sunset",
-            value: "${DateFormat.Hm().format(sunsetTime)}",
-          ),
-          InfoCard(
-            title: "Wind",
-            value:
-            "${windSpeed.toString()} ${WeatherModel.unit == "imperial" ? "mph" : "m/s"} ${WeatherModel.getWindCompassDirection(windDirection)}",
-          ),
-          InfoCard(
-            title: "UV Index",
-            value: uvIndex.toString(),
-          ),
-          InfoCard(
-            title: "Humidity",
-            value: "${humidity.toString()}%",
-          ),
-          InfoCard(
-            title: "Pressure",
-            value: "${pressure.toString()} hPa",
-          ),
-        ],
+      child: Center(
+        child: GridView.count(
+          physics: NeverScrollableScrollPhysics(),
+          childAspectRatio: 2,
+          crossAxisCount: 3,
+          children: [
+            InfoCard(
+              title: "Sunrise",
+              value: "${DateFormat.Hm().format(sunriseTime)}",
+            ),
+            InfoCard(
+              title: "Sunset",
+              value: "${DateFormat.Hm().format(sunsetTime)}",
+            ),
+            InfoCard(
+              title: "Wind",
+              value:
+              "${windSpeed.toString()} ${WeatherModel.unit == "imperial" ? "mph" : "m/s"} ${WeatherModel.getWindCompassDirection(windDirection)}",
+            ),
+            InfoCard(
+              title: "UV Index",
+              value: uvIndex.toString(),
+            ),
+            InfoCard(
+              title: "Humidity",
+              value: "${humidity.toString()}%",
+            ),
+            InfoCard(
+              title: "Pressure",
+              value: "${pressure.toString()} hPa",
+            ),
+          ],
+        ),
       ),
     );
   }
