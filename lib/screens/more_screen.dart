@@ -21,6 +21,7 @@ class _MoreScreenState extends State<MoreScreen> {
   //the values displayed on the toggles
   bool useImperial;
   bool useDarkMode;
+  String dropdownValue;
 
   void initState() {
     super.initState();
@@ -39,6 +40,17 @@ class _MoreScreenState extends State<MoreScreen> {
   Future<void> getSharedPrefs() async {
     useImperial = await SharedPrefs.getImperial();
     useDarkMode = await SharedPrefs.getDark();
+    switch (await SharedPrefs.getWindUnit()) {
+      case WindUnit.MS:
+        dropdownValue = "meters/s";
+        break;
+      case WindUnit.MPH:
+        dropdownValue = "miles/h";
+        break;
+      case WindUnit.KMPH:
+        dropdownValue = "kilometers/h";
+        break;
+    }
     setState(() {});
   }
 
@@ -120,8 +132,7 @@ class _MoreScreenState extends State<MoreScreen> {
                     child: SwitchListTile(
                       title: Text(
                         "Dark Mode",
-                        style: TextStyle(
-                            color: ThemeColors.primaryTextColor()),
+                        style: TextStyle(color: ThemeColors.primaryTextColor()),
                       ),
                       value: useDarkMode ?? false,
                       onChanged: (bool value) async {
@@ -144,8 +155,7 @@ class _MoreScreenState extends State<MoreScreen> {
                     ),
                   ),
                   color: ThemeColors.cardColor(),
-                  shape:
-                      RoundedRectangleBorder(borderRadius: kBorderRadius),
+                  shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
                 ),
               ),
               SizedBox(
@@ -154,7 +164,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   child: Center(
                     child: SwitchListTile(
                       title: Text(
-                        "Use Imperial Units",
+                        "Use Fahrenheit",
                         style: TextStyle(
                           color: ThemeColors.primaryTextColor(),
                         ),
@@ -165,8 +175,7 @@ class _MoreScreenState extends State<MoreScreen> {
                         useImperial = value;
                         setState(() {});
                         Scaffold.of(context).showSnackBar(SnackBar(
-                            content:
-                                Text("Refresh forecast to see changes")));
+                            content: Text("Refresh forecast to see changes")));
                       },
                       secondary: Icon(
                         Icons.thermostat_outlined,
@@ -175,30 +184,66 @@ class _MoreScreenState extends State<MoreScreen> {
                     ),
                   ),
                   color: ThemeColors.cardColor(),
-                  shape:
-                      RoundedRectangleBorder(borderRadius: kBorderRadius),
+                  shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
                 ),
               ),
-
               SizedBox(
                 height: 80,
                 child: Card(
                   child: Center(
                     child: ListTile(
-                      title: Text("Wind Speed Unit"),
-                      onTap: () {
-                      },
-                      leading: Icon(Icons.toys_outlined, color: ThemeColors.secondaryTextColor(),),
-                      trailing: Container(width: 50, height: 50, color: Colors.blueAccent,),
+                      title: Text(
+                        "Wind Speed (Beta)",
+                        style: TextStyle(color: ThemeColors.primaryTextColor()),
+                      ),
+                      leading: Icon(
+                        Icons.toys_outlined,
+                        color: ThemeColors.secondaryTextColor(),
+                      ),
+                      trailing: DropdownButton<String>(
+                        value: dropdownValue,
+                        icon: Icon(Icons.arrow_drop_down),
+                        iconSize: 20,
+                        style: TextStyle(
+                            color: ThemeColors.primaryTextColor(),
+                            fontSize: 16),
+                        underline: Container(
+                          height: 2,
+                          color: Colors.blueAccent,
+                        ),
+                        dropdownColor: ThemeColors.backgroundColor(),
+                        onChanged: (String newValue) async {
+                          dropdownValue = newValue;
+                          switch (newValue) {
+                            case "miles/h":
+                              await SharedPrefs.setWindUnit(WindUnit.MPH);
+                              break;
+                            case "meters/s":
+                              await SharedPrefs.setWindUnit(WindUnit.MS);
+                              break;
+                            case "kilometers/h":
+                              await SharedPrefs.setWindUnit(WindUnit.KMPH);
+                              break;
+                          }
+                          setState(() {});
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                              content:
+                                  Text("Refresh forecast to see changes")));
+                        },
+                        items: <String>["miles/h", "meters/s", "kilometers/h"]
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
                     ),
                   ),
-                  shape:
-                  RoundedRectangleBorder(borderRadius: kBorderRadius),
+                  color: ThemeColors.cardColor(),
+                  shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
                 ),
               ),
-
-
-
               SizedBox(
                 height: 80,
                 child: Card(
@@ -224,8 +269,7 @@ class _MoreScreenState extends State<MoreScreen> {
                       ),
                     ),
                   ),
-                  shape:
-                      RoundedRectangleBorder(borderRadius: kBorderRadius),
+                  shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
                   color: ThemeColors.cardColor(),
                 ),
               ),
@@ -247,8 +291,7 @@ class _MoreScreenState extends State<MoreScreen> {
                         }
                       },
                       child: ThemeColors.isDark
-                          ? Image.asset(
-                              "assets/GitHub-Mark-Light-64px.png")
+                          ? Image.asset("assets/GitHub-Mark-Light-64px.png")
                           : Image.asset("assets/GitHub-Mark-64px.png"),
                     ),
                     SizedBox(

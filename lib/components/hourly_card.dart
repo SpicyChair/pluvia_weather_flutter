@@ -37,6 +37,8 @@ class HourlyCard extends StatelessWidget {
       this.pop,
       this.isCurrent});
 
+
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -114,15 +116,21 @@ class HourlyCard extends StatelessWidget {
       ),
     );
   }
+  Future<String> parseData() async {
+    double windSpeed = await WeatherModel.convertWindSpeed(weatherData["wind_speed"]?.round());
+    String unit = await WeatherModel.getWindUnit();
+    return "${windSpeed.round()} $unit";
+  }
 
   void showInfoDialog() {
     String description = weatherData["weather"][0]["description"];
     int temperature = weatherData["temp"]?.round();
     double feelTemp = weatherData["feels_like"]?.toDouble();
-    int windSpeed = weatherData["wind_speed"]?.round();
-    int windDirection = weatherData["wind_deg"]?.round();
     int humidity = weatherData["humidity"]?.round();
     int pressure = weatherData["pressure"]?.round();
+    String windValue;
+
+    parseData().then((value) => windValue = value);
 
     showDialog(
       context: context,
@@ -198,7 +206,7 @@ class HourlyCard extends StatelessWidget {
                       InfoCard(
                         title: "Wind",
                         value:
-                            "${windSpeed.toString()} ${WeatherModel.unit == "imperial" ? "mph" : "m/s"} ${WeatherModel.getWindCompassDirection(windDirection)}",
+                        windValue,
                       ),
                       InfoCard(
                         title: "Precipitation",

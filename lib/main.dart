@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'screens/loading_screen.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 void main() {
   getThemeColors();
@@ -11,9 +10,7 @@ Future<void> getThemeColors() async {
   WidgetsFlutterBinding.ensureInitialized();
   ThemeColors.initialise().then(
     (value) => runApp(
-      Phoenix(
-        child: WeatherApp(),
-      ),
+      WeatherApp(),
     ),
   );
 }

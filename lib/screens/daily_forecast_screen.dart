@@ -44,7 +44,12 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
       return Scaffold(
         backgroundColor: ThemeColors.backgroundColor(),
         body: Center(
-          child: Text("Choose a location to view weather.", style: TextStyle(color: ThemeColors.primaryTextColor(),),),
+          child: Text(
+            "Choose a location to view weather.",
+            style: TextStyle(
+              color: ThemeColors.primaryTextColor(),
+            ),
+          ),
         ),
       );
     }
@@ -76,7 +81,6 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
           )
         ],
       ),
-
       backgroundColor: ThemeColors.backgroundColor(),
       body: SafeArea(
         child: Padding(
@@ -87,6 +91,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
             child: ListView.separated(
               physics: BouncingScrollPhysics(),
               itemBuilder: (context, index) {
+
                 return DailyCard(
                   //adding one excludes the current day
                   data: dailyData[index + 1],

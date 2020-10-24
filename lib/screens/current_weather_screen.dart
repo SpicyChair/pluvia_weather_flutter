@@ -44,7 +44,8 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   int pressure;
   int humidity;
 
-  int windSpeed; //wind speed in m/s for metric, mph for imperial
+  double windSpeed; //wind speed in m/s for metric, mph for imperial
+  String windUnit;
   int windDirection; //the angle of the wind direction in degrees
 
   List<dynamic> hourlyData;
@@ -76,27 +77,30 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
         weatherData["current"]["sunset"].toInt(), timeZoneOffset);
 
     int conditionCode = weatherData["current"]["weather"][0]["id"];
+    //update all values
+    temperature = weatherData["current"]["temp"].round();
+
+    feelTemp = weatherData["current"]["feels_like"]?.toDouble();
+
+    uvIndex = weatherData["current"]["uvi"]?.toDouble();
+
+    humidity = weatherData["current"]["humidity"]?.round();
+
+    pressure = weatherData["current"]["pressure"]?.round();
+
+
+    windDirection = weatherData["current"]["wind_deg"]?.round();
+
+    conditionDescription =
+    weatherData["current"]["weather"][0]["description"];
+
+    hourlyData = weatherData["hourly"];
+    dailyData = weatherData["daily"];
+
+    windSpeed = await WeatherModel.convertWindSpeed(weatherData["current"]["wind_speed"]?.round());
+    windUnit = await WeatherModel.getWindUnit();
 
     setState(() {
-      //update all values
-      temperature = weatherData["current"]["temp"].round();
-
-      feelTemp = weatherData["current"]["feels_like"]?.toDouble();
-
-      uvIndex = weatherData["current"]["uvi"]?.toDouble();
-
-      humidity = weatherData["current"]["humidity"]?.round();
-
-      pressure = weatherData["current"]["pressure"]?.round();
-
-      windSpeed = weatherData["current"]["wind_speed"]?.round();
-
-      windDirection = weatherData["current"]["wind_deg"]?.round();
-
-      conditionDescription = weatherData["current"]["weather"][0]["description"];
-
-      hourlyData = weatherData["hourly"];
-      dailyData = weatherData["daily"];
     });
 
     WeatherType weatherType = WeatherModel.getWeatherType(
@@ -111,13 +115,9 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     weatherAnimation.state.weatherWorld.weatherType = weatherType;
   }
 
-
-
   //refresh data
   Future<void> refresh() async {
-
-    Scaffold.of(context)
-        .showSnackBar(SnackBar(content: Text("Refreshing...")));
+    Scaffold.of(context).showSnackBar(SnackBar(content: Text("Refreshing...")));
 
     //if the location displayed is current, refresh location
     if (WeatherModel.locationName == "Current Location") {
@@ -141,7 +141,12 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       return Scaffold(
         backgroundColor: ThemeColors.backgroundColor(),
         body: Center(
-          child: Text("Choose a location to view weather.", style: TextStyle(color: ThemeColors.primaryTextColor(),),),
+          child: Text(
+            "Choose a location to view weather.",
+            style: TextStyle(
+              color: ThemeColors.primaryTextColor(),
+            ),
+          ),
         ),
       );
     }
@@ -211,7 +216,6 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     );
   }
 
-
   Widget temperatureWidget() {
     return Positioned(
       top: 70,
@@ -247,8 +251,6 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       ),
     );
   }
-
-
 
   Widget infoWidget() {
     return Positioned(
@@ -290,18 +292,17 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
 
               DateTime tomorrowSunrise = TimeHelper.getDateTimeSinceEpoch(
                   dailyData[1]["sunrise"], timeZoneOffset);
-              icon = WeatherModel.getIcon(
-                  hourlyData[index]["weather"][0]["id"],
+              icon = WeatherModel.getIcon(hourlyData[index]["weather"][0]["id"],
                   forecastTime: forecastTime,
                   sunrise: sunriseTime,
                   sunset: sunsetTime,
                   tomorrowSunrise: tomorrowSunrise);
-
             }
 
             weatherData = hourlyData[index];
 
-            int pop = (weatherData["pop"].toDouble() * 100).round(); //probability of precipitation
+            int pop = (weatherData["pop"].toDouble() * 100)
+                .round(); //probability of precipitation
 
             return HourlyCard(
               context: context,
@@ -322,7 +323,10 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     );
   }
 
+
   Widget createInfoCards() {
+
+
     return PanelCard(
       cardChild: Container(
         height: 225,
@@ -340,7 +344,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             InfoCard(
               title: "Wind",
               value:
-              "${windSpeed.toString()} ${WeatherModel.unit == "imperial" ? "mph" : "m/s"} ${WeatherModel.getWindCompassDirection(windDirection)}",
+                  "${windSpeed.round().toString()} $windUnit ${WeatherModel.getWindCompassDirection(windDirection)}",
             ),
             InfoCard(
               title: "Sunrise",

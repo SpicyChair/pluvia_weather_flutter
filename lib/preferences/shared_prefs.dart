@@ -17,9 +17,6 @@ class SharedPrefs {
   }
 
 
-
-
-
   static const String darkKey = "useDarkMode";
 
   static Future<bool> getDark() async {
@@ -33,4 +30,26 @@ class SharedPrefs {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool(darkKey, newValue);
   }
+
+
+
+  static const String windKey = "windUnit";
+
+  static Future<WindUnit> getWindUnit() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    WindUnit unit = WindUnit.values[prefs.getInt(windKey) ?? 0];
+    return unit;
+  }
+
+  static Future<void> setWindUnit(WindUnit unit) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(windKey, unit.index);
+    print(unit.toString());
+  }
+}
+
+enum WindUnit {
+  MS,
+  MPH,
+  KMPH,
 }

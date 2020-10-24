@@ -1,7 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_weather/components/hourly_card.dart';
 import 'package:flutter_weather/components/info_card.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/constants/text_style.dart';
@@ -12,10 +11,15 @@ import 'package:flutter_weather/services/extensions.dart';
 import 'package:intl/intl.dart';
 
 class DailyCard extends StatelessWidget {
-  final data; //daily forecast data
-  final isTomorrow; //shows the hourly data instead in expanded
+  final dynamic data; //daily forecast data
 
-  const DailyCard({this.data, this.isTomorrow});
+  DailyCard({this.data});
+
+  Future<String> parseData() async {
+    double windSpeed = await WeatherModel.convertWindSpeed(data["wind_speed"]?.round());
+    String unit = await WeatherModel.getWindUnit();
+    return "${windSpeed.round()} $unit";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,6 +116,8 @@ class DailyCard extends StatelessWidget {
     );
   }
 
+
+
   Widget buildExpanded(var data) {
     int offset = WeatherModel.getSecondsTimezoneOffset();
 
@@ -127,11 +133,15 @@ class DailyCard extends StatelessWidget {
     DateTime sunsetTime =
         TimeHelper.getDateTimeSinceEpoch(data["sunset"].toInt(), offset);
 
+    String windValue;
+
     int windSpeed = data["wind_speed"]?.round();
 
     int windDirection = data["wind_deg"]?.round();
 
-    int pop = data["pop"]?.round();
+    parseData().then((value) {
+      windValue = value;
+    });
 
     return Container(
       height: 150,
@@ -153,7 +163,7 @@ class DailyCard extends StatelessWidget {
             InfoCard(
               title: "Wind",
               value:
-              "${windSpeed.toString()} ${WeatherModel.unit == "imperial" ? "mph" : "m/s"} ${WeatherModel.getWindCompassDirection(windDirection)}",
+              windValue ?? "${windSpeed.round()} ${WeatherModel.unit == "imperial" ? "mph" : "m/s"} ${WeatherModel.getWindCompassDirection(windDirection)}",
             ),
             InfoCard(
               title: "UV Index",
@@ -172,6 +182,7 @@ class DailyCard extends StatelessWidget {
       ),
     );
   }
+
 }
 /*
 Row(

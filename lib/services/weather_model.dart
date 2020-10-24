@@ -43,7 +43,8 @@ class WeatherModel {
       url:
           "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$kOpenWeatherApiKey&units=$unit",
     );
-    print("${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$kOpenWeatherApiKey&units=$unit");
+    print(
+        "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$kOpenWeatherApiKey&units=$unit");
 
     weatherData =
         await networkHelper.getData(); //getData gets and decodes the json data
@@ -78,28 +79,10 @@ class WeatherModel {
     locationName = name;
   }
 
-
-
-
-
-
-
-
-
   /*
   Methods for processing weather data
 
    */
-
-
-
-
-
-
-
-
-
-
 
   static String getIcon(int id,
       {DateTime forecastTime,
@@ -187,5 +170,48 @@ class WeatherModel {
 
   static int getSecondsTimezoneOffset() {
     return weatherData["timezone_offset"];
+  }
+
+  static Future<double> convertWindSpeed(int speed) async {
+    WindUnit unit = await SharedPrefs.getWindUnit();
+
+    if (await SharedPrefs.getImperial()) {
+      //if imperial units used
+      //convert from mph to other units
+      switch (unit) {
+        case WindUnit.KMPH:
+          return speed * 1.609;
+        case WindUnit.MS:
+          return speed / 2.237;
+        case WindUnit.MPH:
+          return speed.toDouble();
+        default:
+          return 0;
+      }
+    } else {
+      //if metric units used
+      //convert from m/s to other units
+      switch (unit) {
+        case WindUnit.KMPH:
+          return speed * 3.6;
+        case WindUnit.MS:
+          return speed.toDouble();
+        case WindUnit.MPH:
+          return speed * 2.237;
+        default:
+          return 0;
+      }
+    }
+  }
+
+  static Future<String> getWindUnit() async {
+    switch (await SharedPrefs.getWindUnit()) {
+      case WindUnit.MS:
+        return "m/s";
+      case WindUnit.MPH:
+        return "mph";
+      case WindUnit.KMPH:
+        return "km/h";
+    }
   }
 }
