@@ -93,7 +93,6 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
               itemBuilder: (context, index) {
 
                 return DailyCard(
-                  //adding one excludes the current day
                   data: dailyData[index + 1],
                 );
               },
@@ -109,6 +108,12 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
         ),
       ),
     );
+  }
+
+  Future<String> parseWindData(int index) async {
+    double windSpeed = await WeatherModel.convertWindSpeed(dailyData[index]["wind_speed"]?.round());
+    String unit = await WeatherModel.getWindUnitString();
+    return "${windSpeed.round()} $unit";
   }
 
   Future<void> refresh() async {

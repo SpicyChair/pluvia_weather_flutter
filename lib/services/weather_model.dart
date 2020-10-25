@@ -204,7 +204,7 @@ class WeatherModel {
     }
   }
 
-  static Future<String> getWindUnit() async {
+  static Future<String> getWindUnitString() async{
     switch (await SharedPrefs.getWindUnit()) {
       case WindUnit.MS:
         return "m/s";

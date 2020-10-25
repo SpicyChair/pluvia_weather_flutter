@@ -117,8 +117,8 @@ class HourlyCard extends StatelessWidget {
     );
   }
   Future<String> parseData() async {
-    double windSpeed = await WeatherModel.convertWindSpeed(weatherData["wind_speed"]?.round());
-    String unit = await WeatherModel.getWindUnit();
+    double windSpeed =  await WeatherModel.convertWindSpeed(weatherData["wind_speed"]?.round());
+    String unit =  await WeatherModel.getWindUnitString();
     return "${windSpeed.round()} $unit";
   }
 
@@ -129,7 +129,6 @@ class HourlyCard extends StatelessWidget {
     int humidity = weatherData["humidity"]?.round();
     int pressure = weatherData["pressure"]?.round();
     String windValue;
-
     parseData().then((value) => windValue = value);
 
     showDialog(

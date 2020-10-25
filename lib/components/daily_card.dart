@@ -12,14 +12,11 @@ import 'package:intl/intl.dart';
 
 class DailyCard extends StatelessWidget {
   final dynamic data; //daily forecast data
+  final String windValue;
 
-  DailyCard({this.data});
+  DailyCard({this.data, this.windValue});
 
-  Future<String> parseData() async {
-    double windSpeed = await WeatherModel.convertWindSpeed(data["wind_speed"]?.round());
-    String unit = await WeatherModel.getWindUnit();
-    return "${windSpeed.round()} $unit";
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -133,15 +130,12 @@ class DailyCard extends StatelessWidget {
     DateTime sunsetTime =
         TimeHelper.getDateTimeSinceEpoch(data["sunset"].toInt(), offset);
 
-    String windValue;
-
     int windSpeed = data["wind_speed"]?.round();
 
     int windDirection = data["wind_deg"]?.round();
 
-    parseData().then((value) {
-      windValue = value;
-    });
+    print(windValue);
+
 
     return Container(
       height: 150,

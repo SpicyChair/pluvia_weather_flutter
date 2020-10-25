@@ -78,7 +78,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
 
     int conditionCode = weatherData["current"]["weather"][0]["id"];
     //update all values
-    temperature = weatherData["current"]["temp"].round();
+    temperature = weatherData["current"]["temp"]?.round();
 
     feelTemp = weatherData["current"]["feels_like"]?.toDouble();
 
@@ -97,8 +97,8 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     hourlyData = weatherData["hourly"];
     dailyData = weatherData["daily"];
 
-    windSpeed = await WeatherModel.convertWindSpeed(weatherData["current"]["wind_speed"]?.round());
-    windUnit = await WeatherModel.getWindUnit();
+    windSpeed = await WeatherModel.convertWindSpeed(weatherData["current"]["wind_speed"].round());
+    windUnit =  await WeatherModel.getWindUnitString();
 
     setState(() {
     });
@@ -241,7 +241,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             Container(
               padding: EdgeInsets.symmetric(vertical: 3, horizontal: 6),
               child: Text(
-                "Local Time ${DateFormat.Hm().format(weatherTime)}",
+                "Local Time ${DateFormat.Hm().format(weatherTime)} (UTC+${(timeZoneOffset / 3600).round()})",
                 style: TextStyle(
                     color: Colors.white.withOpacity(0.65), fontSize: 16),
               ),

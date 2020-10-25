@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
 import 'package:flutter_weather/screens/saved_location_screen.dart';
@@ -28,12 +29,22 @@ class _LoadingScreenState extends State<LoadingScreen> {
       return;
     }
 
+    await loadSharedPrefs();
+
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
         builder: (context) => HomeScreen(),
       ),
     );
+  }
+
+  Future<void> loadSharedPrefs() async {
+    //loads shared prefs into local variables
+    //so they can be accessed without future
+    await SharedPrefs.getWindUnit();
+    await SharedPrefs.getImperial();
+    await SharedPrefs.getDark();
   }
 
   @override
