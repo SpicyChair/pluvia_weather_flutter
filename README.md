@@ -5,7 +5,7 @@ A weather app with beautiful animations, built with Flutter, with data from the 
 
 ## Download
 <a href='https://play.google.com/store/apps/details?id=com.spicychair.weather&hl=en&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png' width="256"/></a>\
-...or [download releases from Github](https://github.com/SpicyChair/pluvia_weather_flutter/releases)
+...or [download APK releases from Github](https://github.com/SpicyChair/pluvia_weather_flutter/releases)
 
 ## Features
 * Beautiful animations which change throughout the day, and according to weather conditions
