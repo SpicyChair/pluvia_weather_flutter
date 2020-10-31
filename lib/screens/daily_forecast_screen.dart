@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_weather/components/daily_card.dart';
 import 'package:flutter_weather/components/hourly_card.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter_weather/constants/text_style.dart';
+import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/services/time.dart';
 import 'package:intl/intl.dart';
@@ -22,6 +24,10 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
   var dailyData;
   double lat;
   double lon;
+  bool imperial;
+  WindUnit unit;
+
+  bool isLoading = true;
 
   void initState() {
     super.initState();
@@ -30,28 +36,46 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
     }
   }
 
-  void updateUI() {
+  Future<void> updateUI() async {
+
+    dailyData = WeatherModel.weatherData["daily"];
+    lat = WeatherModel.weatherData["lat"].toDouble();
+    lon = WeatherModel.weatherData["lon"].toDouble();
+
+    imperial = await SharedPrefs.getImperial();
+    unit = await SharedPrefs.getWindUnit();
+
     setState(() {
-      dailyData = WeatherModel.weatherData["daily"];
-      lat = WeatherModel.weatherData["lat"].toDouble();
-      lon = WeatherModel.weatherData["lon"].toDouble();
+      isLoading = false;
     });
+
   }
 
   @override
   Widget build(BuildContext context) {
-    if (dailyData == null) {
+    if (isLoading == true) {
+
+      if (dailyData == null) {
+        return Scaffold(
+          backgroundColor: ThemeColors.backgroundColor(),
+          body: Center(
+            child: Text(
+              dailyData == null ? "Choose a location to view weather." : "Loading...",
+              style: TextStyle(
+                color: ThemeColors.primaryTextColor(),
+              ),
+            ),
+          ),
+        );
+      }
+
       return Scaffold(
         backgroundColor: ThemeColors.backgroundColor(),
         body: Center(
-          child: Text(
-            "Choose a location to view weather.",
-            style: TextStyle(
-              color: ThemeColors.primaryTextColor(),
-            ),
-          ),
+          child: SpinKitDualRing(color: Colors.blueAccent,),
         ),
       );
+
     }
     return Scaffold(
       appBar: AppBar(
@@ -91,9 +115,10 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
             child: ListView.separated(
               physics: BouncingScrollPhysics(),
               itemBuilder: (context, index) {
-
                 return DailyCard(
                   data: dailyData[index + 1],
+                  imperial: imperial,
+                  unit: unit,
                 );
               },
               separatorBuilder: (context, index) {
@@ -108,12 +133,6 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
         ),
       ),
     );
-  }
-
-  Future<String> parseWindData(int index) async {
-    double windSpeed = await WeatherModel.convertWindSpeed(dailyData[index]["wind_speed"]?.round());
-    String unit = await WeatherModel.getWindUnitString();
-    return "${windSpeed.round()} $unit";
   }
 
   Future<void> refresh() async {

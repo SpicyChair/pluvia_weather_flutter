@@ -193,7 +193,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   child: Center(
                     child: ListTile(
                       title: Text(
-                        "Wind Speed (Beta)",
+                        "Wind Speed",
                         style: TextStyle(color: ThemeColors.primaryTextColor()),
                       ),
                       leading: Icon(

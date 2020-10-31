@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weather/components/info_card.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/constants/text_style.dart';
+import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/services/time.dart';
 import 'package:flutter_weather/services/weather_model.dart';
@@ -12,9 +13,10 @@ import 'package:intl/intl.dart';
 
 class DailyCard extends StatelessWidget {
   final dynamic data; //daily forecast data
-  final String windValue;
+  final bool imperial;
+  final WindUnit unit;
 
-  DailyCard({this.data, this.windValue});
+  DailyCard({this.data, this.imperial, this.unit});
 
 
 
@@ -134,16 +136,14 @@ class DailyCard extends StatelessWidget {
 
     int windDirection = data["wind_deg"]?.round();
 
-    print(windValue);
-
 
     return Container(
-      height: 150,
+      height: 170,
       padding: EdgeInsets.symmetric(horizontal: 5),
       child: Center(
         child: GridView.count(
           physics: NeverScrollableScrollPhysics(),
-          childAspectRatio: 2,
+          childAspectRatio: 1.5,
           crossAxisCount: 3,
           children: [
             InfoCard(
@@ -157,7 +157,7 @@ class DailyCard extends StatelessWidget {
             InfoCard(
               title: "Wind",
               value:
-              windValue ?? "${windSpeed.round()} ${WeatherModel.unit == "imperial" ? "mph" : "m/s"} ${WeatherModel.getWindCompassDirection(windDirection)}",
+              "${WeatherModel.convertWindSpeed(windSpeed, unit, imperial).round()} ${WeatherModel.getWindUnitString(unit)} ${WeatherModel.getWindCompassDirection(windDirection)}",
             ),
             InfoCard(
               title: "UV Index",

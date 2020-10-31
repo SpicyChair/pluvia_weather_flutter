@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter_weather/animation/weather_type.dart';
 import 'package:flutter_weather/constants/constants.dart';
+import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/saved_location_screen.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   int humidity;
 
   double windSpeed; //wind speed in m/s for metric, mph for imperial
-  String windUnit;
+  String unitString; //unit for the wind speed
   int windDirection; //the angle of the wind direction in degrees
 
   List<dynamic> hourlyData;
@@ -97,8 +98,11 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     hourlyData = weatherData["hourly"];
     dailyData = weatherData["daily"];
 
-    windSpeed = await WeatherModel.convertWindSpeed(weatherData["current"]["wind_speed"].round());
-    windUnit =  await WeatherModel.getWindUnitString();
+    bool imperial = await SharedPrefs.getImperial();
+    WindUnit unit = await SharedPrefs.getWindUnit();
+
+    windSpeed =  WeatherModel.convertWindSpeed(weatherData["current"]["wind_speed"].round(), unit, imperial);
+    unitString =  WeatherModel.getWindUnitString(unit);
 
     setState(() {
     });
@@ -344,7 +348,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             InfoCard(
               title: "Wind",
               value:
-                  "${windSpeed.round().toString()} $windUnit ${WeatherModel.getWindCompassDirection(windDirection)}",
+                  "${windSpeed.round().toString()} $unitString ${WeatherModel.getWindCompassDirection(windDirection)}",
             ),
             InfoCard(
               title: "Sunrise",

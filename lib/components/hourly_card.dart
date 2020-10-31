@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/constants/text_style.dart';
+import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/services/time.dart';
 import 'package:flutter_weather/services/extensions.dart';
@@ -117,9 +118,12 @@ class HourlyCard extends StatelessWidget {
     );
   }
   Future<String> parseData() async {
-    double windSpeed =  await WeatherModel.convertWindSpeed(weatherData["wind_speed"]?.round());
-    String unit =  await WeatherModel.getWindUnitString();
-    return "${windSpeed.round()} $unit";
+    bool imperial = await SharedPrefs.getImperial();
+    WindUnit unit = await SharedPrefs.getWindUnit();
+
+    double windSpeed =  await WeatherModel.convertWindSpeed(weatherData["wind_speed"]?.round(), unit, imperial);
+    String unitString =  await WeatherModel.getWindUnitString(unit);
+    return "${windSpeed.round()} $unitString";
   }
 
   void showInfoDialog() {

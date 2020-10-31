@@ -172,10 +172,9 @@ class WeatherModel {
     return weatherData["timezone_offset"];
   }
 
-  static Future<double> convertWindSpeed(int speed) async {
-    WindUnit unit = await SharedPrefs.getWindUnit();
+  static double convertWindSpeed(int speed, WindUnit unit, bool imperial)  {
 
-    if (await SharedPrefs.getImperial()) {
+    if (imperial) {
       //if imperial units used
       //convert from mph to other units
       switch (unit) {
@@ -204,8 +203,8 @@ class WeatherModel {
     }
   }
 
-  static Future<String> getWindUnitString() async{
-    switch (await SharedPrefs.getWindUnit()) {
+  static String getWindUnitString(WindUnit unit) {
+    switch (unit) {
       case WindUnit.MS:
         return "m/s";
       case WindUnit.MPH:
