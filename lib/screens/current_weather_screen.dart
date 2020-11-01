@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_weather/animation/weather_type.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
@@ -52,6 +53,8 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   List<dynamic> hourlyData;
   List<dynamic> dailyData;
 
+  bool isLoading = true; //if data is being loaded
+
   @override
   void initState() {
     super.initState();
@@ -104,8 +107,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     windSpeed =  WeatherModel.convertWindSpeed(weatherData["current"]["wind_speed"].round(), unit, imperial);
     unitString =  WeatherModel.getWindUnitString(unit);
 
-    setState(() {
-    });
+
 
     WeatherType weatherType = WeatherModel.getWeatherType(
         sunriseTime, sunsetTime, weatherTime, conditionCode);
@@ -113,10 +115,16 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     //if assets are not loaded yet, set the initial weather to build
     if (weatherAnimation.state == null) {
       weatherAnimation.initialWeather = weatherType;
-      return;
+    } else {
+      //else set the weather normally
+      weatherAnimation.state.weatherWorld.weatherType = weatherType;
     }
-    //else set the weather normally
-    weatherAnimation.state.weatherWorld.weatherType = weatherType;
+
+
+
+    setState(() {
+      isLoading = false;
+    });
   }
 
   //refresh data
@@ -154,6 +162,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
         ),
       );
     }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -183,7 +192,14 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
         ],
       ),
       extendBodyBehindAppBar: true,
-      body: Stack(
+      body: isLoading ?
+      //if is loading
+      Center(
+        child: SpinKitDualRing(color: Colors.blueAccent, size: 40,),
+      ) :
+
+      //if loaded
+      Stack(
         alignment: Alignment.topCenter,
         children: [
           weatherAnimation,

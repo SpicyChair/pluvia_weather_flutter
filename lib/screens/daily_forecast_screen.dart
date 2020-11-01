@@ -37,7 +37,6 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
   }
 
   Future<void> updateUI() async {
-
     dailyData = WeatherModel.weatherData["daily"];
     lat = WeatherModel.weatherData["lat"].toDouble();
     lon = WeatherModel.weatherData["lon"].toDouble();
@@ -48,35 +47,26 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
     setState(() {
       isLoading = false;
     });
-
   }
 
   @override
   Widget build(BuildContext context) {
-    if (isLoading == true) {
-
-      if (dailyData == null) {
-        return Scaffold(
-          backgroundColor: ThemeColors.backgroundColor(),
-          body: Center(
-            child: Text(
-              dailyData == null ? "Choose a location to view weather." : "Loading...",
-              style: TextStyle(
-                color: ThemeColors.primaryTextColor(),
-              ),
-            ),
-          ),
-        );
-      }
-
+    if (dailyData == null) {
       return Scaffold(
         backgroundColor: ThemeColors.backgroundColor(),
         body: Center(
-          child: SpinKitDualRing(color: Colors.blueAccent,),
+          child: Text(
+            dailyData == null
+                ? "Choose a location to view weather."
+                : "Loading...",
+            style: TextStyle(
+              color: ThemeColors.primaryTextColor(),
+            ),
+          ),
         ),
       );
-
     }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -106,32 +96,43 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
         ],
       ),
       backgroundColor: ThemeColors.backgroundColor(),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 5.0),
-          child: MediaQuery.removePadding(
-            context: context,
-            removeTop: true,
-            child: ListView.separated(
-              physics: BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return DailyCard(
-                  data: dailyData[index + 1],
-                  imperial: imperial,
-                  unit: unit,
-                );
-              },
-              separatorBuilder: (context, index) {
-                return SizedBox(
-                  height: 5,
-                );
-              },
-              padding: EdgeInsets.symmetric(horizontal: 5),
-              itemCount: 7,
+      body: isLoading
+          ?
+          //if is loading
+          Center(
+              child: SpinKitDualRing(
+                color: Colors.blueAccent,
+                size: 40,
+              ),
+            )
+          :
+          //if loaded
+          SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 5.0),
+                child: MediaQuery.removePadding(
+                  context: context,
+                  removeTop: true,
+                  child: ListView.separated(
+                    physics: BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return DailyCard(
+                        data: dailyData[index + 1],
+                        imperial: imperial,
+                        unit: unit,
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return SizedBox(
+                        height: 5,
+                      );
+                    },
+                    padding: EdgeInsets.symmetric(horizontal: 5),
+                    itemCount: 7,
+                  ),
+                ),
+              ),
             ),
-          ),
-        ),
-      ),
     );
   }
 
