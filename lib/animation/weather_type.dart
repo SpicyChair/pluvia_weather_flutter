@@ -1,5 +1,6 @@
 
 enum WeatherType {
+  sunrise,
   clearDay,
   clearAfternoon,
   clearEvening,

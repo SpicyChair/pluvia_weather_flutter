@@ -65,6 +65,8 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
 
   void updateUI() async {
     var weatherData = WeatherModel.weatherData;
+    hourlyData = weatherData["hourly"];
+    dailyData = weatherData["daily"];
 
     timeZoneOffset = WeatherModel.getSecondsTimezoneOffset();
 
@@ -79,17 +81,15 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
 
     sunsetTime = TimeHelper.getDateTimeSinceEpoch(
         weatherData["current"]["sunset"].toInt(), timeZoneOffset);
+    DateTime tomorrowSunrise = TimeHelper.getDateTimeSinceEpoch(
+        dailyData[1]["sunrise"], timeZoneOffset);
 
     int conditionCode = weatherData["current"]["weather"][0]["id"];
     //update all values
     temperature = weatherData["current"]["temp"]?.round();
-
     feelTemp = weatherData["current"]["feels_like"]?.toDouble();
-
     uvIndex = weatherData["current"]["uvi"]?.toDouble();
-
     humidity = weatherData["current"]["humidity"]?.round();
-
     pressure = weatherData["current"]["pressure"]?.round();
 
 
@@ -98,8 +98,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     conditionDescription =
     weatherData["current"]["weather"][0]["description"];
 
-    hourlyData = weatherData["hourly"];
-    dailyData = weatherData["daily"];
+
 
     bool imperial = await SharedPrefs.getImperial();
     WindUnit unit = await SharedPrefs.getWindUnit();
@@ -110,7 +109,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
 
 
     WeatherType weatherType = WeatherModel.getWeatherType(
-        sunriseTime, sunsetTime, weatherTime, conditionCode);
+        sunriseTime, sunsetTime, tomorrowSunrise, weatherTime, conditionCode);
 
     //if assets are not loaded yet, set the initial weather to build
     if (weatherAnimation.state == null) {
@@ -191,6 +190,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
           ),
         ],
       ),
+      backgroundColor: ThemeColors.backgroundColor(),
       extendBodyBehindAppBar: true,
       body: isLoading ?
       //if is loading

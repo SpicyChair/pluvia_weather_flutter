@@ -110,8 +110,9 @@ class WeatherAnimationState extends State<WeatherAnimation> {
 
 //top colors are lighter
 const List<Color> _kBackgroundColorsTop = const <Color>[
+  const Color(0xffb87dbb), //sunrise
   const Color(0xff5ebbd5), //clear day
-  const Color(0xfff9655b), //clear afternoon
+  const Color(0xFFe5383b), //clear afternoon
   const Color(0xFFe5383b), //clear evening
   const Color(0xFF023e7d), //clear night
   const Color(0xff0b2734), //rain
@@ -120,9 +121,10 @@ const List<Color> _kBackgroundColorsTop = const <Color>[
 
 //bottom colors are darker
 const List<Color> _kBackgroundColorsBottom = const <Color>[
+  const Color(0xffdd5040), //sunrise
   const Color(0xff4aaafb), //clear day
   const Color(0xfffbbe00), //clear afternoon
-  const Color(0xFF03071e), //clear evening
+  const Color(0xFF041f32), //clear evening
   const Color(0xFF000000), //clear night
   const Color(0xff4c5471), //rain
   const Color(0xffe0e3ec) //snow
@@ -186,21 +188,21 @@ class WeatherWorld extends NodeWithSize {
         image: _images['assets/clouds-0.png'],
         rotated: false,
         dark: false,
-        loopTime: 120.0);
+        loopTime: 90.0);
     addChild(_cloudsSharp);
 
     _cloudsDark = CloudLayer(
         image: _images['assets/clouds-1.png'],
         rotated: true,
         dark: true,
-        loopTime: 150.0);
+        loopTime: 120.0);
     addChild(_cloudsDark);
 
     _cloudsSoft = CloudLayer(
         image: _images['assets/clouds-1.png'],
         rotated: false,
         dark: false,
-        loopTime: 180.0);
+        loopTime: 150.0);
     addChild(_cloudsSoft);
 
     // Add the rain and snow
@@ -209,9 +211,6 @@ class WeatherWorld extends NodeWithSize {
 
     _snow = Snow();
     addChild(_snow);
-
-    _stars = Stars();
-    addChild(_stars);
   }
 }
 

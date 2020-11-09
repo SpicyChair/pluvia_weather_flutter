@@ -138,7 +138,7 @@ class WeatherModel {
   }
 
   static WeatherType getWeatherType(DateTime sunrise, DateTime sunset,
-      DateTime currentTime, int conditionCode) {
+      DateTime tomorrowSunrise, DateTime forecastTime, int conditionCode) {
     WeatherType weatherType;
     //check if its raining or snowing to show weather animation
     if (conditionCode >= 300 && conditionCode <= 599) {
@@ -149,20 +149,22 @@ class WeatherModel {
       weatherType = WeatherType.snow;
     } else {
       //use the time instead to show animation as weather is clear
-      int hour = currentTime.hour;
 
-      if (hour >= 6 && hour <= 13) {
-        //morning
-        weatherType = WeatherType.clearDay;
-      } else if (hour >= 14 && hour <= 18) {
-        //afternoon
-        weatherType = WeatherType.clearAfternoon;
-      } else if (hour >= 19 && hour <= 21) {
-        //evening
-        weatherType = WeatherType.clearEvening;
-      } else {
+      if ((forecastTime.isAfter(sunset.add(Duration(minutes: 120))) ||
+              forecastTime.isBefore(sunrise)) &&
+          forecastTime.isBefore(tomorrowSunrise.subtract(Duration(minutes: 30)))) {
         //night
         weatherType = WeatherType.clearNight;
+      } else if (forecastTime.isAfter(sunset) &&
+          forecastTime.isBefore(sunset.add(Duration(minutes: 120)))) {
+        //sunset
+        weatherType = WeatherType.clearEvening;
+      } else if (forecastTime.hour >= 12 && forecastTime.isBefore(sunset)) {
+        weatherType = WeatherType.clearAfternoon;
+      } else if (forecastTime.isAfter(sunrise.add(Duration(minutes: 30)))) {
+        weatherType = WeatherType.clearDay;
+      } else {
+        weatherType = WeatherType.sunrise;
       }
     }
     return weatherType;
@@ -172,8 +174,7 @@ class WeatherModel {
     return weatherData["timezone_offset"];
   }
 
-  static double convertWindSpeed(int speed, WindUnit unit, bool imperial)  {
-
+  static double convertWindSpeed(int speed, WindUnit unit, bool imperial) {
     if (imperial) {
       //if imperial units used
       //convert from mph to other units
