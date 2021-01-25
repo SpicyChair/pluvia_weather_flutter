@@ -21,14 +21,11 @@ between the screens
  */
 
 class HomeScreen extends StatefulWidget {
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
   void initState() {
     super.initState();
     if (LocationService.longitude == null || LocationService.latitude == null) {
@@ -68,15 +65,19 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       ),
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(color: ThemeColors.cardColor(), boxShadow: [
-          BoxShadow(blurRadius: 20, color: Colors.black.withOpacity(.1))
-        ]),
+        decoration: BoxDecoration(
+          color: ThemeColors.cardColor(),
+          boxShadow: [
+            BoxShadow(blurRadius: 20, color: Colors.black.withOpacity(0.15)),
+          ],
+        ),
+        height: 75,
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 12),
             child: GNav(
                 curve: Curves.easeOutExpo,
-                gap: 8,
+                gap: 5,
                 activeColor: Colors.white,
                 iconSize: 26,
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -152,7 +153,8 @@ class _HomeScreenState extends State<HomeScreen> {
             FlatButton(
               child: Text("Retry"),
               onPressed: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoadingScreen()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => LoadingScreen()));
               },
             ),
             FlatButton(
@@ -176,20 +178,23 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void showNetworkPrompt() {
-    showDialog(context: context, builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text("Server Error"),
-        content: Text("Pluvia Weather could not get data. The OpenWeatherMap servers may be down."),
-        actions: [
-          FlatButton(
-            child: Text("Retry"),
-            onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoadingScreen()));
-            },
-          ),
-        ],
-      );
-    });
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Server Error"),
+            content: Text(
+                "Pluvia Weather could not get data. The OpenWeatherMap servers may be down."),
+            actions: [
+              FlatButton(
+                child: Text("Retry"),
+                onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoadingScreen()));
+                },
+              ),
+            ],
+          );
+        });
   }
-
 }
