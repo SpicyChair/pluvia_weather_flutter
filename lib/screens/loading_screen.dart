@@ -77,9 +77,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
             Visibility(
               visible: isGettingData,
               child: Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: SpinKitDualRing(
-                  size: 70,
+                padding: const EdgeInsets.all(10.0),
+                child: SpinKitThreeBounce(
+                  size: 50,
                   color: Colors.blueAccent,
                 ),
               ),

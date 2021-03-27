@@ -195,7 +195,14 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       body: isLoading ?
       //if is loading
       Center(
-        child: SpinKitDualRing(color: Colors.blueAccent, size: 40,),
+          child: Column(
+            children: [
+              SpinKitFadingCircle(color: ThemeColors.secondaryTextColor(), size: 50,),
+              SizedBox(height: 20,),
+              Text("Loading...", style: TextStyle(color: ThemeColors.secondaryTextColor()),),
+            ],
+            mainAxisAlignment: MainAxisAlignment.center,
+          )
       ) :
 
       //if loaded
