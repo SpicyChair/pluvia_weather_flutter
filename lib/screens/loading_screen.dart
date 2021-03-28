@@ -79,7 +79,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: SpinKitThreeBounce(
-                  size: 50,
+                  size: 30,
                   color: Colors.blueAccent,
                 ),
               ),

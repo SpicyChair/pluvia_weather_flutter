@@ -4,13 +4,14 @@ class TimeHelper {
 
   static DateTime getDateTimeSinceEpoch(int secondsSinceEpoch, int secondsTimezoneOffset) {
 
+
     //convert from seconds to milliseconds
     int millisecondsSinceEpoch = secondsSinceEpoch * 1000;
     int millisecondsTimezoneOffset = secondsTimezoneOffset * 1000;
 
 
     //TODO: look into using system time to calculate forecast time
-    DateTime now = DateTime.now();
+
     //print(now.millisecondsSinceEpoch);
 
 
@@ -18,7 +19,8 @@ class TimeHelper {
     //print(millisecondsSinceEpoch);
 
     //apply the offset to the epoch time to get the correct time
-    DateTime dateTime = DateTime.fromMillisecondsSinceEpoch((millisecondsSinceEpoch + millisecondsTimezoneOffset));
+    DateTime dateTime = DateTime.fromMillisecondsSinceEpoch((millisecondsSinceEpoch + millisecondsTimezoneOffset), isUtc: true);
+    //print(dateTime);
 
     //return the datetime object
     return dateTime;
