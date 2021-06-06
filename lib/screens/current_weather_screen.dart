@@ -297,6 +297,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
         height: 200,
         width: double.infinity,
         margin: kPanelCardMargin,
+
         child: ListView.builder(
           physics: BouncingScrollPhysics(),
           itemBuilder: (context, index) {
@@ -371,7 +372,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             InfoCard(
               title: "Wind",
               value:
-                  "${windSpeed.round().toString()} $unitString ${WeatherModel.getWindCompassDirection(windDirection)}",
+              "${windSpeed.round().toString()} $unitString ${WeatherModel.getWindCompassDirection(windDirection)}",
             ),
             InfoCard(
               title: "Sunrise",

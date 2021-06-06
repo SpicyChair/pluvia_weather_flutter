@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
 import 'screens/loading_screen.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   getThemeColors();
@@ -19,6 +20,12 @@ Future<void> getThemeColors() async {
 class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.black, // navigation bar color
+    ));
+
     return MaterialApp(
       title: "Pluvia Weather",
       theme: ThemeData.light().copyWith(

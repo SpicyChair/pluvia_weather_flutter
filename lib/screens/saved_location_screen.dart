@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_weather/components/location_card.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/constants/text_style.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
@@ -23,8 +24,9 @@ class SavedLocationScreen extends StatefulWidget {
 
 class _SavedLocationScreenState extends State<SavedLocationScreen> {
   DatabaseHelper databaseHelper;
-  List<SavedLocation> locations = new List();
+  List<SavedLocation> locations = [];
   var uuid = Uuid();
+  var inkwellColor = null;
 
   @override
   void initState() {
@@ -93,8 +95,6 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
       backgroundColor: ThemeColors.backgroundColor(),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-
-
           /*
           Test Code
           //TODO: remove this
@@ -103,16 +103,6 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
           //           widget.onLocationSelect(0);
           //           return;
            */
-
-
-
-
-
-
-
-
-
-
 
           var locationData = await Navigator.push(
             context,
@@ -187,23 +177,68 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Center(
-                  child: Text(
-                "Swipe on Location to Delete",
-                style: TextStyle(color: ThemeColors.secondaryTextColor()),
-              )),
+                child: Text(
+                  "Pressflut and Hold on Location to Delete",
+                  style: TextStyle(color: ThemeColors.secondaryTextColor()),
+                ),
+              ),
             ),
             Expanded(
-              child: ListView.builder(
+              //child: ReorderableListView(
+              // onReorder: reorderData)
+              child: ListView(
+                children: [
+                  for (final data in locations)
+                    LocationCard(
+                      data: data,
+                      onLocationSelect: widget.onLocationSelect,
+                      refresh: refresh,
+                      onLongPress: () async {
+                        await databaseHelper.removeLocation(data.id);
+                        refresh();
+                      },
+                    )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void reorderData(int oldIndex, int newIndex) async {
+    //checks if data has been reordered
+    setState(() {
+      if (newIndex > oldIndex) {
+        newIndex -= 1;
+      }
+      //"pop" the item index
+      final i = locations.removeAt(oldIndex);
+
+      locations.insert(newIndex, i);
+    });
+
+    print(locations);
+  }
+}
+
+//TODO: implement the popup menu on the trailing thing of the listtile
+
+/*
+onDismissed: (direction) async {
+                      await databaseHelper.removeLocation(data.id);
+                      refresh();
+                    },
+
+
+
+ child: ListView.builder(
                 physics: BouncingScrollPhysics(),
                 itemCount: locations.length,
                 itemBuilder: (context, index) {
                   SavedLocation data = locations[index];
-                  return Dismissible(
-                    background: Container(
-                      color: Colors.red,
-                    ),
-                    key: Key(data.id.toString()),
-                    child: ListTile(
+                  return ListTile(
                       contentPadding:
                           EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                       title: Text(
@@ -222,18 +257,15 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
                             data.latitude, data.longitude, data.title);
                         widget.onLocationSelect(0);
                       },
-                    ),
-                    onDismissed: (direction) async {
-                      await databaseHelper.removeLocation(data.id);
-                      refresh();
-                    },
+
+
+
+                      trailing: TextButton(
+                        onPressed: () {},
+                        child: Icon(Icons.more_horiz),
+                      ),
+
                   );
                 },
               ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+ */

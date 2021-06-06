@@ -12,7 +12,9 @@ class SavedLocation {
   });
 
   String getCoordinates() {
-    return "$latitude, $longitude";
+    //return string representation of coord
+    //rounded to 4 d.p. for display
+    return "${latitude.toStringAsFixed(4)}, ${longitude.toStringAsFixed(4)}";
   }
 
   Map<String, dynamic> toMap() {
@@ -23,4 +25,7 @@ class SavedLocation {
       "longitude": longitude,
     };
   }
+
+  String toString() => title;
+
 }

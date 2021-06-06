@@ -34,6 +34,11 @@ class DatabaseHelper {
     await db.insert("locations", location.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
+  
+  Future<void> clearDatabase() async {
+    final Database db = await database;
+    db.execute("DELETE FROM locations");
+  }
 
   Future<void> removeLocation(int id) async {
     final db = await database;

@@ -48,6 +48,10 @@ dependencies:
   package_info: ^0.4.3
   url_launcher: ^5.7.2
   flutter_phoenix: ^0.1.0
+  emojis: ^0.9.3
+  location: ^3.0.0
+  holding_gesture: ^1.1.0
+
 
 dev_dependencies:
   flutter_test:

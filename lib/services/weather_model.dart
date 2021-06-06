@@ -7,6 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'networking.dart';
 import 'location_service.dart';
 import 'package:flutter/material.dart';
+import 'package:emojis/emojis.dart';
+import 'package:emojis/emoji.dart';
 
 const String kOpenWeatherMapURL =
     "https://api.openweathermap.org/data/2.5/onecall?";
@@ -67,13 +69,19 @@ class WeatherModel {
     }
 
     //send a request to OpenWeatherMap one call api
+
     NetworkHelper networkHelper = NetworkHelper(
       url:
           "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$kOpenWeatherApiKey&units=$unit",
     );
-
     var data =
         await networkHelper.getData(); //getData gets and decodes the json data
+
+    //force weather screens to display error messge when location disabled
+    //this fixes bug present in < 1.0.7
+    if (latitude == null && longitude == null) {
+      data = null;
+    }
 
     weatherData = data;
     locationName = name;
@@ -104,32 +112,44 @@ class WeatherModel {
       //thunderstorms
       if (id <= 202 || id >= 230) {
         //thunderstorms with rain
-        return "⛈";
+        return _getEmoji("Thunder Cloud and Rain");
       } else {
-        return "🌩️";
+        return _getEmoji("Cloud with Lightning");
       }
     } else if (id < 600) {
       // rain / drizzle
-      return "🌧️";
+      //return "🌧️";
+      return _getEmoji("Cloud with Rain");
     } else if (id < 700) {
       //snow
-      return "❄";
+      //return "❄";
+      return _getEmoji("Snowflake");
     } else if (id < 800) {
       //atmosphere
-      return "🌫️";
+      //return "🌫️";
+      return _getEmoji("Fog");
     } else if (id == 800) {
       //clear
-      return isNight ? "🌘" : "☀";
+      //return isNight ? "🌘" : "☀";
+      return isNight ? _getEmoji("Waning Crescent Moon") :  _getEmoji("Sun");
     } else if (id == 801) {
       // partly cloudy
-      return isNight ? "🌘" : "⛅";
+      //return isNight ? "🌘" : "⛅";
+      return isNight ? _getEmoji("Waning Crescent Moon") :  _getEmoji("Sun Behind Cloud");
     } else if (id == 802) {
       //a bit cloudier than partly cloudy
-      return isNight ? "🌘" : "🌥️";
+
+      //return isNight ? "🌘" : "🌥️";
+      return isNight ? _getEmoji("Waning Crescent Moon") :  _getEmoji("Sun Behind Large Cloud");
     } else {
       //cloudy
       return "☁";
     }
+  }
+
+  static String _getEmoji(String name) {
+    //print(Emoji.byName(name).char);
+    return Emoji.byName(name).char;
   }
 
   static String getWindCompassDirection(int angle) {
