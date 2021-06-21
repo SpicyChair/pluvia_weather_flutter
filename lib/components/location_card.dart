@@ -31,7 +31,7 @@ class LocationCard extends StatelessWidget {
       },
       child: GestureDetector(
 
-        //TODO: CHANGE DURATION OF ONPANDOWN
+        //TODO: CHANGE DURATION OF onPanDown
         onPanCancel: () => _timer?.cancel(),
         onPanDown: (_) => {_timer = Timer(Duration(milliseconds: 850), onLongPress)},
 

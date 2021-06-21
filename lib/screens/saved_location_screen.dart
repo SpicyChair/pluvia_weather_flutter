@@ -178,7 +178,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
               padding: const EdgeInsets.all(10.0),
               child: Center(
                 child: Text(
-                  "Pressflut and Hold on Location to Delete",
+                  "Press and Hold on Location to Delete",
                   style: TextStyle(color: ThemeColors.secondaryTextColor()),
                 ),
               ),

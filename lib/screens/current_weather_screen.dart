@@ -4,6 +4,7 @@ import 'package:flutter_weather/animation/weather_type.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
+import 'package:flutter_weather/screens/radar_screen.dart';
 import 'package:flutter_weather/screens/saved_location_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/constants/text_style.dart';
@@ -36,7 +37,9 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   DateTime weatherTime; //the time from the forecast
   DateTime sunriseTime; //sunrise
   DateTime sunsetTime; //sunset
+
   int timeZoneOffset;
+  String timeZoneOffsetText; //the displayed version of timezoneoffset
 
   String conditionDescription;
 
@@ -52,6 +55,8 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
 
   List<dynamic> hourlyData;
   List<dynamic> dailyData;
+
+  String refreshTime; //the time weather last updated
 
   bool isLoading = true; //if data is being loaded
 
@@ -69,6 +74,9 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     dailyData = weatherData["daily"];
 
     timeZoneOffset = WeatherModel.getSecondsTimezoneOffset();
+    timeZoneOffsetText = timeZoneOffset.isNegative
+        ? "${(timeZoneOffset / 3600).round()}"
+        : "+${(timeZoneOffset / 3600).round()}";
 
     lat = weatherData["lat"].toDouble();
     lon = weatherData["lon"].toDouble();
@@ -92,21 +100,16 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     humidity = weatherData["current"]["humidity"]?.round();
     pressure = weatherData["current"]["pressure"]?.round();
 
-
     windDirection = weatherData["current"]["wind_deg"]?.round();
 
-    conditionDescription =
-    weatherData["current"]["weather"][0]["description"];
-
-
+    conditionDescription = weatherData["current"]["weather"][0]["description"];
 
     bool imperial = await SharedPrefs.getImperial();
     WindUnit unit = await SharedPrefs.getWindUnit();
 
-    windSpeed =  WeatherModel.convertWindSpeed(weatherData["current"]["wind_speed"].round(), unit, imperial);
-    unitString =  WeatherModel.getWindUnitString(unit);
-
-
+    windSpeed = WeatherModel.convertWindSpeed(
+        weatherData["current"]["wind_speed"].round(), unit, imperial);
+    unitString = WeatherModel.getWindUnitString(unit);
 
     WeatherType weatherType = WeatherModel.getWeatherType(
         sunriseTime, sunsetTime, tomorrowSunrise, weatherTime, conditionCode);
@@ -119,7 +122,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       weatherAnimation.state.weatherWorld.weatherType = weatherType;
     }
 
-
+    refreshTime = DateFormat.Hm().format(DateTime.now());
 
     setState(() {
       isLoading = false;
@@ -140,8 +143,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     }
 
     updateUI();
-    DateTime now = DateTime.now();
-    String refreshTime = DateFormat.Hm().format(now);
+
     Scaffold.of(context)
         .showSnackBar(SnackBar(content: Text("Refreshed at $refreshTime")));
   }
@@ -192,54 +194,64 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       ),
       backgroundColor: ThemeColors.backgroundColor(),
       extendBodyBehindAppBar: true,
-      body: isLoading ?
-      //if is loading
-      Center(
-          child: Column(
-            children: [
-              SpinKitFadingCircle(color: ThemeColors.secondaryTextColor(), size: 50,),
-              SizedBox(height: 20,),
-              Text("Loading...", style: TextStyle(color: ThemeColors.secondaryTextColor()),),
-            ],
-            mainAxisAlignment: MainAxisAlignment.center,
-          )
-      ) :
-
-      //if loaded
-      Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          weatherAnimation,
-          temperatureWidget(),
-          //infoWidget(),
-          Positioned(
-            bottom: 0,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 85,
-              child: MediaQuery.removePadding(
-                context: context,
-                removeTop: true,
-                child: ListView(
-                  physics: BouncingScrollPhysics(),
-                  children: [
-                    //add a spacer
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.55,
-                    ),
-                    Column(
-                      children: [
-                        createHourlyForecastCard(),
-                        createInfoCards(),
-                      ],
-                    ),
-                  ],
+      body: isLoading
+          ?
+          //if is loading
+          Center(
+              child: Column(
+              children: [
+                SpinKitFadingCircle(
+                  color: ThemeColors.secondaryTextColor(),
+                  size: 50,
                 ),
-              ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Loading...",
+                  style: TextStyle(color: ThemeColors.secondaryTextColor()),
+                ),
+              ],
+              mainAxisAlignment: MainAxisAlignment.center,
+            ))
+          :
+
+          //if loaded
+          Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                weatherAnimation,
+                temperatureWidget(),
+                //infoWidget(),
+                Positioned(
+                  bottom: 0,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height - 85,
+                    child: MediaQuery.removePadding(
+                      context: context,
+                      removeTop: true,
+                      child: ListView(
+                        physics: BouncingScrollPhysics(),
+                        children: [
+                          //add a spacer
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.55,
+                          ),
+                          Column(
+                            children: [
+                              createHourlyForecastCard(),
+                              createInfoCards(),
+                              testCards(), //TODO: modify testCards()
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
     );
   }
 
@@ -268,7 +280,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             Container(
               padding: EdgeInsets.symmetric(vertical: 3, horizontal: 6),
               child: Text(
-                "Local Time ${DateFormat.Hm().format(weatherTime)} (UTC+${(timeZoneOffset / 3600).round()})",
+                "Local Time ${DateFormat.Hm().format(weatherTime)} (UTC$timeZoneOffsetText)",
                 style: TextStyle(
                     color: Colors.white.withOpacity(0.65), fontSize: 16),
               ),
@@ -297,7 +309,6 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
         height: 200,
         width: double.infinity,
         margin: kPanelCardMargin,
-
         child: ListView.builder(
           physics: BouncingScrollPhysics(),
           itemBuilder: (context, index) {
@@ -351,10 +362,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     );
   }
 
-
   Widget createInfoCards() {
-
-
     return PanelCard(
       cardChild: Container(
         height: 225,
@@ -372,7 +380,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             InfoCard(
               title: "Wind",
               value:
-              "${windSpeed.round().toString()} $unitString ${WeatherModel.getWindCompassDirection(windDirection)}",
+                  "${windSpeed.round().toString()} $unitString ${WeatherModel.getWindCompassDirection(windDirection)}",
             ),
             InfoCard(
               title: "Sunrise",
@@ -390,6 +398,104 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
               title: "Pressure",
               value: "${pressure.toString()} hPa",
             ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget testCards() {
+    //TODO: Add weather radar map?
+    return PanelCard(
+      cardChild: Container(
+        height: 140,
+        width: double.infinity,
+        margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 70,
+              child: Card(
+                child: Center(
+                  child: ListTile(
+                    title: Text(
+                      "Weather Radar",
+                      style: TextStyle(
+                        color: ThemeColors.primaryTextColor(),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    trailing: TextButton(
+                      style: TextButton.styleFrom(
+                        minimumSize: Size(50, 70),
+                      ),
+                      onPressed: () {
+                        showDialog(
+
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
+                              backgroundColor: ThemeColors.cardColor(),
+                              insetPadding: EdgeInsets.all(20),
+                              title: Center(
+                                child: Text(
+                                  "About Weather Radar",
+                                  style: TextStyle(
+                                    color: ThemeColors.primaryTextColor(),
+                                  ),
+                                ),
+                              ),
+                              content: Container(
+                                width: 300,
+                                height: 160,
+                                child: Text(
+                                    "Pluvia Weather's 'Weather Radar' uses an OpenWeatherMap webpage.\n\nIt supports viewing Precipitation, Pressure, Temperature, Wind Speed and Cloud forecasts globally.\n\nThis may lead to higher data usage.",
+                                style: TextStyle(
+                                  color: ThemeColors.primaryTextColor()
+                                ),),
+                              ),
+                              actions: [
+                                FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("CLOSE", style: TextStyle(color: ThemeColors.secondaryTextColor()),),
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: Icon(
+                        Icons.info_outline_rounded,
+                        color: ThemeColors.secondaryTextColor(),
+                      ),
+                    ),
+                    onTap: () {
+                      print("Pressed");
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        return RadarScreen(lat, lon);
+                      },),);
+                    },
+                  ),
+                ),
+                shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
+                color: ThemeColors.cardColor(),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text("Last updated at $refreshTime",
+                style: TextStyle(
+                  color: ThemeColors.primaryTextColor(),
+                ),),
+            SizedBox(height: 5,),
+            Text("($lat, $lon)",
+              style: TextStyle(
+                color: ThemeColors.primaryTextColor(),
+              ),),
           ],
         ),
       ),

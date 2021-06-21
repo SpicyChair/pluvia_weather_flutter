@@ -193,11 +193,11 @@ class _MoreScreenState extends State<MoreScreen> {
                   child: Center(
                     child: ListTile(
                       title: Text(
-                        "Wind Speed",
+                        "Wind Speed Unit",
                         style: TextStyle(color: ThemeColors.primaryTextColor()),
                       ),
                       leading: Icon(
-                        Icons.toys_outlined,
+                        Icons.waves_sharp,
                         color: ThemeColors.secondaryTextColor(),
                       ),
                       trailing: DropdownButton<String>(

@@ -2,7 +2,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter_weather/animation/weather_type.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
-import 'package:flutter_weather/services/api_keys.dart';
+import 'package:flutter_weather/api_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'networking.dart';
 import 'location_service.dart';

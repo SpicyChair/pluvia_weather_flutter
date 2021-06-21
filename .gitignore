@@ -13,7 +13,7 @@
 .pub/
 build/
 lib/generated_plugin_registrant.dart
-lib/services/api_keys.dart
+lib/api_keys.dart
 
 
 # Android related

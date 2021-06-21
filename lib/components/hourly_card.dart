@@ -42,76 +42,80 @@ class HourlyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: kBorderRadius,
-        side: BorderSide(
-          color: isCurrent
-              ? Colors.blueAccent.withOpacity(0.7)
-              : Colors.transparent,
-          width: 3.5,
+    return Tooltip(
+
+      message: 'View weather for the selected hour',
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: kBorderRadius,
+          side: BorderSide(
+            color: isCurrent
+                ? Colors.blueAccent.withOpacity(0.7)
+                : Colors.transparent,
+            width: 3.5,
+          ),
         ),
-      ),
-      color: ThemeColors.cardColor(),
-      child: InkWell(
-        borderRadius: kBorderRadius,
-        onTap: () {
-          showInfoDialog();
-        },
-        child: Container(
-          height: 100,
-          width: 70,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                displayTime,
-                style: kHourlyCardTime.copyWith(
-                    color: ThemeColors.secondaryTextColor()),
-              ),
-              Container(
-                height: 50,
-                width: 50,
-                padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: ThemeColors.backgroundColor(),
+        color: ThemeColors.cardColor(),
+        child: InkWell(
+          borderRadius: kBorderRadius,
+          onTap: () {
+            showInfoDialog();
+          },
+          child: Container(
+            height: 100,
+            width: 70,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  displayTime,
+                  style: kHourlyCardTime.copyWith(
+                      color: ThemeColors.secondaryTextColor()),
                 ),
-                child: Center(
-                  child: Text(
-                    icon,
-                    style: kHourlyCardIcon,
+                Container(
+                  height: 50,
+                  width: 50,
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: ThemeColors.backgroundColor(),
                   ),
-                ),
-              ),
-              Text(
-                "${temp.toString()}°",
-                style: kHourlyCardTemperature.copyWith(
-                    color: ThemeColors.primaryTextColor()),
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.opacity_outlined,
-                    size: 14,
-                    color: ThemeColors.secondaryTextColor(),
-                  ),
-                  SizedBox(
-                    width: 2,
-                  ),
-                  Text(
-                    "$pop%",
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: ThemeColors.secondaryTextColor(),
+                  child: Center(
+                    child: Text(
+                      icon,
+                      style: kHourlyCardIcon,
                     ),
                   ),
-                ],
-              ),
-            ],
+                ),
+                Text(
+                  "${temp.toString()}°",
+                  style: kHourlyCardTemperature.copyWith(
+                      color: ThemeColors.primaryTextColor()),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.opacity_outlined,
+                      size: 14,
+                      color: ThemeColors.secondaryTextColor(),
+                    ),
+                    SizedBox(
+                      width: 2,
+                    ),
+                    Text(
+                      "$pop%",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: ThemeColors.secondaryTextColor(),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -122,8 +126,9 @@ class HourlyCard extends StatelessWidget {
     WindUnit unit = await SharedPrefs.getWindUnit();
 
     double windSpeed =  await WeatherModel.convertWindSpeed(weatherData["wind_speed"]?.round(), unit, imperial);
+    int windDirection = weatherData["wind_deg"]?.round();
     String unitString =  await WeatherModel.getWindUnitString(unit);
-    return "${windSpeed.round()} $unitString";
+    return "${windSpeed.round()} $unitString ${WeatherModel.getWindCompassDirection(windDirection)}";
   }
 
   void showInfoDialog() {
@@ -139,6 +144,7 @@ class HourlyCard extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
           backgroundColor: ThemeColors.cardColor(),
           insetPadding: EdgeInsets.all(20),
           title: Center(
@@ -151,7 +157,7 @@ class HourlyCard extends StatelessWidget {
           ),
           content: Container(
             width: 300,
-            height: 350,
+            height: 330,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -235,7 +241,9 @@ class HourlyCard extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text("CLOSE"),
+              child: Text("CLOSE", style: TextStyle(
+                color: ThemeColors.secondaryTextColor()
+              ),),
             )
           ],
         );
