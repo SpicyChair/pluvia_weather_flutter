@@ -2,8 +2,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefs {
 
-  //values for imperial
-
   static const String imperialKey = "useImperial";
 
   static Future<bool> getImperial() async {
@@ -18,7 +16,6 @@ class SharedPrefs {
     await prefs.setBool(imperialKey, newValue);
   }
 
-  //values  for dark mode
 
   static const String darkKey = "useDarkMode";
 
@@ -35,7 +32,6 @@ class SharedPrefs {
   }
 
 
-  //values for wind unit
 
   static const String windKey = "windUnit";
 
@@ -50,25 +46,6 @@ class SharedPrefs {
     await prefs.setInt(windKey, unit.index);
     print(unit.toString());
   }
-
-
-  //values for language
-
-  static const String langKey = "languageCode";
-
-  static Future<String> getLanguageCode() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String code = prefs.getString(langKey) ?? "en";
-    return code;
-  }
-
-  static Future<void> setLanguageCode(String code) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString(langKey, code);
-    print(code.toString());
-  }
-
-
 }
 
 enum WindUnit {

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weather/components/location_card.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/constants/text_style.dart';
-import 'package:flutter_weather/preferences/lang_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/loading_screen.dart';
 import 'package:flutter_weather/screens/search_screen.dart';
@@ -64,7 +63,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
         shadowColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          LangPerfs.getTranslation("locations"),
+          "Saved Locations",
           style: TextStyle(
             fontWeight: FontWeight.w200,
             fontSize: 30,

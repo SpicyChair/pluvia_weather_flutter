@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_weather/constants/constants.dart';
-import 'package:flutter_weather/preferences/lang_prefs.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
@@ -61,7 +60,7 @@ class _MoreScreenState extends State<MoreScreen> {
       backgroundColor: ThemeColors.backgroundColor(),
       appBar: AppBar(
         title: Text(
-          LangPerfs.getTranslation("more"),
+          "More",
           style: TextStyle(
             fontWeight: FontWeight.w200,
             fontSize: 30,
@@ -132,7 +131,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   child: Center(
                     child: SwitchListTile(
                       title: Text(
-                        LangPerfs.getTranslation("darkMode"),
+                        "Dark Mode",
                         style: TextStyle(color: ThemeColors.primaryTextColor()),
                       ),
                       value: useDarkMode ?? false,
@@ -165,7 +164,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   child: Center(
                     child: SwitchListTile(
                       title: Text(
-                        LangPerfs.getTranslation("useFahrenheit"),
+                        "Use Fahrenheit",
                         style: TextStyle(
                           color: ThemeColors.primaryTextColor(),
                         ),
@@ -176,7 +175,7 @@ class _MoreScreenState extends State<MoreScreen> {
                         useImperial = value;
                         setState(() {});
                         Scaffold.of(context).showSnackBar(SnackBar(
-                            content: Text(LangPerfs.getTranslation("refreshToSee"))));
+                            content: Text("Refresh forecast to see changes")));
                       },
                       secondary: Icon(
                         Icons.thermostat_outlined,
@@ -194,7 +193,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   child: Center(
                     child: ListTile(
                       title: Text(
-                        LangPerfs.getTranslation("windSpeedUnit"),
+                        "Wind Speed Unit",
                         style: TextStyle(color: ThemeColors.primaryTextColor()),
                       ),
                       leading: Icon(
@@ -227,6 +226,9 @@ class _MoreScreenState extends State<MoreScreen> {
                               break;
                           }
                           setState(() {});
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                              content:
+                                  Text("Refresh forecast to see changes")));
                         },
                         items: <String>["miles/h", "meters/s", "kilometers/h"]
                             .map<DropdownMenuItem<String>>((String value) {
@@ -242,61 +244,13 @@ class _MoreScreenState extends State<MoreScreen> {
                   shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
                 ),
               ),
-              //TODO: ADD CHANGING LANGUAGES
               SizedBox(
                 height: 80,
                 child: Card(
                   child: Center(
                     child: ListTile(
                       title: Text(
-                        "Language (BETA)",
-                        style: TextStyle(color: ThemeColors.primaryTextColor()),
-                      ),
-                      leading: Icon(
-                        Icons.translate,
-                        color: ThemeColors.secondaryTextColor(),
-                      ),
-                      trailing: DropdownButton<String>(
-                        value: dropdownValue,
-                        icon: Icon(Icons.arrow_drop_down),
-                        iconSize: 20,
-                        style: TextStyle(
-                            color: ThemeColors.primaryTextColor(),
-                            fontSize: 16),
-                        underline: Container(
-                          height: 2,
-                          color: Colors.blueAccent,
-                        ),
-                        dropdownColor: ThemeColors.backgroundColor(),
-                        onChanged: (String newValue) async {
-                          dropdownValue = newValue;
-
-                          setState(() {});
-                        },
-                        items: <String>["miles/h", "meters/s", "kilometers/h"]
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-                  ),
-                  color: ThemeColors.cardColor(),
-                  shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
-                ),
-              ),
-
-
-
-              SizedBox(
-                height: 80,
-                child: Card(
-                  child: Center(
-                    child: ListTile(
-                      title: Text(
-                        LangPerfs.getTranslation("aboutPluvia"),
+                        "About Pluvia Weather",
                         style: TextStyle(
                           color: ThemeColors.primaryTextColor(),
                         ),
@@ -345,7 +299,7 @@ class _MoreScreenState extends State<MoreScreen> {
                     ),
                     Center(
                       child: Text(
-                        LangPerfs.getTranslation("viewOnGithub"),
+                        "View Pluvia Weather on Github",
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,

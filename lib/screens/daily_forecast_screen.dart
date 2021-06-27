@@ -5,7 +5,6 @@ import 'package:flutter_weather/components/hourly_card.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter_weather/constants/text_style.dart';
-import 'package:flutter_weather/preferences/lang_prefs.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/services/time.dart';
@@ -58,8 +57,8 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
         body: Center(
           child: Text(
             dailyData == null
-                ? LangPerfs.getTranslation("chooseLocationToView")
-                : LangPerfs.getTranslation("loading"),
+                ? "Choose a location to view weather."
+                : "Loading...",
             style: TextStyle(
               color: ThemeColors.primaryTextColor(),
             ),
@@ -105,7 +104,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
             children: [
               SpinKitFadingCircle(color: ThemeColors.secondaryTextColor(), size: 50,),
               SizedBox(height: 20,),
-              Text(LangPerfs.getTranslation("loading"), style: TextStyle(color: ThemeColors.secondaryTextColor()),),
+              Text("Loading...", style: TextStyle(color: ThemeColors.secondaryTextColor()),),
             ],
             mainAxisAlignment: MainAxisAlignment.center,
           )
@@ -148,6 +147,6 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
     DateTime now = DateTime.now();
     String refreshTime = DateFormat.Hm().format(now);
     Scaffold.of(context)
-        .showSnackBar(SnackBar(content: Text("${LangPerfs.getTranslation("lastUpdatedAt")} $refreshTime")));
+        .showSnackBar(SnackBar(content: Text("Refreshed at $refreshTime")));
   }
 }

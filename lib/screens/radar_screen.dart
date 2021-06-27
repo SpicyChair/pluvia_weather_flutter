@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_weather/constants/constants.dart';
-import 'package:flutter_weather/preferences/lang_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
@@ -32,7 +31,7 @@ class RadarScreen extends StatelessWidget {
           "https://openweathermap.org/weathermap?basemap=map&cities=false&layer=radar&lat=$latitude&lon=$longitude&zoom=6",
       appBar: AppBar(
         title: Text(
-          LangPerfs.getTranslation("weatherRadar"),
+          "Weather Radar",
           style: TextStyle(color: ThemeColors.primaryTextColor()),
         ),
         centerTitle: true,
