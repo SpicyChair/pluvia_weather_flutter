@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_weather/animation/weather_type.dart';
 import 'package:flutter_weather/constants/constants.dart';
+import 'package:flutter_weather/preferences/lang_prefs.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/radar_screen.dart';
@@ -134,7 +135,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     Scaffold.of(context).showSnackBar(SnackBar(content: Text("Refreshing...")));
 
     //if the location displayed is current, refresh location
-    if (WeatherModel.locationName == "Current Location") {
+    if (WeatherModel.locationName == LangPerfs.getTranslation("currentLocationTitle")) {
       await WeatherModel.getUserLocationWeather();
     } else {
       //else refresh normally
@@ -155,7 +156,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
         backgroundColor: ThemeColors.backgroundColor(),
         body: Center(
           child: Text(
-            "Choose a location to view weather.",
+            LangPerfs.getTranslation("chooseLocationToView"),
             style: TextStyle(
               color: ThemeColors.primaryTextColor(),
             ),
@@ -208,7 +209,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                   height: 20,
                 ),
                 Text(
-                  "Loading...",
+                  LangPerfs.getTranslation("loading"),
                   style: TextStyle(color: ThemeColors.secondaryTextColor()),
                 ),
               ],
@@ -280,7 +281,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             Container(
               padding: EdgeInsets.symmetric(vertical: 3, horizontal: 6),
               child: Text(
-                "Local Time ${DateFormat.Hm().format(weatherTime)} (UTC$timeZoneOffsetText)",
+                "${LangPerfs.getTranslation("localTime")} ${DateFormat.Hm().format(weatherTime)} (UTC$timeZoneOffsetText)",
                 style: TextStyle(
                     color: Colors.white.withOpacity(0.65), fontSize: 16),
               ),
@@ -374,28 +375,28 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
           physics: const NeverScrollableScrollPhysics(),
           children: [
             InfoCard(
-              title: "Feels like",
+              title: LangPerfs.getTranslation("feelsLike"),
               value: "${feelTemp.toString()}°",
             ),
             InfoCard(
-              title: "Wind",
+              title: LangPerfs.getTranslation("wind"),
               value:
                   "${windSpeed.round().toString()} $unitString ${WeatherModel.getWindCompassDirection(windDirection)}",
             ),
             InfoCard(
-              title: "Sunrise",
+              title: LangPerfs.getTranslation("sunrise"),
               value: "${DateFormat.Hm().format(sunriseTime)}",
             ),
             InfoCard(
-              title: "Sunset",
+              title: LangPerfs.getTranslation("sunset"),
               value: "${DateFormat.Hm().format(sunsetTime)}",
             ),
             InfoCard(
-              title: "Humidity",
+              title: LangPerfs.getTranslation("humidity"),
               value: "${humidity.toString()}%",
             ),
             InfoCard(
-              title: "Pressure",
+              title: LangPerfs.getTranslation("pressure"),
               value: "${pressure.toString()} hPa",
             ),
           ],
@@ -419,7 +420,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                 child: Center(
                   child: ListTile(
                     title: Text(
-                      "Weather Radar",
+                      LangPerfs.getTranslation("weatherRadar"),
                       style: TextStyle(
                         color: ThemeColors.primaryTextColor(),
                         fontWeight: FontWeight.bold,
@@ -440,7 +441,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                               insetPadding: EdgeInsets.all(20),
                               title: Center(
                                 child: Text(
-                                  "About Weather Radar",
+                                  LangPerfs.getTranslation("weatherRadarAboutTitle"),
                                   style: TextStyle(
                                     color: ThemeColors.primaryTextColor(),
                                   ),
@@ -450,7 +451,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                                 width: 300,
                                 height: 160,
                                 child: Text(
-                                    "Pluvia Weather's 'Weather Radar' uses an OpenWeatherMap webpage.\n\nIt supports viewing Precipitation, Pressure, Temperature, Wind Speed and Cloud forecasts globally.\n\nThis may lead to higher data usage.",
+                                    LangPerfs.getTranslation("weatherRadarAboutBody"),
                                 style: TextStyle(
                                   color: ThemeColors.primaryTextColor()
                                 ),),
@@ -460,7 +461,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: Text("CLOSE", style: TextStyle(color: ThemeColors.secondaryTextColor()),),
+                                  child: Text(LangPerfs.getTranslation("close"), style: TextStyle(color: ThemeColors.secondaryTextColor()),),
                                 )
                               ],
                             );
@@ -473,7 +474,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                       ),
                     ),
                     onTap: () {
-                      print("Pressed");
+                      //print("Pressed");
                       Navigator.push(context, MaterialPageRoute(builder: (context) {
                         return RadarScreen(lat, lon);
                       },),);
@@ -487,7 +488,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             SizedBox(
               height: 20,
             ),
-            Text("Last updated at $refreshTime",
+            Text("${LangPerfs.getTranslation("lastUpdatedAt")} $refreshTime",
                 style: TextStyle(
                   color: ThemeColors.primaryTextColor(),
                 ),),

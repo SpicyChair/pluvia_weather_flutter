@@ -1,6 +1,7 @@
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_weather/preferences/lang_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/current_weather_screen.dart';
 import 'package:flutter_weather/screens/loading_screen.dart';
@@ -86,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 tabs: [
                   GButton(
                     icon: LineIcons.sun_o,
-                    text: 'Current',
+                    text: LangPerfs.getTranslation("current"),
                     iconActiveColor: Colors.amber[900],
                     iconColor: ThemeColors.primaryTextColor(),
                     textColor: Colors.amber[900],
@@ -94,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GButton(
                     icon: LineIcons.calendar,
-                    text: 'Forecast',
+                    text: LangPerfs.getTranslation("forecast"),
                     iconActiveColor: Colors.pink,
                     iconColor: ThemeColors.primaryTextColor(),
                     textColor: Colors.pink,
@@ -102,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GButton(
                     icon: Icons.location_on_outlined,
-                    text: 'Locations',
+                    text: LangPerfs.getTranslation("locations"),
                     iconActiveColor: Colors.blueAccent,
                     iconColor: ThemeColors.primaryTextColor(),
                     textColor: Colors.blueAccent,
@@ -110,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GButton(
                     icon: Icons.more_vert_outlined,
-                    text: 'More',
+                    text: LangPerfs.getTranslation("more"),
                     iconActiveColor: Colors.teal,
                     iconColor: ThemeColors.primaryTextColor(),
                     textColor: Colors.teal,
@@ -146,26 +147,26 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Location Disabled"),
+          title: Text("Location Error"),
           content: Text(
-              "For Pluvia Weather to show weather in your current location, enable location."),
+            LangPerfs.getTranslation("locationDisabledPrompt"),),
           actions: [
             FlatButton(
-              child: Text("Retry"),
+              child: Text(LangPerfs.getTranslation("retry")),
               onPressed: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => LoadingScreen()));
               },
             ),
             FlatButton(
-              child: Text("Open Location Settings"),
+              child: Text(LangPerfs.getTranslation("openLocationSettings")),
               onPressed: () {
                 //open the settings screen for location
                 AppSettings.openLocationSettings();
               },
             ),
             FlatButton(
-              child: Text("Cancel"),
+              child: Text(LangPerfs.getTranslation("close")),
               onPressed: () {
                 //closes the dialog
                 Navigator.pop(context);
@@ -182,12 +183,12 @@ class _HomeScreenState extends State<HomeScreen> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Server Error"),
+            title: Text(LangPerfs.getTranslation("serverErrorTitle")),
             content: Text(
-                "Pluvia Weather could not get data. The OpenWeatherMap servers may be down."),
+                LangPerfs.getTranslation("serverErrorBody")),
             actions: [
               FlatButton(
-                child: Text("Retry"),
+                child: Text(LangPerfs.getTranslation("retry")),
                 onPressed: () {
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => LoadingScreen()));

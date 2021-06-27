@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/constants/text_style.dart';
+import 'package:flutter_weather/preferences/lang_prefs.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/services/time.dart';
@@ -209,11 +210,11 @@ class HourlyCard extends StatelessWidget {
                         value: "${temperature.toString()}°",
                       ),
                       InfoCard(
-                        title: "Feels like",
+                        title: LangPerfs.getTranslation("feelsLike"),
                         value: "${feelTemp.toString()}°",
                       ),
                       InfoCard(
-                        title: "Wind",
+                        title: LangPerfs.getTranslation("wind"),
                         value:
                         windValue,
                       ),
@@ -222,11 +223,11 @@ class HourlyCard extends StatelessWidget {
                         value: "${pop.toString()}%",
                       ),
                       InfoCard(
-                        title: "Humidity",
+                        title: LangPerfs.getTranslation("humidity"),
                         value: "${humidity.toString()}%",
                       ),
                       InfoCard(
-                        title: "Pressure",
+                        title: LangPerfs.getTranslation("pressure"),
                         value: "${pressure.toString()} hPa",
                       ),
                     ],

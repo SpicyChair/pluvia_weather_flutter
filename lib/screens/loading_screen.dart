@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_weather/preferences/lang_prefs.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
@@ -18,13 +19,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   Future getWeatherData() async {
     isGettingData = true;
-    message = "Getting location...";
+    message = LangPerfs.getTranslation("loading");
 
 
     if (await WeatherModel.getUserLocationWeather() == 0) {
       setState(() {
         isGettingData = false;
-        message = "Please enable WIFI or Data and retry";
+        message = LangPerfs.getTranslation("networkErrorText");
       });
       return;
     }
@@ -42,9 +43,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Future<void> loadSharedPrefs() async {
     //loads shared prefs into local variables
     //so they can be accessed without future
+    await SharedPrefs.getLanguageCode();
     await SharedPrefs.getWindUnit();
     await SharedPrefs.getImperial();
     await SharedPrefs.getDark();
+
   }
 
   @override
@@ -104,7 +107,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: RaisedButton(
-                      child: Text("RETRY", style: TextStyle(color: ThemeColors.primaryTextColor()),),
+                      child: Text(LangPerfs.getTranslation("retry"), style: TextStyle(color: ThemeColors.primaryTextColor()),),
                       color: Colors.blueAccent,
                       onPressed: () {
                         Navigator.pushReplacement(
