@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weather/components/info_card.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/constants/text_style.dart';
+import 'package:flutter_weather/preferences/lang_prefs.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/services/time.dart';
@@ -147,28 +148,28 @@ class DailyCard extends StatelessWidget {
           crossAxisCount: 3,
           children: [
             InfoCard(
-              title: "Sunrise",
+              title: LangPerfs.getTranslation("sunrise"),
               value: "${DateFormat.Hm().format(sunriseTime)}",
             ),
             InfoCard(
-              title: "Sunset",
+              title: LangPerfs.getTranslation("sunset"),
               value: "${DateFormat.Hm().format(sunsetTime)}",
             ),
             InfoCard(
-              title: "Wind",
+              title: LangPerfs.getTranslation("wind"),
               value:
               "${WeatherModel.convertWindSpeed(windSpeed, unit, imperial).round()} ${WeatherModel.getWindUnitString(unit)} ${WeatherModel.getWindCompassDirection(windDirection)}",
             ),
             InfoCard(
-              title: "UV Index",
+              title: "UV",
               value: uvIndex.toString(),
             ),
             InfoCard(
-              title: "Humidity",
+              title: LangPerfs.getTranslation("humidity"),
               value: "${humidity.toString()}%",
             ),
             InfoCard(
-              title: "Pressure",
+              title: LangPerfs.getTranslation("pressure"),
               value: "${pressure.toString()} hPa",
             ),
           ],

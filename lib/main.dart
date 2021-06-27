@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather/preferences/lang_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
 import 'screens/loading_screen.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  getThemeColors();
+  getThemeColorsAndLang();
 }
 
-Future<void> getThemeColors() async {
+Future<void> getThemeColorsAndLang() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await LangPerfs.initialise();
   ThemeColors.initialise().then(
     (value) => runApp(
       WeatherApp(),
     ),
   );
+
 }
 
 class WeatherApp extends StatelessWidget {
@@ -37,10 +40,7 @@ class WeatherApp extends StatelessWidget {
 
       debugShowCheckedModeBanner: false,
 
-      /*
-          Test Code
-          //TODO: remove HomeScreen and replace with LoadingScreen
-           */
+
 
 
       home: LoadingScreen(),
