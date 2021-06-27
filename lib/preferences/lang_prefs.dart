@@ -54,7 +54,7 @@ class LangPerfs {
 
 
   static Future<void> initialise() async {
-    _currentLangCode = "fr";//await SharedPrefs.getLanguageCode();
+    _currentLangCode = await SharedPrefs.getLanguageCode();
   }
 
   static void changeLangCode(String code) {
