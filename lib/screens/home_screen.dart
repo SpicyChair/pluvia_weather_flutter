@@ -1,7 +1,7 @@
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_weather/preferences/lang_prefs.dart';
+import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/current_weather_screen.dart';
 import 'package:flutter_weather/screens/loading_screen.dart';
@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 tabs: [
                   GButton(
                     icon: LineIcons.sun_o,
-                    text: LangPerfs.getTranslation("current"),
+                    text: Language.getTranslation("current"),
                     iconActiveColor: Colors.amber[900],
                     iconColor: ThemeColors.primaryTextColor(),
                     textColor: Colors.amber[900],
@@ -95,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GButton(
                     icon: LineIcons.calendar,
-                    text: LangPerfs.getTranslation("forecast"),
+                    text: Language.getTranslation("forecast"),
                     iconActiveColor: Colors.pink,
                     iconColor: ThemeColors.primaryTextColor(),
                     textColor: Colors.pink,
@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GButton(
                     icon: Icons.location_on_outlined,
-                    text: LangPerfs.getTranslation("locations"),
+                    text: Language.getTranslation("locations"),
                     iconActiveColor: Colors.blueAccent,
                     iconColor: ThemeColors.primaryTextColor(),
                     textColor: Colors.blueAccent,
@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GButton(
                     icon: Icons.more_vert_outlined,
-                    text: LangPerfs.getTranslation("more"),
+                    text: Language.getTranslation("more"),
                     iconActiveColor: Colors.teal,
                     iconColor: ThemeColors.primaryTextColor(),
                     textColor: Colors.teal,
@@ -149,24 +149,24 @@ class _HomeScreenState extends State<HomeScreen> {
         return AlertDialog(
           title: Text("Location Error"),
           content: Text(
-            LangPerfs.getTranslation("locationDisabledPrompt"),),
+            Language.getTranslation("locationDisabledPrompt"),),
           actions: [
             FlatButton(
-              child: Text(LangPerfs.getTranslation("retry")),
+              child: Text(Language.getTranslation("retry")),
               onPressed: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => LoadingScreen()));
               },
             ),
             FlatButton(
-              child: Text(LangPerfs.getTranslation("openLocationSettings")),
+              child: Text(Language.getTranslation("openLocationSettings")),
               onPressed: () {
                 //open the settings screen for location
                 AppSettings.openLocationSettings();
               },
             ),
             FlatButton(
-              child: Text(LangPerfs.getTranslation("close")),
+              child: Text(Language.getTranslation("close")),
               onPressed: () {
                 //closes the dialog
                 Navigator.pop(context);
@@ -183,12 +183,12 @@ class _HomeScreenState extends State<HomeScreen> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text(LangPerfs.getTranslation("serverErrorTitle")),
+            title: Text(Language.getTranslation("serverErrorTitle")),
             content: Text(
-                LangPerfs.getTranslation("serverErrorBody")),
+                Language.getTranslation("serverErrorBody")),
             actions: [
               FlatButton(
-                child: Text(LangPerfs.getTranslation("retry")),
+                child: Text(Language.getTranslation("retry")),
                 onPressed: () {
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => LoadingScreen()));

@@ -1,7 +1,7 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter_weather/animation/weather_type.dart';
 import 'package:flutter_weather/constants/constants.dart';
-import 'package:flutter_weather/preferences/lang_prefs.dart';
+import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/api_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -44,14 +44,14 @@ class WeatherModel {
     //send a request to OpenWeatherMap one call api
     NetworkHelper networkHelper = NetworkHelper(
       url:
-          "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$kOpenWeatherApiKey&units=$unit&lang=${LangPerfs.getCurrentCode()}",
+          "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
     );
     print(
-        "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$kOpenWeatherApiKey&units=$unit&lang=${LangPerfs.getCurrentCode()}");
+        "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}");
 
     weatherData =
         await networkHelper.getData(); //getData gets and decodes the json data
-    locationName = LangPerfs.getTranslation("currentLocationTitle");
+    locationName = Language.getTranslation("currentLocationTitle");
     return 1;
   }
 
@@ -73,7 +73,7 @@ class WeatherModel {
 
     NetworkHelper networkHelper = NetworkHelper(
       url:
-          "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$kOpenWeatherApiKey&units=$unit&lang=${LangPerfs.getCurrentCode()}",
+          "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
     );
     var data =
         await networkHelper.getData(); //getData gets and decodes the json data
@@ -188,7 +188,8 @@ class WeatherModel {
         weatherType = WeatherType.sunrise;
       }
     }
-    return weatherType;
+    return WeatherType.sunrise; //weatherType;
+    //TODO: FIX
   }
 
   static int getSecondsTimezoneOffset() {

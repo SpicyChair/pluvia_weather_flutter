@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/api_keys.dart';
 import 'package:mapbox_search_flutter/mapbox_search_flutter.dart';
@@ -15,7 +16,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text("Location Search"),
+        title: Text(Language.getTranslation("addLocation")), //TODO: replace strings
         centerTitle: true,
       ),
       backgroundColor: ThemeColors.backgroundColor(),
@@ -34,12 +35,16 @@ class _SearchScreenState extends State<SearchScreen> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Tap the search bar above to find a location",
-                    style: TextStyle(
-                      color: ThemeColors.primaryTextColor(),
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      Language.getTranslation("tapTheSearchBar"), //TODO: replace strings
+                      style: TextStyle(
+                        color: ThemeColors.primaryTextColor(),
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold
+                      ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   SizedBox(
@@ -59,7 +64,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 popOnSelect: false,
                 apiKey: kMapBoxApiKey,
                 limit: 8,
-                searchHint: 'Search for a location',
+                searchHint: Language.getTranslation("searchForLocation"),
                 onSelected: (place) {
                   Navigator.pop(context, place);
                 },

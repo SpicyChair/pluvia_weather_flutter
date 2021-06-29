@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/constants/text_style.dart';
-import 'package:flutter_weather/preferences/lang_prefs.dart';
+import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/services/time.dart';
@@ -206,28 +206,28 @@ class HourlyCard extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
                       InfoCard(
-                        title: "Temperature",
+                        title: Language.getTranslation("temperature"),
                         value: "${temperature.toString()}°",
                       ),
                       InfoCard(
-                        title: LangPerfs.getTranslation("feelsLike"),
+                        title: Language.getTranslation("feelsLike"),
                         value: "${feelTemp.toString()}°",
                       ),
                       InfoCard(
-                        title: LangPerfs.getTranslation("wind"),
+                        title: Language.getTranslation("wind"),
                         value:
                         windValue,
                       ),
                       InfoCard(
-                        title: "Precipitation",
+                        title: Language.getTranslation("precipitation"),
                         value: "${pop.toString()}%",
                       ),
                       InfoCard(
-                        title: LangPerfs.getTranslation("humidity"),
+                        title: Language.getTranslation("humidity"),
                         value: "${humidity.toString()}%",
                       ),
                       InfoCard(
-                        title: LangPerfs.getTranslation("pressure"),
+                        title: Language.getTranslation("pressure"),
                         value: "${pressure.toString()} hPa",
                       ),
                     ],
@@ -242,7 +242,7 @@ class HourlyCard extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text("CLOSE", style: TextStyle(
+              child: Text(Language.getTranslation("close"), style: TextStyle(
                 color: ThemeColors.secondaryTextColor()
               ),),
             )

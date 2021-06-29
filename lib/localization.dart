@@ -37,7 +37,14 @@ final Map<String, Map<String, String>> localizedValues = {
         'Pluvia weer kon nie data kry nie. Die OpenWeatherMap-bedieners kan af wees. ',
     'networkErrorText':
         'Aktiveer asseblief WiFi of mobiele data en probeer weer ',
-    'gettingLocationMessage': 'Kry plek ... '
+    'gettingLocationMessage': 'Kry plek ... ',
+    'temperature': 'Temperatuur ',
+    'precipitation': 'Neerslag ',
+    'addLocation': 'Voeg plek by ',
+    'pressAndHold': 'Druk en hou op die ligging om te verwyder ',
+    'searchForLocation': "Soek vir 'n plek ",
+    'tapTheSearchBar': "Tik die soekbalk hierbo om 'n plek te vind ",
+    'tapToSeeWeatherCurrent': 'Tik om weer te sien vir jou huidige ligging '
   },
   'ar': {
     'current': 'تيار ',
@@ -75,7 +82,14 @@ final Map<String, Map<String, String>> localizedValues = {
         'لم يستطع طقس Pluvia الحصول على البيانات. قد تكون خوادم OpenWeathermap أسفل. ',
     'networkErrorText':
         'يرجى تمكين البيانات واي فاي أو المحمولة وإعادة المحاولة ',
-    'gettingLocationMessage': 'الحصول على الموقع ... '
+    'gettingLocationMessage': 'الحصول على الموقع ... ',
+    'temperature': 'درجة حرارة ',
+    'precipitation': 'تساقط ',
+    'addLocation': 'إضافة الموقع ',
+    'pressAndHold': 'اضغط مع الاستمرار على الموقع للحذف ',
+    'searchForLocation': 'البحث عن موقع ',
+    'tapTheSearchBar': 'اضغط على شريط البحث أعلاه للعثور على موقع ',
+    'tapToSeeWeatherCurrent': 'انقر لرؤية الطقس لموقعك الحالي '
   },
   'az': {
     'current': 'Cərəyan ',
@@ -113,7 +127,14 @@ final Map<String, Map<String, String>> localizedValues = {
         'Pluvia Hava Məlumat əldə edə bilmədi. OpenWeatherMap serverləri aşağı ola bilər. ',
     'networkErrorText':
         'Zəhmət olmasa WiFi və ya mobil məlumatları aktivləşdirin və yenidən cəhd edin ',
-    'gettingLocationMessage': 'Yer almaq ... '
+    'gettingLocationMessage': 'Yer almaq ... ',
+    'temperature': 'Temperatur ',
+    'precipitation': 'Çöküntü ',
+    'addLocation': 'Yer əlavə edin ',
+    'pressAndHold': 'Silmək üçün yerdən basıb saxlayın ',
+    'searchForLocation': 'Bir yer axtarın ',
+    'tapTheSearchBar': 'Bir yer tapmaq üçün yuxarıdakı axtarış çubuğunu vurun ',
+    'tapToSeeWeatherCurrent': 'Cari yeriniz üçün hava görmək üçün vurun '
   },
   'bg': {
     'current': 'Текущ ',
@@ -151,7 +172,16 @@ final Map<String, Map<String, String>> localizedValues = {
         'Плувия времето не можеше да получи данни. Сървърите на OpenWeathermap могат да бъдат намалени. ',
     'networkErrorText':
         'Моля, активирайте WiFi или мобилни данни и опитайте отново ',
-    'gettingLocationMessage': 'Получаване на местоположение ... '
+    'gettingLocationMessage': 'Получаване на местоположение ... ',
+    'temperature': 'Температура ',
+    'precipitation': 'Утаяване ',
+    'addLocation': 'Добави местоположение ',
+    'pressAndHold': 'Натиснете и задръжте на място, за да изтриете ',
+    'searchForLocation': 'Търсене на местоположение ',
+    'tapTheSearchBar':
+        'Докоснете по-горе лента за търсене, за да намерите място ',
+    'tapToSeeWeatherCurrent':
+        'Натиснете, за да видите времето за текущото си местоположение '
   },
   'ca': {
     'current': 'Habitual ',
@@ -188,7 +218,16 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorBody':
         'El temps de pluvia no va poder obtenir dades. Pot ser que els servidors de lamentador OpenWeath. ',
     'networkErrorText': 'Activeu dades WiFi o mòbil i torneu-ho a provar ',
-    'gettingLocationMessage': 'Obtenir ubicació ... '
+    'gettingLocationMessage': 'Obtenir ubicació ... ',
+    'temperature': 'Temperatura ',
+    'precipitation': 'Precipitació ',
+    'addLocation': 'Afegeix la ubicació ',
+    'pressAndHold': 'Premeu i manteniu premuda la ubicació per esborrar ',
+    'searchForLocation': 'Cerqueu una ubicació ',
+    'tapTheSearchBar':
+        'Toqueu la barra de cerca anterior per trobar una ubicació ',
+    'tapToSeeWeatherCurrent':
+        'Toqueu per veure el temps per a la vostra ubicació actual '
   },
   'cs': {
     'current': 'Proud ',
@@ -225,7 +264,14 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorBody':
         'Počasí Pluvia nemohlo získat data. Servery OpenWeatherap mohou být dole. ',
     'networkErrorText': 'Zapněte WiFi nebo mobilní data a opakujte ',
-    'gettingLocationMessage': 'Získání umístění ... '
+    'gettingLocationMessage': 'Získání umístění ... ',
+    'temperature': 'Teplota ',
+    'precipitation': 'Srážky ',
+    'addLocation': 'Přidat lokaci ',
+    'pressAndHold': 'Stisknutím a podržením umístění odstraníte ',
+    'searchForLocation': 'Hledat místo ',
+    'tapTheSearchBar': 'Klepnutím na tlačítko Hledat nahoře najdete umístění ',
+    'tapToSeeWeatherCurrent': 'Klepnutím zobrazíte počasí pro aktuální polohu '
   },
   'da': {
     'current': 'Nuværende ',
@@ -262,7 +308,15 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorBody':
         'Pluvia vejr kunne ikke få data. Openweathermap-servere kan være nede. ',
     'networkErrorText': 'Aktivér wifi eller mobile data og prøv igen ',
-    'gettingLocationMessage': 'Få beliggenhed ... '
+    'gettingLocationMessage': 'Få beliggenhed ... ',
+    'temperature': 'Temperatur ',
+    'precipitation': 'Nedbør ',
+    'addLocation': 'Tilføj placering ',
+    'pressAndHold': 'Tryk og hold på Placering for at slette ',
+    'searchForLocation': 'Søg efter en placering ',
+    'tapTheSearchBar': 'Tryk på søgelinjen ovenfor for at finde en placering ',
+    'tapToSeeWeatherCurrent':
+        'Tryk for at se vejret for din nuværende placering '
   },
   'de': {
     'current': 'Strom ',
@@ -300,7 +354,16 @@ final Map<String, Map<String, String>> localizedValues = {
         'Das Wetter von Pluvia konnte keine Daten erhalten. Die OpenWeatsMap-Server können unten sein. ',
     'networkErrorText':
         'Bitte aktivieren Sie WIFI- oder Mobilfunkdaten und versuchen Sie es erneut ',
-    'gettingLocationMessage': 'Lage ... '
+    'gettingLocationMessage': 'Lage ... ',
+    'temperature': 'Temperatur ',
+    'precipitation': 'Niederschlag ',
+    'addLocation': 'Ort hinzufügen ',
+    'pressAndHold': 'Halten Sie den Ort an, um zu löschen ',
+    'searchForLocation': 'Suche nach einem Standort ',
+    'tapTheSearchBar':
+        'Tippen Sie oben auf die Suchleiste, um einen Ort zu finden ',
+    'tapToSeeWeatherCurrent':
+        'Tippen Sie auf, um das Wetter für Ihren aktuellen Standort anzuzeigen '
   },
   'el': {
     'current': 'Ρεύμα ',
@@ -317,7 +380,7 @@ final Map<String, Map<String, String>> localizedValues = {
     'weatherRadar': 'Ραντάρ καιρού ',
     'weatherRadarAboutTitle': 'Σχετικά με τον καιρό ραντάρ ',
     'weatherRadarAboutBody':
-        'Το "καιρό ραντάρ" του Pluvia "χρησιμοποιεί μια ιστοσελίδα" openweathermap ". Υποστηρίζει την προβολή βροχόπτωσης, πίεσης, θερμοκρασίας, ταχύτητας ανέμου και πρόβλεψης σύννεφων σε παγκόσμιο επίπεδο. Αυτό μπορεί να οδηγήσει σε υψηλότερη χρήση δεδομένων. ',
+        'Το "καιρό ραντάρ" του Pluvia "χρησιμοποιεί μια ιστοσελίδα "openweathermap". Υποστηρίζει την προβολή βροχόπτωσης, πίεσης, θερμοκρασίας, ταχύτητας ανέμου και πρόβλεψης σύννεφων σε παγκόσμιο επίπεδο. Αυτό μπορεί να οδηγήσει σε υψηλότερη χρήση δεδομένων. ',
     'lastUpdatedAt': 'Τελευταία ενημέρωση στο ',
     'locationDisabledPrompt':
         'Για τον καιρό Pluvia για να εμφανιστεί καιρός στην τρέχουσα τοποθεσία σας, ενεργοποιήστε την τοποθεσία. ',
@@ -339,7 +402,17 @@ final Map<String, Map<String, String>> localizedValues = {
         'Ο καιρός στο Pluvia δεν μπορούσε να πάρει δεδομένα. Οι διακομιστές openweathermap μπορεί να είναι κάτω. ',
     'networkErrorText':
         'Ενεργοποιήστε το WiFi ή τα κινητά δεδομένα και δοκιμάστε ξανά ',
-    'gettingLocationMessage': 'Λήψη της τοποθεσίας ... '
+    'gettingLocationMessage': 'Λήψη της τοποθεσίας ... ',
+    'temperature': 'Θερμοκρασία ',
+    'precipitation': 'Κατακρήμνιση ',
+    'addLocation': 'Προσθήκη τοποθεσίας ',
+    'pressAndHold':
+        'Πατήστε και κρατήστε πατημένο την τοποθεσία για να διαγράψετε ',
+    'searchForLocation': 'Αναζήτηση μιας τοποθεσίας ',
+    'tapTheSearchBar':
+        'Αγγίξτε τη γραμμή αναζήτησης παραπάνω για να βρείτε μια τοποθεσία ',
+    'tapToSeeWeatherCurrent':
+        'Πατήστε για να δείτε τον καιρό για την τρέχουσα τοποθεσία σας '
   },
   'en': {
     'current': 'Current ',
@@ -376,7 +449,14 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorBody':
         'Pluvia Weather could not get data. The OpenWeatherMap servers may be down. ',
     'networkErrorText': 'Please enable WIFI or Mobile Data and retry ',
-    'gettingLocationMessage': 'Getting location... '
+    'gettingLocationMessage': 'Getting location... ',
+    'temperature': 'Temperature ',
+    'precipitation': 'Precipitation ',
+    'addLocation': 'Add Location ',
+    'pressAndHold': 'Press and Hold on Location to delete ',
+    'searchForLocation': 'Search for a location ',
+    'tapTheSearchBar': 'Tap the search bar above to find a location ',
+    'tapToSeeWeatherCurrent': 'Tap to see weather for your current location '
   },
   'es': {
     'current': 'Actual ',
@@ -414,7 +494,16 @@ final Map<String, Map<String, String>> localizedValues = {
         'El clima de Pluvia no pudo obtener datos. Los servidores OpenWeatherMap pueden estar bajando. ',
     'networkErrorText':
         'Por favor, habilite los datos wifi o móviles y vuelva a intentarlo ',
-    'gettingLocationMessage': 'Obtención de ubicación ... '
+    'gettingLocationMessage': 'Obtención de ubicación ... ',
+    'temperature': 'Temperatura ',
+    'precipitation': 'Precipitación ',
+    'addLocation': 'Añadir lugar ',
+    'pressAndHold': 'Mantenga presionado la ubicación para eliminar ',
+    'searchForLocation': 'Buscar una ubicación ',
+    'tapTheSearchBar':
+        'Toque la barra de búsqueda de arriba para encontrar una ubicación ',
+    'tapToSeeWeatherCurrent':
+        'Toque para ver el clima para su ubicación actual '
   },
   'eu': {
     'current': 'Korronte ',
@@ -452,7 +541,15 @@ final Map<String, Map<String, String>> localizedValues = {
         'PLUVIA Eguraldiak ezin izan ditu datuak jaso. Openweathermap zerbitzariak behera egin ahal izango dira. ',
     'networkErrorText':
         'Mesedez, gaitu WiFi edo Mugikorreko datuak eta saiatu berriro ',
-    'gettingLocationMessage': 'Kokapena lortzea ... '
+    'gettingLocationMessage': 'Kokapena lortzea ... ',
+    'temperature': 'Tenperatura ',
+    'precipitation': 'Apazikapen ',
+    'addLocation': 'Gehitu kokapena ',
+    'pressAndHold': 'Luze sakatu kokapenari ezabatzeko ',
+    'searchForLocation': 'Bilatu kokapen bat ',
+    'tapTheSearchBar': 'Punteatu goiko bilaketa barra kokapen bat aurkitzeko ',
+    'tapToSeeWeatherCurrent':
+        'Punteatu Eguraldia zure uneko kokapenerako ikusteko '
   },
   'fa': {
     'current': 'جاری ',
@@ -490,7 +587,15 @@ final Map<String, Map<String, String>> localizedValues = {
         'آب و هوا PLUVIA نمی تواند اطلاعات را دریافت کند. سرورهای OpenWeathermap ممکن است پایین باشند. ',
     'networkErrorText':
         'لطفا داده های WiFi یا تلفن همراه را فعال کنید و دوباره امتحان کنید ',
-    'gettingLocationMessage': 'گرفتن محل ... '
+    'gettingLocationMessage': 'گرفتن محل ... ',
+    'temperature': 'درجه حرارت ',
+    'precipitation': 'ته نشینی ',
+    'addLocation': 'اضافه کردن محل ',
+    'pressAndHold': 'برای حذف حذف و نگه دارید ',
+    'searchForLocation': 'جستجو برای یک مکان ',
+    'tapTheSearchBar': 'برای پیدا کردن یک مکان روی نوار جستجو بالا ضربه بزنید ',
+    'tapToSeeWeatherCurrent':
+        'برای دیدن آب و هوا برای مکان فعلی خود ضربه بزنید '
   },
   'fi': {
     'current': 'Nykyinen ',
@@ -528,7 +633,14 @@ final Map<String, Map<String, String>> localizedValues = {
         'Pluvian sää ei voinut saada tietoja. OpenWeatherMap-palvelimet voivat olla alas. ',
     'networkErrorText':
         'Ota käyttöön WiFi- tai mobiilidata ja yritä uudelleen ',
-    'gettingLocationMessage': 'Sijainnin saaminen ... '
+    'gettingLocationMessage': 'Sijainnin saaminen ... ',
+    'temperature': 'Lämpötila ',
+    'precipitation': 'Sademäärä ',
+    'addLocation': 'Lisää sijainti ',
+    'pressAndHold': 'Paina ja pidä painettuna Poista ',
+    'searchForLocation': 'Etsi sijaintia ',
+    'tapTheSearchBar': 'Paina yllä olevaa hakupalkkia löytääksesi sijainnin ',
+    'tapToSeeWeatherCurrent': 'Napauta nähdäksesi säätä nykyiseen sijaintiin '
   },
   'fr': {
     'current': 'Actuelle',
@@ -566,7 +678,16 @@ final Map<String, Map<String, String>> localizedValues = {
         "Le temps de Pluvia n'a pas pu obtenir de données. Les serveurs OpenWeatherMap peuvent être en panne. ",
     'networkErrorText':
         'Veuillez activer WiFi ou des données mobiles et réessayer ',
-    'gettingLocationMessage': "Obtenir l'emplacement ... "
+    'gettingLocationMessage': "Obtenir l'emplacement ... ",
+    'temperature': 'Température ',
+    'precipitation': 'Précipitation ',
+    'addLocation': 'Ajouter un emplacement ',
+    'pressAndHold': "Maintenez enfoncé l'emplacement pour supprimer ",
+    'searchForLocation': 'Rechercher un emplacement ',
+    'tapTheSearchBar':
+        'Appuyez sur la barre de recherche ci-dessus pour trouver un emplacement ',
+    'tapToSeeWeatherCurrent':
+        'Appuyez sur pour voir la météo pour votre position actuelle '
   },
   'gl': {
     'current': 'Current. ',
@@ -604,7 +725,16 @@ final Map<String, Map<String, String>> localizedValues = {
         'O clima de Pluvia non puido obter datos. Os servidores de OpenWeatherMap poden estar abaixo. ',
     'networkErrorText':
         'Por favor, active WiFi ou datos móbiles e ténteo de novo ',
-    'gettingLocationMessage': 'Obtendo a localización ... '
+    'gettingLocationMessage': 'Obtendo a localización ... ',
+    'temperature': 'Temperatura ',
+    'precipitation': 'Precipitación ',
+    'addLocation': 'Engadir a localización ',
+    'pressAndHold': 'Manteña premido a localización para eliminar ',
+    'searchForLocation': 'Busca unha localización ',
+    'tapTheSearchBar':
+        'Toque a barra de busca de arriba para atopar unha localización ',
+    'tapToSeeWeatherCurrent':
+        'Toque para ver o tempo para a súa localización actual '
   },
   'he': {
     'current': 'נוֹכְחִי ',
@@ -641,7 +771,15 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorBody':
         'מזג האוויר Pluvia לא יכול לקבל נתונים. שרתי Openweathermap עשוי להיות למטה. ',
     'networkErrorText': 'הפעל את WiFi או נתונים ניידים ונסה שוב ',
-    'gettingLocationMessage': 'קבלת מיקום ... '
+    'gettingLocationMessage': 'קבלת מיקום ... ',
+    'temperature': 'טֶמפֶּרָטוּרָה ',
+    'precipitation': 'מִשׁקָע ',
+    'addLocation': 'הוסף מיקום ',
+    'pressAndHold': 'לחץ לחיצה ממושכת על מיקום כדי למחוק ',
+    'searchForLocation': 'חפש מיקום ',
+    'tapTheSearchBar': 'הקש על סרגל החיפוש לעיל כדי למצוא מיקום ',
+    'tapToSeeWeatherCurrent':
+        'הקש כדי לראות את מזג האוויר עבור המיקום הנוכחי שלך '
   },
   'hi': {
     'current': 'वर्तमान ',
@@ -679,7 +817,15 @@ final Map<String, Map<String, String>> localizedValues = {
         'प्लुविया मौसम डेटा नहीं मिला। OpenWeatherMap सर्वर नीचे हो सकते हैं। ',
     'networkErrorText':
         'कृपया वाईफाई या मोबाइल डेटा सक्षम करें और पुनः प्रयास करें ',
-    'gettingLocationMessage': 'स्थान प्राप्त करना ... '
+    'gettingLocationMessage': 'स्थान प्राप्त करना ... ',
+    'temperature': 'तापमान ',
+    'precipitation': 'तेज़ी ',
+    'addLocation': 'स्थान जोड़ना ',
+    'pressAndHold': 'हटाने के लिए स्थान पर दबाकर रखें ',
+    'searchForLocation': 'एक स्थान के लिए खोजें ',
+    'tapTheSearchBar': 'किसी स्थान को खोजने के लिए ऊपर की खोज बार टैप करें ',
+    'tapToSeeWeatherCurrent':
+        'अपने वर्तमान स्थान के लिए मौसम देखने के लिए टैप करें '
   },
   'hr': {
     'current': 'Trenutno ',
@@ -717,7 +863,16 @@ final Map<String, Map<String, String>> localizedValues = {
         'Vrijeme Pluvia nije moglo dobiti podatke. OpenWeatherMap poslužitelji mogu biti dolje. ',
     'networkErrorText':
         'Omogućite WiFi ili mobilne podatke i pokušajte ponovo ',
-    'gettingLocationMessage': 'Dobivanje lokacije ... '
+    'gettingLocationMessage': 'Dobivanje lokacije ... ',
+    'temperature': 'Temperatura ',
+    'precipitation': 'Taloženje ',
+    'addLocation': 'Dodaj lokaciju ',
+    'pressAndHold': 'Pritisnite i držite na lokaciji za brisanje ',
+    'searchForLocation': 'Tražiti mjesto ',
+    'tapTheSearchBar':
+        'Dodirnite gornju traku za pretraživanje kako biste pronašli mjesto ',
+    'tapToSeeWeatherCurrent':
+        'Dodirnite da biste vidjeli vrijeme za trenutnu lokaciju '
   },
   'hu': {
     'current': 'Jelenlegi ',
@@ -756,7 +911,16 @@ final Map<String, Map<String, String>> localizedValues = {
         'A Pluvia időjárás nem tudott adatokat kapni. Az OpenWeathermap szerverek leállhatnak. ',
     'networkErrorText':
         'Kérjük, engedélyezze a WiFi-t vagy a mobil adatokat, és próbálja újra ',
-    'gettingLocationMessage': 'Helymeghatározás ... '
+    'gettingLocationMessage': 'Helymeghatározás ... ',
+    'temperature': 'Hőfok ',
+    'precipitation': 'Csapadék ',
+    'addLocation': 'Adj hozzá helyet ',
+    'pressAndHold': 'Nyomja meg és tartsa lenyomva a helyet a törléshez ',
+    'searchForLocation': 'Keressen egy helyet ',
+    'tapTheSearchBar':
+        'Érintse meg a fenti keresési sávot, hogy megtalálja a helyet ',
+    'tapToSeeWeatherCurrent':
+        'Érintse meg az időjárás megtekintéséhez az aktuális tartózkodási helyét '
   },
   'id': {
     'current': 'Arus ',
@@ -793,7 +957,15 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorBody':
         'Cuaca pluvia tidak dapat memperoleh data. Server OpenWeathermap mungkin turun. ',
     'networkErrorText': 'Harap aktifkan WiFi atau data seluler dan coba lagi ',
-    'gettingLocationMessage': 'Mendapatkan lokasi ... '
+    'gettingLocationMessage': 'Mendapatkan lokasi ... ',
+    'temperature': 'Suhu ',
+    'precipitation': 'Pengendapan ',
+    'addLocation': 'Menambahkan lokasi ',
+    'pressAndHold': 'Tekan dan tahan lokasi untuk menghapus ',
+    'searchForLocation': 'Cari lokasi ',
+    'tapTheSearchBar': 'Ketuk bilah pencarian di atas untuk menemukan lokasi ',
+    'tapToSeeWeatherCurrent':
+        'Ketuk untuk melihat cuaca untuk lokasi Anda saat ini '
   },
   'it': {
     'current': 'attuale ',
@@ -830,7 +1002,16 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorBody':
         'Il tempo del PLUVIA non ha potuto ottenere dati. I server OpenWeatherMermap potrebbero essere giù. ',
     'networkErrorText': 'Si prega di abilitare WiFi o dati mobili e riprovare ',
-    'gettingLocationMessage': 'Ottenere la posizione ... '
+    'gettingLocationMessage': 'Ottenere la posizione ... ',
+    'temperature': 'Temperatura ',
+    'precipitation': 'Precipitazione ',
+    'addLocation': 'Aggiungi luogo ',
+    'pressAndHold': 'Premere e tenere premuto sulla posizione per eliminare ',
+    'searchForLocation': 'Cerca una posizione ',
+    'tapTheSearchBar':
+        'Tocca la barra di ricerca sopra per trovare una posizione ',
+    'tapToSeeWeatherCurrent':
+        'Tocca per vedere il tempo per la tua posizione attuale '
   },
   'ja': {
     'current': '電流 ',
@@ -866,7 +1047,14 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorBody':
         'プルビアの天気はデータを取得できませんでした。 OpenWeatherMapサーバーがダウンしている可能性があります。 ',
     'networkErrorText': 'WiFiまたはモバイルデータを有効にして再試行してください ',
-    'gettingLocationMessage': '場所を取得する... '
+    'gettingLocationMessage': '場所を取得する... ',
+    'temperature': '温度 ',
+    'precipitation': '降水量 ',
+    'addLocation': '場所を追加します ',
+    'pressAndHold': '削除する場所を押し続けます ',
+    'searchForLocation': '場所を検索します ',
+    'tapTheSearchBar': '上の検索バーをタップして場所を見つけます ',
+    'tapToSeeWeatherCurrent': 'あなたの現在の場所の天気を見るためにタップしてください '
   },
   'ko': {
     'current': '흐름 ',
@@ -902,7 +1090,14 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorBody':
         'Pluvia 날씨는 데이터를 얻을 수 없습니다. OpenWeatherMAP 서버가 다운 될 수 있습니다. ',
     'networkErrorText': 'Wi-Fi 또는 모바일 데이터를 활성화하고 재시도하십시오 ',
-    'gettingLocationMessage': '위치 점점 ... '
+    'gettingLocationMessage': '위치 점점 ... ',
+    'temperature': '온도 ',
+    'precipitation': '침적 ',
+    'addLocation': '위치를 추가하십시오 ',
+    'pressAndHold': '삭제할 위치를 길게 누릅니다 ',
+    'searchForLocation': '위치 검색 ',
+    'tapTheSearchBar': '위의 검색 막대를 탭하여 위치를 찾으십시오 ',
+    'tapToSeeWeatherCurrent': '현재 위치의 날씨를 보려면 탭하십시오 '
   },
   'lt': {
     'current': 'Dabartinis ',
@@ -941,7 +1136,16 @@ final Map<String, Map<String, String>> localizedValues = {
         'Pluvia oras negalėjo gauti duomenų. "OpenWeathermap" serveriai gali būti žemyn. ',
     'networkErrorText':
         'Įgalinkite "WiFi" arba "Mobile" duomenis ir bandykite dar kartą ',
-    'gettingLocationMessage': 'Gauti vietą ... '
+    'gettingLocationMessage': 'Gauti vietą ... ',
+    'temperature': 'Temperatūra ',
+    'precipitation': 'Raštai. \\ T ',
+    'addLocation': 'Pridėti vietą ',
+    'pressAndHold': 'Paspauskite ir palaikykite vietą, kad ištrintumėte ',
+    'searchForLocation': 'Ieškokite vietos ',
+    'tapTheSearchBar':
+        'Bakstelėkite aukščiau esančią paieškos juostą, kad rastumėte vietą ',
+    'tapToSeeWeatherCurrent':
+        'Bakstelėkite, kad pamatytumėte orą dabartinei vietai '
   },
   'lv': {
     'current': 'Strāva ',
@@ -979,7 +1183,16 @@ final Map<String, Map<String, String>> localizedValues = {
         'Pluvia Laiks nevarēja iegūt datus. OpenWermap serveri var būt uz leju. ',
     'networkErrorText':
         'Lūdzu, iespējojiet wifi vai mobilos datus un mēģiniet vēlreiz ',
-    'gettingLocationMessage': 'Atrašanās vietas iegūšana ... '
+    'gettingLocationMessage': 'Atrašanās vietas iegūšana ... ',
+    'temperature': 'Temperatūra ',
+    'precipitation': 'Nokrišņi ',
+    'addLocation': 'Pievienot atrašanās vietu ',
+    'pressAndHold': 'Nospiediet un turiet atrašanās vietu, lai izdzēstu ',
+    'searchForLocation': 'Meklēt atrašanās vietu ',
+    'tapTheSearchBar':
+        'Lai atrastu atrastu vietu, pieskarieties iepriekš minētajam meklēšanas joslai ',
+    'tapToSeeWeatherCurrent':
+        'Pieskarieties, lai redzētu laika apstākļus pašreizējai atrašanās vietai '
   },
   'mk': {
     'current': 'Струја ',
@@ -1017,7 +1230,16 @@ final Map<String, Map<String, String>> localizedValues = {
         'Времето Pluvia не можеше да добие податоци. Серверите за отворен сервери може да бидат долу. ',
     'networkErrorText':
         'Ве молиме вклучете WiFi или мобилни податоци и обидете се повторно ',
-    'gettingLocationMessage': 'Добивање локација ... '
+    'gettingLocationMessage': 'Добивање локација ... ',
+    'temperature': 'Температура ',
+    'precipitation': 'Вртијалиште ',
+    'addLocation': 'Додај локација ',
+    'pressAndHold': 'Притиснете и задржете на локација за да избришете ',
+    'searchForLocation': 'Пребарај за локација ',
+    'tapTheSearchBar':
+        'Допрете го лентата за пребарување погоре за да пронајдете локација ',
+    'tapToSeeWeatherCurrent':
+        'Допрете за да го видите времето за вашата моментална локација '
   },
   'nl': {
     'current': 'Actueel ',
@@ -1055,7 +1277,14 @@ final Map<String, Map<String, String>> localizedValues = {
         'Het weer van Pluvia kon geen gegevens ontvangen. De OpenWeathermap-servers kunnen dalen. ',
     'networkErrorText':
         'Schakel WiFi of mobiele gegevens in en probeer het opnieuw ',
-    'gettingLocationMessage': 'Locatie krijgen ... '
+    'gettingLocationMessage': 'Locatie krijgen ... ',
+    'temperature': 'Temperatuur ',
+    'precipitation': 'Neerslag ',
+    'addLocation': 'Voeg locatie toe ',
+    'pressAndHold': 'Houd op locatie ingedrukt om te verwijderen ',
+    'searchForLocation': 'Zoek naar een locatie ',
+    'tapTheSearchBar': 'Tik hierboven op de zoekbalk om een locatie te vinden ',
+    'tapToSeeWeatherCurrent': 'Tik om weer te zien voor uw huidige locatie '
   },
   'no': {
     'current': 'Nåværende ',
@@ -1093,7 +1322,14 @@ final Map<String, Map<String, String>> localizedValues = {
         'Pluvia været kunne ikke få data. Openweathmap-serverne kan være nede. ',
     'networkErrorText':
         'Vennligst aktiver WiFi eller Mobile Data og prøv på nytt ',
-    'gettingLocationMessage': 'Få plassering ... '
+    'gettingLocationMessage': 'Få plassering ... ',
+    'temperature': 'Temperatur ',
+    'precipitation': 'Nedbør ',
+    'addLocation': 'Legg til plassering ',
+    'pressAndHold': 'Trykk og hold på stedet for å slette ',
+    'searchForLocation': 'Søk etter et sted ',
+    'tapTheSearchBar': 'Trykk på søkefeltet ovenfor for å finne et sted ',
+    'tapToSeeWeatherCurrent': 'Trykk for å se været for din nåværende posisjon '
   },
   'pl': {
     'current': 'obecny ',
@@ -1130,7 +1366,16 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorBody':
         'Pogoda Pluvia nie mogła uzyskać danych. Serwery OpenWeathermap mogą być w dół. ',
     'networkErrorText': 'Włącz wifi lub dane mobilne i ponów próbę ',
-    'gettingLocationMessage': 'Uzyskiwanie lokalizacji ... '
+    'gettingLocationMessage': 'Uzyskiwanie lokalizacji ... ',
+    'temperature': 'Temperatura ',
+    'precipitation': 'Opad atmosferyczny ',
+    'addLocation': 'Dodaj miejsce ',
+    'pressAndHold': 'Naciśnij i przytrzymaj lokalizację, aby usunąć ',
+    'searchForLocation': 'Szukaj lokalizacji ',
+    'tapTheSearchBar':
+        'Stuknij pasek wyszukiwania powyżej, aby znaleźć lokalizację ',
+    'tapToSeeWeatherCurrent':
+        'Dotknij, aby zobaczyć pogodę na bieżącą lokalizację '
   },
   'pt': {
     'current': 'Atual ',
@@ -1168,7 +1413,16 @@ final Map<String, Map<String, String>> localizedValues = {
         'O tempo de Pluvi não pôde obter dados. Os servidores OpenWeathermap podem estar baixos. ',
     'networkErrorText':
         'Por favor, ative o WiFi ou os dados móveis e tente novamente ',
-    'gettingLocationMessage': 'Obtendo localização ... '
+    'gettingLocationMessage': 'Obtendo localização ... ',
+    'temperature': 'Temperatura ',
+    'precipitation': 'Precipitação ',
+    'addLocation': 'Adicionar local ',
+    'pressAndHold': 'Pressione e segure no local para excluir ',
+    'searchForLocation': 'Procure um local ',
+    'tapTheSearchBar':
+        'Toque na barra de pesquisa acima para encontrar um local ',
+    'tapToSeeWeatherCurrent':
+        'Toque para ver o tempo para sua localização atual '
   },
   'ro': {
     'current': 'Actual ',
@@ -1205,7 +1459,16 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorBody':
         'Vremea pluvia nu a putut obține date. Serverele OpenWeatherMap pot fi în jos. ',
     'networkErrorText': 'Activați datele WiFi sau Mobile și Reîncercați ',
-    'gettingLocationMessage': 'Obținerea locației ... '
+    'gettingLocationMessage': 'Obținerea locației ... ',
+    'temperature': 'Temperatura ',
+    'precipitation': 'Precipitare ',
+    'addLocation': 'Adaugă locație ',
+    'pressAndHold': 'Țineți apăsat pe locație pentru a șterge ',
+    'searchForLocation': 'Căutați o locație ',
+    'tapTheSearchBar':
+        'Atingeți bara de căutare de mai sus pentru a găsi o locație ',
+    'tapToSeeWeatherCurrent':
+        'Atingeți pentru a vedea vremea pentru locația dvs. curentă '
   },
   'ru': {
     'current': 'Текущий ',
@@ -1243,7 +1506,16 @@ final Map<String, Map<String, String>> localizedValues = {
         'Погода в плювии не удалось получить данные. Серверы OpenWeatherMap могут быть вниз. ',
     'networkErrorText':
         'Пожалуйста, включите Wi-Fi или мобильные данные и повторите попытку ',
-    'gettingLocationMessage': 'Получение местоположения ... '
+    'gettingLocationMessage': 'Получение местоположения ... ',
+    'temperature': 'Температура ',
+    'precipitation': 'Осадки ',
+    'addLocation': 'Добавить местоположение ',
+    'pressAndHold': 'Нажмите и удерживайте на месте, чтобы удалить ',
+    'searchForLocation': 'Поиск места ',
+    'tapTheSearchBar':
+        'Нажмите на панель поиска выше, чтобы найти местоположение ',
+    'tapToSeeWeatherCurrent':
+        'Нажмите, чтобы увидеть погоду для вашего текущего местоположения '
   },
   'sk': {
     'current': 'Prúd ',
@@ -1280,7 +1552,16 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorBody':
         'PLUVIA Počasie nemohlo získať údaje. Servery OpenWeatherMap môžu byť dole. ',
     'networkErrorText': 'Prosím, povoľte WiFi alebo mobilné údaje a opakovať ',
-    'gettingLocationMessage': 'Získanie umiestnenia ... '
+    'gettingLocationMessage': 'Získanie umiestnenia ... ',
+    'temperature': 'Teplota ',
+    'precipitation': 'Zrážanie ',
+    'addLocation': 'Pridať miesto ',
+    'pressAndHold': 'Stlačte a podržte tlačidlo na vymazanie ',
+    'searchForLocation': 'Hľadať miesto ',
+    'tapTheSearchBar':
+        'Klepnite na vyhľadávací panel vyššie, aby ste našli miesto ',
+    'tapToSeeWeatherCurrent':
+        'Klepnutím pre zobrazenie počasia pre vašu aktuálnu polohu '
   },
   'sl': {
     'current': 'Tok ',
@@ -1318,7 +1599,14 @@ final Map<String, Map<String, String>> localizedValues = {
         'Pluvia Vreme ni bilo mogoče dobiti podatkov. Strežniki Openweathap se lahko znižajo. ',
     'networkErrorText':
         'Omogočite WiFi ali mobilne podatke in poskusite znova ',
-    'gettingLocationMessage': 'Pridobivanje lokacije ... '
+    'gettingLocationMessage': 'Pridobivanje lokacije ... ',
+    'temperature': 'Temperatura ',
+    'precipitation': 'Padavine ',
+    'addLocation': 'Dodajte lokacijo ',
+    'pressAndHold': 'Pritisnite in držite lokacijo, da izbrišete ',
+    'searchForLocation': 'Poiščite lokacijo ',
+    'tapTheSearchBar': 'Dotaknite se iskalne vrstice, da najdete lokacijo ',
+    'tapToSeeWeatherCurrent': 'Tapnite, da vidite vreme za trenutno lokacijo '
   },
   'sq': {
     'current': 'Aktual ',
@@ -1356,7 +1644,16 @@ final Map<String, Map<String, String>> localizedValues = {
         'Moti i PLUVIA nuk mund të merrte të dhëna. Serverat e hapura mund të jenë poshtë. ',
     'networkErrorText':
         'Ju lutemi të aktivizoni të dhënat WiFi ose celular dhe të provoni përsëri ',
-    'gettingLocationMessage': 'Marrja e vendndodhjes ... '
+    'gettingLocationMessage': 'Marrja e vendndodhjes ... ',
+    'temperature': 'Temperatura ',
+    'precipitation': 'Reshje ',
+    'addLocation': 'Shto vendndodhjen ',
+    'pressAndHold': 'Shtypni dhe mbani vendin për të fshirë ',
+    'searchForLocation': 'Kërko për një vend ',
+    'tapTheSearchBar':
+        'Prekni barin e kërkimit më lart për të gjetur një vend ',
+    'tapToSeeWeatherCurrent':
+        'Prekni për të parë motin për vendndodhjen tuaj të tanishme '
   },
   'sr': {
     'current': 'Тренутни ',
@@ -1394,7 +1691,16 @@ final Map<String, Map<String, String>> localizedValues = {
         'Плувиа Време није могло добити податке. ОпенвеатхерМап сервери могу бити доле. ',
     'networkErrorText':
         'Омогућите ВИФИ или мобилне податке и покушајте поново ',
-    'gettingLocationMessage': 'Добијање локације ... '
+    'gettingLocationMessage': 'Добијање локације ... ',
+    'temperature': 'Температура ',
+    'precipitation': 'Падавине ',
+    'addLocation': 'Додај локацију ',
+    'pressAndHold': 'Притисните и држите локацију за брисање ',
+    'searchForLocation': 'Потражите локацију ',
+    'tapTheSearchBar':
+        'Додирните горњу траку за претрагу да бисте пронашли локацију ',
+    'tapToSeeWeatherCurrent':
+        'Тапните да бисте видели Време за вашу тренутну локацију '
   },
   'sv': {
     'current': 'Nuvarande ',
@@ -1432,7 +1738,14 @@ final Map<String, Map<String, String>> localizedValues = {
         'Pluvia väder kunde inte få data. Openweathermap-servrarna kan vara nere. ',
     'networkErrorText':
         'Vänligen aktivera WiFi eller mobildata och försök igen ',
-    'gettingLocationMessage': 'Få plats ... '
+    'gettingLocationMessage': 'Få plats ... ',
+    'temperature': 'Temperatur ',
+    'precipitation': 'Nederbörd ',
+    'addLocation': 'Lägg till plats ',
+    'pressAndHold': 'Tryck och håll på plats för att radera ',
+    'searchForLocation': 'Sök efter en plats ',
+    'tapTheSearchBar': 'Tryck på sökfältet ovan för att hitta en plats ',
+    'tapToSeeWeatherCurrent': 'Tryck för att se väder för din nuvarande plats '
   },
   'th': {
     'current': 'ปัจจุบัน ',
@@ -1469,7 +1782,14 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorBody':
         'สภาพอากาศ Pluvia ไม่สามารถรับข้อมูลได้ เซิร์ฟเวอร์ Openweathermap อาจลดลง ',
     'networkErrorText': 'โปรดเปิดใช้งาน WiFi หรือข้อมูลมือถือและลองอีกครั้ง ',
-    'gettingLocationMessage': 'รับตำแหน่ง ... '
+    'gettingLocationMessage': 'รับตำแหน่ง ... ',
+    'temperature': 'อุณหภูมิ ',
+    'precipitation': 'การเร่งรัด ',
+    'addLocation': 'เพิ่มสถานที่ ',
+    'pressAndHold': 'กดที่ตั้งเพื่อลบ ',
+    'searchForLocation': 'ค้นหาสถานที่ ',
+    'tapTheSearchBar': 'แตะแถบค้นหาด้านบนเพื่อค้นหาสถานที่ ',
+    'tapToSeeWeatherCurrent': 'แตะเพื่อดูสภาพอากาศสำหรับตำแหน่งปัจจุบันของคุณ '
   },
   'tr': {
     'current': 'Akım ',
@@ -1507,7 +1827,15 @@ final Map<String, Map<String, String>> localizedValues = {
         'Pluvia hava verileri alamadı. OpenWeatherMap sunucuları aşağı olabilir. ',
     'networkErrorText':
         'Lütfen wifi veya mobil verileri etkinleştirin ve yeniden deneyin ',
-    'gettingLocationMessage': 'Konum almak ... '
+    'gettingLocationMessage': 'Konum almak ... ',
+    'temperature': 'Sıcaklık ',
+    'precipitation': 'Yağış ',
+    'addLocation': 'Konum ekle ',
+    'pressAndHold': 'Silmek için konumu basılı tutun ',
+    'searchForLocation': 'Bir yeri ara ',
+    'tapTheSearchBar':
+        'Bir konum bulmak için yukarıdaki arama çubuğuna dokunun. ',
+    'tapToSeeWeatherCurrent': 'Geçerli konumunuz için hava görmek için dokunun '
   },
   'uk': {
     'current': 'Струм ',
@@ -1545,7 +1873,15 @@ final Map<String, Map<String, String>> localizedValues = {
         'Пувія погода не могла отримати дані. Відкриті сервери можуть бути вниз. ',
     'networkErrorText':
         'Будь ласка, увімкніть Wi-Fi або мобільні дані та повторіть спробу ',
-    'gettingLocationMessage': 'Отримання місцезнаходження ... '
+    'gettingLocationMessage': 'Отримання місцезнаходження ... ',
+    'temperature': 'Температура ',
+    'precipitation': 'Опадів ',
+    'addLocation': 'Додати місцеположення ',
+    'pressAndHold': 'Натисніть та утримуйте місце, щоб видалити ',
+    'searchForLocation': 'Пошук місця ',
+    'tapTheSearchBar': 'Натисніть панель пошуку вище, щоб знайти розташування ',
+    'tapToSeeWeatherCurrent':
+        'Натисніть, щоб побачити погоду для поточного місцезнаходження '
   },
   'vi': {
     'current': 'Hiện hành ',
@@ -1583,7 +1919,15 @@ final Map<String, Map<String, String>> localizedValues = {
         'Thời tiết Pluvia không thể có được dữ liệu. Các máy chủ OpenWeatherMap có thể bị hỏng. ',
     'networkErrorText':
         'Vui lòng kích hoạt WiFi hoặc dữ liệu di động và thử lại ',
-    'gettingLocationMessage': 'Bắt vị trí ... '
+    'gettingLocationMessage': 'Bắt vị trí ... ',
+    'temperature': 'Nhiệt độ ',
+    'precipitation': 'Mưa ',
+    'addLocation': 'Thêm vị trí ',
+    'pressAndHold': 'Nhấn và giữ vị trí để xóa ',
+    'searchForLocation': 'Tìm kiếm một địa điểm ',
+    'tapTheSearchBar': 'Nhấn vào thanh tìm kiếm ở trên để tìm một vị trí ',
+    'tapToSeeWeatherCurrent':
+        'Nhấn để xem thời tiết cho vị trí hiện tại của bạn '
   },
   'zh': {
     'current': '当前的 ',
@@ -1618,7 +1962,14 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorTitle': '服务器错误 ',
     'serverErrorBody': 'Pluvia天气无法获取数据。 OpenWeatherMap服务器可能会关闭。 ',
     'networkErrorText': '请启用WiFi或移动数据并重试 ',
-    'gettingLocationMessage': '获取位置...... '
+    'gettingLocationMessage': '获取位置...... ',
+    'temperature': '温度 ',
+    'precipitation': '沉淀 ',
+    'addLocation': '添加位置 ',
+    'pressAndHold': '按住删除位置 ',
+    'searchForLocation': '搜索位置 ',
+    'tapTheSearchBar': '点击上面的搜索栏以查找位置 ',
+    'tapToSeeWeatherCurrent': '点击以查看当前位置的天气 '
   },
   'zu': {
     'current': '-Dlulayo ',
@@ -1656,6 +2007,14 @@ final Map<String, Map<String, String>> localizedValues = {
         'Isimo sezulu sePluvia asikwazanga ukuthola idatha. Amaseva we-OpenWeathermap angaba phansi. ',
     'networkErrorText':
         'Sicela unike amandla idatha ye-wifi noma yeselula bese uzama futhi ',
-    'gettingLocationMessage': 'Ukuthola Indawo ... '
+    'gettingLocationMessage': 'Ukuthola Indawo ... ',
+    'temperature': 'Izinga lokushisa nokubanda ',
+    'precipitation': 'Ukuhanjiswa kwezulu ',
+    'addLocation': 'Faka Indawo ',
+    'pressAndHold': 'Cindezela bese ubamba indawo ukuze ususe ',
+    'searchForLocation': 'Sesha indawo ',
+    'tapTheSearchBar': 'Thepha ibha yokusesha engenhla ukuthola indawo ',
+    'tapToSeeWeatherCurrent':
+        'Thepha ukuze ubone isimo sezulu sendawo yakho yamanje '
   }
 };

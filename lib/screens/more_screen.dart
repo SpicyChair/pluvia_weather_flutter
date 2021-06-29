@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_weather/constants/constants.dart';
-import 'package:flutter_weather/preferences/lang_prefs.dart';
+import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
@@ -10,6 +10,9 @@ import 'package:line_icons/line_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:restart_app/restart_app.dart';
+
+import 'loading_screen.dart';
 
 class MoreScreen extends StatefulWidget {
   @override
@@ -22,7 +25,8 @@ class _MoreScreenState extends State<MoreScreen> {
   //the values displayed on the toggles
   bool useImperial;
   bool useDarkMode;
-  String dropdownValue;
+  String windDropdownValue;
+  String langDropdownValue;
 
   void initState() {
     super.initState();
@@ -43,15 +47,16 @@ class _MoreScreenState extends State<MoreScreen> {
     useDarkMode = await SharedPrefs.getDark();
     switch (await SharedPrefs.getWindUnit()) {
       case WindUnit.MS:
-        dropdownValue = "meters/s";
+        windDropdownValue = "meters/s";
         break;
       case WindUnit.MPH:
-        dropdownValue = "miles/h";
+        windDropdownValue = "miles/h";
         break;
       case WindUnit.KMPH:
-        dropdownValue = "kilometers/h";
+        windDropdownValue = "kilometers/h";
         break;
     }
+    langDropdownValue = await SharedPrefs.getLanguageCode();
     setState(() {});
   }
 
@@ -61,7 +66,7 @@ class _MoreScreenState extends State<MoreScreen> {
       backgroundColor: ThemeColors.backgroundColor(),
       appBar: AppBar(
         title: Text(
-          LangPerfs.getTranslation("more"),
+          Language.getTranslation("more"),
           style: TextStyle(
             fontWeight: FontWeight.w200,
             fontSize: 30,
@@ -132,7 +137,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   child: Center(
                     child: SwitchListTile(
                       title: Text(
-                        LangPerfs.getTranslation("darkMode"),
+                        Language.getTranslation("darkMode"),
                         style: TextStyle(color: ThemeColors.primaryTextColor()),
                       ),
                       value: useDarkMode ?? false,
@@ -165,7 +170,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   child: Center(
                     child: SwitchListTile(
                       title: Text(
-                        LangPerfs.getTranslation("useFahrenheit"),
+                        Language.getTranslation("useFahrenheit"),
                         style: TextStyle(
                           color: ThemeColors.primaryTextColor(),
                         ),
@@ -176,7 +181,8 @@ class _MoreScreenState extends State<MoreScreen> {
                         useImperial = value;
                         setState(() {});
                         Scaffold.of(context).showSnackBar(SnackBar(
-                            content: Text(LangPerfs.getTranslation("refreshToSee"))));
+                            content:
+                                Text(Language.getTranslation("refreshToSee"))));
                       },
                       secondary: Icon(
                         Icons.thermostat_outlined,
@@ -194,7 +200,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   child: Center(
                     child: ListTile(
                       title: Text(
-                        LangPerfs.getTranslation("windSpeedUnit"),
+                        Language.getTranslation("windSpeedUnit"),
                         style: TextStyle(color: ThemeColors.primaryTextColor()),
                       ),
                       leading: Icon(
@@ -202,7 +208,7 @@ class _MoreScreenState extends State<MoreScreen> {
                         color: ThemeColors.secondaryTextColor(),
                       ),
                       trailing: DropdownButton<String>(
-                        value: dropdownValue,
+                        value: windDropdownValue,
                         icon: Icon(Icons.arrow_drop_down),
                         iconSize: 20,
                         style: TextStyle(
@@ -214,7 +220,7 @@ class _MoreScreenState extends State<MoreScreen> {
                         ),
                         dropdownColor: ThemeColors.backgroundColor(),
                         onChanged: (String newValue) async {
-                          dropdownValue = newValue;
+                          windDropdownValue = newValue;
                           switch (newValue) {
                             case "miles/h":
                               await SharedPrefs.setWindUnit(WindUnit.MPH);
@@ -242,6 +248,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
                 ),
               ),
+
               //TODO: ADD CHANGING LANGUAGES
               SizedBox(
                 height: 80,
@@ -249,7 +256,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   child: Center(
                     child: ListTile(
                       title: Text(
-                        "Language (BETA)",
+                        "App Language",
                         style: TextStyle(color: ThemeColors.primaryTextColor()),
                       ),
                       leading: Icon(
@@ -257,7 +264,7 @@ class _MoreScreenState extends State<MoreScreen> {
                         color: ThemeColors.secondaryTextColor(),
                       ),
                       trailing: DropdownButton<String>(
-                        value: dropdownValue,
+                        value: langDropdownValue,
                         icon: Icon(Icons.arrow_drop_down),
                         iconSize: 20,
                         style: TextStyle(
@@ -269,15 +276,19 @@ class _MoreScreenState extends State<MoreScreen> {
                         ),
                         dropdownColor: ThemeColors.backgroundColor(),
                         onChanged: (String newValue) async {
-                          dropdownValue = newValue;
-
-                          setState(() {});
+                          langDropdownValue = newValue;
+                          SharedPrefs.setLanguageCode(newValue);
+                          
+                          await Language.initialise();
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoadingScreen()));
+                          //restart the app to get forecast in new language
+                          //Restart.restartApp();
                         },
-                        items: <String>["miles/h", "meters/s", "kilometers/h"]
+                        items: Language.langaugeCodes()
                             .map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
-                            child: Text(value),
+                            child: Text("${Language.getLangString(value)} ($value)"),
                           );
                         }).toList(),
                       ),
@@ -288,15 +299,13 @@ class _MoreScreenState extends State<MoreScreen> {
                 ),
               ),
 
-
-
               SizedBox(
                 height: 80,
                 child: Card(
                   child: Center(
                     child: ListTile(
                       title: Text(
-                        LangPerfs.getTranslation("aboutPluvia"),
+                        Language.getTranslation("aboutPluvia"),
                         style: TextStyle(
                           color: ThemeColors.primaryTextColor(),
                         ),
@@ -345,7 +354,7 @@ class _MoreScreenState extends State<MoreScreen> {
                     ),
                     Center(
                       child: Text(
-                        LangPerfs.getTranslation("viewOnGithub"),
+                        Language.getTranslation("viewOnGithub"),
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_weather/preferences/lang_prefs.dart';
+import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
@@ -19,13 +19,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   Future getWeatherData() async {
     isGettingData = true;
-    message = LangPerfs.getTranslation("loading");
+    message = Language.getTranslation("loading");
 
 
     if (await WeatherModel.getUserLocationWeather() == 0) {
       setState(() {
         isGettingData = false;
-        message = LangPerfs.getTranslation("networkErrorText");
+        message = Language.getTranslation("networkErrorText");
       });
       return;
     }
@@ -107,7 +107,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: RaisedButton(
-                      child: Text(LangPerfs.getTranslation("retry"), style: TextStyle(color: ThemeColors.primaryTextColor()),),
+                      child: Text(Language.getTranslation("retry"), style: TextStyle(color: ThemeColors.primaryTextColor()),),
                       color: Colors.blueAccent,
                       onPressed: () {
                         Navigator.pushReplacement(
