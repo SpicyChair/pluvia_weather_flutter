@@ -22,12 +22,13 @@ A weather app with beautiful animations, built with Flutter, with data from the 
 ## Screenshots
 
 <p align="center">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Google Pixel 3 5.5-inch Display (1080 x 2160) Screenshot 5.png" width="400">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Google Pixel 3 5.5-inch Display (1080 x 2160) Screenshot 1.png" width="400">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Google Pixel 3 5.5-inch Display (1080 x 2160) Screenshot 0.png" width="400">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Google Pixel 3 5.5-inch Display (1080 x 2160) Screenshot 4.png" width="400">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Google Pixel 3 5.5-inch Display (1080 x 2160) Screenshot 2.png" width="400">
-  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Google Pixel 3 5.5-inch Display (1080 x 2160) Screenshot 3.png" width="400">
+  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Google Pixel 3 5.5-inch Display (1080 x 2160) Screenshot 5.png" width="230">
+  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Google Pixel 3 5.5-inch Display (1080 x 2160) Screenshot 1.png" width="230">
+  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Google Pixel 3 5.5-inch Display (1080 x 2160) Screenshot 0.png" width="230">
+  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Google Pixel 3 5.5-inch Display (1080 x 2160) Screenshot 4.png" width="230">
+  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Google Pixel 3 5.5-inch Display (1080 x 2160) Screenshot 2.png" width="230">
+  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Google Pixel 3 5.5-inch Display (1080 x 2160) Screenshot 3.png" width="230">
+  <img src="https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/screenshots/Google Pixel 3 5.5-inch Display (1080 x 2160) Screenshot 6.png" width="230">
 </p>
 
 ## Supported Languages
