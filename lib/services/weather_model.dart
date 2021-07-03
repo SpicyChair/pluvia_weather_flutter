@@ -188,7 +188,7 @@ class WeatherModel {
         weatherType = WeatherType.sunrise;
       }
     }
-    return WeatherType.sunrise; //weatherType;
+    return weatherType;
     //TODO: FIX
   }
 
