@@ -47,12 +47,7 @@ class WeatherAnimationState extends State<WeatherAnimation> {
     await _images.load(<String>[
       'assets/clouds-0.png',
       'assets/clouds-1.png',
-      'assets/ray.png',
-      'assets/sun.png',
       'assets/weathersprites.png',
-      'assets/icon-sun.png',
-      'assets/icon-rain.png',
-      'assets/icon-snow.png'
     ]);
 
     // Load the sprite sheet, which contains snowflakes and rain drops.
