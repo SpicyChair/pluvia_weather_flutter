@@ -70,6 +70,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        brightness: ThemeColors.isDark  ? Brightness.dark : Brightness.light,
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         elevation: 0,

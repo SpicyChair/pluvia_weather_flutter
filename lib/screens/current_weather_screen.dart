@@ -168,6 +168,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.dark,
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         elevation: 0,
@@ -504,3 +505,4 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     );
   }
 }
+

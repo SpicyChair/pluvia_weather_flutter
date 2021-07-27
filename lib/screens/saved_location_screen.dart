@@ -60,6 +60,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: ThemeColors.isDark  ? Brightness.dark : Brightness.light,
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         elevation: 0,

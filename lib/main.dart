@@ -24,11 +24,6 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.black, // navigation bar color
-    ));
-
     return MaterialApp(
       title: "Pluvia Weather",
       theme: ThemeData.light().copyWith(

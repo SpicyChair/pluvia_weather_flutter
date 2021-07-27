@@ -65,6 +65,7 @@ class _MoreScreenState extends State<MoreScreen> {
     return Scaffold(
       backgroundColor: ThemeColors.backgroundColor(),
       appBar: AppBar(
+        brightness: ThemeColors.isDark  ? Brightness.dark : Brightness.light,
         title: Text(
           Language.getTranslation("more"),
           style: TextStyle(
