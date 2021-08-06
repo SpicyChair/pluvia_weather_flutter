@@ -132,7 +132,6 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
 
   //refresh data
   Future<void> refresh() async {
-    //TODO: replace strings
     Scaffold.of(context).showSnackBar(SnackBar(content: Text("${Language.getTranslation("loading")}...")));
 
     //if the location displayed is current, refresh location
@@ -245,7 +244,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                             children: [
                               createHourlyForecastCard(),
                               createInfoCards(),
-                              testCards(), //TODO: modify testCards()
+                              radarInfoCards(),
                             ],
                           ),
                         ],
@@ -368,13 +367,14 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   Widget createInfoCards() {
     return PanelCard(
       cardChild: Container(
-        height: 225,
+
         width: double.infinity,
         margin: kPanelCardMargin,
         child: GridView.count(
+          shrinkWrap: true,
           childAspectRatio: 2.5,
           crossAxisCount: 2,
-          physics: const NeverScrollableScrollPhysics(),
+          physics: NeverScrollableScrollPhysics(),
           children: [
             InfoCard(
               title: Language.getTranslation("feelsLike"),
@@ -407,8 +407,8 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     );
   }
 
-  Widget testCards() {
-    //TODO: Add weather radar map?
+  Widget radarInfoCards() {
+
     return PanelCard(
       cardChild: Container(
         height: 140,

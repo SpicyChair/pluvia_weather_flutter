@@ -5,6 +5,7 @@ import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
+import 'package:flutter_weather/screens/advanced_settings_screen.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -65,7 +66,7 @@ class _MoreScreenState extends State<MoreScreen> {
     return Scaffold(
       backgroundColor: ThemeColors.backgroundColor(),
       appBar: AppBar(
-        brightness: ThemeColors.isDark  ? Brightness.dark : Brightness.light,
+        brightness: ThemeColors.isDark ? Brightness.dark : Brightness.light,
         title: Text(
           Language.getTranslation("more"),
           style: TextStyle(
@@ -249,8 +250,6 @@ class _MoreScreenState extends State<MoreScreen> {
                   shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
                 ),
               ),
-
-              //TODO: ADD CHANGING LANGUAGES
               SizedBox(
                 height: 80,
                 child: Card(
@@ -279,9 +278,12 @@ class _MoreScreenState extends State<MoreScreen> {
                         onChanged: (String newValue) async {
                           langDropdownValue = newValue;
                           SharedPrefs.setLanguageCode(newValue);
-                          
+
                           await Language.initialise();
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoadingScreen()));
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoadingScreen()));
                           //restart the app to get forecast in new language
                           //Restart.restartApp();
                         },
@@ -289,7 +291,8 @@ class _MoreScreenState extends State<MoreScreen> {
                             .map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
-                            child: Text("${Language.getLangString(value)} ($value)"),
+                            child: Text(
+                                "${Language.getLangString(value)} ($value)"),
                           );
                         }).toList(),
                       ),
@@ -299,28 +302,27 @@ class _MoreScreenState extends State<MoreScreen> {
                   shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
                 ),
               ),
-
               SizedBox(
                 height: 80,
                 child: Card(
                   child: Center(
                     child: ListTile(
                       title: Text(
-                        Language.getTranslation("aboutPluvia"),
+                        //TODO: TRANSLATE
+                        "Advanced Settings",
                         style: TextStyle(
                           color: ThemeColors.primaryTextColor(),
                         ),
                       ),
                       onTap: () {
-                        showAboutDialog(
-                          context: context,
-                          applicationVersion: version,
-                          applicationLegalese:
-                              "Pluvia Weather is completely free and open source, and is licensed under GPLv3.",
-                        );
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    AdvancedSettingsScreen()));
                       },
                       leading: Icon(
-                        Icons.more_horiz_outlined,
+                        Icons.settings,
                         color: ThemeColors.secondaryTextColor(),
                       ),
                     ),

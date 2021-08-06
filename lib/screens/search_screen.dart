@@ -16,7 +16,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text(Language.getTranslation("addLocation")), //TODO: replace strings
+        title: Text(Language.getTranslation("addLocation")),
         centerTitle: true,
       ),
       backgroundColor: ThemeColors.backgroundColor(),
@@ -38,7 +38,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      Language.getTranslation("tapTheSearchBar"), //TODO: replace strings
+                      Language.getTranslation("tapTheSearchBar"),
                       style: TextStyle(
                         color: ThemeColors.primaryTextColor(),
                         fontSize: 15,

@@ -129,7 +129,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
             refresh();
           }
         },
-        label: Text(Language.getTranslation("addLocation")), //TODO: replace strings
+        label: Text(Language.getTranslation("addLocation")),
         icon: Icon(Icons.add),
       ),
       body: SafeArea(
@@ -162,11 +162,11 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text(Language.getTranslation("currentLocationTitle"), //TODO: replace strings
+                        Text(Language.getTranslation("currentLocationTitle"),
                             style: kSubheadingTextStyle.copyWith(
                                 color: Colors.white)),
                         Text(
-                          Language.getTranslation("tapToSeeWeatherCurrent"), //TODO: replace strings
+                          Language.getTranslation("tapToSeeWeatherCurrent"),
                           style:
                               kSubtitleTextStyle.copyWith(color: Colors.white),
                         ),
@@ -180,7 +180,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
               padding: const EdgeInsets.all(10.0),
               child: Center(
                 child: Text(
-                  Language.getTranslation("pressAndHold"),  //TODO: replace strings
+                  Language.getTranslation("pressAndHold"),
                   style: TextStyle(color: ThemeColors.secondaryTextColor()),
                 ),
               ),
@@ -225,7 +225,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
   }
 }
 
-//TODO: implement the popup menu on the trailing thing of the listtile
+
 
 /*
 onDismissed: (direction) async {
