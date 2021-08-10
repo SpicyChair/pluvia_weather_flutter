@@ -49,7 +49,7 @@ To use MapBox search:
 Then in terminal,
 > flutter build apk
 
-## Licence
+## License
 
 Pluvia Weather is licensed under [GDPLv3](https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/LICENSE).
-Weather animation code and corresponding assets are modified from [SpriteWidget](https://github.com/spritewidget/spritewidget/tree/master/examples/weather). The licence is located [here](https://github.com/spritewidget/spritewidget/blob/master/LICENSE).
+Weather animation code and corresponding assets are modified from [SpriteWidget](https://github.com/spritewidget/spritewidget/tree/master/examples/weather). The license is located [here](https://github.com/spritewidget/spritewidget/blob/master/LICENSE).
