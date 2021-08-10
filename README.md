@@ -40,13 +40,11 @@ Afrikaans, Arabic, Azerbaijani, Bulgarian, Catalan, Czech, Danish, German, Moder
 ## Building it yourself
 
 1) Get a free API key from the [OpenWeatherMap One Call API](https://openweathermap.org/full-price#current)
-2) Replace the value of kOpenWeatherApiKey in **api_keys.dart**:
-> const String kOpenWeatherApiKey = "YOUR API KEY";
+2) Replace the value of OPENWEATHER_API_KEY in **.env**:
 
 To use MapBox search:
 1) Get a free API key from [MapBox API](https://account.mapbox.com/auth/signup/)
-2) Replace the value of kMapBoxApiKey in **api_keys.dart**:
-> const String kMapBoxApiKey = "YOUR API KEY";
+2) Replace the value of MAPBOX_API_KEY in **.env**:
 
 Then in terminal,
 > flutter build apk
