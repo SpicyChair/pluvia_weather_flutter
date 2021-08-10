@@ -4,14 +4,16 @@ import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
 import 'screens/loading_screen.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 
 void main() {
-  getThemeColorsAndLang();
+  initialize();
 }
 
-Future<void> getThemeColorsAndLang() async {
+Future<void> initialize() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Language.initialise();
+  await DotEnv.load(fileName: ".env");
   ThemeColors.initialise().then(
     (value) => runApp(
       WeatherApp(),
@@ -32,12 +34,7 @@ class WeatherApp extends StatelessWidget {
         floatingActionButtonTheme:
             FloatingActionButtonThemeData(backgroundColor: Colors.blueAccent),
       ),
-
-      debugShowCheckedModeBanner: false,
-
-
-
-
+      debugShowCheckedModeBanner: true,
       home: LoadingScreen(),
     );
   }

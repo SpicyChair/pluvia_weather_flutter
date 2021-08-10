@@ -13,7 +13,7 @@ if (flutterRoot == null) {
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
-    flutterVersionCode = '17'
+    flutterVersionCode = '21'
 }
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
@@ -43,7 +43,7 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+
         applicationId "com.spicychair.weather"
         minSdkVersion 16
         targetSdkVersion 30

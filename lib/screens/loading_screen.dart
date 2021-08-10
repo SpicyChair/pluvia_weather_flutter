@@ -15,19 +15,33 @@ class LoadingScreen extends StatefulWidget {
 
 class _LoadingScreenState extends State<LoadingScreen> {
   bool isGettingData;
+  bool correctAPIKeys;
   String message;
 
   Future getWeatherData() async {
     isGettingData = true;
+    correctAPIKeys  = true;
     message = Language.getTranslation("loading");
 
+    int result = await WeatherModel.getUserLocationWeather();
 
-    if (await WeatherModel.getUserLocationWeather() == 0) {
+    /*
+
+     */
+
+    if (result == 0) {
       setState(() {
         isGettingData = false;
         message = Language.getTranslation("networkErrorText");
       });
       return;
+    } else if (result == 2) {
+      setState(() {
+        isGettingData = false;
+        correctAPIKeys = false;
+        message = "API Key invalid or temporarily blocked."; ////Language.getTranslation("apiKeyErrorText")
+        //TODO: translate strings
+      });
     }
 
     await loadSharedPrefs();
@@ -108,6 +122,26 @@ class _LoadingScreenState extends State<LoadingScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: RaisedButton(
                       child: Text(Language.getTranslation("retry"), style: TextStyle(color: ThemeColors.primaryTextColor()),),
+                      color: Colors.blueAccent,
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoadingScreen(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                Visibility(
+                  //show only when api keys are bad
+                  visible: !correctAPIKeys,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RaisedButton(
+                      child: Text("Edit API Keys", style: TextStyle(color: ThemeColors.primaryTextColor()),), //TODO: TRANSLATE STRINGS
+                      //Language.getTranslation("editAPIKeys")
                       color: Colors.blueAccent,
                       onPressed: () {
                         Navigator.pushReplacement(

@@ -1,9 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
-import 'package:flutter_weather/api_keys.dart';
 import 'package:mapbox_search_flutter/mapbox_search_flutter.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -62,7 +63,7 @@ class _SearchScreenState extends State<SearchScreen> {
               padding: EdgeInsets.all(15),
               child: MapBoxPlaceSearchWidget(
                 popOnSelect: false,
-                apiKey: kMapBoxApiKey,
+                apiKey: env["MAPBOX_API_KEY"],
                 limit: 8,
                 searchHint: Language.getTranslation("searchForLocation"),
                 onSelected: (place) {

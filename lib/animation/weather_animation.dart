@@ -7,7 +7,6 @@ import 'dart:ui' as ui show Image;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:spritewidget/spritewidget.dart';
-import 'package:flutter_weather/constants/constants.dart';
 import 'weather_type.dart';
 
 // The image map hold all of our image assets.
@@ -92,8 +91,6 @@ class WeatherAnimationState extends State<WeatherAnimation> {
       );
     }
 
-    // All assets are loaded, build the whole app with weather buttons
-    // and the WeatherWorld.
     return Material(
       child: SpriteWidget(weatherWorld),
     );

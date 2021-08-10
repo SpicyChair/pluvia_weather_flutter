@@ -3,13 +3,14 @@ import 'package:flutter_weather/animation/weather_type.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
-import 'package:flutter_weather/api_keys.dart';
+//import 'package:flutter_weather/api_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'networking.dart';
 import 'location_service.dart';
 import 'package:flutter/material.dart';
 import 'package:emojis/emojis.dart';
 import 'package:emojis/emoji.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 const String kOpenWeatherMapURL =
     "https://api.openweathermap.org/data/2.5/onecall?";
@@ -21,18 +22,21 @@ class WeatherModel {
   static var weatherData;
   static String locationName;
   static String unit;
+  static var _kOpenWeatherApiKey = env["OPENWEATHER_API_KEY"];
+  static var _kOpenWeatherApiKeyCustom;
 
-  static Future<void> getUnit() async {
+  static Future<void> initialize() async {
     bool useImperial = await SharedPrefs.getImperial();
-
     unit = useImperial ? "imperial" : "metric";
+
+    _kOpenWeatherApiKeyCustom = await SharedPrefs.getOpenWeatherAPIKey();
   }
 
   /*
   Gets weather from user location
    */
   static Future<int> getUserLocationWeather() async {
-    getUnit();
+    initialize();
 
     if (await (Connectivity().checkConnectivity()) == ConnectivityResult.none) {
       //return a code to show that connection failed
@@ -42,16 +46,38 @@ class WeatherModel {
     await LocationService.getCurrentLocation();
 
     //send a request to OpenWeatherMap one call api
-    NetworkHelper networkHelper = NetworkHelper(
-      url:
-          "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
-    );
-    print(
-        "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}");
 
-    weatherData =
-        await networkHelper.getData(); //getData gets and decodes the json data
-    locationName = Language.getTranslation("currentLocationTitle");
+    if (_kOpenWeatherApiKeyCustom != "") {
+      NetworkHelper networkHelper = NetworkHelper(
+        url:
+        "${kOpenWeatherMapURL}lat=${LocationService
+            .latitude}&lon=${LocationService
+            .longitude}&appid=$_kOpenWeatherApiKeyCustom&units=$unit&lang=${Language
+            .getCurrentCode()}",
+      );
+      print(
+          "${kOpenWeatherMapURL}lat=${LocationService
+              .latitude}&lon=${LocationService
+              .longitude}&appid=$_kOpenWeatherApiKeyCustom&units=$unit&lang=${Language
+              .getCurrentCode()}");
+      weatherData = await networkHelper
+          .getData(); //getData gets and decodes the json data
+      locationName = Language.getTranslation("currentLocationTitle");
+
+      if (weatherData != null) {
+        return 1;
+      }
+    }
+
+      NetworkHelper networkHelper = NetworkHelper(
+        url:
+            "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
+      );
+      print(
+          "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}");
+      weatherData = await networkHelper
+          .getData(); //getData gets and decodes the json data
+      locationName = Language.getTranslation("currentLocationTitle");
     return 1;
   }
 
@@ -61,7 +87,7 @@ class WeatherModel {
 
   static Future<void> getCoordLocationWeather(
       double latitude, double longitude, String name) async {
-    getUnit();
+    initialize();
 
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
@@ -73,12 +99,12 @@ class WeatherModel {
 
     NetworkHelper networkHelper = NetworkHelper(
       url:
-          "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
+          "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
     );
     var data =
         await networkHelper.getData(); //getData gets and decodes the json data
 
-    //force weather screens to display error messge when location disabled
+    //force weather screens to display error message when location disabled
     //this fixes bug present in < 1.0.7
     if (latitude == null && longitude == null) {
       data = null;
@@ -132,16 +158,20 @@ class WeatherModel {
     } else if (id == 800) {
       //clear
       //return isNight ? "🌘" : "☀";
-      return isNight ? _getEmoji("Waning Crescent Moon") :  _getEmoji("Sun");
+      return isNight ? _getEmoji("Waning Crescent Moon") : _getEmoji("Sun");
     } else if (id == 801) {
       // partly cloudy
       //return isNight ? "🌘" : "⛅";
-      return isNight ? _getEmoji("Waning Crescent Moon") :  _getEmoji("Sun Behind Cloud");
+      return isNight
+          ? _getEmoji("Waning Crescent Moon")
+          : _getEmoji("Sun Behind Cloud");
     } else if (id == 802) {
       //a bit cloudier than partly cloudy
 
       //return isNight ? "🌘" : "🌥️";
-      return isNight ? _getEmoji("Waning Crescent Moon") :  _getEmoji("Sun Behind Large Cloud");
+      return isNight
+          ? _getEmoji("Waning Crescent Moon")
+          : _getEmoji("Sun Behind Large Cloud");
     } else {
       //cloudy
       return "☁";
@@ -173,7 +203,8 @@ class WeatherModel {
 
       if ((forecastTime.isAfter(sunset.add(Duration(minutes: 120))) ||
               forecastTime.isBefore(sunrise)) &&
-          forecastTime.isBefore(tomorrowSunrise.subtract(Duration(minutes: 30)))) {
+          forecastTime
+              .isBefore(tomorrowSunrise.subtract(Duration(minutes: 30)))) {
         //night
         weatherType = WeatherType.clearNight;
       } else if (forecastTime.isAfter(sunset) &&
@@ -189,7 +220,6 @@ class WeatherModel {
       }
     }
     return weatherType;
-    //TODO: FIX
   }
 
   static int getSecondsTimezoneOffset() {

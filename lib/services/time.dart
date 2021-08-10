@@ -10,7 +10,7 @@ class TimeHelper {
     int millisecondsTimezoneOffset = secondsTimezoneOffset * 1000;
 
 
-    //TODO: look into using system time to calculate forecast time
+
 
     //print(now.millisecondsSinceEpoch);
 

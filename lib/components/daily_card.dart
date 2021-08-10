@@ -46,7 +46,6 @@ class DailyCard extends StatelessWidget {
           child: ExpandablePanel(
             header: Container(
               padding: EdgeInsets.fromLTRB(5, 5, 0, 5),
-              height: 70,
               width: double.infinity,
               child: Center(
                 child: ListTile(
@@ -139,10 +138,10 @@ class DailyCard extends StatelessWidget {
 
 
     return Container(
-      height: 170,
       padding: EdgeInsets.symmetric(horizontal: 5),
       child: Center(
         child: GridView.count(
+          shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
           childAspectRatio: 1.5,
           crossAxisCount: 3,

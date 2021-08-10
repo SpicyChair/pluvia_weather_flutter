@@ -158,7 +158,7 @@ class HourlyCard extends StatelessWidget {
           ),
           content: Container(
             width: 300,
-            height: 330,
+            height: 350,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -201,6 +201,7 @@ class HourlyCard extends StatelessWidget {
                   height: 250,
                   width: 300,
                   child: GridView.count(
+                    shrinkWrap: true,
                     childAspectRatio: 2,
                     crossAxisCount: 2,
                     physics: const NeverScrollableScrollPhysics(),

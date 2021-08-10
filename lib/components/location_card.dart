@@ -23,38 +23,28 @@ class LocationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () async {
-        await WeatherModel.getCoordLocationWeather(
-            data.latitude, data.longitude, data.title);
-        onLocationSelect(0);
-      },
-      child: GestureDetector(
-
-        //TODO: CHANGE DURATION OF onPanDown
-        onPanCancel: () => _timer?.cancel(),
-        onPanDown: (_) => {_timer = Timer(Duration(milliseconds: 850), onLongPress)},
-
-
-
-        child: Card(
-          elevation: 0,
-          color: Colors.transparent,
-          key: ValueKey(data.id),
-          child: ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            title: Text(
-              data.title,
-              style: kSubheadingTextStyle.copyWith(
-                  color: ThemeColors.primaryTextColor()),
-              overflow: TextOverflow.fade,
-            ),
-            subtitle: Text(
-              data.getCoordinates(),
-              style: kSubtitleTextStyle.copyWith(
-                  color: ThemeColors.secondaryTextColor()),
-            ),
-          ),
+    return Card(
+      elevation: 0,
+      color: Colors.transparent,
+      key: ValueKey(data.id),
+      child: ListTile(
+        onTap: () async {
+          await WeatherModel.getCoordLocationWeather(
+              data.latitude, data.longitude, data.title);
+          onLocationSelect(0);
+        },
+        onLongPress: onLongPress,
+        contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        title: Text(
+          data.title,
+          style: kSubheadingTextStyle.copyWith(
+              color: ThemeColors.primaryTextColor()),
+          overflow: TextOverflow.fade,
+        ),
+        subtitle: Text(
+          data.getCoordinates(),
+          style: kSubtitleTextStyle.copyWith(
+              color: ThemeColors.secondaryTextColor()),
         ),
       ),
     );

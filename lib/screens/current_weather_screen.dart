@@ -226,6 +226,16 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                 temperatureWidget(),
                 //infoWidget(),
                 Positioned(
+                    bottom: 0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        "Thank you for using Pluvia Weather.",
+                        style: TextStyle(color: ThemeColors.primaryTextColor()),
+                      ),
+                    ),
+                ),
+                Positioned(
                   bottom: 0,
                   child: Container(
                     width: MediaQuery.of(context).size.width,
@@ -245,6 +255,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                               createHourlyForecastCard(),
                               createInfoCards(),
                               radarInfoCards(),
+
                             ],
                           ),
                         ],
@@ -252,6 +263,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                     ),
                   ),
                 ),
+
               ],
             ),
     );
@@ -306,8 +318,11 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   }
 
   Widget createHourlyForecastCard() {
-    return PanelCard(
-      cardChild: Container(
+    return Container(
+      decoration: BoxDecoration(
+        color: ThemeColors.backgroundColor(),
+      ),
+      child: Container(
         height: 200,
         width: double.infinity,
         margin: kPanelCardMargin,

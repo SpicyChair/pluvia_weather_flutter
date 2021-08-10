@@ -69,6 +69,41 @@ class SharedPrefs {
   }
 
 
+
+
+  //values for custom owm api key
+
+  static const String owmKey = "openWeatherKey";
+
+  static Future<String> getOpenWeatherAPIKey() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String code = prefs.getString(owmKey) ?? "";
+    return code;
+  }
+
+  static Future<void> setOpenWeatherAPIKey(String key) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(owmKey, key);
+    print(key.toString());
+  }
+
+  //values for custom owm api key
+
+  static const String mbKey = "openWeatherKey";
+
+  static Future<String> getMapBoxAPIKey() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String code = prefs.getString(mbKey) ?? "";
+    return code;
+  }
+
+  static Future<void> setMapBoxAPIKey(String key) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(mbKey, key);
+    print(key.toString());
+  }
+
+
 }
 
 enum WindUnit {

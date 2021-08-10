@@ -99,7 +99,6 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
         onPressed: () async {
           /*
           Test Code
-          //TODO: remove this
            await WeatherModel.getCoordLocationWeather(
           //               51.5074, 0.1278, "London");
           //           widget.onLocationSelect(0);

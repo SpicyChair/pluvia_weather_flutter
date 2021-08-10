@@ -14,6 +14,7 @@ class PanelCard extends StatelessWidget {
       child: cardChild,
       decoration: BoxDecoration(
         color: ThemeColors.backgroundColor(),
+
       ),
     );
   }

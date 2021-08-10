@@ -179,7 +179,7 @@ class _MoreScreenState extends State<MoreScreen> {
                       ),
                       value: useImperial ?? false,
                       onChanged: (bool value) async {
-                        SharedPrefs.setImperial(value);
+                        await SharedPrefs.setImperial(value);
                         useImperial = value;
                         setState(() {});
                         Scaffold.of(context).showSnackBar(SnackBar(
@@ -277,7 +277,7 @@ class _MoreScreenState extends State<MoreScreen> {
                         dropdownColor: ThemeColors.backgroundColor(),
                         onChanged: (String newValue) async {
                           langDropdownValue = newValue;
-                          SharedPrefs.setLanguageCode(newValue);
+                          await SharedPrefs.setLanguageCode(newValue);
 
                           await Language.initialise();
                           Navigator.pushReplacement(
