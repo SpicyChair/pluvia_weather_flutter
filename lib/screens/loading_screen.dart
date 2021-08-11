@@ -11,6 +11,9 @@ import 'current_weather_screen.dart';
 class LoadingScreen extends StatefulWidget {
   @override
   _LoadingScreenState createState() => _LoadingScreenState();
+  bool checkDefaultLocation;
+
+  LoadingScreen({this.checkDefaultLocation = false});
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
@@ -22,8 +25,21 @@ class _LoadingScreenState extends State<LoadingScreen> {
     isGettingData = true;
     correctAPIKeys  = true;
     message = Language.getTranslation("loading");
+    int result = 0;
 
-    int result = await WeatherModel.getUserLocationWeather();
+    if (widget.checkDefaultLocation) {
+      var data = await SharedPrefs.getDefaultLocation();
+      if (data.length == 3) {
+        print("Cool");
+       result = await WeatherModel.getCoordLocationWeather(name: data[0], latitude: data[1], longitude: data[2]);
+      } else {
+      result = await WeatherModel.getUserLocationWeather();
+      }
+    } else {
+      result = await WeatherModel.getUserLocationWeather();
+    }
+
+
 
     /*
 

@@ -143,8 +143,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
   }
 
   Future<void> refresh() async {
-    await WeatherModel.getCoordLocationWeather(
-        lat, lon, WeatherModel.locationName);
+    await WeatherModel.getCoordLocationWeather(latitude: lat, longitude: lon, name: WeatherModel.locationName);
     updateUI();
     DateTime now = DateTime.now();
     String refreshTime = DateFormat.Hm().format(now);

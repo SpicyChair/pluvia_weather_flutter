@@ -28,15 +28,17 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   void initState() {
-    super.initState();
+    super.initState();/*
     if (LocationService.longitude == null || LocationService.latitude == null) {
       Future.delayed(Duration.zero, () {
         showLocationPrompt();
         onTabChange(2); //go to location tab
       });
-    } else if (WeatherModel.weatherData == null) {
+    } else*/
+    if (WeatherModel.weatherData == null) {
       Future.delayed(Duration.zero, () {
-        showNetworkPrompt();
+        showLocationPrompt();
+        onTabChange(2); //go to location tab
       });
     }
   }

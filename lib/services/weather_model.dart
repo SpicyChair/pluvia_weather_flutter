@@ -85,8 +85,8 @@ class WeatherModel {
   Gets weather from latitude and longitude
    */
 
-  static Future<void> getCoordLocationWeather(
-      double latitude, double longitude, String name) async {
+  static Future<int> getCoordLocationWeather(
+  {double latitude, double longitude, String name}) async {
     initialize();
 
     var connectivityResult = await (Connectivity().checkConnectivity());
@@ -112,6 +112,8 @@ class WeatherModel {
 
     weatherData = data;
     locationName = name;
+
+    return 1;
   }
 
   /*

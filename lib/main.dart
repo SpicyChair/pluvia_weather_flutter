@@ -35,7 +35,7 @@ class WeatherApp extends StatelessWidget {
             FloatingActionButtonThemeData(backgroundColor: Colors.blueAccent),
       ),
       debugShowCheckedModeBanner: true,
-      home: LoadingScreen(),
+      home: LoadingScreen(checkDefaultLocation: true,),
     );
   }
 }

@@ -104,6 +104,27 @@ class SharedPrefs {
   }
 
 
+  static const String defaultLocationKey = "defaultLocationKey";
+
+  static Future<List> getDefaultLocation() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> location = prefs.getStringList(defaultLocationKey);
+
+    if (location != null) {
+      return [location[0], double.parse(location[1]), double.parse(location[2])];
+    }
+    return ["Use a default location on app startup."];
+  }
+
+  static Future<void> setDefaultLocation({String text, double lat, double long}) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(defaultLocationKey, [text, lat.toString(), long.toString()]);
+  }
+
+  static Future<void> removeDefaultLocation() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove(defaultLocationKey);
+  }
 }
 
 enum WindUnit {

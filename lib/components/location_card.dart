@@ -29,8 +29,7 @@ class LocationCard extends StatelessWidget {
       key: ValueKey(data.id),
       child: ListTile(
         onTap: () async {
-          await WeatherModel.getCoordLocationWeather(
-              data.latitude, data.longitude, data.title);
+          await WeatherModel.getCoordLocationWeather(latitude: data.latitude, longitude: data.longitude, name: data.title);
           onLocationSelect(0);
         },
         onLongPress: onLongPress,

@@ -77,7 +77,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     timeZoneOffset = WeatherModel.getSecondsTimezoneOffset();
     timeZoneOffsetText = timeZoneOffset.isNegative
         ? "${(timeZoneOffset / 3600).round()}"
-        : "+${(timeZoneOffset / 3600).round()}";
+        : "+${(timeZoneOffset / 3600).round()}"; //TODO: FIX ROUNDING OF TIMEZONE
 
     lat = weatherData["lat"].toDouble();
     lon = weatherData["lon"].toDouble();
@@ -139,8 +139,8 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       await WeatherModel.getUserLocationWeather();
     } else {
       //else refresh normally
-      await WeatherModel.getCoordLocationWeather(
-          lat, lon, WeatherModel.locationName);
+      await WeatherModel.getCoordLocationWeather(latitude: lat, longitude: lon, name: WeatherModel.locationName);
+          //lati, lon, WeatherModel.locationName);
     }
 
     updateUI();
