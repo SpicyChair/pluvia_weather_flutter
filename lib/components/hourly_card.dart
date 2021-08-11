@@ -44,7 +44,6 @@ class HourlyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tooltip(
-
       message: 'View weather for the selected hour',
       child: Card(
         shape: RoundedRectangleBorder(
@@ -71,6 +70,7 @@ class HourlyCard extends StatelessWidget {
               children: [
                 Text(
                   displayTime,
+                  textAlign: TextAlign.center,
                   style: kHourlyCardTime.copyWith(
                       color: ThemeColors.secondaryTextColor()),
                 ),

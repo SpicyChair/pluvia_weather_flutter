@@ -123,7 +123,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       weatherAnimation.state.weatherWorld.weatherType = weatherType;
     }
 
-    refreshTime = DateFormat.Hm().format(DateTime.now());
+    refreshTime = TimeHelper.getReadableTime(DateTime.now());
 
     setState(() {
       isLoading = false;
@@ -294,7 +294,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             Container(
               padding: EdgeInsets.symmetric(vertical: 3, horizontal: 6),
               child: Text(
-                "${Language.getTranslation("localTime")}${DateFormat.Hm().format(weatherTime)} (UTC$timeZoneOffsetText)",
+                "${Language.getTranslation("localTime")}${TimeHelper.getReadableTime(weatherTime)} (UTC$timeZoneOffsetText)",
                 style: TextStyle(
                     color: Colors.white.withOpacity(0.65), fontSize: 16),
               ),
@@ -344,7 +344,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
 
               forecastTime = TimeHelper.getDateTimeSinceEpoch(
                   hourlyData[index]["dt"], timeZoneOffset);
-              displayTime = "${forecastTime.hour.toString()}:00";
+              displayTime = TimeHelper.getShortReadableTime(forecastTime);
 
               DateTime tomorrowSunrise = TimeHelper.getDateTimeSinceEpoch(
                   dailyData[1]["sunrise"], timeZoneOffset);
@@ -402,11 +402,11 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             ),
             InfoCard(
               title: Language.getTranslation("sunrise"),
-              value: "${DateFormat.Hm().format(sunriseTime)}",
+              value: "${TimeHelper.getReadableTime(sunriseTime)}",
             ),
             InfoCard(
               title: Language.getTranslation("sunset"),
-              value: "${DateFormat.Hm().format(sunsetTime)}",
+              value: "${TimeHelper.getReadableTime(sunsetTime)}",
             ),
             InfoCard(
               title: Language.getTranslation("humidity"),

@@ -34,6 +34,22 @@ class SharedPrefs {
     await prefs.setBool(darkKey, newValue);
   }
 
+  //values for 24h time
+
+  static const String h24key = "useDarkMode";
+
+  static Future<bool> get24() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    //if value is none return false
+    bool value = prefs.getBool(h24key) ?? false;
+    return value;
+  }
+
+  static Future<void> set24(bool newValue) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(h24key, newValue);
+  }
+
 
   //values for wind unit
 
@@ -125,7 +141,12 @@ class SharedPrefs {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove(defaultLocationKey);
   }
+
+
 }
+
+
+
 
 enum WindUnit {
   MS,

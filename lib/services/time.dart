@@ -1,5 +1,26 @@
 
+import 'package:flutter_weather/preferences/shared_prefs.dart';
+import 'package:intl/intl.dart';
+
 class TimeHelper {
+
+
+  static bool use24H;
+
+  static void initialize() async {
+    use24H = await SharedPrefs.get24();
+  }
+
+  static String getReadableTime(DateTime time) {
+    initialize();
+    return use24H ? DateFormat.Hm().format(time) : DateFormat.jm().format(time);
+  }
+
+  //get shorthand version, ie 6PM
+  static String getShortReadableTime(DateTime time) {
+    initialize();
+    return use24H ? DateFormat.Hm().format(time) : DateFormat.j().format(time);
+  }
 
 
   static DateTime getDateTimeSinceEpoch(int secondsSinceEpoch, int secondsTimezoneOffset) {

@@ -44,9 +44,15 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        leading: TextButton(
+          child: Icon(Icons.arrow_back, color: ThemeColors.primaryTextColor(),),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         brightness: ThemeColors.isDark ? Brightness.dark : Brightness.light,
         title: Text(
-            "Advanced Settings"), //Language.getTranslation("advancedSettings")
+            "Advanced Settings", style: TextStyle(color:ThemeColors.primaryTextColor()),), //Language.getTranslation("advancedSettings")
         centerTitle: true,
         backgroundColor: ThemeColors.backgroundColor(),
       ),

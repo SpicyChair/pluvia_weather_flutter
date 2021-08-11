@@ -146,7 +146,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
     await WeatherModel.getCoordLocationWeather(latitude: lat, longitude: lon, name: WeatherModel.locationName);
     updateUI();
     DateTime now = DateTime.now();
-    String refreshTime = DateFormat.Hm().format(now);
+    String refreshTime = TimeHelper.getReadableTime(now);
     Scaffold.of(context)
         .showSnackBar(SnackBar(content: Text("${Language.getTranslation("lastUpdatedAt")} $refreshTime")));
   }

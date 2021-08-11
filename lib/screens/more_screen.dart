@@ -6,6 +6,7 @@ import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/advanced_settings_screen.dart';
+import 'package:flutter_weather/screens/changelog_screen.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -26,6 +27,7 @@ class _MoreScreenState extends State<MoreScreen> {
   //the values displayed on the toggles
   bool useImperial;
   bool useDarkMode;
+  bool use24;
   String windDropdownValue;
   String langDropdownValue;
 
@@ -46,6 +48,7 @@ class _MoreScreenState extends State<MoreScreen> {
   Future<void> getSharedPrefs() async {
     useImperial = await SharedPrefs.getImperial();
     useDarkMode = await SharedPrefs.getDark();
+    use24 = await SharedPrefs.get24();
     switch (await SharedPrefs.getWindUnit()) {
       case WindUnit.MS:
         windDropdownValue = "meters/s";
@@ -95,7 +98,7 @@ class _MoreScreenState extends State<MoreScreen> {
                 child: Stack(
                   children: [
                     Positioned(
-                      top: 25,
+                      top: 20,
                       left: 15,
                       child: Text(
                         "Pluvia Weather",
@@ -106,7 +109,7 @@ class _MoreScreenState extends State<MoreScreen> {
                       ),
                     ),
                     Positioned(
-                      top: 70,
+                      top: 60,
                       left: 16,
                       child: Text(
                         "Version $version",
@@ -114,6 +117,26 @@ class _MoreScreenState extends State<MoreScreen> {
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                             color: Colors.white),
+                      ),
+                    ),
+                    Positioned(
+                      top: 70,
+                      left: 16,
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.only(right: 190),
+                        ),
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return ChangelogScreen();
+                          }));
+                        },
+                        child: Text(
+                          "Changelog >",
+                          style:
+                              TextStyle(fontSize: 16, color: Colors.grey[400]),
+                        ),
                       ),
                     ),
                     Positioned(
@@ -188,6 +211,36 @@ class _MoreScreenState extends State<MoreScreen> {
                       },
                       secondary: Icon(
                         Icons.thermostat_outlined,
+                        color: ThemeColors.secondaryTextColor(),
+                      ),
+                    ),
+                  ),
+                  color: ThemeColors.cardColor(),
+                  shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
+                ),
+              ),
+              SizedBox(
+                height: 80,
+                child: Card(
+                  child: Center(
+                    child: SwitchListTile(
+                      title: Text(
+                        "Use 24 Hour Time",
+                        style: TextStyle(
+                          color: ThemeColors.primaryTextColor(),
+                        ),
+                      ),
+                      value: use24 ?? true,
+                      onChanged: (bool value) async {
+                        await SharedPrefs.set24(value);
+                        use24 = value;
+                        setState(() {});
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                            content:
+                            Text(Language.getTranslation("refreshToSee"))));
+                      },
+                      secondary: Icon(
+                        Icons.timelapse_outlined,
                         color: ThemeColors.secondaryTextColor(),
                       ),
                     ),

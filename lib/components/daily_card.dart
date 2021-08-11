@@ -148,11 +148,11 @@ class DailyCard extends StatelessWidget {
           children: [
             InfoCard(
               title: Language.getTranslation("sunrise"),
-              value: "${DateFormat.Hm().format(sunriseTime)}",
+              value: "${TimeHelper.getReadableTime(sunriseTime)}",
             ),
             InfoCard(
               title: Language.getTranslation("sunset"),
-              value: "${DateFormat.Hm().format(sunsetTime)}",
+              value: "${TimeHelper.getReadableTime(sunsetTime)}",
             ),
             InfoCard(
               title: Language.getTranslation("wind"),

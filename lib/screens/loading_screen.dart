@@ -5,6 +5,7 @@ import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
 import 'package:flutter_weather/screens/saved_location_screen.dart';
+import 'package:flutter_weather/services/time.dart';
 import 'package:flutter_weather/services/weather_model.dart';
 import 'current_weather_screen.dart';
 
@@ -77,6 +78,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     await SharedPrefs.getWindUnit();
     await SharedPrefs.getImperial();
     await SharedPrefs.getDark();
+    await TimeHelper.initialize();
 
   }
 
