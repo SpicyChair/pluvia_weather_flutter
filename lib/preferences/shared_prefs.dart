@@ -36,7 +36,7 @@ class SharedPrefs {
 
   //values for 24h time
 
-  static const String h24key = "useDarkMode";
+  static const String h24key = "use24h";
 
   static Future<bool> get24() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
