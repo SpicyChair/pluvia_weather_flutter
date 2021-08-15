@@ -11,8 +11,10 @@ A weather app with beautiful animations, built with Flutter, with data from the 
 
 ## Features
 
-* Beautiful animations which change throughout the day, and according to weather conditions
+* Beautiful animations which change throughout the day and according to weather conditions
 * View weather and forecasts in your geolocation
+* Weather Radar
+* 44 supported langauges
 * Dark mode
 * Preference persistance (eg. dark mode) with shared_preferences
 * Location searching and saving with MapBox API and SQFLite Database
