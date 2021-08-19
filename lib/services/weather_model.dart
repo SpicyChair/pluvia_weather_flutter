@@ -43,6 +43,7 @@ class WeatherModel {
       return 0;
     }
     //get the user's location
+    //await LocationService.requestLocationPermission();
     await LocationService.getCurrentLocation();
 
     //send a request to OpenWeatherMap one call api
