@@ -41,7 +41,7 @@ class SharedPrefs {
   static Future<bool> get24() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //if value is none return false
-    bool value = prefs.getBool(h24key) ?? false;
+    bool value = prefs.getBool(h24key) ?? true;
     return value;
   }
 

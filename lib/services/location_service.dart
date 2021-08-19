@@ -9,7 +9,7 @@ class LocationService {
 
 
   Future<void> requestLocationPermission() async {
-    return await requestPermission();
+    return await Geolocator.requestPermission();
   }
 
   static Future<void> getCurrentLocation() async {
@@ -17,7 +17,7 @@ class LocationService {
     latitude = null;
     longitude = null;
     try {
-      Position position = await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       //if the position is null, set location to null island
       latitude = position.latitude;
       longitude = position.longitude;

@@ -230,7 +230,7 @@ class _MoreScreenState extends State<MoreScreen> {
                           color: ThemeColors.primaryTextColor(),
                         ),
                       ),
-                      value: use24 ?? true,
+                      value: use24 ?? false,
                       onChanged: (bool value) async {
                         await SharedPrefs.set24(value);
                         use24 = value;
