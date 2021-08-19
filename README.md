@@ -8,13 +8,13 @@ A weather app with beautiful animations, built with Flutter. Powered by weather 
 
 • 🌦 Slick and dynamic animations based on the weather condition and time of day
 
-• 🌙 Beautiful Dark Mode
+• 🌙 Beautiful dark mode
 
 • 📅 Accurate 24 hour and 7 day forecast, be prepared for anything
 
 • 🌍 View weather in millions of locations with MapBox Search and Weather Radar
 
-• 🛑 Secure and Private with no adverts, trackers, or data collection
+• 🛑 Secure and private with no adverts, trackers, or data collection
 
 • 🌐 Translated into 44 langauges
 
