@@ -23,13 +23,14 @@ class WeatherModel {
   static String locationName;
   static String unit;
   static var _kOpenWeatherApiKey = env["OPENWEATHER_API_KEY"];
-  static var _kOpenWeatherApiKeyCustom;
+  static String _kOpenWeatherApiKeyCustom;
 
   static Future<void> initialize() async {
     bool useImperial = await SharedPrefs.getImperial();
     unit = useImperial ? "imperial" : "metric";
 
     _kOpenWeatherApiKeyCustom = await SharedPrefs.getOpenWeatherAPIKey();
+    _kOpenWeatherApiKeyCustom = _kOpenWeatherApiKeyCustom.trim();
   }
 
   /*
@@ -98,6 +99,22 @@ class WeatherModel {
 
     //send a request to OpenWeatherMap one call api
 
+    if (_kOpenWeatherApiKeyCustom != "") {
+      NetworkHelper networkHelper = NetworkHelper(
+        url:
+        "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$_kOpenWeatherApiKeyCustom&units=$unit&lang=${Language.getCurrentCode()}",
+      );
+      var data = await networkHelper.getData();
+
+      if (latitude == null && longitude == null) {
+        data = null;
+      }
+
+      weatherData = data;
+      locationName = name;
+
+      return 1;
+    }
     NetworkHelper networkHelper = NetworkHelper(
       url:
       "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",

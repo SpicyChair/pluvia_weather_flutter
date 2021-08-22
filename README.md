@@ -41,8 +41,6 @@ A weather app with beautiful animations, built with Flutter. Powered by weather 
 
 Afrikaans, Arabic, Azerbaijani, Bulgarian, Catalan, Czech, Danish, German, Modern Greek, English, Spanish, Basque, Persian, Finnish, French, Galician, Hebrew, Hindi, Croatian, Hungarian, Indonesian, Italian, Japanese, Korean, Lithuanian, Latvian, Macedonian, Dutch Flemish, Norwegian, Polish, Portuguese, Romanian, Russian, Slovak, Slovenian, Albanian, Serbian, Swedish, Thai, Turkish, Ukrainian, Vietnamese, Chinese and Zulu.
 
-To contribute to translations, edit [**lib/localization.dart**](https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/lib/localization.dart) and make a pull request. Any contributions are appreciated!
-
 ## Building it Yourself and More
 
 1) Get a free API key from the [OpenWeatherMap One Call API](https://openweathermap.org/full-price#current)
