@@ -24,7 +24,7 @@ class ChangelogScreen extends StatelessWidget {
       url:'https://github.com/SpicyChair/pluvia_weather_flutter/releases',
       appBar: AppBar(
         title: Text(
-          "Changelog",
+          Language.getTranslation("changelog"),
           style: TextStyle(color: ThemeColors.primaryTextColor()),
         ),
         centerTitle: true,

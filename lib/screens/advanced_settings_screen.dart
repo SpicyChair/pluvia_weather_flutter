@@ -52,7 +52,7 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
         ),
         brightness: ThemeColors.isDark ? Brightness.dark : Brightness.light,
         title: Text(
-            "Advanced Settings", style: TextStyle(color:ThemeColors.primaryTextColor()),), //Language.getTranslation("advancedSettings")
+            Language.getTranslation("advancedSettings"), style: TextStyle(color:ThemeColors.primaryTextColor()),), //Language.getTranslation("advancedSettings")
         centerTitle: true,
         backgroundColor: ThemeColors.backgroundColor(),
       ),
@@ -97,16 +97,15 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                         color: ThemeColors.secondaryTextColor(),
                       ),
                       title: Text(
-                        "Default Location", //TODO:Translate strings
-                        //Language.getTranslation("defaultLocation")
+                        Language.getTranslation("defaultLocation"),
                         style: TextStyle(
                           color: ThemeColors.primaryTextColor(),
                         ),
                       ),
                       subtitle: Text(
                         defaultLocationText == "Use a default location on app startup."
-                            ? defaultLocationText
-                            : "$defaultLocationText. Tap and hold to remove.",
+                            ? Language.getTranslation("useDefaultLocationOnStartup")
+                            : "$defaultLocationText. ${Language.getTranslation("pressAndHold")}",
                         style:
                             TextStyle(color: ThemeColors.secondaryTextColor()),
                       ),
@@ -125,8 +124,7 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                         color: ThemeColors.secondaryTextColor(),
                       ),
                       title: Text(
-                        "Custom API keys", //TODO:Translate strings
-                        //Language.getTranslation("customKey")
+                        Language.getTranslation("customAPIKeys"),
                         style: TextStyle(
                           color: ThemeColors.primaryTextColor(),
                         ),
@@ -139,7 +137,7 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                       padding: EdgeInsets.symmetric(horizontal: 15),
                       child: APITextField(
                         hintText:
-                            "Enter OpenWeather API Key", //Language.getTranslation("owmKey")
+                            Language.getTranslation("owmKey"),
                         onChanged: (String text) async {
                           await SharedPrefs.setOpenWeatherAPIKey(text);
                         },
@@ -152,7 +150,7 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                       padding: EdgeInsets.symmetric(horizontal: 15),
                       child: APITextField(
                         hintText:
-                            "Enter MapBox API Key", //Language.getTranslation("mbKey")
+                            Language.getTranslation("mbKey"),
                         onChanged: (String text) async {
                           await SharedPrefs.setMapBoxAPIKey(text);
                         },
@@ -163,7 +161,7 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                       padding: const EdgeInsets.all(15.0),
                       child: Center(
                         child: Text(
-                          "Leave blank to use default values.\nIf API Keys are incorrect, default values will be used.", //Language.getTranslation("customKeyText")
+                          Language.getTranslation("customKeyInfo"),
                           style: TextStyle(
                               color: ThemeColors.secondaryTextColor()),
                         ),
@@ -204,7 +202,7 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
               Expanded(
                 child: Center(
                   child: Text(
-                    "Thank you for using Pluvia Weather.",
+                    Language.getTranslation("thankYouForUsing"),
                     style: TextStyle(color: ThemeColors.secondaryTextColor()),
                   ),
                 ),

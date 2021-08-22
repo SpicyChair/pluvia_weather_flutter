@@ -232,7 +232,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: Text(
-                          "Thank you for using Pluvia Weather.",
+                          Language.getTranslation("thankYouForUsing"),
                           style: TextStyle(color: Colors.white),
                         ),
                       ),

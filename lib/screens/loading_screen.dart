@@ -31,7 +31,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
     if (widget.checkDefaultLocation) {
       var data = await SharedPrefs.getDefaultLocation();
       if (data.length == 3) {
-        print("Cool");
        result = await WeatherModel.getCoordLocationWeather(name: data[0], latitude: data[1], longitude: data[2]);
       } else {
       result = await WeatherModel.getUserLocationWeather();
