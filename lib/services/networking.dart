@@ -19,6 +19,9 @@ class NetworkHelper {
         String data = response.body;
         //return decoded data
         return jsonDecode(data);
+      } else {
+        //if the response is unsuccessful
+        return 429;
       }
     } on SocketException catch (_) {
     } on TimeoutException catch (_) {

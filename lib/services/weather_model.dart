@@ -70,15 +70,15 @@ class WeatherModel {
       }
     }
 
-      NetworkHelper networkHelper = NetworkHelper(
-        url:
-            "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
-      );
-      print(
-          "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}");
-      weatherData = await networkHelper
-          .getData(); //getData gets and decodes the json data
-      locationName = Language.getTranslation("currentLocationTitle");
+    NetworkHelper networkHelper = NetworkHelper(
+      url:
+      "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
+    );
+    print(
+        "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}");
+    weatherData = await networkHelper
+        .getData(); //getData gets and decodes the json data
+    locationName = Language.getTranslation("currentLocationTitle");
     return 1;
   }
 
@@ -87,7 +87,7 @@ class WeatherModel {
    */
 
   static Future<int> getCoordLocationWeather(
-  {double latitude, double longitude, String name}) async {
+      {double latitude, double longitude, String name}) async {
     initialize();
 
     var connectivityResult = await (Connectivity().checkConnectivity());
@@ -100,10 +100,10 @@ class WeatherModel {
 
     NetworkHelper networkHelper = NetworkHelper(
       url:
-          "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
+      "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
     );
     var data =
-        await networkHelper.getData(); //getData gets and decodes the json data
+    await networkHelper.getData(); //getData gets and decodes the json data
 
     //force weather screens to display error message when location disabled
     //this fixes bug present in < 1.0.7
@@ -124,9 +124,9 @@ class WeatherModel {
 
   static String getIcon(int id,
       {DateTime forecastTime,
-      DateTime sunset,
-      DateTime sunrise,
-      DateTime tomorrowSunrise}) {
+        DateTime sunset,
+        DateTime sunrise,
+        DateTime tomorrowSunrise}) {
     bool isNight;
     //check if time is between sunrise and sunset, or before sunrise
     if (forecastTime != null) {
@@ -205,7 +205,7 @@ class WeatherModel {
       //use the time instead to show animation as weather is clear
 
       if ((forecastTime.isAfter(sunset.add(Duration(minutes: 120))) ||
-              forecastTime.isBefore(sunrise)) &&
+          forecastTime.isBefore(sunrise)) &&
           forecastTime
               .isBefore(tomorrowSunrise.subtract(Duration(minutes: 30)))) {
         //night

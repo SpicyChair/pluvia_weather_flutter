@@ -57,7 +57,8 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   List<dynamic> hourlyData;
   List<dynamic> dailyData;
 
-  String refreshTime; //the time weather last updated
+  String refreshTimeText;
+  DateTime refreshTime; //the time weather last updated
 
   bool isLoading = true; //if data is being loaded
 
@@ -123,7 +124,8 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       weatherAnimation.state.weatherWorld.weatherType = weatherType;
     }
 
-    refreshTime = TimeHelper.getReadableTime(DateTime.now());
+    refreshTimeText = TimeHelper.getReadableTime(DateTime.now());
+    refreshTime = DateTime.now();
 
     setState(() {
       isLoading = false;
@@ -134,19 +136,24 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   Future<void> refresh() async {
     Scaffold.of(context).showSnackBar(SnackBar(content: Text("${Language.getTranslation("loading")}...")));
 
-    //if the location displayed is current, refresh location
-    if (WeatherModel.locationName == Language.getTranslation("currentLocationTitle")) {
-      await WeatherModel.getUserLocationWeather();
+    if (DateTime.now().difference(refreshTime).inMinutes >= 10) {
+      //if the location displayed is current, refresh location
+      if (WeatherModel.locationName ==
+          Language.getTranslation("currentLocationTitle")) {
+        await WeatherModel.getUserLocationWeather();
+      } else {
+        //else refresh normally
+        await WeatherModel.getCoordLocationWeather(
+            latitude: lat, longitude: lon, name: WeatherModel.locationName);
+        //lati, lon, WeatherModel.locationName);
+      }
+      updateUI();
     } else {
-      //else refresh normally
-      await WeatherModel.getCoordLocationWeather(latitude: lat, longitude: lon, name: WeatherModel.locationName);
-          //lati, lon, WeatherModel.locationName);
+      refreshTimeText = TimeHelper.getReadableTime(DateTime.now());
     }
 
-    updateUI();
-
     Scaffold.of(context)
-        .showSnackBar(SnackBar(content: Text("${Language.getTranslation("lastUpdatedAt")}$refreshTime")));
+        .showSnackBar(SnackBar(content: Text("${Language.getTranslation("lastUpdatedAt")}$refreshTimeText")));
   }
 
   @override
@@ -508,7 +515,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             SizedBox(
               height: 20,
             ),
-            Text("${Language.getTranslation("lastUpdatedAt")}$refreshTime",
+            Text("${Language.getTranslation("lastUpdatedAt")}$refreshTimeText",
                 style: TextStyle(
                   color: ThemeColors.primaryTextColor(),
                 ),),

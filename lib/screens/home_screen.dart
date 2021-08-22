@@ -36,9 +36,16 @@ class _HomeScreenState extends State<HomeScreen> {
         onTabChange(2); //go to location tab
       });
     } else*/
+
     if (WeatherModel.weatherData == null) {
       Future.delayed(Duration.zero, () {
         showLocationPrompt();
+        onTabChange(2); //go to location tab
+      });
+    }
+    if (WeatherModel.weatherData == 429) {
+      Future.delayed(Duration.zero, () {
+        showNetworkPrompt();
         onTabChange(2); //go to location tab
       });
     }
@@ -195,13 +202,20 @@ class _HomeScreenState extends State<HomeScreen> {
           return AlertDialog(
             title: Text(Language.getTranslation("serverErrorTitle")),
             content: Text(
-                Language.getTranslation("serverErrorBody")),
+                "OpenWeatherMap's servers have blocked the request. Please use a custom API key."),
             actions: [
               FlatButton(
                 child: Text(Language.getTranslation("retry")),
                 onPressed: () {
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => LoadingScreen()));
+                },
+              ),
+              FlatButton(
+                child: Text(Language.getTranslation("customAPIKeys")),
+                onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => AdvancedSettingsScreen()));
                 },
               ),
             ],
