@@ -150,6 +150,9 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       updateUI();
     } else {
       refreshTimeText = TimeHelper.getReadableTime(DateTime.now());
+      weatherTime = weatherTime.add(DateTime.now().difference(refreshTime));
+      setState(() {
+      });
     }
 
     Scaffold.of(context)
