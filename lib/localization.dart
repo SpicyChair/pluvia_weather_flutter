@@ -1805,19 +1805,19 @@ final Map<String, Map<String, String>> localizedValues = {
         'Toque na barra de pesquisa acima para procurar uma localização ',
     'tapToSeeWeatherCurrent':
         'Toque para ver o tempo em sua localização atual ',
-    'use24HourTime': 'Use 24 horas ',
-    'appLanguage': 'Linguagem do aplicativo. ',
+    'use24HourTime': 'Formato de 24 horas ',
+    'appLanguage': 'Idioma do aplicativo. ',
     'advancedSettings': 'Configurações avançadas ',
     'defaultLocation': 'Localização padrão ',
     'useDefaultLocationOnStartup':
-        'Use o local padrão na inicialização do aplicativo ',
+        'Usar a localização padrão ao iniciar o aplicativo ',
     'customAPIKeys': 'Chaves de API personalizadas ',
-    'owmKey': 'Digite a chave de API do OpenWeather ',
-    'mbKey': 'Digite a chave da API do MapBox ',
+    'owmKey': 'Insira a chave de API do OpenWeatherMap ',
+    'mbKey': 'Insira a chave de API do MapBox ',
     'customKeyInfo':
-        'Deixe em branco para usar os valores padrão. Se as teclas API estiverem incorretas, os valores padrão serão usados. ',
-    'thankYouForUsing': 'Obrigado por usar o tempo de pluvi. ',
-    'changelog': 'Changelog. '
+        'Deixe em branco para usar valores padrão. Se as chaves estiverem incorretas, valores padrão também serão usados. ',
+    'thankYouForUsing': 'Obrigado por usar o Pluvia Weather. ',
+    'changelog': 'Registro de alterações. '
   },
   'ro': {
     'current': 'Actual ',
