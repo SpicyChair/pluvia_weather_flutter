@@ -51,13 +51,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
         message = Language.getTranslation("networkErrorText");
       });
       return;
-    } else if (result == 2) {
-      setState(() {
-        isGettingData = false;
-        correctAPIKeys = false;
-        message = "API Key invalid or temporarily blocked."; ////Language.getTranslation("apiKeyErrorText")
-        //TODO: translate strings
-      });
     }
 
     await loadSharedPrefs();

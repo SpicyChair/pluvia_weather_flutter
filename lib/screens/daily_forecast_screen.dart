@@ -32,7 +32,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
 
   void initState() {
     super.initState();
-    if (WeatherModel.weatherData != null) {
+    if (!(WeatherModel.weatherData == 401 || WeatherModel.weatherData == 429 || WeatherModel.weatherData == null)) {
       updateUI();
     }
   }

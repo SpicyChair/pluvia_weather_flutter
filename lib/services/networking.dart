@@ -12,22 +12,22 @@ class NetworkHelper {
 
   Future getData() async {
     try {
-      http.Response response = await http.get(url).timeout(Duration(seconds: 30));
+      http.Response response =
+          await http.get(url).timeout(Duration(seconds: 30));
 
       if (response.statusCode == 200) {
         //if the response is successful
         String data = response.body;
         //return decoded data
         return jsonDecode(data);
-      } else {
+      } else if (response.statusCode == 429) {
         //if the response is unsuccessful
         return 429;
+      } else if (response.statusCode == 401) {
+        //if the response is unsuccessful
+        return 401;
       }
-    } on SocketException catch (_) {
-    } on TimeoutException catch (_) {
-    }
+    } on SocketException catch (_) {} on TimeoutException catch (_) {}
     return null;
   }
-
-
 }

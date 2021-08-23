@@ -105,17 +105,17 @@ class SharedPrefs {
 
   //values for custom owm api key
 
-  static const String mbKey = "openWeatherKey";
+  static const String disclaimerRead = "discRead";
 
-  static Future<String> getMapBoxAPIKey() async {
+  static Future<bool> getDisclaimerRead() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String code = prefs.getString(mbKey) ?? "";
+    bool code = prefs.getBool(disclaimerRead) ?? 0;
     return code;
   }
 
-  static Future<void> setMapBoxAPIKey(String key) async {
+  static Future<void> setDisclaimerRead(bool key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString(mbKey, key);
+    await prefs.setBool(disclaimerRead, key);
     print(key.toString());
   }
 

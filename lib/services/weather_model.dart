@@ -47,39 +47,47 @@ class WeatherModel {
     //await LocationService.requestLocationPermission();
     await LocationService.getCurrentLocation();
 
+    if (LocationService.latitude == null ||
+        LocationService.longitude == null) {
+      weatherData = null;
+      return 1;
+    }
+
     //send a request to OpenWeatherMap one call api
 
     if (_kOpenWeatherApiKeyCustom != "") {
       NetworkHelper networkHelper = NetworkHelper(
         url:
-        "${kOpenWeatherMapURL}lat=${LocationService
-            .latitude}&lon=${LocationService
-            .longitude}&appid=$_kOpenWeatherApiKeyCustom&units=$unit&lang=${Language
-            .getCurrentCode()}",
+            "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKeyCustom&units=$unit&lang=${Language.getCurrentCode()}",
       );
       print(
-          "${kOpenWeatherMapURL}lat=${LocationService
-              .latitude}&lon=${LocationService
-              .longitude}&appid=$_kOpenWeatherApiKeyCustom&units=$unit&lang=${Language
-              .getCurrentCode()}");
+          "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKeyCustom&units=$unit&lang=${Language.getCurrentCode()}");
       weatherData = await networkHelper
           .getData(); //getData gets and decodes the json data
       locationName = Language.getTranslation("currentLocationTitle");
 
-      if (weatherData != null) {
+      if (!(weatherData == 401 || weatherData == 429 || weatherData == null)) {
         return 1;
       }
     }
 
     NetworkHelper networkHelper = NetworkHelper(
       url:
-      "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
+          "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
     );
     print(
         "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}");
-    weatherData = await networkHelper
-        .getData(); //getData gets and decodes the json data
+    weatherData =
+        await networkHelper.getData(); //getData gets and decodes the json data
     locationName = Language.getTranslation("currentLocationTitle");
+
+    if (!(weatherData == 401 || weatherData == 429 || weatherData == null)) {
+      return 1;
+    }
+
+    if (weatherData == 401) {
+      weatherData = 429;
+    }
     return 1;
   }
 
@@ -102,30 +110,26 @@ class WeatherModel {
     if (_kOpenWeatherApiKeyCustom != "") {
       NetworkHelper networkHelper = NetworkHelper(
         url:
-        "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$_kOpenWeatherApiKeyCustom&units=$unit&lang=${Language.getCurrentCode()}",
+            "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$_kOpenWeatherApiKeyCustom&units=$unit&lang=${Language.getCurrentCode()}",
       );
       var data = await networkHelper.getData();
-
-      if (latitude == null && longitude == null) {
-        data = null;
-      }
 
       weatherData = data;
       locationName = name;
 
-      return 1;
+      if (!(data == 401 || data == 429)) {
+        return 1;
+      }
     }
     NetworkHelper networkHelper = NetworkHelper(
       url:
-      "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
+          "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
     );
     var data =
-    await networkHelper.getData(); //getData gets and decodes the json data
+        await networkHelper.getData(); //getData gets and decodes the json data
 
-    //force weather screens to display error message when location disabled
-    //this fixes bug present in < 1.0.7
-    if (latitude == null && longitude == null) {
-      data = null;
+    if (data == 401) {
+      data = 429;
     }
 
     weatherData = data;
@@ -141,9 +145,9 @@ class WeatherModel {
 
   static String getIcon(int id,
       {DateTime forecastTime,
-        DateTime sunset,
-        DateTime sunrise,
-        DateTime tomorrowSunrise}) {
+      DateTime sunset,
+      DateTime sunrise,
+      DateTime tomorrowSunrise}) {
     bool isNight;
     //check if time is between sunrise and sunset, or before sunrise
     if (forecastTime != null) {
@@ -222,7 +226,7 @@ class WeatherModel {
       //use the time instead to show animation as weather is clear
 
       if ((forecastTime.isAfter(sunset.add(Duration(minutes: 120))) ||
-          forecastTime.isBefore(sunrise)) &&
+              forecastTime.isBefore(sunrise)) &&
           forecastTime
               .isBefore(tomorrowSunrise.subtract(Duration(minutes: 30)))) {
         //night
