@@ -200,6 +200,13 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                         ),
                       ),
                     ),
+                    TextButton(onPressed: () async {
+                      const url =
+                          "https://home.openweathermap.org/users/sign_up";
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      }
+                    }, child: Text("Get a Key Here", style: TextStyle(color: Colors.blueAccent),))
                   ],
                 ),
               ),
