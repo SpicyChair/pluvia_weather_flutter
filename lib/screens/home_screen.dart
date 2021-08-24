@@ -201,8 +201,16 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(Language.getTranslation("serverErrorTitle")),
-            content: Text(
-                "OpenWeatherMap's servers have blocked the request. Please use a custom API key."),
+            content: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                    "The weather server has blocked your request. Please use your own API key.",),
+                Text(
+                  "NOTE: It may take some time to activate your key.", style: TextStyle(fontWeight: FontWeight.bold),),
+              ],
+            ),
             actions: [
               FlatButton(
                 child: Text(Language.getTranslation("retry")),
