@@ -55,7 +55,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Laat leeg om standaardwaardes te gebruik. As API sleutels verkeerd is, sal standaardwaardes in plaas daarvan gebruik word. ',
     'thankYouForUsing': 'Dankie vir die gebruik van pluvia weer. ',
-    'changelog': 'Changelog '
+    'changelog': 'Changelog ',
+    'getAKey': "Kry 'n sleutel hier ",
+    'getAKeyNote': 'Let wel: dit kan tyd neem vir jou sleutel om te aktiveer ',
+    'serverErrorText':
+        'Die weer bediener het jou versoek geblokkeer. Gebruik asseblief u eie API-sleutel. '
   },
   'ar': {
     'current': 'تيار ',
@@ -113,7 +117,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'اترك فارغا لاستخدام القيم الافتراضية. إذا كانت مفاتيح API غير صحيحة، فسيتم استخدام القيم الافتراضية بدلا من ذلك. ',
     'thankYouForUsing': 'شكرا لك على استخدام طقس Pluvia. ',
-    'changelog': 'سجل التغيير '
+    'changelog': 'سجل التغيير ',
+    'getAKey': 'الحصول على مفتاح هنا ',
+    'getAKeyNote': 'ملاحظة: قد يستغرق الأمر بعض الوقت لمفتاحك التنشيط ',
+    'serverErrorText':
+        'قام خادم الطقس بحظر طلبك. يرجى استخدام مفتاح API الخاص بك. '
   },
   'az': {
     'current': 'Cərəyan ',
@@ -171,7 +179,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Defolt dəyərlərdən istifadə etmək üçün boş buraxın. API düymələri səhvdirsə, əvəzinə defolt dəyərlər istifadə ediləcəkdir. ',
     'thankYouForUsing': 'Pluvia Hava istifadə etdiyiniz üçün təşəkkür edirəm. ',
-    'changelog': 'Dəyişdirmə '
+    'changelog': 'Dəyişdirmə ',
+    'getAKey': 'Burada açar alın ',
+    'getAKeyNote':
+        'DİQQƏT: Açılışınızın aktivləşdirilməsi üçün bir az vaxt lazım ola bilər ',
+    'serverErrorText':
+        'Hava serveri istəyinizi blokladı. Zəhmət olmasa öz API açarınızdan istifadə edin. '
   },
   'bg': {
     'current': 'Текущ ',
@@ -231,7 +244,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Оставете празно, за да използвате стойности по подразбиране. Ако API клавишите са неправилни, вместо това ще се използват стойностите по подразбиране. ',
     'thankYouForUsing': 'Благодарим ви, че използвате плъхове време. ',
-    'changelog': 'Чанболог '
+    'changelog': 'Чанболог ',
+    'getAKey': 'Вземи ключ тук ',
+    'getAKeyNote':
+        'ЗАБЕЛЕЖКА: Може да отнеме известно време за активиране на ключа ',
+    'serverErrorText':
+        'Сървърът на времето е блокирал заявката ви. Моля, използвайте собствения си ключ за API. '
   },
   'ca': {
     'current': 'Habitual ',
@@ -290,7 +308,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         "Deixeu en blanc per utilitzar els valors per defecte. Si les tecles API són incorrectes, s'utilitzaran els valors per defecte. ",
     'thankYouForUsing': 'Gràcies per utilitzar el temps de pluvia. ',
-    'changelog': 'Comercial '
+    'changelog': 'Comercial ',
+    'getAKey': 'Obteniu una clau aquí ',
+    'getAKeyNote': 'Nota: pot trigar una mica a activar la vostra clau ',
+    'serverErrorText':
+        'El servidor meteorològic ha bloquejat la vostra sol·licitud. Utilitzeu la vostra pròpia clau API. '
   },
   'cs': {
     'current': 'Proud ',
@@ -347,7 +369,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Nechte prázdné používat výchozí hodnoty. Pokud jsou klíče API nesprávné, budou použity výchozí hodnoty. ',
     'thankYouForUsing': 'Děkujeme za používání Pluvia počasí. ',
-    'changelog': 'Changelog. '
+    'changelog': 'Changelog. ',
+    'getAKey': 'Získejte zde klíč ',
+    'getAKeyNote':
+        'Poznámka: Pro aktivaci může nějakou dobu trvat nějakou dobu ',
+    'serverErrorText':
+        'Počasí server zablokoval váš požadavek. Použijte prosím vlastní klíč API. '
   },
   'da': {
     'current': 'Nuværende ',
@@ -404,7 +431,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Forlad blank for at bruge standardværdier. Hvis API-tasterne er forkerte, vil standardværdier blive brugt i stedet. ',
     'thankYouForUsing': 'Tak for at bruge Pluvia Vejret. ',
-    'changelog': 'Changelog '
+    'changelog': 'Changelog ',
+    'getAKey': 'Få en nøgle her ',
+    'getAKeyNote': 'Bemærk: Det kan tage lidt tid for din nøgle at aktivere ',
+    'serverErrorText':
+        'Vejrserveren har blokeret din anmodning. Brug venligst din egen API-nøgle. '
   },
   'de': {
     'current': 'Strom ',
@@ -464,7 +495,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Lassen Sie leer, um Standardwerte zu verwenden. Wenn API-Tasten falsch sind, werden stattdessen Standardwerte verwendet. ',
     'thankYouForUsing': 'Vielen Dank, dass Sie Pluvia-Wetter verwenden. ',
-    'changelog': 'Änderungsprotokoll '
+    'changelog': 'Änderungsprotokoll ',
+    'getAKey': 'Holen Sie sich hier einen Schlüssel ',
+    'getAKeyNote':
+        'Hinweis: Es kann einige Zeit dauern, bis der Schlüssel aktiviert wird ',
+    'serverErrorText':
+        'Der Wetterserver hat Ihre Anfrage blockiert. Bitte benutzen Sie Ihren eigenen API-Schlüssel. '
   },
   'el': {
     'current': 'Ρεύμα ',
@@ -527,7 +563,12 @@ final Map<String, Map<String, String>> localizedValues = {
         'Αφήστε κενό για να χρησιμοποιήσετε τις προεπιλεγμένες τιμές. Εάν τα πλήκτρα API είναι εσφαλμένα, θα χρησιμοποιηθούν προεπιλεγμένες τιμές. ',
     'thankYouForUsing':
         'Σας ευχαριστούμε που χρησιμοποιήσατε τον καιρό Pluvia. ',
-    'changelog': 'Αλίελο '
+    'changelog': 'Αλίελο ',
+    'getAKey': 'Πάρτε ένα κλειδί εδώ ',
+    'getAKeyNote':
+        'Σημείωση: Μπορεί να χρειαστεί λίγος χρόνος για να ενεργοποιήσετε το κλειδί σας ',
+    'serverErrorText':
+        'Ο διακομιστής καιρού έχει μπλοκάρει το αίτημά σας. Χρησιμοποιήστε το δικό σας κλειδί API. '
   },
   'en': {
     'current': 'Current ',
@@ -583,7 +624,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Leave blank to use default values. If API Keys are incorrect, default values will be used instead. ',
     'thankYouForUsing': 'Thank you for using Pluvia Weather. ',
-    'changelog': 'Changelog '
+    'changelog': 'Changelog ',
+    'getAKey': 'Get a key here ',
+    'getAKeyNote': 'NOTE: It may take some time for your key to activate ',
+    'serverErrorText':
+        'The weather server has blocked your request. Please use your own API key. '
   },
   'es': {
     'current': 'Actual ',
@@ -643,7 +688,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Deje en blanco para usar los valores predeterminados. Si las teclas API son incorrectas, se utilizarán los valores predeterminados. ',
     'thankYouForUsing': 'Gracias por usar el clima de Pluvia. ',
-    'changelog': 'Log '
+    'changelog': 'Log ',
+    'getAKey': 'Obtener una llave aquí ',
+    'getAKeyNote':
+        'Nota: Puede tomar algún tiempo para que su llave se active. ',
+    'serverErrorText':
+        'El servidor meteorológico ha bloqueado su solicitud. Por favor, use su propia clave API. '
   },
   'eu': {
     'current': 'Korronte ',
@@ -702,7 +752,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Utzi hutsik balio lehenetsiak erabiltzeko. API gakoak okerrak badira, balio lehenetsiak ordez erabiliko dira. ',
     'thankYouForUsing': 'Eskerrik asko Pluvia eguraldia erabiltzeagatik. ',
-    'changelog': 'Changelog '
+    'changelog': 'Changelog ',
+    'getAKey': 'Lortu hemen tekla ',
+    'getAKeyNote':
+        'Oharra: denbora pixka bat iraun dezake zure giltza aktibatzeko ',
+    'serverErrorText':
+        'Eguraldi zerbitzariak zure eskaera blokeatu du. Mesedez, erabili zure API tekla. '
   },
   'fa': {
     'current': 'جاری ',
@@ -761,7 +816,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'خالی را ترک کنید تا از مقادیر پیش فرض استفاده کنید. اگر کلیدهای API نادرست باشند، مقادیر پیش فرض به جای آن استفاده می شود. ',
     'thankYouForUsing': 'با تشکر از شما برای استفاده از آب و هوای Pluvia. ',
-    'changelog': 'تغییر '
+    'changelog': 'تغییر ',
+    'getAKey': 'اینجا یک کلید دریافت کنید ',
+    'getAKeyNote': 'نکته: ممکن است برای کلید شما فعال شود ',
+    'serverErrorText':
+        'سرور آب و هوا درخواست شما را مسدود کرده است. لطفا از کلید API خود استفاده کنید. '
   },
   'fi': {
     'current': 'Nykyinen ',
@@ -819,7 +878,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Jätä tyhjä käyttämään oletusarvoja. Jos API-näppäimet ovat virheellisiä, sen sijaan käytetään oletusarvoja. ',
     'thankYouForUsing': 'Kiitos, kun käytät Pluvia Sää. ',
-    'changelog': 'Muutos '
+    'changelog': 'Muutos ',
+    'getAKey': 'Hanki avain täällä ',
+    'getAKeyNote': 'Huomaa: Avain voi kestää jonkin aikaa aktivoida ',
+    'serverErrorText':
+        'Sääpalvelin on estänyt pyynnön. Käytä omaa API-näppäintä. '
   },
   'fr': {
     'current': 'Actuelle',
@@ -879,7 +942,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Laisser blanc pour utiliser les valeurs par défaut. Si les touches API sont incorrectes, les valeurs par défaut seront utilisées à la place. ',
     'thankYouForUsing': "Merci d'utiliser Pluvia Météo. ",
-    'changelog': 'Changelog '
+    'changelog': 'Changelog ',
+    'getAKey': 'Obtenez une clé ici ',
+    'getAKeyNote':
+        "Remarque: il peut prendre un certain temps pour votre clé d'activer ",
+    'serverErrorText':
+        'Le serveur météo a bloqué votre demande. Veuillez utiliser votre propre clé API. '
   },
   'gl': {
     'current': 'Current. ',
@@ -939,7 +1007,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Deixar en branco para usar valores predeterminados. Se as claves da API son incorrectas, utilizaranse os valores por defecto. ',
     'thankYouForUsing': 'Grazas por usar o clima de pluvia. ',
-    'changelog': 'Changelog. '
+    'changelog': 'Changelog. ',
+    'getAKey': 'Obteña unha chave aquí ',
+    'getAKeyNote': 'NOTA: Pode levar moito tempo para que a súa chave active ',
+    'serverErrorText':
+        'O servidor meteorolóxico bloqueou a súa solicitude. Use a súa propia clave API. '
   },
   'he': {
     'current': 'נוֹכְחִי ',
@@ -996,7 +1068,10 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'השאירו ריק כדי להשתמש בערכי ברירת המחדל. אם מפתחות API הם שגויים, ערכי ברירת המחדל ישמשו במקום זאת. ',
     'thankYouForUsing': 'תודה על השימוש במזג אוויר Pluvia. ',
-    'changelog': 'Changelog '
+    'changelog': 'Changelog ',
+    'getAKey': 'קבל מפתח כאן ',
+    'getAKeyNote': 'הערה: ייתכן שיחלוף זמן מה למפתח שלך כדי להפעיל ',
+    'serverErrorText': 'שרת מזג האוויר חסם את בקשתך. השתמש במפתח API שלך. '
   },
   'hi': {
     'current': 'वर्तमान ',
@@ -1055,7 +1130,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'डिफ़ॉल्ट मानों का उपयोग करने के लिए खाली छोड़ दें। यदि एपीआई कुंजी गलत हैं, तो इसके बजाय डिफ़ॉल्ट मान का उपयोग किया जाएगा। ',
     'thankYouForUsing': 'प्लुविया मौसम का उपयोग करने के लिए धन्यवाद। ',
-    'changelog': 'बदलाव का '
+    'changelog': 'बदलाव का ',
+    'getAKey': 'यहां एक कुंजी प्राप्त करें ',
+    'getAKeyNote': 'नोट: आपकी कुंजी को सक्रिय करने में कुछ समय लग सकता है ',
+    'serverErrorText':
+        'मौसम सर्वर ने आपके अनुरोध को अवरुद्ध कर दिया है। कृपया अपनी खुद की एपीआई कुंजी का उपयोग करें। '
   },
   'hr': {
     'current': 'Trenutno ',
@@ -1115,7 +1194,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Ostavite prazninu da biste koristili zadane vrijednosti. Ako su API tipke netočne, umjesto toga će se koristiti zadane vrijednosti. ',
     'thankYouForUsing': 'Hvala vam što koristite vrijeme Pluvia. ',
-    'changelog': 'Cramelog '
+    'changelog': 'Cramelog ',
+    'getAKey': 'Ovdje dobiti ključ ',
+    'getAKeyNote':
+        'Napomena: Može potrajati neko vrijeme za vaš ključ za aktiviranje ',
+    'serverErrorText':
+        'Vremenski poslužitelj je blokirao vaš zahtjev. Koristite vlastiti API ključ. '
   },
   'hu': {
     'current': 'Jelenlegi ',
@@ -1176,7 +1260,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Hagyja üresen az alapértelmezett értékek használatához. Ha az API gombok helytelenek, az alapértelmezett értékeket helyettesítik. ',
     'thankYouForUsing': 'Köszönjük, hogy Pluvia időjárást használ. ',
-    'changelog': 'Változási napló '
+    'changelog': 'Változási napló ',
+    'getAKey': 'Szerezzen be egy kulcsot itt ',
+    'getAKeyNote':
+        'Megjegyzés: Lehet, hogy időt vehet igénybe az aktiváláshoz ',
+    'serverErrorText':
+        'Az időjárási kiszolgáló letiltotta a kérését. Kérjük, használja a saját API kulcsát. '
   },
   'id': {
     'current': 'Arus ',
@@ -1234,7 +1323,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Biarkan kosong untuk menggunakan nilai default. Jika kunci API salah, nilai default akan digunakan sebagai gantinya. ',
     'thankYouForUsing': 'Terima kasih telah menggunakan cuaca Pluvia. ',
-    'changelog': 'Changelog. '
+    'changelog': 'Changelog. ',
+    'getAKey': 'Dapatkan kunci di sini ',
+    'getAKeyNote': 'Catatan: Mungkin perlu waktu untuk mengaktifkan kunci ',
+    'serverErrorText':
+        'Server cuaca telah memblokir permintaan Anda. Silakan gunakan kunci API Anda sendiri. '
   },
   'it': {
     'current': 'attuale ',
@@ -1293,7 +1386,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Lasciare in bianco per utilizzare i valori predefiniti. Se i tasti API non sono corretti, verranno utilizzati i valori predefiniti. ',
     'thankYouForUsing': 'Grazie per aver usato il tempo PLUVIA. ',
-    'changelog': 'Changelog. '
+    'changelog': 'Changelog. ',
+    'getAKey': 'Ottieni una chiave qui ',
+    'getAKeyNote':
+        "Nota: potrebbe essere necessario un po 'di tempo per attivare la chiave ",
+    'serverErrorText':
+        'Il server meteorologico ha bloccato la tua richiesta. Si prega di utilizzare la tua chiave API. '
   },
   'ja': {
     'current': '電流 ',
@@ -1348,7 +1446,10 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'デフォルト値を使用するには、空白のままにします。 APIキーが正しくない場合は、代わりにデフォルト値が使用されます。 ',
     'thankYouForUsing': 'Pluvia天気をご利用いただきありがとうございます。 ',
-    'changelog': 'チェンジログ '
+    'changelog': 'チェンジログ ',
+    'getAKey': 'ここにキーを入手してください ',
+    'getAKeyNote': '注：キーがアクティブにするまでに時間がかかる場合があります。 ',
+    'serverErrorText': '気象サーバーはあなたの要求をブロックしました。 あなた自身のAPIキーを使ってください。 '
   },
   'ko': {
     'current': '흐름 ',
@@ -1402,7 +1503,10 @@ final Map<String, Map<String, String>> localizedValues = {
     'mbKey': 'Mapbox API 키를 입력하십시오 ',
     'customKeyInfo': '기본값을 사용하려면 공백을 남겨 두십시오. API 키가 잘못되면 대신 기본값이 사용됩니다. ',
     'thankYouForUsing': 'Pluvia 날씨를 사용해 주셔서 감사합니다. ',
-    'changelog': '변경 로그 '
+    'changelog': '변경 로그 ',
+    'getAKey': '여기에 키를 얻으십시오 ',
+    'getAKeyNote': '참고 : 키가 활성화 될 때까지 시간이 걸릴 수 있습니다. ',
+    'serverErrorText': '날씨 서버가 요청을 차단했습니다. 자신의 API 키를 사용하십시오. '
   },
   'lt': {
     'current': 'Dabartinis ',
@@ -1462,7 +1566,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Palikite tuščią naudoti numatytasis vertes. Jei API raktai yra neteisingi, vietoj to bus naudojamos numatytosios vertės. ',
     'thankYouForUsing': 'Dėkojame, kad naudojate Pluvia Orai. ',
-    'changelog': 'Changelog. '
+    'changelog': 'Changelog. ',
+    'getAKey': 'Gauti raktą čia ',
+    'getAKeyNote': 'Pastaba: gali užtrukti šiek tiek laiko raktui įjungti ',
+    'serverErrorText':
+        'Oras serveris užblokavo jūsų užklausą. Prašome naudoti savo API raktą. '
   },
   'lv': {
     'current': 'Strāva ',
@@ -1522,7 +1630,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Atstājiet tukšu, lai izmantotu noklusējuma vērtības. Ja API atslēgas ir nepareizas, tā vietā tiks izmantotas noklusējuma vērtības. ',
     'thankYouForUsing': 'Paldies, ka lietojat Pluvia laika apstākļus. ',
-    'changelog': 'Changelog '
+    'changelog': 'Changelog ',
+    'getAKey': 'Iegūstiet atslēgu šeit ',
+    'getAKeyNote': 'Piezīme: tas var aizņemt kādu laiku, lai aktivizētu ',
+    'serverErrorText':
+        'Laika serveris ir bloķējis jūsu pieprasījumu. Lūdzu, izmantojiet savu API atslēgu. '
   },
   'mk': {
     'current': 'Струја ',
@@ -1582,7 +1694,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Оставете празно за да ги користите стандардните вредности. Ако API клучевите се неточни, наместо тоа, ќе се користат стандардните вредности. ',
     'thankYouForUsing': 'Ви благодариме за користење на времето на Pluvia. ',
-    'changelog': 'Changelog. '
+    'changelog': 'Changelog. ',
+    'getAKey': 'Добијте клуч тука ',
+    'getAKeyNote': 'Забелешка: Може да потрае некое време за да го активирате ',
+    'serverErrorText':
+        'Временскиот сервер го блокираше вашето барање. Ве молиме користете го вашиот сопствен API клуч. '
   },
   'nl': {
     'current': 'Actueel ',
@@ -1640,7 +1756,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Laat leeg om standaardwaarden te gebruiken. Als API-toetsen onjuist zijn, worden in plaats daarvan de standaardwaarden gebruikt. ',
     'thankYouForUsing': 'Bedankt voor het gebruik van het weer van Pluvia. ',
-    'changelog': 'Changelog '
+    'changelog': 'Changelog ',
+    'getAKey': 'Krijg hier een sleutel ',
+    'getAKeyNote':
+        'Opmerking: het kan enige tijd duren voordat uw sleutel wordt geactiveerd ',
+    'serverErrorText':
+        'De weerserver heeft uw verzoek geblokkeerd. Gebruik alstublieft uw eigen API-sleutel. '
   },
   'no': {
     'current': 'Nåværende ',
@@ -1698,7 +1819,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'La være tomt for å bruke standardverdier. Hvis API-tastene er feil, vil standardverdier bli brukt i stedet. ',
     'thankYouForUsing': 'Takk for at du bruker pluvia været. ',
-    'changelog': 'Changelog. '
+    'changelog': 'Changelog. ',
+    'getAKey': 'Få en nøkkel her ',
+    'getAKeyNote': 'MERK: Det kan ta litt tid for nøkkelen til å aktivere ',
+    'serverErrorText':
+        'Vær-serveren har blokkert forespørselen din. Vennligst bruk din egen API-nøkkel. '
   },
   'pl': {
     'current': 'obecny ',
@@ -1757,7 +1882,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Pozostaw puste miejsce, aby użyć wartości domyślnych. Jeśli klucze API są nieprawidłowe, zamiast tego zostaną użyte wartości domyślne. ',
     'thankYouForUsing': 'Dziękujemy za korzystanie z pogody Pluvia. ',
-    'changelog': 'Changelog. '
+    'changelog': 'Changelog. ',
+    'getAKey': 'Przyjdź tutaj ',
+    'getAKeyNote': 'Uwaga: Klucz może zająć trochę czasu ',
+    'serverErrorText':
+        'Serwer pogody zablokował Twoją prośbę. Użyj własnego klucza API. '
   },
   'pt': {
     'current': 'Agora ',
@@ -1805,19 +1934,23 @@ final Map<String, Map<String, String>> localizedValues = {
         'Toque na barra de pesquisa acima para procurar uma localização ',
     'tapToSeeWeatherCurrent':
         'Toque para ver o tempo em sua localização atual ',
-    'use24HourTime': 'Formato de 24 horas ',
-    'appLanguage': 'Idioma do aplicativo. ',
+    'use24HourTime': 'Use 24 horas ',
+    'appLanguage': 'Linguagem do aplicativo. ',
     'advancedSettings': 'Configurações avançadas ',
     'defaultLocation': 'Localização padrão ',
     'useDefaultLocationOnStartup':
-        'Usar a localização padrão ao iniciar o aplicativo ',
+        'Use o local padrão na inicialização do aplicativo ',
     'customAPIKeys': 'Chaves de API personalizadas ',
-    'owmKey': 'Insira a chave de API do OpenWeatherMap ',
-    'mbKey': 'Insira a chave de API do MapBox ',
+    'owmKey': 'Digite a chave de API do OpenWeather ',
+    'mbKey': 'Digite a chave da API do MapBox ',
     'customKeyInfo':
-        'Deixe em branco para usar valores padrão. Se as chaves estiverem incorretas, valores padrão também serão usados. ',
-    'thankYouForUsing': 'Obrigado por usar o Pluvia Weather. ',
-    'changelog': 'Registro de alterações. '
+        'Deixe em branco para usar os valores padrão. Se as teclas API estiverem incorretas, os valores padrão serão usados. ',
+    'thankYouForUsing': 'Obrigado por usar o tempo de pluvi. ',
+    'changelog': 'Changelog. ',
+    'getAKey': 'Obter uma chave aqui ',
+    'getAKeyNote': 'Nota: Pode levar algum tempo para a sua chave para ativar ',
+    'serverErrorText':
+        'O servidor meteorológico bloqueou sua solicitação. Por favor, use sua própria chave da API. '
   },
   'ro': {
     'current': 'Actual ',
@@ -1876,7 +2009,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Lăsați necompletat pentru a utiliza valorile implicite. Dacă cheile API sunt incorecte, vor fi utilizate valori implicite. ',
     'thankYouForUsing': 'Vă mulțumim că ați folosit vremea Pluvia. ',
-    'changelog': 'Changelog '
+    'changelog': 'Changelog ',
+    'getAKey': 'Obțineți o cheie aici ',
+    'getAKeyNote': 'Notă: poate dura ceva timp pentru a activa cheia dvs. ',
+    'serverErrorText':
+        'Serverul meteorologic a blocat cererea dvs. Utilizați-vă propria ta cheie API. '
   },
   'ru': {
     'current': 'Текущий ',
@@ -1936,7 +2073,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Оставьте пустым, чтобы использовать значения по умолчанию. Если ключи API неверны, вместо этого будут использоваться значения по умолчанию. ',
     'thankYouForUsing': 'Спасибо за использование погоды в плювии. ',
-    'changelog': 'ChangeLog '
+    'changelog': 'ChangeLog ',
+    'getAKey': 'Получить ключ ',
+    'getAKeyNote':
+        'Примечание. Для вашего ключа может потребоваться некоторое время для активации ',
+    'serverErrorText':
+        'Сервер погоды заблокировал ваш запрос. Пожалуйста, используйте свой собственный ключ API. '
   },
   'sk': {
     'current': 'Prúd ',
@@ -1995,7 +2137,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Ak chcete použiť predvolené hodnoty, nechajte prázdne. Ak sú klávesy API nesprávne, namiesto toho sa použijú predvolené hodnoty. ',
     'thankYouForUsing': 'Ďakujeme, že ste používali počasie Pluvia. ',
-    'changelog': 'Chrániť '
+    'changelog': 'Chrániť ',
+    'getAKey': 'Získajte kľúč ',
+    'getAKeyNote': 'POZNÁMKA: Pre aktiváciu môže trvať určitý čas ',
+    'serverErrorText':
+        'Počasie server zablokoval vašu požiadavku. Použite svoj vlastný API kľúč. '
   },
   'sl': {
     'current': 'Tok ',
@@ -2053,7 +2199,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Pustite prazno, da uporabite privzete vrednosti. Če so tipke API napačne, bodo namesto tega uporabljene vrednosti. ',
     'thankYouForUsing': 'Hvala za uporabo vremena Pluvia. ',
-    'changelog': 'Changelog. '
+    'changelog': 'Changelog. ',
+    'getAKey': 'Tukaj dobite ključ ',
+    'getAKeyNote': 'Opomba: Lahko traja nekaj časa za aktiviranje ',
+    'serverErrorText':
+        'Vremenski strežnik je blokiral vašo zahtevo. Uporabite svoj ključ API. '
   },
   'sq': {
     'current': 'Aktual ',
@@ -2113,7 +2263,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Të lënë bosh për të përdorur vlerat e parazgjedhur. Nëse çelësat API janë të pasakta, do të përdoren vlerat e paracaktuara. ',
     'thankYouForUsing': 'Faleminderit për përdorimin e motit Pluvia. ',
-    'changelog': 'Changelog '
+    'changelog': 'Changelog ',
+    'getAKey': 'Merrni një çelës këtu ',
+    'getAKeyNote':
+        'Shënim: Mund të duhet pak kohë për tastierën tuaj për të aktivizuar ',
+    'serverErrorText':
+        'Serveri i motit ka bllokuar kërkesën tuaj. Ju lutemi përdorni tastin tuaj API. '
   },
   'sr': {
     'current': 'Тренутни ',
@@ -2173,7 +2328,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Оставите празно да бисте користили подразумеване вредности. Ако су АПИ тастери нетачни, уместо тога ће се користити подразумеване вредности. ',
     'thankYouForUsing': 'Хвала вам што користите Време Плувиа. ',
-    'changelog': 'Цхангелог '
+    'changelog': 'Цхангелог ',
+    'getAKey': 'Овде набавите кључ ',
+    'getAKeyNote':
+        'Напомена: Можда ће требати мало времена за активирање вашег кључа ',
+    'serverErrorText':
+        'Временски сервер је блокирао ваш захтев. Користите свој властити АПИ кључ. '
   },
   'sv': {
     'current': 'Nuvarande ',
@@ -2230,7 +2390,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Lämna tomma för att använda standardvärden. Om API-tangenterna är felaktiga, används standardvärdena istället. ',
     'thankYouForUsing': 'Tack för att du använde Pluvia Weather. ',
-    'changelog': 'Changelog '
+    'changelog': 'Changelog ',
+    'getAKey': 'Få en nyckel här ',
+    'getAKeyNote': 'Obs! Det kan ta lite tid för din nyckel att aktivera ',
+    'serverErrorText':
+        'Väderservern har blockerat din förfrågan. Använd din egen API-nyckel. '
   },
   'th': {
     'current': 'ปัจจุบัน ',
@@ -2286,7 +2450,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'เว้นว่างไว้เพื่อใช้ค่าเริ่มต้น หากคีย์ API ไม่ถูกต้องค่าเริ่มต้นจะถูกใช้แทน ',
     'thankYouForUsing': 'ขอบคุณที่ใช้สภาพอากาศ Pluvia ',
-    'changelog': 'การเปลี่ยนแปลง '
+    'changelog': 'การเปลี่ยนแปลง ',
+    'getAKey': 'รับกุญแจที่นี่ ',
+    'getAKeyNote': 'หมายเหตุ: อาจใช้เวลาสักครู่สำหรับการเปิดใช้งานคีย์ของคุณ ',
+    'serverErrorText':
+        'เซิร์ฟเวอร์สภาพอากาศได้บล็อกคำขอของคุณ โปรดใช้รหัส API ของคุณเอง '
   },
   'tr': {
     'current': 'Akım ',
@@ -2347,7 +2515,11 @@ final Map<String, Map<String, String>> localizedValues = {
         'Varsayılan değerleri kullanmak için boş bırakın. API tuşları yanlışsa, bunun yerine varsayılan değerler kullanılacaktır. ',
     'thankYouForUsing':
         'Pluvia hava koşullarını kullandığınız için teşekkür ederiz. ',
-    'changelog': 'Changelog '
+    'changelog': 'Changelog ',
+    'getAKey': 'Burada bir anahtar alın ',
+    'getAKeyNote': 'Not: Anahtarınızın etkinleştirilmesi biraz zaman alabilir ',
+    'serverErrorText':
+        'Hava sunucusu isteğinizi engelledi. Lütfen kendi API anahtarınızı kullanın. '
   },
   'uk': {
     'current': 'Струм ',
@@ -2406,7 +2578,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Залиште порожнім, щоб використовувати значення за замовчуванням. Якщо ключі API неправильні, замість цього використовуються значення за замовчуванням. ',
     'thankYouForUsing': 'Дякуємо за використання Пувії Погода. ',
-    'changelog': 'Зміна '
+    'changelog': 'Зміна ',
+    'getAKey': 'Отримайте ключ тут ',
+    'getAKeyNote': 'Примітка. Це може зайняти деякий час для активації ключа ',
+    'serverErrorText':
+        'Сервер погоди заблокував ваш запит. Будь ласка, використовуйте свій власний ключ API. '
   },
   'vi': {
     'current': 'Hiện hành ',
@@ -2464,7 +2640,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Để trống để sử dụng các giá trị mặc định. Nếu các khóa API không chính xác, các giá trị mặc định sẽ được sử dụng thay thế. ',
     'thankYouForUsing': 'Cảm ơn bạn đã sử dụng thời tiết Pluvia. ',
-    'changelog': 'Changelog. '
+    'changelog': 'Changelog. ',
+    'getAKey': 'Nhận một chìa khóa ở đây ',
+    'getAKeyNote':
+        'Lưu ý: Có thể mất một thời gian để khóa của bạn để kích hoạt ',
+    'serverErrorText':
+        'Máy chủ thời tiết đã chặn yêu cầu của bạn. Vui lòng sử dụng khóa API của riêng bạn. '
   },
   'zh': {
     'current': '当前的 ',
@@ -2517,7 +2698,10 @@ final Map<String, Map<String, String>> localizedValues = {
     'mbKey': '输入Mapbox API键 ',
     'customKeyInfo': '留空以使用默认值。 如果API键不正确，则会使用默认值。 ',
     'thankYouForUsing': '感谢您使用Pluvia天气。 ',
-    'changelog': '更改兴 '
+    'changelog': '更改兴 ',
+    'getAKey': '这里得到一个关键 ',
+    'getAKeyNote': '注意：您的钥匙可能需要一些时间来激活 ',
+    'serverErrorText': '天气服务器已阻止您的请求。 请使用您自己的API键。 '
   },
   'zu': {
     'current': '-Dlulayo ',
@@ -2576,6 +2760,11 @@ final Map<String, Map<String, String>> localizedValues = {
     'customKeyInfo':
         'Shiya ungenalutho ukuze usebenzise amanani azenzakalelayo. Uma izinkinobho ze-API azilungile, kuzosetshenziswa amanani azenzakalelayo esikhundleni salokho. ',
     'thankYouForUsing': 'Siyabonga ngokusebenzisa isimo sezulu sePluvia. ',
-    'changelog': 'I-Changelog '
+    'changelog': 'I-Changelog ',
+    'getAKey': 'Thola ukhiye lapha ',
+    'getAKeyNote':
+        'Qaphela: Kungathatha isikhathi kukhiye wakho ukuze usebenze ',
+    'serverErrorText':
+        'Iseva yesimo sezulu ivimbe isicelo sakho. Sicela usebenzise ukhiye wakho we-API. '
   }
 };
