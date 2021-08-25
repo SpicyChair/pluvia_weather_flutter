@@ -176,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             FlatButton(
-              child: Text("Set Default Location"),
+              child: Text(Language.getTranslation("defaultLocation")),
               onPressed: () {
                 //open the settings screen for location
                 Navigator.push(context, MaterialPageRoute(builder: (context) => AdvancedSettingsScreen()));
@@ -206,9 +206,9 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                    "The weather server has blocked your request. Please use your own API key.",),
+                  Language.getTranslation("serverErrorText"),),
                 Text(
-                  "NOTE: It may take some time to activate your key.", style: TextStyle(fontWeight: FontWeight.bold),),
+                    Language.getTranslation("getAKeyNote"), style: TextStyle(fontWeight: FontWeight.bold),),
               ],
             ),
             actions: [
