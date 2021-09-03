@@ -22,6 +22,7 @@ A weather app with beautiful animations, built with Flutter. Powered by weather 
 
 <a href='https://play.google.com/store/apps/details?id=com.spicychair.weather'><img alt='Get it on Google Play' src='https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/assets/badges/get-it-on-google-play.png' width="256"/></a>
 <a href='https://github.com/SpicyChair/pluvia_weather_flutter/releases'><img alt='Get it on Github' src='https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/assets/badges/get-it-on-github.png' width="256"/></a>
+<a href='https://f-droid.org/en/packages/com.spicychair.weather/'><img alt='Get it on FDroid' src='https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/assets/badges/get-it-on.png' width="256"/></a>
 
 ## Screenshots
 
