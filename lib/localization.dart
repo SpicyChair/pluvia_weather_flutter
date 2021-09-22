@@ -964,12 +964,12 @@ final Map<String, Map<String, String>> localizedValues = {
     'weatherRadar': 'Radar meteorolóxico. ',
     'weatherRadarAboutTitle': 'Sobre o radar meteorolóxico. ',
     'weatherRadarAboutBody':
-        "PLUVIA Weather's 'Weather Radar' usa unha páxina web de 'OpenWeatherMap'. Soporta visualización de precipitación, presión, temperatura, velocidade de vento e previsións de nubosidade globalmente. Isto pode levar a un maior uso de datos. ",
+        "O 'Radar de Tempo' de PLUVIA Weather usa unha páxina web de 'OpenWeatherMap'. Soporta visualización de precipitación, presión, temperatura, velocidade de vento e previsións de nubosidade globalmente. Isto pode levar a un maior uso de datos. ",
     'lastUpdatedAt': 'Última actualización realizada ',
     'locationDisabledPrompt':
-        'Para que Pluvia poida mostrar o tempo na súa localización actual, habilita a localización. ',
+        'Para que Pluvia poida mostrar o tempo na súa localización actual, habilite a localización. ',
     'darkMode': 'Modo escuro ',
-    'useFahrenheit': 'Use Fahrenheit. ',
+    'useFahrenheit': 'Usar graos Fahrenheit. ',
     'refreshToSee': 'Actualizar para ver cambios ',
     'windSpeedUnit': 'Unidade de velocidade do vento ',
     'aboutPluvia': 'Sobre Pluvia Weather. ',
@@ -1006,7 +1006,7 @@ final Map<String, Map<String, String>> localizedValues = {
     'mbKey': 'Introduza a chave API de Mapbox ',
     'customKeyInfo':
         'Deixar en branco para usar valores predeterminados. Se as claves da API son incorrectas, utilizaranse os valores por defecto. ',
-    'thankYouForUsing': 'Grazas por usar o clima de pluvia. ',
+    'thankYouForUsing': 'Grazas por usar o programa Pluvia Weather. ',
     'changelog': 'Changelog. ',
     'getAKey': 'Obteña unha chave aquí ',
     'getAKeyNote': 'NOTA: Pode levar moito tempo para que a súa chave active ',
