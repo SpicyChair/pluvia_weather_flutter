@@ -2,22 +2,27 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 \
-A weather app with beautiful animations, built with Flutter, with data from the OpenWeatherMap API and Mapbox API.
-
-## Download
-
-<a href='https://play.google.com/store/apps/details?id=com.spicychair.weather&hl=en&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png' width="256"/></a>\
-...or [download APK releases from Github](https://github.com/SpicyChair/pluvia_weather_flutter/releases)
+A weather app with beautiful animations, built with Flutter. Powered by weather data from the OpenWeatherMap API and location search from the Mapbox API.
 
 ## Features
 
-* Beautiful animations which change throughout the day, and according to weather conditions
-* View weather and forecasts in your geolocation
-* Dark mode
-* Preference persistance (eg. dark mode) with shared_preferences
-* Location searching and saving with MapBox API and SQFLite Database
-* Hourly forecast
-* Forecast for the next seven days
+• 🌦 Slick and dynamic animations based on the weather condition and time of day
+
+• 🌙 Beautiful dark mode
+
+• 📅 Accurate 24 hour and 7 day forecast, be prepared for anything
+
+• 🌍 View weather in millions of locations with MapBox Search and Weather Radar
+
+• 🛑 Secure and private with no adverts, trackers, or data collection
+
+• 🌐 Translated into 44 langauges
+
+## Download
+
+<a href='https://play.google.com/store/apps/details?id=com.spicychair.weather'><img alt='Get it on Google Play' src='https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/assets/badges/get-it-on-google-play.png' width="256"/></a>
+<a href='https://f-droid.org/packages/com.spicychair.weather/'><img alt='Get it on F-Droid' src='https://fdroid.gitlab.io/artwork/badge/get-it-on.png' width="256"/></a>
+<a href='https://github.com/SpicyChair/pluvia_weather_flutter/releases'><img alt='Get it on Github' src='https://github.com/SpicyChair/pluvia_weather_flutter/blob/master/assets/badges/get-it-on-github.png' width="256"/></a>
 
 ## Screenshots
 
@@ -37,7 +42,7 @@ A weather app with beautiful animations, built with Flutter, with data from the 
 
 Afrikaans, Arabic, Azerbaijani, Bulgarian, Catalan, Czech, Danish, German, Modern Greek, English, Spanish, Basque, Persian, Finnish, French, Galician, Hebrew, Hindi, Croatian, Hungarian, Indonesian, Italian, Japanese, Korean, Lithuanian, Latvian, Macedonian, Dutch Flemish, Norwegian, Polish, Portuguese, Romanian, Russian, Slovak, Slovenian, Albanian, Serbian, Swedish, Thai, Turkish, Ukrainian, Vietnamese, Chinese and Zulu.
 
-## Building it yourself
+## Building it Yourself and More
 
 1) Get a free API key from the [OpenWeatherMap One Call API](https://openweathermap.org/full-price#current)
 2) Replace the value of OPENWEATHER_API_KEY in **.env**:
@@ -48,6 +53,8 @@ To use MapBox search:
 
 Then in terminal,
 > flutter build apk
+
+Persistence is handled by SharedPreferences (for user options eg. dark mode) and an SQFLite Database (for saved location data).
 
 ## License
 

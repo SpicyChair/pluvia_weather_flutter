@@ -17,25 +17,40 @@ class AdvancedSettingsScreen extends StatefulWidget {
 class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
   String version;
 
-  final TextEditingController weatherKeyTextController =
-      TextEditingController();
-  final TextEditingController searchKeyTextController = TextEditingController();
+  TextEditingController weatherKeyTextController;
 
   String defaultLocationText = "";
+  String owmApiKeyText = "";
 
   void initState() {
     super.initState();
     initialize();
   }
 
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the widget tree.
+    // This also removes the _printLatestValue listener.
+    weatherKeyTextController.dispose();
+    super.dispose();
+  }
+
   Future<void> initialize() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    var info = await SharedPrefs.getDefaultLocation();
+    var userOwmKey = await SharedPrefs.getOpenWeatherAPIKey();
+
+    weatherKeyTextController = TextEditingController(text: userOwmKey);
+
+    weatherKeyTextController.addListener(() async {
+      await SharedPrefs.setOpenWeatherAPIKey(
+          weatherKeyTextController.text.trim());
+    });
+
     setState(() {
       version = packageInfo.version;
-    });
-    var info = await SharedPrefs.getDefaultLocation();
-    setState(() {
       defaultLocationText = info[0];
+      weatherKeyTextController.text = userOwmKey;
     });
   }
 
@@ -45,14 +60,19 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: TextButton(
-          child: Icon(Icons.arrow_back, color: ThemeColors.primaryTextColor(),),
+          child: Icon(
+            Icons.arrow_back,
+            color: ThemeColors.primaryTextColor(),
+          ),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         brightness: ThemeColors.isDark ? Brightness.dark : Brightness.light,
         title: Text(
-            "Advanced Settings", style: TextStyle(color:ThemeColors.primaryTextColor()),), //Language.getTranslation("advancedSettings")
+          Language.getTranslation("advancedSettings"),
+          style: TextStyle(color: ThemeColors.primaryTextColor()),
+        ), //Language.getTranslation("advancedSettings")
         centerTitle: true,
         backgroundColor: ThemeColors.backgroundColor(),
       ),
@@ -87,7 +107,8 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                           double longitude = place.geometry.coordinates[0];
                           String name = place.text;
 
-                          await SharedPrefs.setDefaultLocation(text: name, lat: latitude, long: longitude);
+                          await SharedPrefs.setDefaultLocation(
+                              text: name, lat: latitude, long: longitude);
                           await initialize();
                           print("$name: $latitude, $longitude");
                         }
@@ -97,16 +118,17 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                         color: ThemeColors.secondaryTextColor(),
                       ),
                       title: Text(
-                        "Default Location", //TODO:Translate strings
-                        //Language.getTranslation("defaultLocation")
+                        Language.getTranslation("defaultLocation"),
                         style: TextStyle(
                           color: ThemeColors.primaryTextColor(),
                         ),
                       ),
                       subtitle: Text(
-                        defaultLocationText == "Use a default location on app startup."
-                            ? defaultLocationText
-                            : "$defaultLocationText. Tap and hold to remove.",
+                        defaultLocationText ==
+                                "Use a default location on app startup."
+                            ? Language.getTranslation(
+                                "useDefaultLocationOnStartup")
+                            : "$defaultLocationText. ${Language.getTranslation("pressAndHold")}",
                         style:
                             TextStyle(color: ThemeColors.secondaryTextColor()),
                       ),
@@ -125,8 +147,7 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                         color: ThemeColors.secondaryTextColor(),
                       ),
                       title: Text(
-                        "Custom API keys", //TODO:Translate strings
-                        //Language.getTranslation("customKey")
+                        Language.getTranslation("customAPIKeys"),
                         style: TextStyle(
                           color: ThemeColors.primaryTextColor(),
                         ),
@@ -137,37 +158,65 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 15),
-                      child: APITextField(
-                        hintText:
-                            "Enter OpenWeather API Key", //Language.getTranslation("owmKey")
-                        onChanged: (String text) async {
-                          await SharedPrefs.setOpenWeatherAPIKey(text);
-                        },
+                      child: TextField(
+                        controller: weatherKeyTextController,
+                        style: TextStyle(color: ThemeColors.primaryTextColor()),
+                        decoration: InputDecoration(
+                          hintText: Language.getTranslation("owmKey"),
+                          hintStyle: TextStyle(
+                            color: ThemeColors.secondaryTextColor(),
+                            fontSize: 15,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: ThemeColors.secondaryTextColor(),
+                                width: 2.0),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.blueAccent,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: ThemeColors.secondaryTextColor(),
+                                width: 2.0),
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(
                       height: 15,
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      child: APITextField(
-                        hintText:
-                            "Enter MapBox API Key", //Language.getTranslation("mbKey")
-                        onChanged: (String text) async {
-                          await SharedPrefs.setMapBoxAPIKey(text);
-                        },
-                      ),
-                    ),
-                    //SizedBox(height: 15,),
-                    Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Center(
                         child: Text(
-                          "Leave blank to use default values.\nIf API Keys are incorrect, default values will be used.", //Language.getTranslation("customKeyText")
+                          Language.getTranslation("customKeyInfo"),
                           style: TextStyle(
                               color: ThemeColors.secondaryTextColor()),
                         ),
                       ),
+                    ),
+                    TextButton(
+                      onPressed: () async {
+                        const url =
+                            "https://home.openweathermap.org/users/sign_up";
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        }
+                      },
+                      child: Text(
+                        Language.getTranslation("getAKey"),
+                        style: TextStyle(color: Colors.blueAccent),
+                      ),
+                    ),
+                    Text(
+                      Language.getTranslation("getAKeyNote"),
+                      style: TextStyle(color: ThemeColors.secondaryTextColor(), fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -204,7 +253,7 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
               Expanded(
                 child: Center(
                   child: Text(
-                    "Thank you for using Pluvia Weather.",
+                    Language.getTranslation("thankYouForUsing"),
                     style: TextStyle(color: ThemeColors.secondaryTextColor()),
                   ),
                 ),

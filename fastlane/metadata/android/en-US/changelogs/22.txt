@@ -1,0 +1,4 @@
+Allow for manual location on startup (#5)
+Fix location prompt in home_screen.dart
+Pull to refresh in current and daily weather screens (#15)
+Fix 24 hour time toggle (#14)

@@ -31,7 +31,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
     if (widget.checkDefaultLocation) {
       var data = await SharedPrefs.getDefaultLocation();
       if (data.length == 3) {
-        print("Cool");
        result = await WeatherModel.getCoordLocationWeather(name: data[0], latitude: data[1], longitude: data[2]);
       } else {
       result = await WeatherModel.getUserLocationWeather();
@@ -52,13 +51,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
         message = Language.getTranslation("networkErrorText");
       });
       return;
-    } else if (result == 2) {
-      setState(() {
-        isGettingData = false;
-        correctAPIKeys = false;
-        message = "API Key invalid or temporarily blocked."; ////Language.getTranslation("apiKeyErrorText")
-        //TODO: translate strings
-      });
     }
 
     await loadSharedPrefs();

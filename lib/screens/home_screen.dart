@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
+import 'package:flutter_weather/screens/advanced_settings_screen.dart';
 import 'package:flutter_weather/screens/current_weather_screen.dart';
 import 'package:flutter_weather/screens/loading_screen.dart';
 import 'package:flutter_weather/screens/saved_location_screen.dart';
@@ -35,9 +36,16 @@ class _HomeScreenState extends State<HomeScreen> {
         onTabChange(2); //go to location tab
       });
     } else*/
+
     if (WeatherModel.weatherData == null) {
       Future.delayed(Duration.zero, () {
         showLocationPrompt();
+        onTabChange(2); //go to location tab
+      });
+    }
+    if (WeatherModel.weatherData == 429) {
+      Future.delayed(Duration.zero, () {
+        showNetworkPrompt();
         onTabChange(2); //go to location tab
       });
     }
@@ -157,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text(Language.getTranslation("retry")),
               onPressed: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoadingScreen()));
+                    MaterialPageRoute(builder: (context) => LoadingScreen(checkDefaultLocation: true,)));
               },
             ),
             FlatButton(
@@ -165,6 +173,13 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 //open the settings screen for location
                 AppSettings.openLocationSettings();
+              },
+            ),
+            FlatButton(
+              child: Text(Language.getTranslation("defaultLocation")),
+              onPressed: () {
+                //open the settings screen for location
+                Navigator.push(context, MaterialPageRoute(builder: (context) => AdvancedSettingsScreen()));
               },
             ),
             FlatButton(
@@ -186,14 +201,29 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(Language.getTranslation("serverErrorTitle")),
-            content: Text(
-                Language.getTranslation("serverErrorBody")),
+            content: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  Language.getTranslation("serverErrorText"),),
+                Text(
+                    Language.getTranslation("getAKeyNote"), style: TextStyle(fontWeight: FontWeight.bold),),
+              ],
+            ),
             actions: [
               FlatButton(
                 child: Text(Language.getTranslation("retry")),
                 onPressed: () {
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => LoadingScreen()));
+                },
+              ),
+              FlatButton(
+                child: Text(Language.getTranslation("customAPIKeys")),
+                onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => AdvancedSettingsScreen()));
                 },
               ),
             ],

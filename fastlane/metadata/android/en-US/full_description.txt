@@ -1,0 +1,20 @@
+• 🌦 Beautiful animations
+Pluvia Weather shows slick and dynamic animations depending on the weather or time of day.
+
+• 📅 Be Prepared
+With accurate 24 hour and 7 day forecast, be prepared for anything.
+
+• 🌍 Weather Worldwide
+View weather in millions of locations across the globe, with Radar Forecasts.
+
+• ⚖ Free and Open Source
+View all the source code:
+https://github.com/SpicyChair/pluvia_weather_flutter
+
+• 🛑 Secure and Private
+No adverts, trackers, or data collection.
+
+• 🌍 Multi Language Support
+Pluvia Weather now supports over 40 languages:
+
+Afrikaans, Arabic, Azerbaijani, Bulgarian, Catalan, Czech, Danish, German, Modern Greek, English, Spanish, Basque, Persian, Finnish, French, Galician, Hebrew, Hindi, Croatian, Hungarian, Indonesian, Italian, Japanese, Korean, Lithuanian, Latvian, Macedonian, Dutch Flemish, Norwegian, Polish, Portuguese, Romanian, Russian, Slovak, Slovenian, Albanian, Serbian, Swedish, Thai, Turkish, Ukrainian, Vietnamese, Chinese and Zulu

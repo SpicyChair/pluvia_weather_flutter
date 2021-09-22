@@ -57,14 +57,15 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   List<dynamic> hourlyData;
   List<dynamic> dailyData;
 
-  String refreshTime; //the time weather last updated
+  String refreshTimeText;
+  DateTime refreshTime; //the time weather last updated
 
   bool isLoading = true; //if data is being loaded
 
   @override
   void initState() {
     super.initState();
-    if (WeatherModel.weatherData != null) {
+    if (!(WeatherModel.weatherData == 401 || WeatherModel.weatherData == 429 || WeatherModel.weatherData == null)) {
       updateUI();
     }
   }
@@ -123,7 +124,8 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       weatherAnimation.state.weatherWorld.weatherType = weatherType;
     }
 
-    refreshTime = TimeHelper.getReadableTime(DateTime.now());
+    refreshTimeText = TimeHelper.getReadableTime(DateTime.now());
+    refreshTime = DateTime.now();
 
     setState(() {
       isLoading = false;
@@ -134,19 +136,27 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   Future<void> refresh() async {
     Scaffold.of(context).showSnackBar(SnackBar(content: Text("${Language.getTranslation("loading")}...")));
 
-    //if the location displayed is current, refresh location
-    if (WeatherModel.locationName == Language.getTranslation("currentLocationTitle")) {
-      await WeatherModel.getUserLocationWeather();
+    if (DateTime.now().difference(refreshTime).inMinutes >= 10) {
+      //if the location displayed is current, refresh location
+      if (WeatherModel.locationName ==
+          Language.getTranslation("currentLocationTitle")) {
+        await WeatherModel.getUserLocationWeather();
+      } else {
+        //else refresh normally
+        await WeatherModel.getCoordLocationWeather(
+            latitude: lat, longitude: lon, name: WeatherModel.locationName);
+        //lati, lon, WeatherModel.locationName);
+      }
+      updateUI();
     } else {
-      //else refresh normally
-      await WeatherModel.getCoordLocationWeather(latitude: lat, longitude: lon, name: WeatherModel.locationName);
-          //lati, lon, WeatherModel.locationName);
+      refreshTimeText = TimeHelper.getReadableTime(DateTime.now());
+      weatherTime = weatherTime.add(DateTime.now().difference(refreshTime));
+      setState(() {
+      });
     }
 
-    updateUI();
-
     Scaffold.of(context)
-        .showSnackBar(SnackBar(content: Text("${Language.getTranslation("lastUpdatedAt")}$refreshTime")));
+        .showSnackBar(SnackBar(content: Text("${Language.getTranslation("lastUpdatedAt")}$refreshTimeText")));
   }
 
   @override
@@ -165,107 +175,110 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       );
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        brightness: Brightness.dark,
-        backgroundColor: Colors.transparent,
-        shadowColor: Colors.transparent,
-        elevation: 0,
-        title: Text(
-          WeatherModel.locationName,
-          style: TextStyle(
-            fontWeight: FontWeight.w200,
-            fontSize: 30,
-            color: Colors.white,
+    return RefreshIndicator(
+      onRefresh: refresh,
+      child: Scaffold(
+        appBar: AppBar(
+          brightness: Brightness.dark,
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          elevation: 0,
+          title: Text(
+            WeatherModel.locationName,
+            style: TextStyle(
+              fontWeight: FontWeight.w200,
+              fontSize: 30,
+              color: Colors.white,
+            ),
+            overflow: TextOverflow.ellipsis,
           ),
-          overflow: TextOverflow.ellipsis,
-        ),
-        actions: [
-          ButtonTheme(
-            minWidth: 0,
-            child: FlatButton(
-              onPressed: refresh,
-              child: Icon(
-                Icons.refresh_outlined,
-                size: 27,
-                color: Colors.white,
+          actions: [
+            ButtonTheme(
+              minWidth: 0,
+              child: FlatButton(
+                onPressed: refresh,
+                child: Icon(
+                  Icons.refresh_outlined,
+                  size: 27,
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
-        ],
-      ),
-      backgroundColor: ThemeColors.backgroundColor(),
-      extendBodyBehindAppBar: true,
-      body: isLoading
-          ?
-          //if is loading
-          Center(
-              child: Column(
-              children: [
-                SpinKitFadingCircle(
-                  color: ThemeColors.secondaryTextColor(),
-                  size: 50,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  Language.getTranslation("loading"),
-                  style: TextStyle(color: ThemeColors.secondaryTextColor()),
-                ),
-              ],
-              mainAxisAlignment: MainAxisAlignment.center,
-            ))
-          :
+          ],
+        ),
+        backgroundColor: ThemeColors.backgroundColor(),
+        extendBodyBehindAppBar: true,
+        body: isLoading
+            ?
+            //if is loading
+            Center(
+                child: Column(
+                children: [
+                  SpinKitFadingCircle(
+                    color: ThemeColors.secondaryTextColor(),
+                    size: 50,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    Language.getTranslation("loading"),
+                    style: TextStyle(color: ThemeColors.secondaryTextColor()),
+                  ),
+                ],
+                mainAxisAlignment: MainAxisAlignment.center,
+              ))
+            :
 
-          //if loaded
-          Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                weatherAnimation,
-                temperatureWidget(),
-                //infoWidget(),
-                Positioned(
-                    bottom: 0,
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Text(
-                        "Thank you for using Pluvia Weather.",
-                        style: TextStyle(color: ThemeColors.primaryTextColor()),
+            //if loaded
+            Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  weatherAnimation,
+                  temperatureWidget(),
+                  //infoWidget(),
+                  Positioned(
+                      bottom: 0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text(
+                          Language.getTranslation("thankYouForUsing"),
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
-                    ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height - 85,
-                    child: MediaQuery.removePadding(
-                      context: context,
-                      removeTop: true,
-                      child: ListView(
-                        physics: BouncingScrollPhysics(),
-                        children: [
-                          //add a spacer
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.55,
-                          ),
-                          Column(
-                            children: [
-                              createHourlyForecastCard(),
-                              createInfoCards(),
-                              radarInfoCards(),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height - 85,
+                      child: MediaQuery.removePadding(
+                        context: context,
+                        removeTop: true,
+                        child: ListView(
+                          physics: BouncingScrollPhysics(),
+                          children: [
+                            //add a spacer
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.55,
+                            ),
+                            Column(
+                              children: [
+                                createHourlyForecastCard(),
+                                createInfoCards(),
+                                radarInfoCards(),
 
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
 
-              ],
-            ),
+                ],
+              ),
+      ),
     );
   }
 
@@ -505,7 +518,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             SizedBox(
               height: 20,
             ),
-            Text("${Language.getTranslation("lastUpdatedAt")}$refreshTime",
+            Text("${Language.getTranslation("lastUpdatedAt")}$refreshTimeText",
                 style: TextStyle(
                   color: ThemeColors.primaryTextColor(),
                 ),),

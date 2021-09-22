@@ -112,7 +112,7 @@ class _MoreScreenState extends State<MoreScreen> {
                       top: 60,
                       left: 16,
                       child: Text(
-                        "Version $version",
+                        "v$version",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
@@ -124,16 +124,20 @@ class _MoreScreenState extends State<MoreScreen> {
                       left: 16,
                       child: TextButton(
                         style: TextButton.styleFrom(
-                          padding: EdgeInsets.only(right: 190),
+                          padding: EdgeInsets.only(right: 10),
                         ),
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return ChangelogScreen();
-                          }));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ChangelogScreen();
+                              },
+                            ),
+                          );
                         },
                         child: Text(
-                          "Changelog >",
+                          "${Language.getTranslation("changelog")} >",
                           style:
                               TextStyle(fontSize: 16, color: Colors.grey[400]),
                         ),
@@ -225,19 +229,19 @@ class _MoreScreenState extends State<MoreScreen> {
                   child: Center(
                     child: SwitchListTile(
                       title: Text(
-                        "Use 24 Hour Time",
+                        Language.getTranslation("use24HourTime"),
                         style: TextStyle(
                           color: ThemeColors.primaryTextColor(),
                         ),
                       ),
-                      value: use24 ?? true,
+                      value: use24 ?? false,
                       onChanged: (bool value) async {
                         await SharedPrefs.set24(value);
                         use24 = value;
                         setState(() {});
                         Scaffold.of(context).showSnackBar(SnackBar(
                             content:
-                            Text(Language.getTranslation("refreshToSee"))));
+                                Text(Language.getTranslation("refreshToSee"))));
                       },
                       secondary: Icon(
                         Icons.timelapse_outlined,
@@ -309,7 +313,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   child: Center(
                     child: ListTile(
                       title: Text(
-                        "App Language",
+                        Language.getTranslation("appLanguage"),
                         style: TextStyle(color: ThemeColors.primaryTextColor()),
                       ),
                       leading: Icon(
@@ -345,7 +349,7 @@ class _MoreScreenState extends State<MoreScreen> {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(
-                                "${Language.getLangString(value)} ($value)"),
+                                "$value (${Language.getLangString(value)}) "),
                           );
                         }).toList(),
                       ),
@@ -361,8 +365,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   child: Center(
                     child: ListTile(
                       title: Text(
-                        //TODO: TRANSLATE
-                        "Advanced Settings",
+                        Language.getTranslation("advancedSettings"),
                         style: TextStyle(
                           color: ThemeColors.primaryTextColor(),
                         ),

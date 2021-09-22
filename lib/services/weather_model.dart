@@ -23,13 +23,14 @@ class WeatherModel {
   static String locationName;
   static String unit;
   static var _kOpenWeatherApiKey = env["OPENWEATHER_API_KEY"];
-  static var _kOpenWeatherApiKeyCustom;
+  static String _kOpenWeatherApiKeyCustom;
 
   static Future<void> initialize() async {
     bool useImperial = await SharedPrefs.getImperial();
     unit = useImperial ? "imperial" : "metric";
 
     _kOpenWeatherApiKeyCustom = await SharedPrefs.getOpenWeatherAPIKey();
+    _kOpenWeatherApiKeyCustom = _kOpenWeatherApiKeyCustom.trim();
   }
 
   /*
@@ -43,41 +44,50 @@ class WeatherModel {
       return 0;
     }
     //get the user's location
+    //await LocationService.requestLocationPermission();
     await LocationService.getCurrentLocation();
+
+    if (LocationService.latitude == null ||
+        LocationService.longitude == null) {
+      weatherData = null;
+      return 1;
+    }
 
     //send a request to OpenWeatherMap one call api
 
     if (_kOpenWeatherApiKeyCustom != "") {
       NetworkHelper networkHelper = NetworkHelper(
         url:
-        "${kOpenWeatherMapURL}lat=${LocationService
-            .latitude}&lon=${LocationService
-            .longitude}&appid=$_kOpenWeatherApiKeyCustom&units=$unit&lang=${Language
-            .getCurrentCode()}",
+            "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKeyCustom&units=$unit&lang=${Language.getCurrentCode()}",
       );
       print(
-          "${kOpenWeatherMapURL}lat=${LocationService
-              .latitude}&lon=${LocationService
-              .longitude}&appid=$_kOpenWeatherApiKeyCustom&units=$unit&lang=${Language
-              .getCurrentCode()}");
+          "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKeyCustom&units=$unit&lang=${Language.getCurrentCode()}");
       weatherData = await networkHelper
           .getData(); //getData gets and decodes the json data
       locationName = Language.getTranslation("currentLocationTitle");
 
-      if (weatherData != null) {
+      if (!(weatherData == 401 || weatherData == 429 || weatherData == null)) {
         return 1;
       }
     }
 
-      NetworkHelper networkHelper = NetworkHelper(
-        url:
-            "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
-      );
-      print(
-          "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}");
-      weatherData = await networkHelper
-          .getData(); //getData gets and decodes the json data
-      locationName = Language.getTranslation("currentLocationTitle");
+    NetworkHelper networkHelper = NetworkHelper(
+      url:
+          "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
+    );
+    print(
+        "${kOpenWeatherMapURL}lat=${LocationService.latitude}&lon=${LocationService.longitude}&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}");
+    weatherData =
+        await networkHelper.getData(); //getData gets and decodes the json data
+    locationName = Language.getTranslation("currentLocationTitle");
+
+    if (!(weatherData == 401 || weatherData == 429 || weatherData == null)) {
+      return 1;
+    }
+
+    if (weatherData == 401) {
+      weatherData = 429;
+    }
     return 1;
   }
 
@@ -86,7 +96,7 @@ class WeatherModel {
    */
 
   static Future<int> getCoordLocationWeather(
-  {double latitude, double longitude, String name}) async {
+      {double latitude, double longitude, String name}) async {
     initialize();
 
     var connectivityResult = await (Connectivity().checkConnectivity());
@@ -97,6 +107,20 @@ class WeatherModel {
 
     //send a request to OpenWeatherMap one call api
 
+    if (_kOpenWeatherApiKeyCustom != "") {
+      NetworkHelper networkHelper = NetworkHelper(
+        url:
+            "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$_kOpenWeatherApiKeyCustom&units=$unit&lang=${Language.getCurrentCode()}",
+      );
+      var data = await networkHelper.getData();
+
+      weatherData = data;
+      locationName = name;
+
+      if (!(data == 401 || data == 429)) {
+        return 1;
+      }
+    }
     NetworkHelper networkHelper = NetworkHelper(
       url:
           "${kOpenWeatherMapURL}lat=$latitude&lon=$longitude&appid=$_kOpenWeatherApiKey&units=$unit&lang=${Language.getCurrentCode()}",
@@ -104,10 +128,8 @@ class WeatherModel {
     var data =
         await networkHelper.getData(); //getData gets and decodes the json data
 
-    //force weather screens to display error message when location disabled
-    //this fixes bug present in < 1.0.7
-    if (latitude == null && longitude == null) {
-      data = null;
+    if (data == 401) {
+      data = 429;
     }
 
     weatherData = data;

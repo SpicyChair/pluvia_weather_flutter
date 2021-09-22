@@ -32,7 +32,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
 
   void initState() {
     super.initState();
-    if (WeatherModel.weatherData != null) {
+    if (!(WeatherModel.weatherData == 401 || WeatherModel.weatherData == 429 || WeatherModel.weatherData == null)) {
       updateUI();
     }
   }
@@ -68,86 +68,98 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
       );
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        brightness: ThemeColors.isDark  ? Brightness.dark : Brightness.light,
-        backgroundColor: Colors.transparent,
-        shadowColor: Colors.transparent,
-        elevation: 0,
-        title: Text(
-          WeatherModel.locationName,
-          style: TextStyle(
-            fontWeight: FontWeight.w200,
-            fontSize: 30,
-            color: ThemeColors.primaryTextColor(),
-          ),
-          overflow: TextOverflow.ellipsis,
-        ),
-        actions: [
-          ButtonTheme(
-            minWidth: 0,
-            child: FlatButton(
-              onPressed: refresh,
-              child: Icon(
-                Icons.refresh_outlined,
-                size: 27,
-                color: ThemeColors.primaryTextColor(),
-              ),
+    return RefreshIndicator(
+      onRefresh: refresh,
+      child: Scaffold(
+        appBar: AppBar(
+          brightness: ThemeColors.isDark ? Brightness.dark : Brightness.light,
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          elevation: 0,
+          title: Text(
+            WeatherModel.locationName,
+            style: TextStyle(
+              fontWeight: FontWeight.w200,
+              fontSize: 30,
+              color: ThemeColors.primaryTextColor(),
             ),
-          )
-        ],
-      ),
-      backgroundColor: ThemeColors.backgroundColor(),
-      body: isLoading
-          ?
-          //if is loading
-      Center(
-          child: Column(
-            children: [
-              SpinKitFadingCircle(color: ThemeColors.secondaryTextColor(), size: 50,),
-              SizedBox(height: 20,),
-              Text(Language.getTranslation("loading"), style: TextStyle(color: ThemeColors.secondaryTextColor()),),
-            ],
-            mainAxisAlignment: MainAxisAlignment.center,
-          )
-      )
-          :
-          //if loaded
-          SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 5.0),
-                child: MediaQuery.removePadding(
-                  context: context,
-                  removeTop: true,
-                  child: ListView.separated(
-                    physics: BouncingScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return DailyCard(
-                        data: dailyData[index + 1],
-                        imperial: imperial,
-                        unit: unit,
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return SizedBox(
-                        height: 5,
-                      );
-                    },
-                    padding: EdgeInsets.symmetric(horizontal: 5),
-                    itemCount: 7,
+            overflow: TextOverflow.ellipsis,
+          ),
+          actions: [
+            ButtonTheme(
+              minWidth: 0,
+              child: FlatButton(
+                onPressed: refresh,
+                child: Icon(
+                  Icons.refresh_outlined,
+                  size: 27,
+                  color: ThemeColors.primaryTextColor(),
+                ),
+              ),
+            )
+          ],
+        ),
+        backgroundColor: ThemeColors.backgroundColor(),
+        body: isLoading
+            ?
+            //if is loading
+            Center(
+                child: Column(
+                children: [
+                  SpinKitFadingCircle(
+                    color: ThemeColors.secondaryTextColor(),
+                    size: 50,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    Language.getTranslation("loading"),
+                    style: TextStyle(color: ThemeColors.secondaryTextColor()),
+                  ),
+                ],
+                mainAxisAlignment: MainAxisAlignment.center,
+              ))
+            :
+            //if loaded
+            SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 5.0),
+                  child: MediaQuery.removePadding(
+                    context: context,
+                    removeTop: true,
+                    child: ListView.separated(
+                      physics: BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return DailyCard(
+                          data: dailyData[index + 1],
+                          imperial: imperial,
+                          unit: unit,
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return SizedBox(
+                          height: 5,
+                        );
+                      },
+                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      itemCount: 7,
+                    ),
                   ),
                 ),
               ),
-            ),
+      ),
     );
   }
 
   Future<void> refresh() async {
-    await WeatherModel.getCoordLocationWeather(latitude: lat, longitude: lon, name: WeatherModel.locationName);
+    await WeatherModel.getCoordLocationWeather(
+        latitude: lat, longitude: lon, name: WeatherModel.locationName);
     updateUI();
     DateTime now = DateTime.now();
     String refreshTime = TimeHelper.getReadableTime(now);
-    Scaffold.of(context)
-        .showSnackBar(SnackBar(content: Text("${Language.getTranslation("lastUpdatedAt")} $refreshTime")));
+    Scaffold.of(context).showSnackBar(SnackBar(
+        content:
+            Text("${Language.getTranslation("lastUpdatedAt")} $refreshTime")));
   }
 }

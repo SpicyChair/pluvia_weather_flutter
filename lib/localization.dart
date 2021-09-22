@@ -1,5 +1,3 @@
-//source: https://medium.com/flutter-community/multilingual-flutter-the-easy-way-52e4b182d6e9
-
 final Map<String, Map<String, String>> localizedValues = {
   'af': {
     'current': 'Huidig ',
@@ -44,7 +42,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'pressAndHold': 'Druk en hou op die ligging om te verwyder ',
     'searchForLocation': "Soek vir 'n plek ",
     'tapTheSearchBar': "Tik die soekbalk hierbo om 'n plek te vind ",
-    'tapToSeeWeatherCurrent': 'Tik om weer te sien vir jou huidige ligging '
+    'tapToSeeWeatherCurrent': 'Tik om weer te sien vir jou huidige ligging ',
+    'use24HourTime': 'Gebruik 24 uur tyd ',
+    'appLanguage': 'App taal ',
+    'advancedSettings': 'Gevorderde instellings ',
+    'defaultLocation': 'Verstek Plek ',
+    'useDefaultLocationOnStartup':
+        'Gebruik verstek plek op die program opstart ',
+    'customAPIKeys': 'Aangepaste API sleutels ',
+    'owmKey': 'Voer openweather API sleutel in ',
+    'mbKey': 'Voer MapBox API sleutel in ',
+    'customKeyInfo':
+        'Laat leeg om standaardwaardes te gebruik. As API sleutels verkeerd is, sal standaardwaardes in plaas daarvan gebruik word. ',
+    'thankYouForUsing': 'Dankie vir die gebruik van pluvia weer. ',
+    'changelog': 'Changelog ',
+    'getAKey': "Kry 'n sleutel hier ",
+    'getAKeyNote': 'Let wel: dit kan tyd neem vir jou sleutel om te aktiveer ',
+    'serverErrorText':
+        'Die weer bediener het jou versoek geblokkeer. Gebruik asseblief u eie API-sleutel. '
   },
   'ar': {
     'current': 'تيار ',
@@ -89,7 +104,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'pressAndHold': 'اضغط مع الاستمرار على الموقع للحذف ',
     'searchForLocation': 'البحث عن موقع ',
     'tapTheSearchBar': 'اضغط على شريط البحث أعلاه للعثور على موقع ',
-    'tapToSeeWeatherCurrent': 'انقر لرؤية الطقس لموقعك الحالي '
+    'tapToSeeWeatherCurrent': 'انقر لرؤية الطقس لموقعك الحالي ',
+    'use24HourTime': 'استخدام الوقت 24 ساعة ',
+    'appLanguage': 'لغة التطبيق ',
+    'advancedSettings': 'إعدادات متقدمة ',
+    'defaultLocation': 'الموقع الافتراضي ',
+    'useDefaultLocationOnStartup':
+        'استخدم الموقع الافتراضي على بدء تشغيل التطبيق ',
+    'customAPIKeys': 'مفاتيح API مخصصة ',
+    'owmKey': 'أدخل مفتاح OpenWeather API ',
+    'mbKey': 'أدخل المفتاح API Mapbox ',
+    'customKeyInfo':
+        'اترك فارغا لاستخدام القيم الافتراضية. إذا كانت مفاتيح API غير صحيحة، فسيتم استخدام القيم الافتراضية بدلا من ذلك. ',
+    'thankYouForUsing': 'شكرا لك على استخدام طقس Pluvia. ',
+    'changelog': 'سجل التغيير ',
+    'getAKey': 'الحصول على مفتاح هنا ',
+    'getAKeyNote': 'ملاحظة: قد يستغرق الأمر بعض الوقت لمفتاحك التنشيط ',
+    'serverErrorText':
+        'قام خادم الطقس بحظر طلبك. يرجى استخدام مفتاح API الخاص بك. '
   },
   'az': {
     'current': 'Cərəyan ',
@@ -134,7 +166,25 @@ final Map<String, Map<String, String>> localizedValues = {
     'pressAndHold': 'Silmək üçün yerdən basıb saxlayın ',
     'searchForLocation': 'Bir yer axtarın ',
     'tapTheSearchBar': 'Bir yer tapmaq üçün yuxarıdakı axtarış çubuğunu vurun ',
-    'tapToSeeWeatherCurrent': 'Cari yeriniz üçün hava görmək üçün vurun '
+    'tapToSeeWeatherCurrent': 'Cari yeriniz üçün hava görmək üçün vurun ',
+    'use24HourTime': '24 saat vaxt istifadə edin ',
+    'appLanguage': 'Tətbiq dili ',
+    'advancedSettings': 'Qabaqcıl parametrlər ',
+    'defaultLocation': 'Defolt yer ',
+    'useDefaultLocationOnStartup':
+        'Tətbiq başlanğıcında standart yerdən istifadə edin ',
+    'customAPIKeys': 'Xüsusi API düymələri ',
+    'owmKey': 'OpenWeather API açarını daxil edin ',
+    'mbKey': 'Mapbox API düyməsini daxil edin ',
+    'customKeyInfo':
+        'Defolt dəyərlərdən istifadə etmək üçün boş buraxın. API düymələri səhvdirsə, əvəzinə defolt dəyərlər istifadə ediləcəkdir. ',
+    'thankYouForUsing': 'Pluvia Hava istifadə etdiyiniz üçün təşəkkür edirəm. ',
+    'changelog': 'Dəyişdirmə ',
+    'getAKey': 'Burada açar alın ',
+    'getAKeyNote':
+        'DİQQƏT: Açılışınızın aktivləşdirilməsi üçün bir az vaxt lazım ola bilər ',
+    'serverErrorText':
+        'Hava serveri istəyinizi blokladı. Zəhmət olmasa öz API açarınızdan istifadə edin. '
   },
   'bg': {
     'current': 'Текущ ',
@@ -181,7 +231,25 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Докоснете по-горе лента за търсене, за да намерите място ',
     'tapToSeeWeatherCurrent':
-        'Натиснете, за да видите времето за текущото си местоположение '
+        'Натиснете, за да видите времето за текущото си местоположение ',
+    'use24HourTime': 'Използвайте 24 часа ',
+    'appLanguage': 'Език на приложения ',
+    'advancedSettings': 'Разширени настройки ',
+    'defaultLocation': 'По подразбиране ',
+    'useDefaultLocationOnStartup':
+        'Използвайте местоположението по подразбиране на App Startup ',
+    'customAPIKeys': 'Ключове за персонализирани API. ',
+    'owmKey': 'Въведете Openweather API ключ ',
+    'mbKey': 'Въведете MAPBOX API ключ ',
+    'customKeyInfo':
+        'Оставете празно, за да използвате стойности по подразбиране. Ако API клавишите са неправилни, вместо това ще се използват стойностите по подразбиране. ',
+    'thankYouForUsing': 'Благодарим ви, че използвате плъхове време. ',
+    'changelog': 'Чанболог ',
+    'getAKey': 'Вземи ключ тук ',
+    'getAKeyNote':
+        'ЗАБЕЛЕЖКА: Може да отнеме известно време за активиране на ключа ',
+    'serverErrorText':
+        'Сървърът на времето е блокирал заявката ви. Моля, използвайте собствения си ключ за API. '
   },
   'ca': {
     'current': 'Habitual ',
@@ -227,7 +295,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Toqueu la barra de cerca anterior per trobar una ubicació ',
     'tapToSeeWeatherCurrent':
-        'Toqueu per veure el temps per a la vostra ubicació actual '
+        'Toqueu per veure el temps per a la vostra ubicació actual ',
+    'use24HourTime': "Utilitzeu l'hora de 24 hores ",
+    'appLanguage': "Llenguatge d'aplicacions ",
+    'advancedSettings': 'Configuració avançada ',
+    'defaultLocation': 'Ubicació predeterminada ',
+    'useDefaultLocationOnStartup':
+        "Utilitzeu la ubicació predeterminada a l'arrencada de l'aplicació ",
+    'customAPIKeys': 'Tecles API personalitzades ',
+    'owmKey': 'Introduïu la clau API de OpenWeather ',
+    'mbKey': 'Introduïu la tecla API de MapBox ',
+    'customKeyInfo':
+        "Deixeu en blanc per utilitzar els valors per defecte. Si les tecles API són incorrectes, s'utilitzaran els valors per defecte. ",
+    'thankYouForUsing': 'Gràcies per utilitzar el temps de pluvia. ',
+    'changelog': 'Comercial ',
+    'getAKey': 'Obteniu una clau aquí ',
+    'getAKeyNote': 'Nota: pot trigar una mica a activar la vostra clau ',
+    'serverErrorText':
+        'El servidor meteorològic ha bloquejat la vostra sol·licitud. Utilitzeu la vostra pròpia clau API. '
   },
   'cs': {
     'current': 'Proud ',
@@ -271,7 +356,25 @@ final Map<String, Map<String, String>> localizedValues = {
     'pressAndHold': 'Stisknutím a podržením umístění odstraníte ',
     'searchForLocation': 'Hledat místo ',
     'tapTheSearchBar': 'Klepnutím na tlačítko Hledat nahoře najdete umístění ',
-    'tapToSeeWeatherCurrent': 'Klepnutím zobrazíte počasí pro aktuální polohu '
+    'tapToSeeWeatherCurrent': 'Klepnutím zobrazíte počasí pro aktuální polohu ',
+    'use24HourTime': 'Použijte 24 hodin ',
+    'appLanguage': 'Jazyk aplikace ',
+    'advancedSettings': 'Pokročilé nastavení ',
+    'defaultLocation': 'Výchozí umístění ',
+    'useDefaultLocationOnStartup':
+        'Použijte výchozí umístění na spuštění aplikace ',
+    'customAPIKeys': 'Vlastní klíče API ',
+    'owmKey': 'Zadejte klávesu API OpenWeather ',
+    'mbKey': 'Zadejte klávesu MapBox API ',
+    'customKeyInfo':
+        'Nechte prázdné používat výchozí hodnoty. Pokud jsou klíče API nesprávné, budou použity výchozí hodnoty. ',
+    'thankYouForUsing': 'Děkujeme za používání Pluvia počasí. ',
+    'changelog': 'Changelog. ',
+    'getAKey': 'Získejte zde klíč ',
+    'getAKeyNote':
+        'Poznámka: Pro aktivaci může nějakou dobu trvat nějakou dobu ',
+    'serverErrorText':
+        'Počasí server zablokoval váš požadavek. Použijte prosím vlastní klíč API. '
   },
   'da': {
     'current': 'Nuværende ',
@@ -316,7 +419,23 @@ final Map<String, Map<String, String>> localizedValues = {
     'searchForLocation': 'Søg efter en placering ',
     'tapTheSearchBar': 'Tryk på søgelinjen ovenfor for at finde en placering ',
     'tapToSeeWeatherCurrent':
-        'Tryk for at se vejret for din nuværende placering '
+        'Tryk for at se vejret for din nuværende placering ',
+    'use24HourTime': 'Brug 24 timers tid ',
+    'appLanguage': 'App sprog ',
+    'advancedSettings': 'Avancerede indstillinger ',
+    'defaultLocation': 'Standard placering ',
+    'useDefaultLocationOnStartup': 'Brug standard placering på appstart ',
+    'customAPIKeys': 'Brugerdefinerede API-tasterne ',
+    'owmKey': 'Indtast OpenWeather API-nøgle ',
+    'mbKey': 'Indtast MapBox API-tasten ',
+    'customKeyInfo':
+        'Forlad blank for at bruge standardværdier. Hvis API-tasterne er forkerte, vil standardværdier blive brugt i stedet. ',
+    'thankYouForUsing': 'Tak for at bruge Pluvia Vejret. ',
+    'changelog': 'Changelog ',
+    'getAKey': 'Få en nøgle her ',
+    'getAKeyNote': 'Bemærk: Det kan tage lidt tid for din nøgle at aktivere ',
+    'serverErrorText':
+        'Vejrserveren har blokeret din anmodning. Brug venligst din egen API-nøgle. '
   },
   'de': {
     'current': 'Strom ',
@@ -363,7 +482,25 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Tippen Sie oben auf die Suchleiste, um einen Ort zu finden ',
     'tapToSeeWeatherCurrent':
-        'Tippen Sie auf, um das Wetter für Ihren aktuellen Standort anzuzeigen '
+        'Tippen Sie auf, um das Wetter für Ihren aktuellen Standort anzuzeigen ',
+    'use24HourTime': 'Verwenden Sie 24 Stunden Zeit ',
+    'appLanguage': 'App-Sprache ',
+    'advancedSettings': 'Erweiterte Einstellungen ',
+    'defaultLocation': 'Standardstandort. ',
+    'useDefaultLocationOnStartup':
+        'Verwenden Sie den Standardspeicherort in der App-Startup ',
+    'customAPIKeys': 'Benutzerdefinierte API-Keys. ',
+    'owmKey': 'Geben Sie den OpenWather API-Schlüssel ein ',
+    'mbKey': 'Geben Sie den MapBox-API-Schlüssel ein ',
+    'customKeyInfo':
+        'Lassen Sie leer, um Standardwerte zu verwenden. Wenn API-Tasten falsch sind, werden stattdessen Standardwerte verwendet. ',
+    'thankYouForUsing': 'Vielen Dank, dass Sie Pluvia-Wetter verwenden. ',
+    'changelog': 'Änderungsprotokoll ',
+    'getAKey': 'Holen Sie sich hier einen Schlüssel ',
+    'getAKeyNote':
+        'Hinweis: Es kann einige Zeit dauern, bis der Schlüssel aktiviert wird ',
+    'serverErrorText':
+        'Der Wetterserver hat Ihre Anfrage blockiert. Bitte benutzen Sie Ihren eigenen API-Schlüssel. '
   },
   'el': {
     'current': 'Ρεύμα ',
@@ -412,7 +549,26 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Αγγίξτε τη γραμμή αναζήτησης παραπάνω για να βρείτε μια τοποθεσία ',
     'tapToSeeWeatherCurrent':
-        'Πατήστε για να δείτε τον καιρό για την τρέχουσα τοποθεσία σας '
+        'Πατήστε για να δείτε τον καιρό για την τρέχουσα τοποθεσία σας ',
+    'use24HourTime': 'Χρησιμοποιήστε χρόνο 24 ωρών ',
+    'appLanguage': 'Γλώσσα γλώσσας εφαρμογής ',
+    'advancedSettings': 'Προηγμένες ρυθμίσεις ',
+    'defaultLocation': 'Προεπιλεγμένη τοποθεσία ',
+    'useDefaultLocationOnStartup':
+        'Χρησιμοποιήστε την προεπιλεγμένη τοποθεσία στην εκκίνηση της εφαρμογής ',
+    'customAPIKeys': 'Προσαρμοσμένα κλειδιά API ',
+    'owmKey': 'Εισαγάγετε το πλήκτρο OpenWeather API ',
+    'mbKey': 'Εισάγετε το κλειδί API MapBox ',
+    'customKeyInfo':
+        'Αφήστε κενό για να χρησιμοποιήσετε τις προεπιλεγμένες τιμές. Εάν τα πλήκτρα API είναι εσφαλμένα, θα χρησιμοποιηθούν προεπιλεγμένες τιμές. ',
+    'thankYouForUsing':
+        'Σας ευχαριστούμε που χρησιμοποιήσατε τον καιρό Pluvia. ',
+    'changelog': 'Αλίελο ',
+    'getAKey': 'Πάρτε ένα κλειδί εδώ ',
+    'getAKeyNote':
+        'Σημείωση: Μπορεί να χρειαστεί λίγος χρόνος για να ενεργοποιήσετε το κλειδί σας ',
+    'serverErrorText':
+        'Ο διακομιστής καιρού έχει μπλοκάρει το αίτημά σας. Χρησιμοποιήστε το δικό σας κλειδί API. '
   },
   'en': {
     'current': 'Current ',
@@ -456,7 +612,23 @@ final Map<String, Map<String, String>> localizedValues = {
     'pressAndHold': 'Press and Hold on Location to delete ',
     'searchForLocation': 'Search for a location ',
     'tapTheSearchBar': 'Tap the search bar above to find a location ',
-    'tapToSeeWeatherCurrent': 'Tap to see weather for your current location '
+    'tapToSeeWeatherCurrent': 'Tap to see weather for your current location ',
+    'use24HourTime': 'Use 24 Hour Time ',
+    'appLanguage': 'App Language ',
+    'advancedSettings': 'Advanced Settings ',
+    'defaultLocation': 'Default Location ',
+    'useDefaultLocationOnStartup': 'Use default location on app startup ',
+    'customAPIKeys': 'Custom API Keys ',
+    'owmKey': 'Enter OpenWeather API Key ',
+    'mbKey': 'Enter MapBox API Key ',
+    'customKeyInfo':
+        'Leave blank to use default values. If API Keys are incorrect, default values will be used instead. ',
+    'thankYouForUsing': 'Thank you for using Pluvia Weather. ',
+    'changelog': 'Changelog ',
+    'getAKey': 'Get a key here ',
+    'getAKeyNote': 'NOTE: It may take some time for your key to activate ',
+    'serverErrorText':
+        'The weather server has blocked your request. Please use your own API key. '
   },
   'es': {
     'current': 'Actual ',
@@ -503,7 +675,25 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Toque la barra de búsqueda de arriba para encontrar una ubicación ',
     'tapToSeeWeatherCurrent':
-        'Toque para ver el clima para su ubicación actual '
+        'Toque para ver el clima para su ubicación actual ',
+    'use24HourTime': 'Usar la hora las 24 horas ',
+    'appLanguage': 'Lengua de aplicación ',
+    'advancedSettings': 'Ajustes avanzados ',
+    'defaultLocation': 'Ubicación predeterminada ',
+    'useDefaultLocationOnStartup':
+        'Use la ubicación predeterminada en la puesta en marcha de la aplicación ',
+    'customAPIKeys': 'Llaves de API personalizada ',
+    'owmKey': 'Entrar OpenWeather API Key ',
+    'mbKey': 'Ingrese la tecla API de MAPBOX ',
+    'customKeyInfo':
+        'Deje en blanco para usar los valores predeterminados. Si las teclas API son incorrectas, se utilizarán los valores predeterminados. ',
+    'thankYouForUsing': 'Gracias por usar el clima de Pluvia. ',
+    'changelog': 'Log ',
+    'getAKey': 'Obtener una llave aquí ',
+    'getAKeyNote':
+        'Nota: Puede tomar algún tiempo para que su llave se active. ',
+    'serverErrorText':
+        'El servidor meteorológico ha bloqueado su solicitud. Por favor, use su propia clave API. '
   },
   'eu': {
     'current': 'Korronte ',
@@ -549,7 +739,25 @@ final Map<String, Map<String, String>> localizedValues = {
     'searchForLocation': 'Bilatu kokapen bat ',
     'tapTheSearchBar': 'Punteatu goiko bilaketa barra kokapen bat aurkitzeko ',
     'tapToSeeWeatherCurrent':
-        'Punteatu Eguraldia zure uneko kokapenerako ikusteko '
+        'Punteatu Eguraldia zure uneko kokapenerako ikusteko ',
+    'use24HourTime': 'Erabili 24 orduko denbora ',
+    'appLanguage': 'Aplikazioaren hizkuntza ',
+    'advancedSettings': 'Ezarpen aurreratuak ',
+    'defaultLocation': 'Kokapen lehenetsia ',
+    'useDefaultLocationOnStartup':
+        'Erabili kokapen lehenetsia aplikazioaren abiaraztean ',
+    'customAPIKeys': 'API pertsonalizatutako teklak ',
+    'owmKey': 'Sartu OpenWeather API gakoa ',
+    'mbKey': 'Sartu mapbox API gakoa ',
+    'customKeyInfo':
+        'Utzi hutsik balio lehenetsiak erabiltzeko. API gakoak okerrak badira, balio lehenetsiak ordez erabiliko dira. ',
+    'thankYouForUsing': 'Eskerrik asko Pluvia eguraldia erabiltzeagatik. ',
+    'changelog': 'Changelog ',
+    'getAKey': 'Lortu hemen tekla ',
+    'getAKeyNote':
+        'Oharra: denbora pixka bat iraun dezake zure giltza aktibatzeko ',
+    'serverErrorText':
+        'Eguraldi zerbitzariak zure eskaera blokeatu du. Mesedez, erabili zure API tekla. '
   },
   'fa': {
     'current': 'جاری ',
@@ -595,7 +803,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'searchForLocation': 'جستجو برای یک مکان ',
     'tapTheSearchBar': 'برای پیدا کردن یک مکان روی نوار جستجو بالا ضربه بزنید ',
     'tapToSeeWeatherCurrent':
-        'برای دیدن آب و هوا برای مکان فعلی خود ضربه بزنید '
+        'برای دیدن آب و هوا برای مکان فعلی خود ضربه بزنید ',
+    'use24HourTime': 'استفاده از مدت 24 ساعته ',
+    'appLanguage': 'زبان برنامه ',
+    'advancedSettings': 'تنظیمات پیشرفته ',
+    'defaultLocation': 'محل پیش فرض ',
+    'useDefaultLocationOnStartup':
+        'از موقعیت پیش فرض در راه اندازی برنامه استفاده کنید ',
+    'customAPIKeys': 'کلیدهای سفارشی API ',
+    'owmKey': 'کلید OpenWeather API را وارد کنید ',
+    'mbKey': 'کلید MAPBOX API را وارد کنید ',
+    'customKeyInfo':
+        'خالی را ترک کنید تا از مقادیر پیش فرض استفاده کنید. اگر کلیدهای API نادرست باشند، مقادیر پیش فرض به جای آن استفاده می شود. ',
+    'thankYouForUsing': 'با تشکر از شما برای استفاده از آب و هوای Pluvia. ',
+    'changelog': 'تغییر ',
+    'getAKey': 'اینجا یک کلید دریافت کنید ',
+    'getAKeyNote': 'نکته: ممکن است برای کلید شما فعال شود ',
+    'serverErrorText':
+        'سرور آب و هوا درخواست شما را مسدود کرده است. لطفا از کلید API خود استفاده کنید. '
   },
   'fi': {
     'current': 'Nykyinen ',
@@ -640,7 +865,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'pressAndHold': 'Paina ja pidä painettuna Poista ',
     'searchForLocation': 'Etsi sijaintia ',
     'tapTheSearchBar': 'Paina yllä olevaa hakupalkkia löytääksesi sijainnin ',
-    'tapToSeeWeatherCurrent': 'Napauta nähdäksesi säätä nykyiseen sijaintiin '
+    'tapToSeeWeatherCurrent': 'Napauta nähdäksesi säätä nykyiseen sijaintiin ',
+    'use24HourTime': 'Käytä 24 tunnin aikaa ',
+    'appLanguage': 'Sovelluksen kieli ',
+    'advancedSettings': 'Lisäasetukset ',
+    'defaultLocation': 'Oletuspaikka ',
+    'useDefaultLocationOnStartup':
+        'Käytä oletusasema sovelluksen käynnistyksessä ',
+    'customAPIKeys': 'Mukautetut API-avaimet ',
+    'owmKey': 'Anna OpenWeather API -näppäin ',
+    'mbKey': 'Syötä MapBox API -näppäin ',
+    'customKeyInfo':
+        'Jätä tyhjä käyttämään oletusarvoja. Jos API-näppäimet ovat virheellisiä, sen sijaan käytetään oletusarvoja. ',
+    'thankYouForUsing': 'Kiitos, kun käytät Pluvia Sää. ',
+    'changelog': 'Muutos ',
+    'getAKey': 'Hanki avain täällä ',
+    'getAKeyNote': 'Huomaa: Avain voi kestää jonkin aikaa aktivoida ',
+    'serverErrorText':
+        'Sääpalvelin on estänyt pyynnön. Käytä omaa API-näppäintä. '
   },
   'fr': {
     'current': 'Actuelle',
@@ -687,7 +929,25 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Appuyez sur la barre de recherche ci-dessus pour trouver un emplacement ',
     'tapToSeeWeatherCurrent':
-        'Appuyez sur pour voir la météo pour votre position actuelle '
+        'Appuyez sur pour voir la météo pour votre position actuelle ',
+    'use24HourTime': 'Utiliser 24 heures de temps ',
+    'appLanguage': "Langue d'application ",
+    'advancedSettings': 'Réglages avancés ',
+    'defaultLocation': 'Localisation par défaut ',
+    'useDefaultLocationOnStartup':
+        "Utiliser l'emplacement par défaut sur l'application Startup ",
+    'customAPIKeys': 'Touches API personnalisées ',
+    'owmKey': "Entrez la clé d'openweather API ",
+    'mbKey': 'Entrez la touche API MBOXBox ',
+    'customKeyInfo':
+        'Laisser blanc pour utiliser les valeurs par défaut. Si les touches API sont incorrectes, les valeurs par défaut seront utilisées à la place. ',
+    'thankYouForUsing': "Merci d'utiliser Pluvia Météo. ",
+    'changelog': 'Changelog ',
+    'getAKey': 'Obtenez une clé ici ',
+    'getAKeyNote':
+        "Remarque: il peut prendre un certain temps pour votre clé d'activer ",
+    'serverErrorText':
+        'Le serveur météo a bloqué votre demande. Veuillez utiliser votre propre clé API. '
   },
   'gl': {
     'current': 'Actual ',
@@ -734,7 +994,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Toque a barra de busca de arriba para atopar unha localización ',
     'tapToSeeWeatherCurrent':
-        'Toque para ver o tempo para a súa localización actual '
+        'Toque para ver o tempo para a súa localización actual ',
+    'use24HourTime': 'Usa 24 horas ',
+    'appLanguage': 'Idioma da aplicación ',
+    'advancedSettings': 'Configuración avanzada ',
+    'defaultLocation': 'Localización predeterminada ',
+    'useDefaultLocationOnStartup':
+        'Use a localización predeterminada no inicio da aplicación ',
+    'customAPIKeys': 'Teclas API personalizadas ',
+    'owmKey': 'Introduza a chave API de OpenWeather ',
+    'mbKey': 'Introduza a chave API de Mapbox ',
+    'customKeyInfo':
+        'Deixar en branco para usar valores predeterminados. Se as claves da API son incorrectas, utilizaranse os valores por defecto. ',
+    'thankYouForUsing': 'Grazas por usar o clima de pluvia. ',
+    'changelog': 'Changelog. ',
+    'getAKey': 'Obteña unha chave aquí ',
+    'getAKeyNote': 'NOTA: Pode levar moito tempo para que a súa chave active ',
+    'serverErrorText':
+        'O servidor meteorolóxico bloqueou a súa solicitude. Use a súa propia clave API. '
   },
   'he': {
     'current': 'נוֹכְחִי ',
@@ -779,7 +1056,22 @@ final Map<String, Map<String, String>> localizedValues = {
     'searchForLocation': 'חפש מיקום ',
     'tapTheSearchBar': 'הקש על סרגל החיפוש לעיל כדי למצוא מיקום ',
     'tapToSeeWeatherCurrent':
-        'הקש כדי לראות את מזג האוויר עבור המיקום הנוכחי שלך '
+        'הקש כדי לראות את מזג האוויר עבור המיקום הנוכחי שלך ',
+    'use24HourTime': 'השתמש 24 שעות זמן ',
+    'appLanguage': 'App Language. ',
+    'advancedSettings': 'הגדרות מתקדמות ',
+    'defaultLocation': 'מיקום ברירת המחדל ',
+    'useDefaultLocationOnStartup': 'השתמש במיקום ברירת המחדל ב- App Startup ',
+    'customAPIKeys': 'מפתחות API מותאמים אישית ',
+    'owmKey': 'הזן מפתח ה- API של OpenWeather ',
+    'mbKey': 'הזן מפתח API של Mapbox ',
+    'customKeyInfo':
+        'השאירו ריק כדי להשתמש בערכי ברירת המחדל. אם מפתחות API הם שגויים, ערכי ברירת המחדל ישמשו במקום זאת. ',
+    'thankYouForUsing': 'תודה על השימוש במזג אוויר Pluvia. ',
+    'changelog': 'Changelog ',
+    'getAKey': 'קבל מפתח כאן ',
+    'getAKeyNote': 'הערה: ייתכן שיחלוף זמן מה למפתח שלך כדי להפעיל ',
+    'serverErrorText': 'שרת מזג האוויר חסם את בקשתך. השתמש במפתח API שלך. '
   },
   'hi': {
     'current': 'वर्तमान ',
@@ -825,7 +1117,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'searchForLocation': 'एक स्थान के लिए खोजें ',
     'tapTheSearchBar': 'किसी स्थान को खोजने के लिए ऊपर की खोज बार टैप करें ',
     'tapToSeeWeatherCurrent':
-        'अपने वर्तमान स्थान के लिए मौसम देखने के लिए टैप करें '
+        'अपने वर्तमान स्थान के लिए मौसम देखने के लिए टैप करें ',
+    'use24HourTime': '24 घंटे का उपयोग करें ',
+    'appLanguage': 'ऐप भाषा ',
+    'advancedSettings': 'एडवांस सेटिंग ',
+    'defaultLocation': 'अकरण स्थान ',
+    'useDefaultLocationOnStartup':
+        'ऐप स्टार्टअप पर डिफ़ॉल्ट स्थान का उपयोग करें ',
+    'customAPIKeys': 'कस्टम एपीआई कुंजी ',
+    'owmKey': 'OpenWeather API कुंजी दर्ज करें ',
+    'mbKey': 'MapBox API कुंजी दर्ज करें ',
+    'customKeyInfo':
+        'डिफ़ॉल्ट मानों का उपयोग करने के लिए खाली छोड़ दें। यदि एपीआई कुंजी गलत हैं, तो इसके बजाय डिफ़ॉल्ट मान का उपयोग किया जाएगा। ',
+    'thankYouForUsing': 'प्लुविया मौसम का उपयोग करने के लिए धन्यवाद। ',
+    'changelog': 'बदलाव का ',
+    'getAKey': 'यहां एक कुंजी प्राप्त करें ',
+    'getAKeyNote': 'नोट: आपकी कुंजी को सक्रिय करने में कुछ समय लग सकता है ',
+    'serverErrorText':
+        'मौसम सर्वर ने आपके अनुरोध को अवरुद्ध कर दिया है। कृपया अपनी खुद की एपीआई कुंजी का उपयोग करें। '
   },
   'hr': {
     'current': 'Trenutno ',
@@ -872,7 +1181,25 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Dodirnite gornju traku za pretraživanje kako biste pronašli mjesto ',
     'tapToSeeWeatherCurrent':
-        'Dodirnite da biste vidjeli vrijeme za trenutnu lokaciju '
+        'Dodirnite da biste vidjeli vrijeme za trenutnu lokaciju ',
+    'use24HourTime': 'Koristite 24 sata vremena ',
+    'appLanguage': 'Jezik aplikacija ',
+    'advancedSettings': 'Napredne postavke ',
+    'defaultLocation': 'Zadana lokacija ',
+    'useDefaultLocationOnStartup':
+        'Koristite zadanu lokaciju na startup aplikacije ',
+    'customAPIKeys': 'Custom API ključevi ',
+    'owmKey': 'Unesite tipku API API ',
+    'mbKey': 'Unesite ključ MAPBOX API ',
+    'customKeyInfo':
+        'Ostavite prazninu da biste koristili zadane vrijednosti. Ako su API tipke netočne, umjesto toga će se koristiti zadane vrijednosti. ',
+    'thankYouForUsing': 'Hvala vam što koristite vrijeme Pluvia. ',
+    'changelog': 'Cramelog ',
+    'getAKey': 'Ovdje dobiti ključ ',
+    'getAKeyNote':
+        'Napomena: Može potrajati neko vrijeme za vaš ključ za aktiviranje ',
+    'serverErrorText':
+        'Vremenski poslužitelj je blokirao vaš zahtjev. Koristite vlastiti API ključ. '
   },
   'hu': {
     'current': 'Jelenlegi ',
@@ -920,7 +1247,25 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Érintse meg a fenti keresési sávot, hogy megtalálja a helyet ',
     'tapToSeeWeatherCurrent':
-        'Érintse meg az időjárás megtekintéséhez az aktuális tartózkodási helyét '
+        'Érintse meg az időjárás megtekintéséhez az aktuális tartózkodási helyét ',
+    'use24HourTime': 'Használjon 24 órás időt ',
+    'appLanguage': 'Alkalmazásnyelv ',
+    'advancedSettings': 'További beállítások ',
+    'defaultLocation': 'Alapértelmezett hely ',
+    'useDefaultLocationOnStartup':
+        'Az Alkalmazás indításakor az Alapértelmezett hely használata ',
+    'customAPIKeys': 'Egyéni API gombok ',
+    'owmKey': 'Adja meg az Openweather API kulcsot ',
+    'mbKey': 'Adja meg a Mapbox API kulcsot ',
+    'customKeyInfo':
+        'Hagyja üresen az alapértelmezett értékek használatához. Ha az API gombok helytelenek, az alapértelmezett értékeket helyettesítik. ',
+    'thankYouForUsing': 'Köszönjük, hogy Pluvia időjárást használ. ',
+    'changelog': 'Változási napló ',
+    'getAKey': 'Szerezzen be egy kulcsot itt ',
+    'getAKeyNote':
+        'Megjegyzés: Lehet, hogy időt vehet igénybe az aktiváláshoz ',
+    'serverErrorText':
+        'Az időjárási kiszolgáló letiltotta a kérését. Kérjük, használja a saját API kulcsát. '
   },
   'id': {
     'current': 'Arus ',
@@ -965,7 +1310,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'searchForLocation': 'Cari lokasi ',
     'tapTheSearchBar': 'Ketuk bilah pencarian di atas untuk menemukan lokasi ',
     'tapToSeeWeatherCurrent':
-        'Ketuk untuk melihat cuaca untuk lokasi Anda saat ini '
+        'Ketuk untuk melihat cuaca untuk lokasi Anda saat ini ',
+    'use24HourTime': 'Gunakan waktu 24 jam ',
+    'appLanguage': 'Bahasa aplikasi. ',
+    'advancedSettings': 'Pengaturan lanjutan ',
+    'defaultLocation': 'Lokasi default ',
+    'useDefaultLocationOnStartup':
+        'Gunakan lokasi default pada startup aplikasi ',
+    'customAPIKeys': 'Tombol API Kustom ',
+    'owmKey': 'Masukkan kunci Openweather API ',
+    'mbKey': 'Masukkan kunci Mapbox API ',
+    'customKeyInfo':
+        'Biarkan kosong untuk menggunakan nilai default. Jika kunci API salah, nilai default akan digunakan sebagai gantinya. ',
+    'thankYouForUsing': 'Terima kasih telah menggunakan cuaca Pluvia. ',
+    'changelog': 'Changelog. ',
+    'getAKey': 'Dapatkan kunci di sini ',
+    'getAKeyNote': 'Catatan: Mungkin perlu waktu untuk mengaktifkan kunci ',
+    'serverErrorText':
+        'Server cuaca telah memblokir permintaan Anda. Silakan gunakan kunci API Anda sendiri. '
   },
   'it': {
     'current': 'attuale ',
@@ -1011,7 +1373,25 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Tocca la barra di ricerca sopra per trovare una posizione ',
     'tapToSeeWeatherCurrent':
-        'Tocca per vedere il tempo per la tua posizione attuale '
+        'Tocca per vedere il tempo per la tua posizione attuale ',
+    'use24HourTime': 'Usa 24 ore su 24 ',
+    'appLanguage': "Lingua dell'app ",
+    'advancedSettings': 'Impostazioni avanzate ',
+    'defaultLocation': 'Posizione predefinita ',
+    'useDefaultLocationOnStartup':
+        "Utilizzare la posizione predefinita sull'avvio dell'app ",
+    'customAPIKeys': 'Keys API personalizzati. ',
+    'owmKey': 'Inserisci la chiave API OpenWeather ',
+    'mbKey': 'Inserisci la chiave API Mapbox ',
+    'customKeyInfo':
+        'Lasciare in bianco per utilizzare i valori predefiniti. Se i tasti API non sono corretti, verranno utilizzati i valori predefiniti. ',
+    'thankYouForUsing': 'Grazie per aver usato il tempo PLUVIA. ',
+    'changelog': 'Changelog. ',
+    'getAKey': 'Ottieni una chiave qui ',
+    'getAKeyNote':
+        "Nota: potrebbe essere necessario un po 'di tempo per attivare la chiave ",
+    'serverErrorText':
+        'Il server meteorologico ha bloccato la tua richiesta. Si prega di utilizzare la tua chiave API. '
   },
   'ja': {
     'current': '電流 ',
@@ -1054,7 +1434,22 @@ final Map<String, Map<String, String>> localizedValues = {
     'pressAndHold': '削除する場所を押し続けます ',
     'searchForLocation': '場所を検索します ',
     'tapTheSearchBar': '上の検索バーをタップして場所を見つけます ',
-    'tapToSeeWeatherCurrent': 'あなたの現在の場所の天気を見るためにタップしてください '
+    'tapToSeeWeatherCurrent': 'あなたの現在の場所の天気を見るためにタップしてください ',
+    'use24HourTime': '24時間使用してください ',
+    'appLanguage': 'アプリケーション ',
+    'advancedSettings': '高度な設定 ',
+    'defaultLocation': 'デフォルトの場所 ',
+    'useDefaultLocationOnStartup': 'アプリの起動時にデフォルトの場所を使用してください ',
+    'customAPIKeys': 'カスタムAPIキー ',
+    'owmKey': 'OpenWeather APIキーを入力してください ',
+    'mbKey': 'MapBox APIキーを入力してください ',
+    'customKeyInfo':
+        'デフォルト値を使用するには、空白のままにします。 APIキーが正しくない場合は、代わりにデフォルト値が使用されます。 ',
+    'thankYouForUsing': 'Pluvia天気をご利用いただきありがとうございます。 ',
+    'changelog': 'チェンジログ ',
+    'getAKey': 'ここにキーを入手してください ',
+    'getAKeyNote': '注：キーがアクティブにするまでに時間がかかる場合があります。 ',
+    'serverErrorText': '気象サーバーはあなたの要求をブロックしました。 あなた自身のAPIキーを使ってください。 '
   },
   'ko': {
     'current': '흐름 ',
@@ -1097,7 +1492,21 @@ final Map<String, Map<String, String>> localizedValues = {
     'pressAndHold': '삭제할 위치를 길게 누릅니다 ',
     'searchForLocation': '위치 검색 ',
     'tapTheSearchBar': '위의 검색 막대를 탭하여 위치를 찾으십시오 ',
-    'tapToSeeWeatherCurrent': '현재 위치의 날씨를 보려면 탭하십시오 '
+    'tapToSeeWeatherCurrent': '현재 위치의 날씨를 보려면 탭하십시오 ',
+    'use24HourTime': '24 시간 시간을 사용하십시오 ',
+    'appLanguage': '앱 언어 ',
+    'advancedSettings': '고급 설정 ',
+    'defaultLocation': '기본 위치 ',
+    'useDefaultLocationOnStartup': '앱 시작시 기본 위치를 사용하십시오 ',
+    'customAPIKeys': '사용자 지정 API 키 ',
+    'owmKey': 'OpenWeather API 키를 입력하십시오 ',
+    'mbKey': 'Mapbox API 키를 입력하십시오 ',
+    'customKeyInfo': '기본값을 사용하려면 공백을 남겨 두십시오. API 키가 잘못되면 대신 기본값이 사용됩니다. ',
+    'thankYouForUsing': 'Pluvia 날씨를 사용해 주셔서 감사합니다. ',
+    'changelog': '변경 로그 ',
+    'getAKey': '여기에 키를 얻으십시오 ',
+    'getAKeyNote': '참고 : 키가 활성화 될 때까지 시간이 걸릴 수 있습니다. ',
+    'serverErrorText': '날씨 서버가 요청을 차단했습니다. 자신의 API 키를 사용하십시오. '
   },
   'lt': {
     'current': 'Dabartinis ',
@@ -1145,7 +1554,23 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Bakstelėkite aukščiau esančią paieškos juostą, kad rastumėte vietą ',
     'tapToSeeWeatherCurrent':
-        'Bakstelėkite, kad pamatytumėte orą dabartinei vietai '
+        'Bakstelėkite, kad pamatytumėte orą dabartinei vietai ',
+    'use24HourTime': 'Naudokite 24 valandų laiką ',
+    'appLanguage': 'Programos kalba ',
+    'advancedSettings': 'Pažangūs nustatymai ',
+    'defaultLocation': 'Numatytoji vieta ',
+    'useDefaultLocationOnStartup': 'Naudokite numatytąją vietą "App Startup" ',
+    'customAPIKeys': 'Pasirinktiniai API raktai ',
+    'owmKey': 'Įveskite "OpenWeather API" klavišą ',
+    'mbKey': 'Įveskite "Mapbox API" klavišą ',
+    'customKeyInfo':
+        'Palikite tuščią naudoti numatytasis vertes. Jei API raktai yra neteisingi, vietoj to bus naudojamos numatytosios vertės. ',
+    'thankYouForUsing': 'Dėkojame, kad naudojate Pluvia Orai. ',
+    'changelog': 'Changelog. ',
+    'getAKey': 'Gauti raktą čia ',
+    'getAKeyNote': 'Pastaba: gali užtrukti šiek tiek laiko raktui įjungti ',
+    'serverErrorText':
+        'Oras serveris užblokavo jūsų užklausą. Prašome naudoti savo API raktą. '
   },
   'lv': {
     'current': 'Strāva ',
@@ -1192,7 +1617,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Lai atrastu atrastu vietu, pieskarieties iepriekš minētajam meklēšanas joslai ',
     'tapToSeeWeatherCurrent':
-        'Pieskarieties, lai redzētu laika apstākļus pašreizējai atrašanās vietai '
+        'Pieskarieties, lai redzētu laika apstākļus pašreizējai atrašanās vietai ',
+    'use24HourTime': 'Izmantojiet 24 stundu laiku ',
+    'appLanguage': 'Lietotnes valoda ',
+    'advancedSettings': 'Papildu iestatījumi ',
+    'defaultLocation': 'Noklusējuma atrašanās vieta ',
+    'useDefaultLocationOnStartup':
+        'Izmantojiet noklusējuma atrašanās vietu lietotņu palaišanas laikā ',
+    'customAPIKeys': 'Custom API atslēgas ',
+    'owmKey': 'Ievadiet Openweather API atslēgu ',
+    'mbKey': 'Ievadiet Mapbox API atslēgu ',
+    'customKeyInfo':
+        'Atstājiet tukšu, lai izmantotu noklusējuma vērtības. Ja API atslēgas ir nepareizas, tā vietā tiks izmantotas noklusējuma vērtības. ',
+    'thankYouForUsing': 'Paldies, ka lietojat Pluvia laika apstākļus. ',
+    'changelog': 'Changelog ',
+    'getAKey': 'Iegūstiet atslēgu šeit ',
+    'getAKeyNote': 'Piezīme: tas var aizņemt kādu laiku, lai aktivizētu ',
+    'serverErrorText':
+        'Laika serveris ir bloķējis jūsu pieprasījumu. Lūdzu, izmantojiet savu API atslēgu. '
   },
   'mk': {
     'current': 'Струја ',
@@ -1239,7 +1681,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Допрете го лентата за пребарување погоре за да пронајдете локација ',
     'tapToSeeWeatherCurrent':
-        'Допрете за да го видите времето за вашата моментална локација '
+        'Допрете за да го видите времето за вашата моментална локација ',
+    'use24HourTime': 'Користете 24 часа ',
+    'appLanguage': 'Јазик на апликацијата ',
+    'advancedSettings': 'Напредни поставувања ',
+    'defaultLocation': 'Стандардна локација ',
+    'useDefaultLocationOnStartup':
+        'Користете ја стандардната локација за стартување на апликацијата ',
+    'customAPIKeys': 'Прилагодени API клучеви ',
+    'owmKey': 'Внесете го копчето OpenWeather API ',
+    'mbKey': 'Внесете го копчето Mapbox API ',
+    'customKeyInfo':
+        'Оставете празно за да ги користите стандардните вредности. Ако API клучевите се неточни, наместо тоа, ќе се користат стандардните вредности. ',
+    'thankYouForUsing': 'Ви благодариме за користење на времето на Pluvia. ',
+    'changelog': 'Changelog. ',
+    'getAKey': 'Добијте клуч тука ',
+    'getAKeyNote': 'Забелешка: Може да потрае некое време за да го активирате ',
+    'serverErrorText':
+        'Временскиот сервер го блокираше вашето барање. Ве молиме користете го вашиот сопствен API клуч. '
   },
   'nl': {
     'current': 'Actueel ',
@@ -1284,7 +1743,25 @@ final Map<String, Map<String, String>> localizedValues = {
     'pressAndHold': 'Houd op locatie ingedrukt om te verwijderen ',
     'searchForLocation': 'Zoek naar een locatie ',
     'tapTheSearchBar': 'Tik hierboven op de zoekbalk om een locatie te vinden ',
-    'tapToSeeWeatherCurrent': 'Tik om weer te zien voor uw huidige locatie '
+    'tapToSeeWeatherCurrent': 'Tik om weer te zien voor uw huidige locatie ',
+    'use24HourTime': 'Gebruik 24-uurs tijd ',
+    'appLanguage': 'App-taal ',
+    'advancedSettings': 'Geavanceerde instellingen ',
+    'defaultLocation': 'Standaardlocatie ',
+    'useDefaultLocationOnStartup':
+        'Gebruik de standaardlocatie op het opstarten van de app ',
+    'customAPIKeys': 'Aangepaste API-sleutels ',
+    'owmKey': 'Voer OpenWeather API-sleutel in ',
+    'mbKey': 'Voer Mapbox API-sleutel in ',
+    'customKeyInfo':
+        'Laat leeg om standaardwaarden te gebruiken. Als API-toetsen onjuist zijn, worden in plaats daarvan de standaardwaarden gebruikt. ',
+    'thankYouForUsing': 'Bedankt voor het gebruik van het weer van Pluvia. ',
+    'changelog': 'Changelog ',
+    'getAKey': 'Krijg hier een sleutel ',
+    'getAKeyNote':
+        'Opmerking: het kan enige tijd duren voordat uw sleutel wordt geactiveerd ',
+    'serverErrorText':
+        'De weerserver heeft uw verzoek geblokkeerd. Gebruik alstublieft uw eigen API-sleutel. '
   },
   'no': {
     'current': 'Nåværende ',
@@ -1329,7 +1806,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'pressAndHold': 'Trykk og hold på stedet for å slette ',
     'searchForLocation': 'Søk etter et sted ',
     'tapTheSearchBar': 'Trykk på søkefeltet ovenfor for å finne et sted ',
-    'tapToSeeWeatherCurrent': 'Trykk for å se været for din nåværende posisjon '
+    'tapToSeeWeatherCurrent':
+        'Trykk for å se været for din nåværende posisjon ',
+    'use24HourTime': 'Bruk 24 timers tid ',
+    'appLanguage': 'App språk ',
+    'advancedSettings': 'Avanserte innstillinger ',
+    'defaultLocation': 'Standard plassering ',
+    'useDefaultLocationOnStartup': 'Bruk standardplassering på App Startup ',
+    'customAPIKeys': 'Egendefinerte API Keys ',
+    'owmKey': 'Skriv inn OpenWeather API-nøkkelen ',
+    'mbKey': 'Skriv inn Mapbox API-nøkkelen ',
+    'customKeyInfo':
+        'La være tomt for å bruke standardverdier. Hvis API-tastene er feil, vil standardverdier bli brukt i stedet. ',
+    'thankYouForUsing': 'Takk for at du bruker pluvia været. ',
+    'changelog': 'Changelog. ',
+    'getAKey': 'Få en nøkkel her ',
+    'getAKeyNote': 'MERK: Det kan ta litt tid for nøkkelen til å aktivere ',
+    'serverErrorText':
+        'Vær-serveren har blokkert forespørselen din. Vennligst bruk din egen API-nøkkel. '
   },
   'pl': {
     'current': 'obecny ',
@@ -1375,54 +1869,88 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Stuknij pasek wyszukiwania powyżej, aby znaleźć lokalizację ',
     'tapToSeeWeatherCurrent':
-        'Dotknij, aby zobaczyć pogodę na bieżącą lokalizację '
+        'Dotknij, aby zobaczyć pogodę na bieżącą lokalizację ',
+    'use24HourTime': 'Użyj 24 godzinę czasu ',
+    'appLanguage': 'Język aplikacji. ',
+    'advancedSettings': 'Zaawansowane ustawienia ',
+    'defaultLocation': 'Domyślna lokalizacja ',
+    'useDefaultLocationOnStartup':
+        'Użyj domyślnej lokalizacji na uruchomieniu aplikacji ',
+    'customAPIKeys': 'Niestandardowe klucze API. ',
+    'owmKey': 'Wpisz klucz API OpenWeather ',
+    'mbKey': 'Wpisz klucz API Mapbox ',
+    'customKeyInfo':
+        'Pozostaw puste miejsce, aby użyć wartości domyślnych. Jeśli klucze API są nieprawidłowe, zamiast tego zostaną użyte wartości domyślne. ',
+    'thankYouForUsing': 'Dziękujemy za korzystanie z pogody Pluvia. ',
+    'changelog': 'Changelog. ',
+    'getAKey': 'Przyjdź tutaj ',
+    'getAKeyNote': 'Uwaga: Klucz może zająć trochę czasu ',
+    'serverErrorText':
+        'Serwer pogody zablokował Twoją prośbę. Użyj własnego klucza API. '
   },
   'pt': {
-    'current': 'Atual ',
+    'current': 'Agora ',
     'forecast': 'Previsão ',
     'locations': 'Localizações ',
     'more': 'Mais ',
-    'feelsLike': 'Parece ',
+    'feelsLike': 'Sensação ',
     'wind': 'Vento ',
-    'sunrise': 'nascer do sol ',
-    'sunset': 'Pôr do sol ',
+    'sunrise': 'Nascer do Sol ',
+    'sunset': 'Pôr do Sol ',
     'humidity': 'Umidade ',
     'pressure': 'Pressão ',
     'currentLocationTitle': 'Localização atual ',
-    'weatherRadar': 'Radar meteorológico ',
-    'weatherRadarAboutTitle': 'Sobre o radar meteorológico ',
+    'weatherRadar': 'Radar Meteorológico ',
+    'weatherRadarAboutTitle': 'Sobre o Radar Meteorológico ',
     'weatherRadarAboutBody':
-        'O "radar de tempo" do clavia do tempo usa uma página de \'openweathermap\'. Suporta visualização de precipitação, pressão, temperatura, velocidade do vento e previsões em nuvem globalmente. Isso pode levar a um maior uso de dados. ',
-    'lastUpdatedAt': 'Última atualização em. ',
+        "O Radar Meteorológico do Pluvia Weather usa uma página do 'OpenWeatherMap'. Nela é possível visualizar previsões de precipitação, pressão, temperatura, velocidade do vento e nuvens globalmente. Isso pode levar a um maior uso de dados. ",
+    'lastUpdatedAt': 'Última atualização às ',
     'locationDisabledPrompt':
-        'Para o tempo de pluviia para mostrar o tempo em sua localização atual, ative a localização. ',
+        'Ative a localização para que o Pluvia Weather mostre o tempo em sua localização atual. ',
     'darkMode': 'Modo escuro ',
-    'useFahrenheit': 'Use Fahrenheit ',
-    'refreshToSee': 'Atualizar para ver as alterações ',
-    'windSpeedUnit': 'Unidade de velocidade do vento. ',
-    'aboutPluvia': 'Sobre o tempo de pluvi ',
-    'viewOnGithub': 'Ver o tempo de pluviia no github ',
+    'useFahrenheit': 'Usar fahrenheit ',
+    'refreshToSee': 'Atualize para ver as alterações ',
+    'windSpeedUnit': 'Unidade de velocidade do vento ',
+    'aboutPluvia': 'Sobre o Pluvia Weather ',
+    'viewOnGithub': 'Ver o Pluvia Weather no GitHub ',
     'localTime': 'Horário local ',
     'loading': 'Carregando ',
-    'chooseLocationToView': 'Escolha um local para ver o tempo. ',
-    'openLocationSettings': 'Configurações de localização aberta ',
-    'close': 'Perto ',
-    'retry': 'Repetir ',
-    'serverErrorTitle': 'erro de servidor ',
+    'chooseLocationToView': 'Escolha uma localização para ver o tempo. ',
+    'openLocationSettings': 'Abrir configurações de localização ',
+    'close': 'Fechar ',
+    'retry': 'Tentar novamente ',
+    'serverErrorTitle': 'Erro de servidor ',
     'serverErrorBody':
-        'O tempo de Pluvi não pôde obter dados. Os servidores OpenWeathermap podem estar baixos. ',
+        'O Pluvia Weather não conseguiu obter dados. Os servidores do OpenWeatherMap podem estar fora do ar. ',
     'networkErrorText':
-        'Por favor, ative o WiFi ou os dados móveis e tente novamente ',
-    'gettingLocationMessage': 'Obtendo localização ... ',
+        'Por favor, ative o Wi-Fi ou os dados móveis e tente novamente ',
+    'gettingLocationMessage': 'Obtendo localização... ',
     'temperature': 'Temperatura ',
     'precipitation': 'Precipitação ',
-    'addLocation': 'Adicionar local ',
-    'pressAndHold': 'Pressione e segure no local para excluir ',
-    'searchForLocation': 'Procure um local ',
+    'addLocation': 'Adicionar localização ',
+    'pressAndHold': 'Pressione e segure numa localização para excluí-la ',
+    'searchForLocation': 'Pesquisar uma localização ',
     'tapTheSearchBar':
-        'Toque na barra de pesquisa acima para encontrar um local ',
+        'Toque na barra de pesquisa acima para procurar uma localização ',
     'tapToSeeWeatherCurrent':
-        'Toque para ver o tempo para sua localização atual '
+        'Toque para ver o tempo em sua localização atual ',
+    'use24HourTime': 'Use 24 horas ',
+    'appLanguage': 'Linguagem do aplicativo. ',
+    'advancedSettings': 'Configurações avançadas ',
+    'defaultLocation': 'Localização padrão ',
+    'useDefaultLocationOnStartup':
+        'Use o local padrão na inicialização do aplicativo ',
+    'customAPIKeys': 'Chaves de API personalizadas ',
+    'owmKey': 'Digite a chave de API do OpenWeather ',
+    'mbKey': 'Digite a chave da API do MapBox ',
+    'customKeyInfo':
+        'Deixe em branco para usar os valores padrão. Se as teclas API estiverem incorretas, os valores padrão serão usados. ',
+    'thankYouForUsing': 'Obrigado por usar o tempo de pluvi. ',
+    'changelog': 'Changelog. ',
+    'getAKey': 'Obter uma chave aqui ',
+    'getAKeyNote': 'Nota: Pode levar algum tempo para a sua chave para ativar ',
+    'serverErrorText':
+        'O servidor meteorológico bloqueou sua solicitação. Por favor, use sua própria chave da API. '
   },
   'ro': {
     'current': 'Actual ',
@@ -1468,7 +1996,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Atingeți bara de căutare de mai sus pentru a găsi o locație ',
     'tapToSeeWeatherCurrent':
-        'Atingeți pentru a vedea vremea pentru locația dvs. curentă '
+        'Atingeți pentru a vedea vremea pentru locația dvs. curentă ',
+    'use24HourTime': 'Utilizați timp de 24 de ore ',
+    'appLanguage': 'Limba de aplicații ',
+    'advancedSettings': 'Setari avansate ',
+    'defaultLocation': 'Locația implicită ',
+    'useDefaultLocationOnStartup':
+        'Utilizați locația implicită pe pornirea aplicației ',
+    'customAPIKeys': 'Cheile API personalizate. ',
+    'owmKey': 'Introduceți cheia OpenWeather API ',
+    'mbKey': 'Introduceți cheia API MAPBOX ',
+    'customKeyInfo':
+        'Lăsați necompletat pentru a utiliza valorile implicite. Dacă cheile API sunt incorecte, vor fi utilizate valori implicite. ',
+    'thankYouForUsing': 'Vă mulțumim că ați folosit vremea Pluvia. ',
+    'changelog': 'Changelog ',
+    'getAKey': 'Obțineți o cheie aici ',
+    'getAKeyNote': 'Notă: poate dura ceva timp pentru a activa cheia dvs. ',
+    'serverErrorText':
+        'Serverul meteorologic a blocat cererea dvs. Utilizați-vă propria ta cheie API. '
   },
   'ru': {
     'current': 'Текущий ',
@@ -1515,7 +2060,25 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Нажмите на панель поиска выше, чтобы найти местоположение ',
     'tapToSeeWeatherCurrent':
-        'Нажмите, чтобы увидеть погоду для вашего текущего местоположения '
+        'Нажмите, чтобы увидеть погоду для вашего текущего местоположения ',
+    'use24HourTime': 'Используйте 24 часа ',
+    'appLanguage': 'Язык приложения ',
+    'advancedSettings': 'Расширенные настройки ',
+    'defaultLocation': 'Расположение по умолчанию ',
+    'useDefaultLocationOnStartup':
+        'Используйте местоположение по умолчанию в запуске приложения ',
+    'customAPIKeys': 'Пользовательские ключи API ',
+    'owmKey': 'Введите ключ API OpenWeather ',
+    'mbKey': 'Введите ключ API Mapbox ',
+    'customKeyInfo':
+        'Оставьте пустым, чтобы использовать значения по умолчанию. Если ключи API неверны, вместо этого будут использоваться значения по умолчанию. ',
+    'thankYouForUsing': 'Спасибо за использование погоды в плювии. ',
+    'changelog': 'ChangeLog ',
+    'getAKey': 'Получить ключ ',
+    'getAKeyNote':
+        'Примечание. Для вашего ключа может потребоваться некоторое время для активации ',
+    'serverErrorText':
+        'Сервер погоды заблокировал ваш запрос. Пожалуйста, используйте свой собственный ключ API. '
   },
   'sk': {
     'current': 'Prúd ',
@@ -1561,7 +2124,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Klepnite na vyhľadávací panel vyššie, aby ste našli miesto ',
     'tapToSeeWeatherCurrent':
-        'Klepnutím pre zobrazenie počasia pre vašu aktuálnu polohu '
+        'Klepnutím pre zobrazenie počasia pre vašu aktuálnu polohu ',
+    'use24HourTime': 'Použite 24-hodinový čas ',
+    'appLanguage': 'Jazyk aplikácie ',
+    'advancedSettings': 'Pokročilé nastavenia ',
+    'defaultLocation': 'Predvolené umiestnenie ',
+    'useDefaultLocationOnStartup':
+        'Použite predvolené umiestnenie na spustení aplikácie ',
+    'customAPIKeys': 'Vlastné kľúče API ',
+    'owmKey': 'Zadajte tlačidlo API OTVORENÉHO API ',
+    'mbKey': 'Zadajte MAPOBOX API KEY ',
+    'customKeyInfo':
+        'Ak chcete použiť predvolené hodnoty, nechajte prázdne. Ak sú klávesy API nesprávne, namiesto toho sa použijú predvolené hodnoty. ',
+    'thankYouForUsing': 'Ďakujeme, že ste používali počasie Pluvia. ',
+    'changelog': 'Chrániť ',
+    'getAKey': 'Získajte kľúč ',
+    'getAKeyNote': 'POZNÁMKA: Pre aktiváciu môže trvať určitý čas ',
+    'serverErrorText':
+        'Počasie server zablokoval vašu požiadavku. Použite svoj vlastný API kľúč. '
   },
   'sl': {
     'current': 'Tok ',
@@ -1606,7 +2186,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'pressAndHold': 'Pritisnite in držite lokacijo, da izbrišete ',
     'searchForLocation': 'Poiščite lokacijo ',
     'tapTheSearchBar': 'Dotaknite se iskalne vrstice, da najdete lokacijo ',
-    'tapToSeeWeatherCurrent': 'Tapnite, da vidite vreme za trenutno lokacijo '
+    'tapToSeeWeatherCurrent': 'Tapnite, da vidite vreme za trenutno lokacijo ',
+    'use24HourTime': 'Uporabite 24 ur časa ',
+    'appLanguage': 'Jezik aplikacije ',
+    'advancedSettings': 'Napredne nastavitve ',
+    'defaultLocation': 'Privzeta lokacija ',
+    'useDefaultLocationOnStartup':
+        'Uporabite privzeto lokacijo na zagonu aplikacij ',
+    'customAPIKeys': 'Keys Custom API. ',
+    'owmKey': 'Vnesite tipko za odpiranje API ',
+    'mbKey': 'Vnesite tipko APIBOX API ',
+    'customKeyInfo':
+        'Pustite prazno, da uporabite privzete vrednosti. Če so tipke API napačne, bodo namesto tega uporabljene vrednosti. ',
+    'thankYouForUsing': 'Hvala za uporabo vremena Pluvia. ',
+    'changelog': 'Changelog. ',
+    'getAKey': 'Tukaj dobite ključ ',
+    'getAKeyNote': 'Opomba: Lahko traja nekaj časa za aktiviranje ',
+    'serverErrorText':
+        'Vremenski strežnik je blokiral vašo zahtevo. Uporabite svoj ključ API. '
   },
   'sq': {
     'current': 'Aktual ',
@@ -1653,7 +2250,25 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Prekni barin e kërkimit më lart për të gjetur një vend ',
     'tapToSeeWeatherCurrent':
-        'Prekni për të parë motin për vendndodhjen tuaj të tanishme '
+        'Prekni për të parë motin për vendndodhjen tuaj të tanishme ',
+    'use24HourTime': 'Përdorni 24 orë kohë ',
+    'appLanguage': 'Gjuha e aplikacioneve ',
+    'advancedSettings': 'Cilësimet e avancuara ',
+    'defaultLocation': 'Vendndodhja e parazgjedhur ',
+    'useDefaultLocationOnStartup':
+        'Përdorni vendndodhjen e parazgjedhur në fillimin e aplikacioneve ',
+    'customAPIKeys': 'Çelësat API me porosi ',
+    'owmKey': 'Shkruani butonin API OpenWeather API ',
+    'mbKey': 'Shkruani butonin MapBox API ',
+    'customKeyInfo':
+        'Të lënë bosh për të përdorur vlerat e parazgjedhur. Nëse çelësat API janë të pasakta, do të përdoren vlerat e paracaktuara. ',
+    'thankYouForUsing': 'Faleminderit për përdorimin e motit Pluvia. ',
+    'changelog': 'Changelog ',
+    'getAKey': 'Merrni një çelës këtu ',
+    'getAKeyNote':
+        'Shënim: Mund të duhet pak kohë për tastierën tuaj për të aktivizuar ',
+    'serverErrorText':
+        'Serveri i motit ka bllokuar kërkesën tuaj. Ju lutemi përdorni tastin tuaj API. '
   },
   'sr': {
     'current': 'Тренутни ',
@@ -1700,7 +2315,25 @@ final Map<String, Map<String, String>> localizedValues = {
     'tapTheSearchBar':
         'Додирните горњу траку за претрагу да бисте пронашли локацију ',
     'tapToSeeWeatherCurrent':
-        'Тапните да бисте видели Време за вашу тренутну локацију '
+        'Тапните да бисте видели Време за вашу тренутну локацију ',
+    'use24HourTime': 'Користите 24 сата времена ',
+    'appLanguage': 'Језик апликације ',
+    'advancedSettings': 'Напредна подешавања ',
+    'defaultLocation': 'Подразумевана локација ',
+    'useDefaultLocationOnStartup':
+        'Користите подразумевану локацију на покретању апликација ',
+    'customAPIKeys': 'Цустом АПИ кључеви ',
+    'owmKey': 'Унесите ОпенВеатхер АПИ кључ ',
+    'mbKey': 'Унесите КЉУЧ МАПБОКС АПИ ',
+    'customKeyInfo':
+        'Оставите празно да бисте користили подразумеване вредности. Ако су АПИ тастери нетачни, уместо тога ће се користити подразумеване вредности. ',
+    'thankYouForUsing': 'Хвала вам што користите Време Плувиа. ',
+    'changelog': 'Цхангелог ',
+    'getAKey': 'Овде набавите кључ ',
+    'getAKeyNote':
+        'Напомена: Можда ће требати мало времена за активирање вашег кључа ',
+    'serverErrorText':
+        'Временски сервер је блокирао ваш захтев. Користите свој властити АПИ кључ. '
   },
   'sv': {
     'current': 'Nuvarande ',
@@ -1745,7 +2378,23 @@ final Map<String, Map<String, String>> localizedValues = {
     'pressAndHold': 'Tryck och håll på plats för att radera ',
     'searchForLocation': 'Sök efter en plats ',
     'tapTheSearchBar': 'Tryck på sökfältet ovan för att hitta en plats ',
-    'tapToSeeWeatherCurrent': 'Tryck för att se väder för din nuvarande plats '
+    'tapToSeeWeatherCurrent': 'Tryck för att se väder för din nuvarande plats ',
+    'use24HourTime': 'Använd 24 timmars tid ',
+    'appLanguage': 'Appspråk ',
+    'advancedSettings': 'Avancerade inställningar ',
+    'defaultLocation': 'Standardplats ',
+    'useDefaultLocationOnStartup': 'Använd standardplatsen på App-start ',
+    'customAPIKeys': 'Anpassade API-nycklar ',
+    'owmKey': 'Ange Openweather API-nyckel ',
+    'mbKey': 'Ange Mapbox API-nyckel ',
+    'customKeyInfo':
+        'Lämna tomma för att använda standardvärden. Om API-tangenterna är felaktiga, används standardvärdena istället. ',
+    'thankYouForUsing': 'Tack för att du använde Pluvia Weather. ',
+    'changelog': 'Changelog ',
+    'getAKey': 'Få en nyckel här ',
+    'getAKeyNote': 'Obs! Det kan ta lite tid för din nyckel att aktivera ',
+    'serverErrorText':
+        'Väderservern har blockerat din förfrågan. Använd din egen API-nyckel. '
   },
   'th': {
     'current': 'ปัจจุบัน ',
@@ -1789,7 +2438,23 @@ final Map<String, Map<String, String>> localizedValues = {
     'pressAndHold': 'กดที่ตั้งเพื่อลบ ',
     'searchForLocation': 'ค้นหาสถานที่ ',
     'tapTheSearchBar': 'แตะแถบค้นหาด้านบนเพื่อค้นหาสถานที่ ',
-    'tapToSeeWeatherCurrent': 'แตะเพื่อดูสภาพอากาศสำหรับตำแหน่งปัจจุบันของคุณ '
+    'tapToSeeWeatherCurrent': 'แตะเพื่อดูสภาพอากาศสำหรับตำแหน่งปัจจุบันของคุณ ',
+    'use24HourTime': 'ใช้เวลา 24 ชั่วโมง ',
+    'appLanguage': 'ภาษาแอป ',
+    'advancedSettings': 'ตั้งค่าขั้นสูง ',
+    'defaultLocation': 'ตำแหน่งเริ่มต้น ',
+    'useDefaultLocationOnStartup': 'ใช้ตำแหน่งเริ่มต้นในการเริ่มต้นแอป ',
+    'customAPIKeys': 'คีย์ API ที่กำหนดเอง ',
+    'owmKey': 'ป้อนปุ่ม OpenWeather API ',
+    'mbKey': 'ป้อนรหัส Mapbox API ',
+    'customKeyInfo':
+        'เว้นว่างไว้เพื่อใช้ค่าเริ่มต้น หากคีย์ API ไม่ถูกต้องค่าเริ่มต้นจะถูกใช้แทน ',
+    'thankYouForUsing': 'ขอบคุณที่ใช้สภาพอากาศ Pluvia ',
+    'changelog': 'การเปลี่ยนแปลง ',
+    'getAKey': 'รับกุญแจที่นี่ ',
+    'getAKeyNote': 'หมายเหตุ: อาจใช้เวลาสักครู่สำหรับการเปิดใช้งานคีย์ของคุณ ',
+    'serverErrorText':
+        'เซิร์ฟเวอร์สภาพอากาศได้บล็อกคำขอของคุณ โปรดใช้รหัส API ของคุณเอง '
   },
   'tr': {
     'current': 'Akım ',
@@ -1835,7 +2500,26 @@ final Map<String, Map<String, String>> localizedValues = {
     'searchForLocation': 'Bir yeri ara ',
     'tapTheSearchBar':
         'Bir konum bulmak için yukarıdaki arama çubuğuna dokunun. ',
-    'tapToSeeWeatherCurrent': 'Geçerli konumunuz için hava görmek için dokunun '
+    'tapToSeeWeatherCurrent':
+        'Geçerli konumunuz için hava görmek için dokunun ',
+    'use24HourTime': '24 saatlik zaman kullanın ',
+    'appLanguage': 'App dili ',
+    'advancedSettings': 'Gelişmiş Ayarlar ',
+    'defaultLocation': 'Varsayılan konum ',
+    'useDefaultLocationOnStartup':
+        'Uygulama başlangıcında varsayılan konumu kullanın ',
+    'customAPIKeys': 'Özel API tuşları ',
+    'owmKey': 'OpenWeather API anahtarını girin ',
+    'mbKey': 'MAPBOX API tuşunu girin ',
+    'customKeyInfo':
+        'Varsayılan değerleri kullanmak için boş bırakın. API tuşları yanlışsa, bunun yerine varsayılan değerler kullanılacaktır. ',
+    'thankYouForUsing':
+        'Pluvia hava koşullarını kullandığınız için teşekkür ederiz. ',
+    'changelog': 'Changelog ',
+    'getAKey': 'Burada bir anahtar alın ',
+    'getAKeyNote': 'Not: Anahtarınızın etkinleştirilmesi biraz zaman alabilir ',
+    'serverErrorText':
+        'Hava sunucusu isteğinizi engelledi. Lütfen kendi API anahtarınızı kullanın. '
   },
   'uk': {
     'current': 'Струм ',
@@ -1881,7 +2565,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'searchForLocation': 'Пошук місця ',
     'tapTheSearchBar': 'Натисніть панель пошуку вище, щоб знайти розташування ',
     'tapToSeeWeatherCurrent':
-        'Натисніть, щоб побачити погоду для поточного місцезнаходження '
+        'Натисніть, щоб побачити погоду для поточного місцезнаходження ',
+    'use24HourTime': 'Використовуйте 24-годинний час ',
+    'appLanguage': 'Мова програми ',
+    'advancedSettings': 'Розширені налаштування ',
+    'defaultLocation': 'Розташування за замовчуванням ',
+    'useDefaultLocationOnStartup':
+        'Використовуйте розташування за замовчуванням на запуску додатків ',
+    'customAPIKeys': 'Користувацькі клавіші API ',
+    'owmKey': 'Введіть ключ OpenWeather API ',
+    'mbKey': 'Введіть ключ API Mapbox ',
+    'customKeyInfo':
+        'Залиште порожнім, щоб використовувати значення за замовчуванням. Якщо ключі API неправильні, замість цього використовуються значення за замовчуванням. ',
+    'thankYouForUsing': 'Дякуємо за використання Пувії Погода. ',
+    'changelog': 'Зміна ',
+    'getAKey': 'Отримайте ключ тут ',
+    'getAKeyNote': 'Примітка. Це може зайняти деякий час для активації ключа ',
+    'serverErrorText':
+        'Сервер погоди заблокував ваш запит. Будь ласка, використовуйте свій власний ключ API. '
   },
   'vi': {
     'current': 'Hiện hành ',
@@ -1927,49 +2628,80 @@ final Map<String, Map<String, String>> localizedValues = {
     'searchForLocation': 'Tìm kiếm một địa điểm ',
     'tapTheSearchBar': 'Nhấn vào thanh tìm kiếm ở trên để tìm một vị trí ',
     'tapToSeeWeatherCurrent':
-        'Nhấn để xem thời tiết cho vị trí hiện tại của bạn '
+        'Nhấn để xem thời tiết cho vị trí hiện tại của bạn ',
+    'use24HourTime': 'Sử dụng thời gian 24 giờ ',
+    'appLanguage': 'Ngôn ngữ ứng dụng ',
+    'advancedSettings': 'Cài đặt nâng cao ',
+    'defaultLocation': 'Vị trí mặc định ',
+    'useDefaultLocationOnStartup': 'Sử dụng vị trí mặc định trên App Startup ',
+    'customAPIKeys': 'Phím API tùy chỉnh ',
+    'owmKey': 'Nhập khóa API OpenWeather ',
+    'mbKey': 'Nhập khóa API Mapbox ',
+    'customKeyInfo':
+        'Để trống để sử dụng các giá trị mặc định. Nếu các khóa API không chính xác, các giá trị mặc định sẽ được sử dụng thay thế. ',
+    'thankYouForUsing': 'Cảm ơn bạn đã sử dụng thời tiết Pluvia. ',
+    'changelog': 'Changelog. ',
+    'getAKey': 'Nhận một chìa khóa ở đây ',
+    'getAKeyNote':
+        'Lưu ý: Có thể mất một thời gian để khóa của bạn để kích hoạt ',
+    'serverErrorText':
+        'Máy chủ thời tiết đã chặn yêu cầu của bạn. Vui lòng sử dụng khóa API của riêng bạn. '
   },
   'zh': {
-    'current': '当前的 ',
+    'current': '当前 ',
     'forecast': '预报 ',
     'locations': '地点 ',
-    'more': '更多的 ',
-    'feelsLike': '感觉像 ',
-    'wind': '风 ',
+    'more': '更多 ',
+    'feelsLike': '体感 ',
+    'wind': '风速 ',
     'sunrise': '日出 ',
     'sunset': '日落 ',
     'humidity': '湿度 ',
-    'pressure': '压力 ',
+    'pressure': '气压 ',
     'currentLocationTitle': '当前位置 ',
     'weatherRadar': '天气雷达 ',
     'weatherRadarAboutTitle': '关于天气雷达 ',
     'weatherRadarAboutBody':
-        'Pluvia天气的“天气雷达”使用OpenWeathermap的网页。 它支持在全球上观看降水，压力，温度，风速和云预测。 这可能导致更高的数据使用情况。 ',
-    'lastUpdatedAt': '最后更新了 ',
-    'locationDisabledPrompt': '对于Pluvia天气来显示当前位置的天气，使能位置。 ',
+        'Pluvia天气的“天气雷达”使用网页版OpenWeathermap。支持查看全球降水，气压，温度，风速和云图预报。这可能使用较多的数据流量。 ',
+    'lastUpdatedAt': '最后更新 ',
+    'locationDisabledPrompt': 'Pluvia天气需要当前位置，请开启位置权限。 ',
     'darkMode': '黑暗模式 ',
     'useFahrenheit': '使用华氏度 ',
     'refreshToSee': '刷新以查看更改 ',
     'windSpeedUnit': '风速单位 ',
     'aboutPluvia': '关于Pluvia天气 ',
-    'viewOnGithub': '查看Pluvia天气在GitHub上 ',
+    'viewOnGithub': '在GitHub查看Pluvia天气 ',
     'localTime': '当地时间 ',
-    'loading': '装载 ',
+    'loading': '加载中 ',
     'chooseLocationToView': '选择位置查看天气。 ',
     'openLocationSettings': '打开位置设置 ',
     'close': '关闭 ',
     'retry': '重试 ',
     'serverErrorTitle': '服务器错误 ',
-    'serverErrorBody': 'Pluvia天气无法获取数据。 OpenWeatherMap服务器可能会关闭。 ',
+    'serverErrorBody': 'Pluvia天气无法获取数据。可能无法连接OpenWeatherMap服务器。 ',
     'networkErrorText': '请启用WiFi或移动数据并重试 ',
     'gettingLocationMessage': '获取位置...... ',
     'temperature': '温度 ',
-    'precipitation': '沉淀 ',
+    'precipitation': '降水 ',
     'addLocation': '添加位置 ',
     'pressAndHold': '按住删除位置 ',
     'searchForLocation': '搜索位置 ',
     'tapTheSearchBar': '点击上面的搜索栏以查找位置 ',
-    'tapToSeeWeatherCurrent': '点击以查看当前位置的天气 '
+    'tapToSeeWeatherCurrent': '点击以查看当前位置的天气 ',
+    'use24HourTime': '使用24小时时间 ',
+    'appLanguage': '应用语言 ',
+    'advancedSettings': '高级设置 ',
+    'defaultLocation': '默认位置 ',
+    'useDefaultLocationOnStartup': '启动应用时使用默认位置 ',
+    'customAPIKeys': '自定义API Key ',
+    'owmKey': '输入OpenWeather API Key ',
+    'mbKey': '输入Mapbox API Key ',
+    'customKeyInfo': '留空以使用默认值。如果API Key不正确，则会使用默认值。 ',
+    'thankYouForUsing': '感谢您使用Pluvia天气。 ',
+    'changelog': '更新日志 ',
+    'getAKey': '在这里获取key ',
+    'getAKeyNote': '注意：您的key可能需要一些时间来激活 ',
+    'serverErrorText': '天气服务器已阻止您的请求。请使用您自己的API Key。 '
   },
   'zu': {
     'current': '-Dlulayo ',
@@ -2015,6 +2747,24 @@ final Map<String, Map<String, String>> localizedValues = {
     'searchForLocation': 'Sesha indawo ',
     'tapTheSearchBar': 'Thepha ibha yokusesha engenhla ukuthola indawo ',
     'tapToSeeWeatherCurrent':
-        'Thepha ukuze ubone isimo sezulu sendawo yakho yamanje '
+        'Thepha ukuze ubone isimo sezulu sendawo yakho yamanje ',
+    'use24HourTime': 'Sebenzisa isikhathi samahora angama-24 ',
+    'appLanguage': 'Ulimi lohlelo lokusebenza ',
+    'advancedSettings': 'Izilungiselelo ezithuthukisiwe ',
+    'defaultLocation': 'Indawo ezenzakalelayo ',
+    'useDefaultLocationOnStartup':
+        'Sebenzisa indawo okuzenzakalelayo ekuqaliseni kohlelo lokusebenza ',
+    'customAPIKeys': 'Okhiye be-API ngokwezifiso ',
+    'owmKey': 'Faka ukhiye we-OpenWeather API ',
+    'mbKey': 'Faka ukhiye we-Mapbox API ',
+    'customKeyInfo':
+        'Shiya ungenalutho ukuze usebenzise amanani azenzakalelayo. Uma izinkinobho ze-API azilungile, kuzosetshenziswa amanani azenzakalelayo esikhundleni salokho. ',
+    'thankYouForUsing': 'Siyabonga ngokusebenzisa isimo sezulu sePluvia. ',
+    'changelog': 'I-Changelog ',
+    'getAKey': 'Thola ukhiye lapha ',
+    'getAKeyNote':
+        'Qaphela: Kungathatha isikhathi kukhiye wakho ukuze usebenze ',
+    'serverErrorText':
+        'Iseva yesimo sezulu ivimbe isicelo sakho. Sicela usebenzise ukhiye wakho we-API. '
   }
 };
