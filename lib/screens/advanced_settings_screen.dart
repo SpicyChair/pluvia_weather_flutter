@@ -214,9 +214,16 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                         style: TextStyle(color: Colors.blueAccent),
                       ),
                     ),
-                    Text(
-                      Language.getTranslation("getAKeyNote"),
-                      style: TextStyle(color: ThemeColors.secondaryTextColor(), fontWeight: FontWeight.bold),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text(
+                          Language.getTranslation("getAKeyNote"),
+                          style: TextStyle(
+                              color: ThemeColors.secondaryTextColor(),
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ),
                   ],
                 ),

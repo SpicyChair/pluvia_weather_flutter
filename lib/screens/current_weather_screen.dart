@@ -441,7 +441,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       cardChild: Container(
         height: 140,
         width: double.infinity,
-        margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Column(
           children: [
             SizedBox(
