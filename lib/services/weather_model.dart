@@ -216,7 +216,7 @@ class WeatherModel {
       DateTime tomorrowSunrise, DateTime forecastTime, int conditionCode) {
     WeatherType weatherType;
     //check if its raining or snowing to show weather animation
-    if (conditionCode >= 300 && conditionCode <= 599) {
+    if (conditionCode <= 599) {
       //rain / drizzle
       weatherType = WeatherType.rain;
     } else if (conditionCode >= 600 && conditionCode <= 699) {
