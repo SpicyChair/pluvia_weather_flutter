@@ -217,29 +217,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.0"
-  geolocator:
+  geolocator_android:
     dependency: "direct main"
     description:
-      path: geolocator
-      ref: master
-      resolved-ref: "65abe07d9103e427ec2e4e587ee1e1544e6a8804"
-      url: "https://gitlab.com/free2pass/flutter-geolocator-floss.git"
-    source: git
-    version: "7.2.0+1"
+      name: geolocator_android
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   geolocator_platform_interface:
     dependency: transitive
     description:
       name: geolocator_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.2"
-  geolocator_web:
-    dependency: transitive
-    description:
-      name: geolocator_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.6"
+    version: "2.3.6"
   google_nav_bar:
     dependency: "direct main"
     description:
