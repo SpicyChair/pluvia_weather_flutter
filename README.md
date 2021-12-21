@@ -10,7 +10,7 @@ A weather app with beautiful animations, built with Flutter. Powered by weather 
 
 • 🌙 Beautiful dark mode
 
-• 📅 Accurate 24 hour and 7 day forecast, be prepared for anything
+• 📅 Accurate 24 hour and 7 day forecast - be prepared for anything
 
 • 🌍 View weather in millions of locations with MapBox Search and Weather Radar
 
