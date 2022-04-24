@@ -2320,7 +2320,7 @@ final Map<String, Map<String, String>> localizedValues = {
     'owmKey': 'Унесите ОпенВеатхер АПИ кључ ',
     'mbKey': 'Унесите МАПБОКС АПИ кључ ',
     'customKeyInfo':
-        'Оставите празно да бисте користили подразумеване вредности. Ако АПИ кључеви нису исправни, уместо тога ће се користити подразумеване вредности ',
+        'Оставите празно да бисте користили подразумеване вредности. Ако АПИ кључеви нису исправни, уместо тога ће се користити подразумеване вредности. ',
     'thankYouForUsing': 'Хвала вам што користите Плувиа Време. ',
     'changelog': 'Евиденција промена ',
     'getAKey': 'Овде набавите кључ ',
@@ -2385,7 +2385,7 @@ final Map<String, Map<String, String>> localizedValues = {
     'owmKey': 'Unesite OpenWeather API ključ ',
     'mbKey': 'Unesite MapBox API ključ ',
     'customKeyInfo':
-        'Ostavite prazno da biste koristili podrazumevane vrednosti. Ako API ključevi nisu ispravni, umesto toga će se koristiti podrazumevane vrednosti ',
+        'Ostavite prazno da biste koristili podrazumevane vrednosti. Ako API ključevi nisu ispravni, umesto toga će se koristiti podrazumevane vrednosti. ',
     'thankYouForUsing': 'Hvala vam što koristite Pluvia Vreme. ',
     'changelog': 'Evidencija promena ',
     'getAKey': 'Ovde nabavite ključ ',
