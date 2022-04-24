@@ -2264,7 +2264,7 @@ final Map<String, Map<String, String>> localizedValues = {
     'serverErrorText':
         'Serveri i motit ka bllokuar kërkesën tuaj. Ju lutemi përdorni tastin tuaj API. '
   },
-   'sr-cy': {
+   'sr-Cyrl': {
     'current': 'Тренутна ',
     'forecast': 'Прогноза ',
     'locations': 'Локације ',
