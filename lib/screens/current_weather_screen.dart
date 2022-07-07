@@ -291,10 +291,14 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "${temperature.toString()}°",
-              style: kLargeTempTextStyle,
+
+            Container (
+              child: Text(
+                "${temperature.toString()}°",
+                style: kLargeTempTextStyle,
+              ),
             ),
+
             Container(
               width: 300,
               padding: EdgeInsets.only(left: 5),

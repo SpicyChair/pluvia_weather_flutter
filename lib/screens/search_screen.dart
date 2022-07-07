@@ -64,7 +64,6 @@ class _SearchScreenState extends State<SearchScreen> {
               child: MapBoxPlaceSearchWidget(
                 popOnSelect: false,
                 apiKey: env["MAPBOX_API_KEY"],
-                limit: 8,
                 searchHint: Language.getTranslation("searchForLocation"),
                 onSelected: (place) {
                   Navigator.pop(context, place);

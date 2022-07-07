@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+//import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 class RadarScreen extends StatelessWidget {
   double latitude;
@@ -17,26 +17,16 @@ class RadarScreen extends StatelessWidget {
 //'https://openweathermap.org/weathermap?basemap=map&cities=false&layer=radar&lat=$latitude&lon=$longitude&zoom=6',
   @override
   Widget build(BuildContext context) {
-    return WebviewScaffold(
-      hidden: true,
-      initialChild: Container(
-        height: double.infinity,
-        width: double.infinity,
-        color: ThemeColors.backgroundColor(),
-        child: Center(
-          child: SpinKitFadingCircle(
-              color: ThemeColors.secondaryTextColor(), size: 50),
-        ),
-      ),
-      url:
-          "https://openweathermap.org/weathermap?basemap=map&cities=false&layer=radar&lat=$latitude&lon=$longitude&zoom=5",
+    return Scaffold(
       appBar: AppBar(
         title: Text(
           Language.getTranslation("weatherRadar"),
-          style: TextStyle(color: ThemeColors.primaryTextColor()),
+          style: TextStyle(
+            color: ThemeColors.primaryTextColor(),
+          ),
         ),
-        centerTitle: true,
         backgroundColor: ThemeColors.backgroundColor(),
+        centerTitle: true,
         leading: TextButton(
           child: Icon(
             Icons.arrow_back,
@@ -47,10 +37,9 @@ class RadarScreen extends StatelessWidget {
           },
         ),
       ),
+      body: WebView(
+          initialUrl:
+              'https://openweathermap.org/weathermap?basemap=map&cities=false&layer=radar&lat=$latitude&lon=$longitude&zoom=5'),
     );
   }
 }
-
-/*
-
- */
