@@ -293,6 +293,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
           children: [
 
             Container (
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
               child: Text(
                 "${temperature.toString()}°",
                 style: kLargeTempTextStyle,
