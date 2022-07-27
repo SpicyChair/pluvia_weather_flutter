@@ -29,6 +29,7 @@ class WeatherApp extends StatelessWidget {
     return MaterialApp(
       title: "Pluvia Weather",
       theme: ThemeData.light().copyWith(
+        useMaterial3: true,
         primaryColor: Colors.blueAccent,
         //backgroundColor: Colors.black,
         floatingActionButtonTheme:
