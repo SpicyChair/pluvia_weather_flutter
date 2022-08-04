@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/constants/constants.dart';
+import 'package:flutter_weather/preferences/app_theme.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/screens/advanced_settings_screen.dart';
 import 'package:flutter_weather/screens/changelog_screen.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:package_info/package_info.dart';
 
@@ -199,12 +201,15 @@ class _MoreScreenState extends State<MoreScreen> {
                           thememodeDropdownValue = newValue;
                           switch (newValue) {
                             case "Auto":
+                              Provider.of<AppThemeChangeNotifier>(context, listen: false).setThemeMode(ThemeModePref.AUTO);
                               await SharedPrefs.setThemeMode(ThemeModePref.AUTO);
                               break;
                             case "Light":
+                              Provider.of<AppThemeChangeNotifier>(context, listen: false).setThemeMode(ThemeModePref.LIGHT);
                               await SharedPrefs.setThemeMode(ThemeModePref.LIGHT);
                               break;
                             case "Dark":
+                              Provider.of<AppThemeChangeNotifier>(context, listen: false).setThemeMode(ThemeModePref.DARK);
                               await SharedPrefs.setThemeMode(ThemeModePref.DARK);
                               break;
                           }

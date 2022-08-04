@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefs {
@@ -39,9 +40,9 @@ class SharedPrefs {
 
   static Future<ThemeModePref> getThemeMode() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    ThemeModePref mode = ThemeModePref.values[prefs.getInt(themeKey) ?? 2];
-    print(mode);
-    return mode;
+    ThemeModePref modepref = ThemeModePref.values[prefs.getInt(themeKey) ?? 2];
+
+    return modepref;
   }
 
   static Future<void> setThemeMode(ThemeModePref mode) async {

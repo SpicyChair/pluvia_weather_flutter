@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_weather/preferences/app_theme.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
+import 'package:path/path.dart';
+import 'package:provider/provider.dart';
 import 'screens/loading_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
@@ -14,32 +17,36 @@ Future<void> initialize() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Language.initialise();
   await DotEnv.load(fileName: ".env");
-  ThemeColors.initialise().then(
-    (value) => runApp(
-      WeatherApp(),
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => AppThemeChangeNotifier(),
+      child: WeatherApp(),
     ),
   );
-
 }
 
 class WeatherApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
 
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Provider.of<AppThemeChangeNotifier>(context, listen: true).initialize();
+    });
+
     return MaterialApp(
       title: "Pluvia Weather",
-      themeMode: ThemeMode.system,
+      themeMode: Provider.of<AppThemeChangeNotifier>(context, listen: true).getThemeMode(),
       theme: lightThemeData,
       darkTheme: darkThemeData,
       debugShowCheckedModeBanner: false,
-      home: LoadingScreen(checkDefaultLocation: true,),
+      home: LoadingScreen(
+        checkDefaultLocation: true,
+      ),
     );
   }
 }
-
-
-
-
 
 final ThemeData lightThemeData = ThemeData.light().copyWith(
   brightness: Brightness.light,
@@ -63,5 +70,5 @@ final ThemeData darkThemeData = ThemeData.dark().copyWith(
   primaryColorDark: Colors.grey[400],
   useMaterial3: true,
   floatingActionButtonTheme:
-  FloatingActionButtonThemeData(backgroundColor: Colors.blueAccent),
+      FloatingActionButtonThemeData(backgroundColor: Colors.blueAccent),
 );
