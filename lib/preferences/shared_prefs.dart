@@ -41,6 +41,7 @@ class SharedPrefs {
   static Future<ThemeModePref> getThemeMode() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     ThemeModePref mode = ThemeModePref.values[prefs.getInt(themeKey) ?? 2];
+    print(mode);
     return mode;
   }
 

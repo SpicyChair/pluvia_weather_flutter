@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
 
 class APITextField extends StatelessWidget {
   final String hintText;
@@ -10,17 +9,16 @@ class APITextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      style: TextStyle(color: ThemeColors.primaryTextColor()),
+      style: TextStyle(color: Theme.of(context).primaryColorLight),
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(
-          color: ThemeColors.secondaryTextColor(),
+          color: Theme.of(context).primaryColorDark,
           fontSize: 15,
         ),
-
         enabledBorder: OutlineInputBorder(
           borderSide:
-              BorderSide(color: ThemeColors.secondaryTextColor(), width: 2.0),
+              BorderSide(color: Theme.of(context).primaryColorDark, width: 2.0),
           borderRadius: BorderRadius.circular(10),
         ),
         focusedBorder: OutlineInputBorder(
@@ -32,7 +30,7 @@ class APITextField extends StatelessWidget {
         ),
         border: OutlineInputBorder(
           borderSide:
-              BorderSide(color: ThemeColors.secondaryTextColor(), width: 2.0),
+              BorderSide(color: Theme.of(context).primaryColorDark, width: 2.0),
         ),
       ),
       onChanged: onChanged,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
 
 class PanelCard extends StatelessWidget {
   final Widget cardChild;
@@ -13,7 +12,7 @@ class PanelCard extends StatelessWidget {
     return Container(
       child: cardChild,
       decoration: BoxDecoration(
-        color: ThemeColors.backgroundColor(),
+        color: Theme.of(context).cardColor,
 
       ),
     );

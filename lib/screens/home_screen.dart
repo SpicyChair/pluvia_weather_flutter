@@ -2,7 +2,6 @@ import 'package:app_settings/app_settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/preferences/language.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/advanced_settings_screen.dart';
 import 'package:flutter_weather/screens/current_weather_screen.dart';
 import 'package:flutter_weather/screens/loading_screen.dart';
@@ -76,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: ThemeColors.cardColor(),
+          color: Theme.of(context).cardColor,
           boxShadow: [
             BoxShadow(blurRadius: 20, color: Colors.black.withOpacity(0.15)),
           ],
@@ -98,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: LineIcons.sun_o,
                     text: Language.getTranslation("current"),
                     iconActiveColor: Colors.amber[900],
-                    iconColor: ThemeColors.primaryTextColor(),
+                    iconColor: Theme.of(context).primaryColorLight,
                     textColor: Colors.amber[900],
                     backgroundColor: Colors.amber[600].withOpacity(.2),
                   ),
@@ -106,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: LineIcons.calendar,
                     text: Language.getTranslation("forecast"),
                     iconActiveColor: Colors.pink,
-                    iconColor: ThemeColors.primaryTextColor(),
+                    iconColor: Theme.of(context).primaryColorLight,
                     textColor: Colors.pink,
                     backgroundColor: Colors.pink.withOpacity(.2),
                   ),
@@ -114,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Icons.location_on_outlined,
                     text: Language.getTranslation("locations"),
                     iconActiveColor: Colors.blueAccent,
-                    iconColor: ThemeColors.primaryTextColor(),
+                    iconColor: Theme.of(context).primaryColorLight,
                     textColor: Colors.blueAccent,
                     backgroundColor: Colors.blueAccent.withOpacity(.2),
                   ),
@@ -122,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Icons.more_vert_outlined,
                     text: Language.getTranslation("more"),
                     iconActiveColor: Colors.teal,
-                    iconColor: ThemeColors.primaryTextColor(),
+                    iconColor: Theme.of(context).primaryColorLight,
                     textColor: Colors.teal,
                     backgroundColor: Colors.teal.withOpacity(.2),
                   ),

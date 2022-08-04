@@ -4,7 +4,6 @@ import 'package:flutter_weather/components/location_card.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/constants/text_style.dart';
 import 'package:flutter_weather/preferences/language.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/loading_screen.dart';
 import 'package:flutter_weather/screens/search_screen.dart';
 import 'package:mapbox_search_flutter/mapbox_search_flutter.dart';
@@ -58,7 +57,6 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        brightness: ThemeColors.isDark  ? Brightness.dark : Brightness.light,
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         elevation: 0,
@@ -67,7 +65,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
           style: TextStyle(
             fontWeight: FontWeight.w200,
             fontSize: 30,
-            color: ThemeColors.primaryTextColor(),
+            color: Theme.of(context).primaryColorLight,
           ),
           overflow: TextOverflow.ellipsis,
         ),
@@ -86,13 +84,13 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
               child: Icon(
                 Icons.location_on_outlined,
                 size: 27,
-                color: ThemeColors.primaryTextColor(),
+                color: Theme.of(context).primaryColorLight,
               ),
             ),
           ),
         ],
       ),
-      backgroundColor: ThemeColors.backgroundColor(),
+      backgroundColor: Theme.of(context).backgroundColor,
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
           /*
@@ -178,7 +176,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
               child: Center(
                 child: Text(
                   Language.getTranslation("pressAndHold"),
-                  style: TextStyle(color: ThemeColors.secondaryTextColor()),
+                  style: TextStyle(color: Theme.of(context).primaryColorDark),
                 ),
               ),
             ),
@@ -224,47 +222,4 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
 
 
 
-/*
-onDismissed: (direction) async {
-                      await databaseHelper.removeLocation(data.id);
-                      refresh();
-                    },
 
-
-
- child: ListView.builder(
-                physics: BouncingScrollPhysics(),
-                itemCount: locations.length,
-                itemBuilder: (context, index) {
-                  SavedLocation data = locations[index];
-                  return ListTile(
-                      contentPadding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      title: Text(
-                        data.title,
-                        style: kSubheadingTextStyle.copyWith(
-                            color: ThemeColors.primaryTextColor()),
-                        overflow: TextOverflow.fade,
-                      ),
-                      subtitle: Text(
-                        data.getCoordinates(),
-                        style: kSubtitleTextStyle.copyWith(
-                            color: ThemeColors.secondaryTextColor()),
-                      ),
-                      onTap: () async {
-                        await WeatherModel.getCoordLocationWeather(
-                            data.latitude, data.longitude, data.title);
-                        widget.onLocationSelect(0);
-                      },
-
-
-
-                      trailing: TextButton(
-                        onPressed: () {},
-                        child: Icon(Icons.more_horiz),
-                      ),
-
-                  );
-                },
-              ),
- */

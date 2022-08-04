@@ -3,7 +3,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_weather/components/daily_card.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/services/time.dart';
 import 'package:flutter_weather/services/weather_model.dart';
 
@@ -48,14 +47,14 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
   Widget build(BuildContext context) {
     if (dailyData == null) {
       return Scaffold(
-        backgroundColor: ThemeColors.backgroundColor(),
+        backgroundColor: Theme.of(context).backgroundColor,
         body: Center(
           child: Text(
             dailyData == null
                 ? Language.getTranslation("chooseLocationToView")
                 : Language.getTranslation("loading"),
             style: TextStyle(
-              color: ThemeColors.primaryTextColor(),
+              color: Theme.of(context).primaryColorLight,
             ),
           ),
         ),
@@ -66,7 +65,6 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
       onRefresh: refresh,
       child: Scaffold(
         appBar: AppBar(
-          brightness: ThemeColors.isDark ? Brightness.dark : Brightness.light,
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
           elevation: 0,
@@ -75,7 +73,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
             style: TextStyle(
               fontWeight: FontWeight.w200,
               fontSize: 30,
-              color: ThemeColors.primaryTextColor(),
+              color: Theme.of(context).primaryColorLight,
             ),
             overflow: TextOverflow.ellipsis,
           ),
@@ -87,13 +85,13 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
                 child: Icon(
                   Icons.refresh_outlined,
                   size: 27,
-                  color: ThemeColors.primaryTextColor(),
+                  color: Theme.of(context).primaryColorLight,
                 ),
               ),
             )
           ],
         ),
-        backgroundColor: ThemeColors.backgroundColor(),
+        backgroundColor: Theme.of(context).backgroundColor,
         body: isLoading
             ?
             //if is loading
@@ -101,7 +99,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
                 child: Column(
                 children: [
                   SpinKitFadingCircle(
-                    color: ThemeColors.secondaryTextColor(),
+                    color: Theme.of(context).primaryColorDark,
                     size: 50,
                   ),
                   SizedBox(
@@ -109,7 +107,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
                   ),
                   Text(
                     Language.getTranslation("loading"),
-                    style: TextStyle(color: ThemeColors.secondaryTextColor()),
+                    style: TextStyle(color: Theme.of(context).primaryColorDark),
                   ),
                 ],
                 mainAxisAlignment: MainAxisAlignment.center,

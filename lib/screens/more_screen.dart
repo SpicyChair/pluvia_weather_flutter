@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/advanced_settings_screen.dart';
 import 'package:flutter_weather/screens/changelog_screen.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
@@ -46,6 +45,8 @@ class _MoreScreenState extends State<MoreScreen> {
     useImperial = await SharedPrefs.getImperial();
     useDarkMode = await SharedPrefs.getDark();
     use24 = await SharedPrefs.get24();
+
+
     switch (await SharedPrefs.getWindUnit()) {
       case WindUnit.MS:
         windDropdownValue = "meters/s";
@@ -60,13 +61,13 @@ class _MoreScreenState extends State<MoreScreen> {
 
     switch (await SharedPrefs.getThemeMode()) {
       case ThemeModePref.AUTO:
-        windDropdownValue = "Auto";
+        thememodeDropdownValue = "Auto";
         break;
       case ThemeModePref.LIGHT:
-        windDropdownValue = "Light";
+        thememodeDropdownValue = "Light";
         break;
       case ThemeModePref.DARK:
-        windDropdownValue = "Dark";
+        thememodeDropdownValue = "Dark";
         break;
     }
     langDropdownValue = await SharedPrefs.getLanguageCode();
@@ -76,15 +77,14 @@ class _MoreScreenState extends State<MoreScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ThemeColors.backgroundColor(),
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        brightness: ThemeColors.isDark ? Brightness.dark : Brightness.light,
         title: Text(
           Language.getTranslation("more"),
           style: TextStyle(
             fontWeight: FontWeight.w200,
             fontSize: 30,
-            color: ThemeColors.primaryTextColor(),
+            color: Theme.of(context).primaryColorLight,
           ),
           overflow: TextOverflow.ellipsis,
         ),
@@ -169,72 +169,62 @@ class _MoreScreenState extends State<MoreScreen> {
                   ],
                 ),
               ),
+
               SizedBox(
                 height: 80,
                 child: Card(
                   child: Center(
-                    child: SwitchListTile(
+                    child: ListTile(
                       title: Text(
-                        Language.getTranslation("darkMode"),
-                        style: TextStyle(color: ThemeColors.primaryTextColor()),
+                        "Theme Color",
+                        style: TextStyle(color: Theme.of(context).primaryColorLight),
                       ),
-                      value: useDarkMode ?? false,
-                      onChanged: (bool value) async {
-                        useDarkMode = true;
-                        ThemeColors.switchTheme(value);
-                        //restart the app to show theme changes
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) {
-                              return HomeScreen();
-                            },
-                          ),
-                        );
-                      },
-                      secondary: Icon(
-                        Icons.lightbulb_outline,
-                        color: ThemeColors.secondaryTextColor(),
+                      leading: Icon(
+                        Icons.light_mode_outlined,
+                        color: Theme.of(context).primaryColorDark,
+                      ),
+                      trailing: DropdownButton<String>(
+                        value: thememodeDropdownValue,
+                        icon: Icon(Icons.arrow_drop_down),
+                        iconSize: 20,
+                        style: TextStyle(
+                            color: Theme.of(context).primaryColorLight,
+                            fontSize: 16),
+                        underline: Container(
+                          height: 2,
+                          color: Colors.blueAccent,
+                        ),
+                        dropdownColor: Theme.of(context).backgroundColor,
+                        onChanged: (String newValue) async {
+                          thememodeDropdownValue = newValue;
+                          switch (newValue) {
+                            case "Auto":
+                              await SharedPrefs.setThemeMode(ThemeModePref.AUTO);
+                              break;
+                            case "Light":
+                              await SharedPrefs.setThemeMode(ThemeModePref.LIGHT);
+                              break;
+                            case "Dark":
+                              await SharedPrefs.setThemeMode(ThemeModePref.DARK);
+                              break;
+                          }
+                          setState(() {});
+                        },
+                        items: <String>["Auto", "Light", "Dark"]
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
                       ),
                     ),
                   ),
-                  color: ThemeColors.cardColor(),
+                  color: Theme.of(context).cardColor,
                   shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
                 ),
               ),
-              SizedBox(
-                height: 80,
-                child: Card(
-                  child: Center(
-                    child: SwitchListTile(
-                      title: Text(
-                        Language.getTranslation("themeMode"),
-                        style: TextStyle(color: ThemeColors.primaryTextColor()),
-                      ),
-                      value: useDarkMode ?? false,
-                      onChanged: (bool value) async {
-                        useDarkMode = true;
-                        ThemeColors.switchTheme(value);
-                        //restart the app to show theme changes
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) {
-                              return HomeScreen();
-                            },
-                          ),
-                        );
-                      },
-                      secondary: Icon(
-                        Icons.lightbulb_outline,
-                        color: ThemeColors.secondaryTextColor(),
-                      ),
-                    ),
-                  ),
-                  color: ThemeColors.cardColor(),
-                  shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
-                ),
-              ),
+
               SizedBox(
                 height: 80,
                 child: Card(
@@ -243,7 +233,7 @@ class _MoreScreenState extends State<MoreScreen> {
                       title: Text(
                         Language.getTranslation("useFahrenheit"),
                         style: TextStyle(
-                          color: ThemeColors.primaryTextColor(),
+                          color: Theme.of(context).primaryColorLight,
                         ),
                       ),
                       value: useImperial ?? false,
@@ -257,11 +247,11 @@ class _MoreScreenState extends State<MoreScreen> {
                       },
                       secondary: Icon(
                         Icons.thermostat_outlined,
-                        color: ThemeColors.secondaryTextColor(),
+                        color: Theme.of(context).primaryColorDark,
                       ),
                     ),
                   ),
-                  color: ThemeColors.cardColor(),
+                  color: Theme.of(context).cardColor,
                   shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
                 ),
               ),
@@ -273,7 +263,7 @@ class _MoreScreenState extends State<MoreScreen> {
                       title: Text(
                         Language.getTranslation("use24HourTime"),
                         style: TextStyle(
-                          color: ThemeColors.primaryTextColor(),
+                          color: Theme.of(context).primaryColorLight,
                         ),
                       ),
                       value: use24 ?? false,
@@ -287,11 +277,11 @@ class _MoreScreenState extends State<MoreScreen> {
                       },
                       secondary: Icon(
                         Icons.timelapse_outlined,
-                        color: ThemeColors.secondaryTextColor(),
+                        color: Theme.of(context).primaryColorDark,
                       ),
                     ),
                   ),
-                  color: ThemeColors.cardColor(),
+                  color: Theme.of(context).cardColor,
                   shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
                 ),
               ),
@@ -302,24 +292,24 @@ class _MoreScreenState extends State<MoreScreen> {
                     child: ListTile(
                       title: Text(
                         Language.getTranslation("windSpeedUnit"),
-                        style: TextStyle(color: ThemeColors.primaryTextColor()),
+                        style: TextStyle(color: Theme.of(context).primaryColorLight),
                       ),
                       leading: Icon(
                         Icons.waves_sharp,
-                        color: ThemeColors.secondaryTextColor(),
+                        color: Theme.of(context).primaryColorDark,
                       ),
                       trailing: DropdownButton<String>(
                         value: windDropdownValue,
                         icon: Icon(Icons.arrow_drop_down),
                         iconSize: 20,
                         style: TextStyle(
-                            color: ThemeColors.primaryTextColor(),
+                            color: Theme.of(context).primaryColorLight,
                             fontSize: 16),
                         underline: Container(
                           height: 2,
                           color: Colors.blueAccent,
                         ),
-                        dropdownColor: ThemeColors.backgroundColor(),
+                        dropdownColor: Theme.of(context).backgroundColor,
                         onChanged: (String newValue) async {
                           windDropdownValue = newValue;
                           switch (newValue) {
@@ -345,7 +335,7 @@ class _MoreScreenState extends State<MoreScreen> {
                       ),
                     ),
                   ),
-                  color: ThemeColors.cardColor(),
+                  color: Theme.of(context).cardColor,
                   shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
                 ),
               ),
@@ -356,24 +346,24 @@ class _MoreScreenState extends State<MoreScreen> {
                     child: ListTile(
                       title: Text(
                         Language.getTranslation("appLanguage"),
-                        style: TextStyle(color: ThemeColors.primaryTextColor()),
+                        style: TextStyle(color: Theme.of(context).primaryColorLight),
                       ),
                       leading: Icon(
                         Icons.translate,
-                        color: ThemeColors.secondaryTextColor(),
+                        color: Theme.of(context).primaryColorDark,
                       ),
                       trailing: DropdownButton<String>(
                         value: langDropdownValue,
                         icon: Icon(Icons.arrow_drop_down),
                         iconSize: 20,
                         style: TextStyle(
-                            color: ThemeColors.primaryTextColor(),
+                            color: Theme.of(context).primaryColorLight,
                             fontSize: 16),
                         underline: Container(
                           height: 2,
                           color: Colors.blueAccent,
                         ),
-                        dropdownColor: ThemeColors.backgroundColor(),
+                        dropdownColor: Theme.of(context).backgroundColor,
                         onChanged: (String newValue) async {
                           langDropdownValue = newValue;
                           await SharedPrefs.setLanguageCode(newValue);
@@ -397,7 +387,7 @@ class _MoreScreenState extends State<MoreScreen> {
                       ),
                     ),
                   ),
-                  color: ThemeColors.cardColor(),
+                  color: Theme.of(context).cardColor,
                   shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
                 ),
               ),
@@ -409,7 +399,7 @@ class _MoreScreenState extends State<MoreScreen> {
                       title: Text(
                         Language.getTranslation("advancedSettings"),
                         style: TextStyle(
-                          color: ThemeColors.primaryTextColor(),
+                          color: Theme.of(context).primaryColorLight,
                         ),
                       ),
                       onTap: () {
@@ -421,12 +411,12 @@ class _MoreScreenState extends State<MoreScreen> {
                       },
                       leading: Icon(
                         Icons.settings,
-                        color: ThemeColors.secondaryTextColor(),
+                        color: Theme.of(context).primaryColorDark,
                       ),
                     ),
                   ),
                   shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
-                  color: ThemeColors.cardColor(),
+                  color: Theme.of(context).cardColor,
                 ),
               ),
               SizedBox(
@@ -446,7 +436,7 @@ class _MoreScreenState extends State<MoreScreen> {
                           await launch(url);
                         }
                       },
-                      child: ThemeColors.isDark
+                      child: Theme.of(context).brightness == Brightness.dark
                           ? Image.asset("assets/GitHub-Mark-Light-64px.png")
                           : Image.asset("assets/GitHub-Mark-64px.png"),
                     ),
@@ -459,7 +449,7 @@ class _MoreScreenState extends State<MoreScreen> {
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
-                            color: ThemeColors.primaryTextColor()),
+                            color: Theme.of(context).primaryColorLight),
                       ),
                     ),
                   ],

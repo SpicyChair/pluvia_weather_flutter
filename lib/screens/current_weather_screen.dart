@@ -4,7 +4,6 @@ import 'package:flutter_weather/animation/weather_type.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/radar_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/constants/text_style.dart';
@@ -74,7 +73,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     timeZoneOffset = WeatherModel.getSecondsTimezoneOffset();
     timeZoneOffsetText = timeZoneOffset.isNegative
         ? "${(timeZoneOffset / 3600).round()}"
-        : "+${(timeZoneOffset / 3600).round()}"; //TODO: FIX ROUNDING OF TIMEZONE
+        : "+${(timeZoneOffset / 3600).round()}";
 
     lat = weatherData["lat"].toDouble();
     lon = weatherData["lon"].toDouble();
@@ -159,12 +158,12 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   Widget build(BuildContext context) {
     if (WeatherModel.weatherData == null) {
       return Scaffold(
-        backgroundColor: ThemeColors.backgroundColor(),
+        backgroundColor: Theme.of(context).backgroundColor,
         body: Center(
           child: Text(
             Language.getTranslation("chooseLocationToView"),
             style: TextStyle(
-              color: ThemeColors.primaryTextColor(),
+              color: Theme.of(context).backgroundColor,
             ),
           ),
         ),
@@ -202,7 +201,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             ),
           ],
         ),
-        backgroundColor: ThemeColors.backgroundColor(),
+        backgroundColor: Theme.of(context).backgroundColor,
         extendBodyBehindAppBar: true,
         body: isLoading
             ?
@@ -211,7 +210,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                 child: Column(
                 children: [
                   SpinKitFadingCircle(
-                    color: ThemeColors.secondaryTextColor(),
+                    color: Theme.of(context).primaryColorDark,
                     size: 50,
                   ),
                   SizedBox(
@@ -219,7 +218,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                   ),
                   Text(
                     Language.getTranslation("loading"),
-                    style: TextStyle(color: ThemeColors.secondaryTextColor()),
+                    style: TextStyle(color: Theme.of(context).primaryColorDark),
                   ),
                 ],
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -334,7 +333,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   Widget createHourlyForecastCard() {
     return Container(
       decoration: BoxDecoration(
-        color: ThemeColors.backgroundColor(),
+        color: Theme.of(context).backgroundColor,
       ),
       child: Container(
         height: 200,
@@ -396,9 +395,9 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   Widget createInfoCards() {
     return PanelCard(
       cardChild: Container(
-
+        color: Theme.of(context).backgroundColor,
         width: double.infinity,
-        margin: kPanelCardMargin,
+        padding: kPanelCardMargin,
         child: GridView.count(
           shrinkWrap: true,
           childAspectRatio: 2.5,
@@ -440,9 +439,10 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
 
     return PanelCard(
       cardChild: Container(
+        color: Theme.of(context).backgroundColor,
         height: 140,
         width: double.infinity,
-        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        padding: EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: [
             SizedBox(
@@ -453,7 +453,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                     title: Text(
                       Language.getTranslation("weatherRadar"),
                       style: TextStyle(
-                        color: ThemeColors.primaryTextColor(),
+                        color: Theme.of(context).primaryColorLight,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -468,13 +468,13 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                           builder: (BuildContext context) {
                             return AlertDialog(
                               shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
-                              backgroundColor: ThemeColors.cardColor(),
+                              backgroundColor: Theme.of(context).cardColor,
                               insetPadding: EdgeInsets.all(20),
                               title: Center(
                                 child: Text(
                                   Language.getTranslation("weatherRadarAboutTitle"),
                                   style: TextStyle(
-                                    color: ThemeColors.primaryTextColor(),
+                                    color: Theme.of(context).primaryColorLight,
                                   ),
                                 ),
                               ),
@@ -484,7 +484,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                                 child: Text(
                                     Language.getTranslation("weatherRadarAboutBody"),
                                 style: TextStyle(
-                                  color: ThemeColors.primaryTextColor()
+                                  color: Theme.of(context).primaryColorDark,
                                 ),),
                               ),
                               actions: [
@@ -492,7 +492,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: Text(Language.getTranslation("close"), style: TextStyle(color: ThemeColors.secondaryTextColor()),),
+                                  child: Text(Language.getTranslation("close"), style: TextStyle(color: Theme.of(context).primaryColorDark),),
                                 )
                               ],
                             );
@@ -501,7 +501,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                       },
                       child: Icon(
                         Icons.info_outline_rounded,
-                        color: ThemeColors.secondaryTextColor(),
+                        color: Theme.of(context).primaryColorDark,
                       ),
                     ),
                     onTap: () {
@@ -513,7 +513,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                   ),
                 ),
                 shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
-                color: ThemeColors.cardColor(),
+                color: Theme.of(context).cardColor,
               ),
             ),
             SizedBox(
@@ -521,12 +521,12 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
             ),
             Text("${Language.getTranslation("lastUpdatedAt")}$refreshTimeText",
                 style: TextStyle(
-                  color: ThemeColors.primaryTextColor(),
+                  color: Theme.of(context).primaryColorDark,
                 ),),
             SizedBox(height: 5,),
             Text("($lat, $lon)",
               style: TextStyle(
-                color: ThemeColors.primaryTextColor(),
+                color: Theme.of(context).primaryColorDark,
               ),),
           ],
         ),

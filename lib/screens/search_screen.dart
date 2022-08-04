@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/preferences/language.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:mapbox_search_flutter/mapbox_search_flutter.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -20,7 +19,7 @@ class _SearchScreenState extends State<SearchScreen> {
         title: Text(Language.getTranslation("addLocation")),
         centerTitle: true,
       ),
-      backgroundColor: ThemeColors.backgroundColor(),
+      backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
         child: Stack(
           children: [
@@ -41,7 +40,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: Text(
                       Language.getTranslation("tapTheSearchBar"),
                       style: TextStyle(
-                        color: ThemeColors.primaryTextColor(),
+                        color: Theme.of(context).primaryColorLight,
                         fontSize: 15,
                         fontWeight: FontWeight.bold
                       ),

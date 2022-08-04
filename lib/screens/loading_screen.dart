@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
 import 'package:flutter_weather/services/time.dart';
 import 'package:flutter_weather/services/weather_model.dart';
@@ -82,7 +81,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: ThemeColors.backgroundColor(),
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -95,7 +94,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                 style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.normal,
-                color: ThemeColors.primaryTextColor(),
+                color: Theme.of(context).primaryColorLight,
                 letterSpacing: 2),
               ),
             ),
@@ -119,7 +118,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
-                      color: ThemeColors.secondaryTextColor(),
+                      color: Theme.of(context).primaryColorLight,
                     ),
                   ),
                 ),
@@ -129,7 +128,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: RaisedButton(
-                      child: Text(Language.getTranslation("retry"), style: TextStyle(color: ThemeColors.primaryTextColor()),),
+                      child: Text(Language.getTranslation("retry"), style: TextStyle(color: Theme.of(context).primaryColorDark),),
                       color: Colors.blueAccent,
                       onPressed: () {
                         Navigator.pushReplacement(
@@ -148,7 +147,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: RaisedButton(
-                      child: Text("Edit API Keys", style: TextStyle(color: ThemeColors.primaryTextColor()),), //TODO: TRANSLATE STRINGS
+                      child: Text("Edit API Keys", style: TextStyle(color: Theme.of(context).primaryColorLight),), //TODO: TRANSLATE STRINGS
                       //Language.getTranslation("editAPIKeys")
                       color: Colors.blueAccent,
                       onPressed: () {

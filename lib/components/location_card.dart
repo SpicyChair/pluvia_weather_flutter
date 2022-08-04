@@ -1,10 +1,6 @@
 import 'package:flutter_weather/constants/text_style.dart';
 import 'package:flutter_weather/services/weather_model.dart';
-import 'package:holding_gesture/holding_gesture.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_weather/constants/constants.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
-import 'package:flutter_weather/database/database.dart';
 import 'dart:async';
 
 class LocationCard extends StatelessWidget {
@@ -37,13 +33,13 @@ class LocationCard extends StatelessWidget {
         title: Text(
           data.title,
           style: kSubheadingTextStyle.copyWith(
-              color: ThemeColors.primaryTextColor()),
+              color: Theme.of(context).primaryColorLight),
           overflow: TextOverflow.fade,
         ),
         subtitle: Text(
           data.getCoordinates(),
           style: kSubtitleTextStyle.copyWith(
-              color: ThemeColors.secondaryTextColor()),
+              color: Theme.of(context).primaryColorDark),
         ),
       ),
     );

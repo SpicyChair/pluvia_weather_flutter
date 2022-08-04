@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/preferences/language.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class RadarScreen extends StatelessWidget {
@@ -20,15 +19,15 @@ class RadarScreen extends StatelessWidget {
         title: Text(
           Language.getTranslation("weatherRadar"),
           style: TextStyle(
-            color: ThemeColors.primaryTextColor(),
+            color: Theme.of(context).primaryColorLight,
           ),
         ),
-        backgroundColor: ThemeColors.backgroundColor(),
+        backgroundColor: Theme.of(context).backgroundColor,
         centerTitle: true,
         leading: TextButton(
           child: Icon(
             Icons.arrow_back,
-            color: ThemeColors.primaryTextColor(),
+            color: Theme.of(context).primaryColorLight,
           ),
           onPressed: () {
             Navigator.pop(context);

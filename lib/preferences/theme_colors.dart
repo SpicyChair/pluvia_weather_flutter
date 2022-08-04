@@ -18,4 +18,9 @@ class ThemeColors {
   static Color cardColor() => isDark ? Colors.grey[900] : Colors.white;
   static Color primaryTextColor() => isDark ? Colors.white : Colors.black87;
   static Color secondaryTextColor() => isDark ? Colors.grey[400] : Colors.black54;
+
+
+
 }
+
+

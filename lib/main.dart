@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather/preferences/app_theme.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
@@ -28,15 +29,10 @@ class WeatherApp extends StatelessWidget {
 
     return MaterialApp(
       title: "Pluvia Weather",
-      themeMode: ThemeMode.dark,
-      theme: ThemeData.light().copyWith(
-        useMaterial3: true,
-        primaryColor: Colors.blueAccent,
-        //backgroundColor: Colors.black,
-        floatingActionButtonTheme:
-            FloatingActionButtonThemeData(backgroundColor: Colors.blueAccent),
-      ),
-      debugShowCheckedModeBanner: true,
+      themeMode: ThemeMode.system,
+      theme: lightThemeData,
+      darkTheme: darkThemeData,
+      debugShowCheckedModeBanner: false,
       home: LoadingScreen(checkDefaultLocation: true,),
     );
   }

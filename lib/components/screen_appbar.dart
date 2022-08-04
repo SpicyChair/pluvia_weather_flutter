@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
+
 class ScreenAppBar extends StatelessWidget {
 
   final String title;
   final IconData icon;
   final Function onPressed;
 
-  ScreenAppBar({this.title, this.icon, this.onPressed});
+
+  ScreenAppBar({this.title, this.icon, this.onPressed,});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backwardsCompatibility: false,
-      brightness: ThemeColors.isDark  ? Brightness.dark : Brightness.light,
+      brightness: Theme.of(context).brightness,
       backgroundColor: Colors.transparent,
       shadowColor: Colors.transparent,
       elevation: 0,

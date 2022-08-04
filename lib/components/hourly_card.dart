@@ -3,7 +3,6 @@ import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/constants/text_style.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/services/time.dart';
 import 'package:flutter_weather/services/extensions.dart';
 import 'package:flutter_weather/services/weather_model.dart';
@@ -55,7 +54,7 @@ class HourlyCard extends StatelessWidget {
             width: 3.5,
           ),
         ),
-        color: ThemeColors.cardColor(),
+        color: Theme.of(context).cardColor,
         child: InkWell(
           borderRadius: kBorderRadius,
           onTap: () {
@@ -72,7 +71,7 @@ class HourlyCard extends StatelessWidget {
                   displayTime,
                   textAlign: TextAlign.center,
                   style: kHourlyCardTime.copyWith(
-                      color: ThemeColors.secondaryTextColor()),
+                      color: Theme.of(context).primaryColorDark),
                 ),
                 Container(
                   height: 50,
@@ -80,7 +79,7 @@ class HourlyCard extends StatelessWidget {
                   padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: ThemeColors.backgroundColor(),
+                    color: Theme.of(context).backgroundColor,
                   ),
                   child: Center(
                     child: Text(
@@ -92,7 +91,7 @@ class HourlyCard extends StatelessWidget {
                 Text(
                   "${temp.toString()}°",
                   style: kHourlyCardTemperature.copyWith(
-                      color: ThemeColors.primaryTextColor()),
+                      color: Theme.of(context).primaryColorLight),
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.min,
@@ -101,7 +100,7 @@ class HourlyCard extends StatelessWidget {
                     Icon(
                       Icons.opacity_outlined,
                       size: 14,
-                      color: ThemeColors.secondaryTextColor(),
+                      color: Theme.of(context).primaryColorDark,
                     ),
                     SizedBox(
                       width: 2,
@@ -110,7 +109,7 @@ class HourlyCard extends StatelessWidget {
                       "$pop%",
                       style: TextStyle(
                         fontSize: 15,
-                        color: ThemeColors.secondaryTextColor(),
+                        color: Theme.of(context).primaryColorDark,
                       ),
                     ),
                   ],
@@ -146,13 +145,13 @@ class HourlyCard extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
-          backgroundColor: ThemeColors.cardColor(),
+          backgroundColor: Theme.of(context).cardColor,
           insetPadding: EdgeInsets.all(20),
           title: Center(
             child: Text(
               "$displayTime  |  ${DateFormat.MMMEd().format(forecastTime)}",
               style: TextStyle(
-                color: ThemeColors.primaryTextColor(),
+                color: Theme.of(context).primaryColorDark,
               ),
             ),
           ),
@@ -165,7 +164,7 @@ class HourlyCard extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: ThemeColors.backgroundColor(),
+                    color: Theme.of(context).backgroundColor,
                   ),
                   padding: EdgeInsets.all(5),
                   child: Row(
@@ -188,7 +187,7 @@ class HourlyCard extends StatelessWidget {
                         description.toTitleCase(),
                         style: TextStyle(
                           fontSize: 20,
-                          color: ThemeColors.primaryTextColor(),
+                          color: Theme.of(context).primaryColorLight,
                         ),
                       ),
                     ],
@@ -244,7 +243,7 @@ class HourlyCard extends StatelessWidget {
                 Navigator.pop(context);
               },
               child: Text(Language.getTranslation("close"), style: TextStyle(
-                color: ThemeColors.secondaryTextColor()
+                color: Theme.of(context).primaryColorDark,
               ),),
             )
           ],

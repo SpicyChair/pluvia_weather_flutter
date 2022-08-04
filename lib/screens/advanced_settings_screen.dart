@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/preferences/language.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/screens/search_screen.dart';
 import 'package:mapbox_search/mapbox_search.dart';
@@ -61,21 +60,21 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
         leading: TextButton(
           child: Icon(
             Icons.arrow_back,
-            color: ThemeColors.primaryTextColor(),
+            color: Theme.of(context).primaryColorLight,
           ),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        brightness: ThemeColors.isDark ? Brightness.dark : Brightness.light,
+
         title: Text(
           Language.getTranslation("advancedSettings"),
-          style: TextStyle(color: ThemeColors.primaryTextColor()),
+          style: TextStyle(color: Theme.of(context).primaryColorLight),
         ), //Language.getTranslation("advancedSettings")
         centerTitle: true,
-        backgroundColor: ThemeColors.backgroundColor(),
+        backgroundColor: Theme.of(context).backgroundColor,
       ),
-      backgroundColor: ThemeColors.backgroundColor(),
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Center(
         child: Container(
           margin: EdgeInsets.all(8.0),
@@ -85,7 +84,7 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                 height: 80,
                 child: Card(
                   shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
-                  color: ThemeColors.cardColor(),
+                  color: Theme.of(context).cardColor,
                   child: Center(
                     child: ListTile(
                       onLongPress: () async {
@@ -114,12 +113,12 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                       },
                       leading: Icon(
                         Icons.location_on_outlined,
-                        color: ThemeColors.secondaryTextColor(),
+                        color: Theme.of(context).primaryColorDark,
                       ),
                       title: Text(
                         Language.getTranslation("defaultLocation"),
                         style: TextStyle(
-                          color: ThemeColors.primaryTextColor(),
+                          color: Theme.of(context).primaryColorLight,
                         ),
                       ),
                       subtitle: Text(
@@ -129,7 +128,7 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                                 "useDefaultLocationOnStartup")
                             : "$defaultLocationText. ${Language.getTranslation("pressAndHold")}",
                         style:
-                            TextStyle(color: ThemeColors.secondaryTextColor()),
+                            TextStyle(color: Theme.of(context).primaryColorDark),
                       ),
                     ),
                   ),
@@ -137,18 +136,18 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
               ),
               Card(
                 shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
-                color: ThemeColors.cardColor(),
+                color: Theme.of(context).cardColor,
                 child: Column(
                   children: [
                     ListTile(
                       leading: Icon(
                         Icons.app_settings_alt_outlined,
-                        color: ThemeColors.secondaryTextColor(),
+                        color: Theme.of(context).primaryColorDark,
                       ),
                       title: Text(
                         Language.getTranslation("customAPIKeys"),
                         style: TextStyle(
-                          color: ThemeColors.primaryTextColor(),
+                          color: Theme.of(context).primaryColorLight,
                         ),
                       ),
                     ),
@@ -159,16 +158,16 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                       padding: EdgeInsets.symmetric(horizontal: 15),
                       child: TextField(
                         controller: weatherKeyTextController,
-                        style: TextStyle(color: ThemeColors.primaryTextColor()),
+                        style: TextStyle(color: Theme.of(context).primaryColorLight),
                         decoration: InputDecoration(
                           hintText: Language.getTranslation("owmKey"),
                           hintStyle: TextStyle(
-                            color: ThemeColors.secondaryTextColor(),
+                            color: Theme.of(context).primaryColorDark,
                             fontSize: 15,
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: ThemeColors.secondaryTextColor(),
+                                color: Theme.of(context).primaryColorDark,
                                 width: 2.0),
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -181,7 +180,7 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                           ),
                           border: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: ThemeColors.secondaryTextColor(),
+                                color: Theme.of(context).primaryColorDark,
                                 width: 2.0),
                           ),
                         ),
@@ -196,7 +195,7 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                         child: Text(
                           Language.getTranslation("customKeyInfo"),
                           style: TextStyle(
-                              color: ThemeColors.secondaryTextColor()),
+                              color: Theme.of(context).primaryColorDark),
                         ),
                       ),
                     ),
@@ -219,7 +218,7 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                         child: Text(
                           Language.getTranslation("getAKeyNote"),
                           style: TextStyle(
-                              color: ThemeColors.secondaryTextColor(),
+                              color: Theme.of(context).primaryColorDark,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -235,7 +234,7 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                       title: Text(
                         Language.getTranslation("aboutPluvia"),
                         style: TextStyle(
-                          color: ThemeColors.primaryTextColor(),
+                          color: Theme.of(context).primaryColorLight,
                         ),
                       ),
                       onTap: () {
@@ -248,19 +247,19 @@ class _AdvancedSettingsScreenState extends State<AdvancedSettingsScreen> {
                       },
                       leading: Icon(
                         Icons.more_horiz_outlined,
-                        color: ThemeColors.secondaryTextColor(),
+                        color: Theme.of(context).primaryColorDark,
                       ),
                     ),
                   ),
                   shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
-                  color: ThemeColors.cardColor(),
+                  color: Theme.of(context).cardColor,
                 ),
               ),
               Expanded(
                 child: Center(
                   child: Text(
                     Language.getTranslation("thankYouForUsing"),
-                    style: TextStyle(color: ThemeColors.secondaryTextColor()),
+                    style: TextStyle(color: Theme.of(context).primaryColorDark),
                   ),
                 ),
               )
