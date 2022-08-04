@@ -26,6 +26,7 @@ class _MoreScreenState extends State<MoreScreen> {
   bool use24;
   String windDropdownValue;
   String langDropdownValue;
+  String thememodeDropdownValue;
 
   void initState() {
     super.initState();
@@ -56,6 +57,18 @@ class _MoreScreenState extends State<MoreScreen> {
         windDropdownValue = "kilometers/h";
         break;
     }
+
+    switch (await SharedPrefs.getThemeMode()) {
+      case ThemeModePref.AUTO:
+        windDropdownValue = "Auto";
+        break;
+      case ThemeModePref.LIGHT:
+        windDropdownValue = "Light";
+        break;
+      case ThemeModePref.DARK:
+        windDropdownValue = "Dark";
+        break;
+    }
     langDropdownValue = await SharedPrefs.getLanguageCode();
     setState(() {});
   }
@@ -81,7 +94,7 @@ class _MoreScreenState extends State<MoreScreen> {
       ),
       body: Center(
         child: Container(
-          margin: EdgeInsets.all(8.0),
+          margin: EdgeInsets.fromLTRB(8, 8, 8, 0),
           child: ListView(
             children: [
               Container(
@@ -163,6 +176,39 @@ class _MoreScreenState extends State<MoreScreen> {
                     child: SwitchListTile(
                       title: Text(
                         Language.getTranslation("darkMode"),
+                        style: TextStyle(color: ThemeColors.primaryTextColor()),
+                      ),
+                      value: useDarkMode ?? false,
+                      onChanged: (bool value) async {
+                        useDarkMode = true;
+                        ThemeColors.switchTheme(value);
+                        //restart the app to show theme changes
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return HomeScreen();
+                            },
+                          ),
+                        );
+                      },
+                      secondary: Icon(
+                        Icons.lightbulb_outline,
+                        color: ThemeColors.secondaryTextColor(),
+                      ),
+                    ),
+                  ),
+                  color: ThemeColors.cardColor(),
+                  shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
+                ),
+              ),
+              SizedBox(
+                height: 80,
+                child: Card(
+                  child: Center(
+                    child: SwitchListTile(
+                      title: Text(
+                        Language.getTranslation("themeMode"),
                         style: TextStyle(color: ThemeColors.primaryTextColor()),
                       ),
                       value: useDarkMode ?? false,

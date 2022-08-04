@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefs {
@@ -34,6 +35,20 @@ class SharedPrefs {
     await prefs.setBool(darkKey, newValue);
   }
 
+
+  static const String themeKey = "themeMode";
+
+  static Future<ThemeModePref> getThemeMode() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    ThemeModePref mode = ThemeModePref.values[prefs.getInt(themeKey) ?? 2];
+    return mode;
+  }
+
+  static Future<void> setThemeMode(ThemeModePref mode) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(themeKey, mode.index);
+  }
+
   //values for 24h time
 
   static const String h24key = "use24h";
@@ -64,7 +79,6 @@ class SharedPrefs {
   static Future<void> setWindUnit(WindUnit unit) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setInt(windKey, unit.index);
-    print(unit.toString());
   }
 
 
@@ -152,4 +166,10 @@ enum WindUnit {
   MS,
   MPH,
   KMPH,
+}
+
+enum ThemeModePref {
+  LIGHT,
+  DARK,
+  AUTO,
 }
