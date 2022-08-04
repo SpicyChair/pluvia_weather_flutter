@@ -7,12 +7,10 @@ import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/loading_screen.dart';
 import 'package:flutter_weather/screens/search_screen.dart';
-import 'package:flutter_weather/services/weather_model.dart';
 import 'package:mapbox_search_flutter/mapbox_search_flutter.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter_weather/database/database.dart';
 import 'package:flutter_weather/database/saved_location.dart';
-import 'package:app_settings/app_settings.dart';
 
 class SavedLocationScreen extends StatefulWidget {
   // open  the weather page when location chosen

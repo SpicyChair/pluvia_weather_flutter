@@ -3,7 +3,6 @@ import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/loading_screen.dart';
-
 import 'advanced_settings_screen.dart';
 
 class DisclaimerScreen extends StatefulWidget {

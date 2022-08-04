@@ -9,7 +9,6 @@ import 'package:flutter_weather/screens/loading_screen.dart';
 import 'package:flutter_weather/screens/saved_location_screen.dart';
 import 'package:flutter_weather/screens/daily_forecast_screen.dart';
 import 'package:flutter_weather/screens/more_screen.dart';
-import 'package:flutter_weather/services/location_service.dart';
 import 'package:flutter_weather/services/weather_model.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';

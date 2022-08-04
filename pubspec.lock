@@ -179,13 +179,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.3"
-  flutter_phoenix:
-    dependency: "direct main"
-    description:
-      name: flutter_phoenix
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.0"
   flutter_spinkit:
     dependency: "direct main"
     description:
@@ -273,13 +266,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.4"
-  language_picker:
-    dependency: "direct main"
-    description:
-      name: language_picker
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.1"
   line_icons:
     dependency: "direct main"
     description:
@@ -288,7 +274,7 @@ packages:
     source: hosted
     version: "0.2.0"
   mapbox_search:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: mapbox_search
       url: "https://pub.dartlang.org"
@@ -406,20 +392,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
-  recase:
-    dependency: transitive
-    description:
-      name: recase
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.0.0"
-  restart_app:
-    dependency: "direct main"
-    description:
-      name: restart_app
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0+1"
   shared_preferences:
     dependency: "direct main"
     description:

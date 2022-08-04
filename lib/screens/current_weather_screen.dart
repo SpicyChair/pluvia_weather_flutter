@@ -6,19 +6,15 @@ import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/radar_screen.dart';
-import 'package:flutter_weather/screens/saved_location_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/constants/text_style.dart';
 import 'package:flutter_weather/animation/weather_animation.dart';
 import 'package:flutter_weather/components/info_card.dart';
-import 'package:flutter_weather/services/location_service.dart';
 import 'package:flutter_weather/services/time.dart';
 import 'package:flutter_weather/components/panel_card.dart';
 import 'package:flutter_weather/components/hourly_card.dart';
 import 'package:flutter_weather/services/weather_model.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter_weather/services/extensions.dart';
-import 'home_screen.dart';
 
 class CurrentWeatherScreen extends StatefulWidget {
   //get the weather from loading screen

@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_weather/components/daily_card.dart';
-import 'package:flutter_weather/components/hourly_card.dart';
-import 'package:flutter_weather/constants/constants.dart';
-import 'package:expandable/expandable.dart';
-import 'package:flutter_weather/constants/text_style.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/services/time.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter_weather/services/weather_model.dart';
 
-import 'home_screen.dart';
 
 class DailyForecastScreen extends StatefulWidget {
   final Function onChooseLocationPressed;

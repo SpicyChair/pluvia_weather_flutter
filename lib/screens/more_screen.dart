@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_weather/constants/constants.dart';
 import 'package:flutter_weather/preferences/language.dart';
 import 'package:flutter_weather/preferences/shared_prefs.dart';
@@ -8,11 +7,8 @@ import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/advanced_settings_screen.dart';
 import 'package:flutter_weather/screens/changelog_screen.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:package_info/package_info.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:restart_app/restart_app.dart';
 
 import 'loading_screen.dart';
 
