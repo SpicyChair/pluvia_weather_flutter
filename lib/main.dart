@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/preferences/app_theme.dart';
 import 'package:flutter_weather/preferences/language.dart';
-import 'package:flutter_weather/preferences/theme_colors.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
 import 'screens/loading_screen.dart';
 import 'package:flutter/services.dart';
@@ -37,3 +36,32 @@ class WeatherApp extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+final ThemeData lightThemeData = ThemeData.light().copyWith(
+  brightness: Brightness.light,
+  backgroundColor: Colors.grey[50],
+  canvasColor: Colors.grey[50],
+  cardColor: Colors.white,
+  primaryColorLight: Colors.black,
+  primaryColorDark: Colors.black54,
+  useMaterial3: true,
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: Colors.blueAccent,
+  ),
+);
+
+final ThemeData darkThemeData = ThemeData.dark().copyWith(
+  brightness: Brightness.dark,
+  backgroundColor: Colors.black,
+  canvasColor: Colors.black,
+  cardColor: Colors.grey[900],
+  primaryColorLight: Colors.white,
+  primaryColorDark: Colors.grey[400],
+  useMaterial3: true,
+  floatingActionButtonTheme:
+  FloatingActionButtonThemeData(backgroundColor: Colors.blueAccent),
+);
