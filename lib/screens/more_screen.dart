@@ -178,7 +178,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   child: Center(
                     child: ListTile(
                       title: Text(
-                        "Theme Color",
+                        Language.getTranslation("darkMode"),
                         style: TextStyle(color: Theme.of(context).primaryColorLight),
                       ),
                       leading: Icon(
