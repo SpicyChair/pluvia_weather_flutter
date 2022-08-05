@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.5.0+36
+version: 1.6.0+38
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -130,13 +130,13 @@ flutter_native_splash:
   # flutter pub run flutter_native_splash:remove
 
   # color is the only required parameter.  It sets the background color of your splash screen.
-  color: "#000000"
+  color: "#FFFFFF"
   # Optional parameters are listed below.  To enable a parameter, uncomment the line by removing
   # the leading # character.
 
   # The image parameter allows you to specify an image used in the splash screen.  It must be a
   # png file.
-  image: assets/splash.png
+  image: assets/pluvia_circle_icon.png
 
   color_dark: "#000000"
   image_dark: assets/splash.png

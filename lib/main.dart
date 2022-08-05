@@ -9,7 +9,7 @@ import 'screens/loading_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 
-void main() {
+void main() async {
   initialize();
 }
 
@@ -31,10 +31,6 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Provider.of<AppThemeChangeNotifier>(context, listen: true).initialize();
-    });
-
     return MaterialApp(
       title: "Pluvia Weather",
       themeMode: Provider.of<AppThemeChangeNotifier>(context, listen: true).getThemeMode(),
@@ -55,7 +51,7 @@ final ThemeData lightThemeData = ThemeData.light().copyWith(
   cardColor: Colors.white,
   primaryColorLight: Colors.black,
   primaryColorDark: Colors.black54,
-  useMaterial3: true,
+  //useMaterial3: true,
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: Colors.blueAccent,
   ),
@@ -68,7 +64,7 @@ final ThemeData darkThemeData = ThemeData.dark().copyWith(
   cardColor: Colors.grey[900],
   primaryColorLight: Colors.white,
   primaryColorDark: Colors.grey[400],
-  useMaterial3: true,
+  //useMaterial3: true,
   floatingActionButtonTheme:
       FloatingActionButtonThemeData(backgroundColor: Colors.blueAccent),
 );

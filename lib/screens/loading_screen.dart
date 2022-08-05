@@ -1,3 +1,4 @@
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_weather/preferences/language.dart';
@@ -5,6 +6,9 @@ import 'package:flutter_weather/preferences/shared_prefs.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
 import 'package:flutter_weather/services/time.dart';
 import 'package:flutter_weather/services/weather_model.dart';
+import 'package:provider/provider.dart';
+
+import '../preferences/app_theme.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -19,24 +23,28 @@ class _LoadingScreenState extends State<LoadingScreen> {
   bool correctAPIKeys;
   String message;
 
+  Future getThemeMode() async {
+    await Provider.of<AppThemeChangeNotifier>(context, listen: false)
+        .initialize();
+  }
+
   Future getWeatherData() async {
     isGettingData = true;
-    correctAPIKeys  = true;
+    correctAPIKeys = true;
     message = Language.getTranslation("loading");
     int result = 0;
 
     if (widget.checkDefaultLocation) {
       var data = await SharedPrefs.getDefaultLocation();
       if (data.length == 3) {
-       result = await WeatherModel.getCoordLocationWeather(name: data[0], latitude: data[1], longitude: data[2]);
+        result = await WeatherModel.getCoordLocationWeather(
+            name: data[0], latitude: data[1], longitude: data[2]);
       } else {
-      result = await WeatherModel.getUserLocationWeather();
+        result = await WeatherModel.getUserLocationWeather();
       }
     } else {
       result = await WeatherModel.getUserLocationWeather();
     }
-
-
 
     /*
 
@@ -63,17 +71,19 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Future<void> loadSharedPrefs() async {
     //loads shared prefs into local variables
     //so they can be accessed without future
+
     await SharedPrefs.getLanguageCode();
     await SharedPrefs.getWindUnit();
     await SharedPrefs.getImperial();
     await SharedPrefs.getDark();
-    await TimeHelper.initialize();
 
+    TimeHelper.initialize();
   }
 
   @override
   void initState() {
     super.initState();
+    getThemeMode();
     getWeatherData();
   }
 
@@ -81,44 +91,62 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Theme.of(context).backgroundColor,
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Pluvia Weather",
-                style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.normal,
-                color: Theme.of(context).primaryColorLight,
-                letterSpacing: 2),
-              ),
-            ),
-            Visibility(
-              visible: isGettingData,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SpinKitThreeBounce(
-                  size: 30,
-                  color: Colors.blueAccent,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? Colors.black
+          : Colors.grey[200],
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              height: 120,
+              width: 120,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/pluvia_circle_icon.png"),
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
-            Column(
+          ),
+          Positioned(
+            bottom: 273,
+            child: Text(
+              "PLUVIA",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).primaryColorLight,
+                fontSize: 23,
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 //show message depending on status
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    message,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).primaryColorLight,
+                Text(
+                  message,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).primaryColorDark,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Visibility(
+                  visible: isGettingData,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SpinKitThreeBounce(
+                      size: 27,
+                      color: Theme.of(context).primaryColorDark,
                     ),
                   ),
                 ),
@@ -128,7 +156,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: RaisedButton(
-                      child: Text(Language.getTranslation("retry"), style: TextStyle(color: Theme.of(context).primaryColorDark),),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50)),
+                      child: Text(
+                        Language.getTranslation("retry"),
+                        style: TextStyle(
+                            color: Theme.of(context).primaryColorDark),
+                      ),
                       color: Colors.blueAccent,
                       onPressed: () {
                         Navigator.pushReplacement(
@@ -147,7 +181,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: RaisedButton(
-                      child: Text("Edit API Keys", style: TextStyle(color: Theme.of(context).primaryColorLight),), //TODO: TRANSLATE STRINGS
+                      child: Text(
+                        "Edit API Keys",
+                        style: TextStyle(
+                            color: Theme.of(context).primaryColorLight),
+                      ), //TODO: TRANSLATE STRINGS
                       //Language.getTranslation("editAPIKeys")
                       color: Colors.blueAccent,
                       onPressed: () {
@@ -161,10 +199,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 30,
+                )
               ],
             ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

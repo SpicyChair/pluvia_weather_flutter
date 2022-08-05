@@ -250,6 +250,7 @@ class _MoreScreenState extends State<MoreScreen> {
                             content:
                                 Text(Language.getTranslation("refreshToSee"))));
                       },
+                      activeColor: Colors.blueAccent,
                       secondary: Icon(
                         Icons.thermostat_outlined,
                         color: Theme.of(context).primaryColorDark,
@@ -280,6 +281,7 @@ class _MoreScreenState extends State<MoreScreen> {
                             content:
                                 Text(Language.getTranslation("refreshToSee"))));
                       },
+                      activeColor: Colors.blueAccent,
                       secondary: Icon(
                         Icons.timelapse_outlined,
                         color: Theme.of(context).primaryColorDark,
