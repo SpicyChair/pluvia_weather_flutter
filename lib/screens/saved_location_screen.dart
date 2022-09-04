@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/components/location_card.dart';
 import 'package:flutter_weather/constants/constants.dart';
@@ -72,7 +72,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
         actions: [
           ButtonTheme(
             minWidth: 0,
-            child: FlatButton(
+            child: TextButton(
               onPressed: () {
                 Navigator.pushReplacement(
                     context,

@@ -159,28 +159,28 @@ class _HomeScreenState extends State<HomeScreen> {
           content: Text(
             Language.getTranslation("locationDisabledPrompt"),),
           actions: [
-            FlatButton(
+            TextButton(
               child: Text(Language.getTranslation("retry")),
               onPressed: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => LoadingScreen(checkDefaultLocation: true,)));
               },
             ),
-            FlatButton(
+            TextButton(
               child: Text(Language.getTranslation("openLocationSettings")),
               onPressed: () {
                 //open the settings screen for location
                 AppSettings.openLocationSettings();
               },
             ),
-            FlatButton(
+            TextButton(
               child: Text(Language.getTranslation("defaultLocation")),
               onPressed: () {
                 //open the settings screen for location
                 Navigator.push(context, MaterialPageRoute(builder: (context) => AdvancedSettingsScreen()));
               },
             ),
-            FlatButton(
+            TextButton(
               child: Text(Language.getTranslation("close")),
               onPressed: () {
                 //closes the dialog
@@ -210,14 +210,14 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             actions: [
-              FlatButton(
+              TextButton(
                 child: Text(Language.getTranslation("retry")),
                 onPressed: () {
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => LoadingScreen()));
                 },
               ),
-              FlatButton(
+              TextButton(
                 child: Text(Language.getTranslation("customAPIKeys")),
                 onPressed: () {
                   Navigator.pushReplacement(context,

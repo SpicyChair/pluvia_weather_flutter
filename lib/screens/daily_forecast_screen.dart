@@ -80,7 +80,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
           actions: [
             ButtonTheme(
               minWidth: 0,
-              child: FlatButton(
+              child: TextButton(
                 onPressed: refresh,
                 child: Icon(
                   Icons.refresh_outlined,
@@ -150,7 +150,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
     updateUI();
     DateTime now = DateTime.now();
     String refreshTime = TimeHelper.getReadableTime(now);
-    Scaffold.of(context).showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content:
             Text("${Language.getTranslation("lastUpdatedAt")} $refreshTime")));
   }

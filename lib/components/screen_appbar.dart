@@ -28,7 +28,7 @@ class ScreenAppBar extends StatelessWidget {
       actions: [
         ButtonTheme(
           minWidth: 0,
-          child: FlatButton(
+          child: TextButton(
             onPressed: onPressed,
             child: Icon(
               this.icon,

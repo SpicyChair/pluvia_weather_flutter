@@ -129,7 +129,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
 
   //refresh data
   Future<void> refresh() async {
-    Scaffold.of(context).showSnackBar(SnackBar(content: Text("${Language.getTranslation("loading")}...")));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("${Language.getTranslation("loading")}...")));
 
     if (DateTime.now().difference(refreshTime).inMinutes >= 10) {
       //if the location displayed is current, refresh location
@@ -150,8 +150,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
       });
     }
 
-    Scaffold.of(context)
-        .showSnackBar(SnackBar(content: Text("${Language.getTranslation("lastUpdatedAt")}$refreshTimeText")));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("${Language.getTranslation("lastUpdatedAt")}$refreshTimeText")));
   }
 
   @override
@@ -190,7 +189,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
           actions: [
             ButtonTheme(
               minWidth: 0,
-              child: FlatButton(
+              child: TextButton(
                 onPressed: refresh,
                 child: Icon(
                   Icons.refresh_outlined,
@@ -488,7 +487,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                                 ),),
                               ),
                               actions: [
-                                FlatButton(
+                                TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },

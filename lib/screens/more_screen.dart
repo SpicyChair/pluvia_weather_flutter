@@ -246,7 +246,7 @@ class _MoreScreenState extends State<MoreScreen> {
                         await SharedPrefs.setImperial(value);
                         useImperial = value;
                         setState(() {});
-                        Scaffold.of(context).showSnackBar(SnackBar(
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content:
                                 Text(Language.getTranslation("refreshToSee"))));
                       },
@@ -277,7 +277,7 @@ class _MoreScreenState extends State<MoreScreen> {
                         await SharedPrefs.set24(value);
                         use24 = value;
                         setState(() {});
-                        Scaffold.of(context).showSnackBar(SnackBar(
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content:
                                 Text(Language.getTranslation("refreshToSee"))));
                       },
@@ -435,7 +435,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    FlatButton(
+                    TextButton(
                       onPressed: () async {
                         const url =
                             "https://github.com/SpicyChair/pluvia_weather_flutter";

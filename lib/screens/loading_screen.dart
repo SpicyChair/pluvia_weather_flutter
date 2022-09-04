@@ -155,15 +155,18 @@ class _LoadingScreenState extends State<LoadingScreen> {
                   visible: !isGettingData,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50)),
+                        backgroundColor: Colors.blueAccent,
+                        foregroundColor: Colors.white
+                      ),
                       child: Text(
                         Language.getTranslation("retry"),
                         style: TextStyle(
                             color: Theme.of(context).primaryColorDark),
                       ),
-                      color: Colors.blueAccent,
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
@@ -180,14 +183,19 @@ class _LoadingScreenState extends State<LoadingScreen> {
                   visible: !correctAPIKeys,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: RaisedButton(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50)),
+                          backgroundColor: Colors.blueAccent,
+                          foregroundColor: Colors.white
+                      ),
                       child: Text(
                         "Edit API Keys",
                         style: TextStyle(
                             color: Theme.of(context).primaryColorLight),
                       ), //TODO: TRANSLATE STRINGS
                       //Language.getTranslation("editAPIKeys")
-                      color: Colors.blueAccent,
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,

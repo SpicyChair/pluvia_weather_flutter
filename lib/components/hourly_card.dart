@@ -238,7 +238,7 @@ class HourlyCard extends StatelessWidget {
             ),
           ),
           actions: [
-            FlatButton(
+            TextButton(
               onPressed: () {
                 Navigator.pop(context);
               },
