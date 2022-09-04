@@ -39,7 +39,7 @@ dependencies:
   expandable: ^4.1.4
   auto_size_text: ^2.1.0
   intl: ^0.17.0
-  mapbox_search_flutter: ^1.0.5
+  mapbox_search_flutter: ^1.0.6
   uuid: ^3.0.4
   shared_preferences: ^2.0.6
   connectivity: ^3.0.6
@@ -65,6 +65,10 @@ dev_dependencies:
     sdk: flutter
 
 dependency_overrides:
+  mapbox_search_flutter:
+    git:
+      url: https://github.com/SpicyChair/mapbox_search_flutter.git
+      ref: master
   geolocator:
     git:
       url: https://gitlab.com/free2pass/flutter-geolocator-floss.git

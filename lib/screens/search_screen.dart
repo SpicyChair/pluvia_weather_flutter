@@ -16,8 +16,11 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text(Language.getTranslation("addLocation")),
+        automaticallyImplyLeading: true,
+        title: Text(Language.getTranslation("addLocation"), style: TextStyle(color: Colors.white),),
         centerTitle: true,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.transparent : Colors.blueAccent,
+        elevation: 0,
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
@@ -40,15 +43,15 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: Text(
                       Language.getTranslation("tapTheSearchBar"),
                       style: TextStyle(
-                        color: Theme.of(context).primaryColorLight,
+                        color: Theme.of(context).primaryColorDark,
                         fontSize: 15,
-                        fontWeight: FontWeight.bold
+                        //fontWeight: FontWeight.bold
                       ),
                       textAlign: TextAlign.center,
                     ),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 50,
                   ),
                   SvgPicture.asset(
                     "assets/undraw_Location_search_re_ttoj.svg",
@@ -62,6 +65,8 @@ class _SearchScreenState extends State<SearchScreen> {
               padding: EdgeInsets.all(15),
               child: MapBoxPlaceSearchWidget(
                 popOnSelect: false,
+                backgroundColor: Theme.of(context).cardColor,
+                textColor: Theme.of(context).primaryColorLight,
                 apiKey: env["MAPBOX_API_KEY"],
                 searchHint: Language.getTranslation("searchForLocation"),
                 onSelected: (place) {
