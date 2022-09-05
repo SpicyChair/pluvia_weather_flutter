@@ -172,34 +172,7 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
     return RefreshIndicator(
       onRefresh: refresh,
       child: Scaffold(
-        appBar: AppBar(
-          brightness: Brightness.dark,
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-          elevation: 0,
-          title: Text(
-            WeatherModel.locationName,
-            style: TextStyle(
-              fontWeight: FontWeight.w200,
-              fontSize: 30,
-              color: Colors.white,
-            ),
-            overflow: TextOverflow.ellipsis,
-          ),
-          actions: [
-            ButtonTheme(
-              minWidth: 0,
-              child: TextButton(
-                onPressed: refresh,
-                child: Icon(
-                  Icons.refresh_outlined,
-                  size: 27,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ],
-        ),
+
         backgroundColor: Theme.of(context).backgroundColor,
         extendBodyBehindAppBar: true,
         body: isLoading
@@ -270,6 +243,21 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                     ),
                   ),
 
+                  Positioned(
+                    top: 0,
+                    right: 5,
+                    child: SafeArea(
+                      child: IconButton(
+                        onPressed: refresh,
+                        icon: Icon(
+                          Icons.refresh_outlined,
+                          size: 27,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  )
+
                 ],
               ),
       ),
@@ -277,41 +265,59 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
   }
 
   Widget temperatureWidget() {
+    
     return Positioned(
-      top: 70,
-      left: 5,
-      child: SizedBox(
-        height: 400,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      top: 5,
+      left: 10,
+      child: SafeArea(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    WeatherModel.locationName,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w200,
+                      fontSize: 30,
+                      color: Colors.white,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Spacer(),
+                ],
+              ),
 
-            Container (
-              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-              child: Text(
-                "${temperature.toString()}°",
-                style: kLargeTempTextStyle,
+              Container (
+                padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                child: Text(
+                  "${temperature.toString()}°",
+                  style: kLargeTempTextStyle,
+                ),
               ),
-            ),
 
-            Container(
-              width: 300,
-              padding: EdgeInsets.only(left: 5),
-              child: Text(
-                conditionDescription.toTitleCase(),
-                textAlign: TextAlign.left,
-                style: kConditionTextStyle,
+              Container(
+                width: 300,
+                padding: EdgeInsets.only(left: 4),
+                child: Text(
+                  conditionDescription.toTitleCase(),
+                  textAlign: TextAlign.left,
+                  style: kConditionTextStyle,
+                ),
               ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 3, horizontal: 6),
-              child: Text(
-                "${Language.getTranslation("localTime")}${TimeHelper.getReadableTime(weatherTime)} (UTC$timeZoneOffsetText)",
-                style: TextStyle(
-                    color: Colors.white.withOpacity(0.65), fontSize: 16),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
+                child: Text(
+                  "${Language.getTranslation("localTime")}${TimeHelper.getReadableTime(weatherTime)} (UTC$timeZoneOffsetText)",
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(0.65), fontSize: 16),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
