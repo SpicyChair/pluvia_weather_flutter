@@ -243,6 +243,21 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                     ),
                   ),
 
+                  Positioned(
+                    top: 0,
+                    right: 5,
+                    child: SafeArea(
+                      child: IconButton(
+                        onPressed: refresh,
+                        icon: Icon(
+                          Icons.refresh_outlined,
+                          size: 27,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  )
+
                 ],
               ),
       ),
@@ -273,17 +288,6 @@ class _CurrentWeatherScreenState extends State<CurrentWeatherScreen> {
                     overflow: TextOverflow.ellipsis,
                   ),
                   Spacer(),
-                  SizedBox(
-                    width: 80,
-                    child: IconButton(
-                      onPressed: refresh,
-                      icon: Icon(
-                        Icons.refresh_outlined,
-                        size: 27,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
                 ],
               ),
 
