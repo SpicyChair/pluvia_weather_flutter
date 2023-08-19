@@ -6,10 +6,22 @@ import 'package:webview_flutter/webview_flutter.dart';
 class RadarScreen extends StatelessWidget {
   double latitude;
   double longitude;
+  var controller;
 
   RadarScreen(latitude, longitude) {
     this.latitude = latitude;
     this.longitude = longitude;
+    this.controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(const Color(0x00000000))
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onPageStarted: (String url) {},
+          onPageFinished: (String url) {},
+          onWebResourceError: (WebResourceError error) {},
+        ),
+      )
+      ..loadRequest(Uri.parse('https://openweathermap.org/weathermap?basemap=map&cities=false&layer=radar&lat=$latitude&lon=$longitude&zoom=6'));
   }
 //'https://openweathermap.org/weathermap?basemap=map&cities=false&layer=radar&lat=$latitude&lon=$longitude&zoom=6',
   @override
@@ -34,9 +46,7 @@ class RadarScreen extends StatelessWidget {
           },
         ),
       ),
-      body: WebView(
-          initialUrl:
-              'https://openweathermap.org/weathermap?basemap=map&cities=false&layer=radar&lat=$latitude&lon=$longitude&zoom=5'),
+      body: WebViewWidget(controller: this.controller,)
     );
   }
 }
