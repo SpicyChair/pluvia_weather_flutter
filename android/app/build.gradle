@@ -13,12 +13,12 @@ if (flutterRoot == null) {
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
-    flutterVersionCode = '40'
+    flutterVersionCode = '41'
 }
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '1.6.2'
+    flutterVersionName = '1.6.3'
 }
 
 apply plugin: 'com.android.application'
@@ -33,7 +33,7 @@ if (keystorePropertiesFile.exists()) {
 
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 34
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -47,7 +47,7 @@ android {
 
         applicationId "com.spicychair.weather"
         minSdkVersion 21
-        targetSdkVersion 32
+        targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
